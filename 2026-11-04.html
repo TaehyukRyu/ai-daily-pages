@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 데일리 · 11월 4일 (수) 저녁판</title>
+<style>
+  :root { --bg: #FCEBD7; --ink: #3B2A1F; --muted: #8A7563; --acc: #E07A2E; --bar: #DCC5A6; --card: #FFF6EC; --line: #EBD3B5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+  #np { max-width: 640px; margin: 0 auto; padding: 22px 16px 40px; scroll-behavior: smooth; word-break: keep-all; overflow-wrap: anywhere; }
+  a { color: inherit; }
+  .date { font-size: 13px; color: var(--muted); }
+  .date a { color: var(--acc); font-weight: 800; text-decoration: none; white-space: nowrap; }
+  h1 { font-size: 34px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; margin: 4px 0 12px; }
+  .lv2 { font-size: 26px; font-weight: 900; letter-spacing: -.6px; line-height: 1.25; margin: 30px 0 10px; padding-left: 12px; border-left: 6px solid var(--acc); }
+  .lv2 small { font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+  details.sec { border-bottom: 1.5px solid var(--line); }
+  details.sec > summary { padding: 16px 0; }
+  details.sec > summary .lv2 { margin: 0; display: flex; align-items: center; gap: 8px; }
+  details.sec > summary .lv2::after { content: "펼치기 ▾"; margin-left: auto; flex: none; font-size: 13px; font-weight: 800; letter-spacing: 0; color: var(--acc); }
+  details.sec[open] > summary .lv2::after { content: "접기 ▴"; }
+  .cnt { flex: none; font-size: 14px; font-weight: 800; letter-spacing: 0; padding: 1px 9px; border-radius: 999px; background: var(--acc); color: #fff; }
+  .callout { border-left: 5px solid var(--acc); padding: 4px 0 4px 14px; margin: 6px 0 14px; }
+  .callout .k { font-size: 13px; font-weight: 800; color: var(--muted); }
+  .callout .v { font-size: 21px; font-weight: 900; line-height: 1.35; margin-top: 4px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1.4; padding: 3px 9px; border-radius: 6px; background: var(--acc); color: #fff; white-space: nowrap; }
+  .pill.soft, .pill.none { background: var(--bar); color: var(--ink); }
+  .pill.ok { background: #5E8C4A; }
+  .pill.warn { background: #fff; color: var(--acc); border: 1.5px solid var(--acc); padding: 1.5px 7.5px; }
+  .pill.bad { background: #B83A2B; }
+  .pill.sm { font-size: 10.5px; padding: 0 5px; }
+  .tags a { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0; font-size: 14px; text-decoration: none; }
+  .tags .pill { flex: none; }
+  .tags .person .pill { background: var(--bar); color: var(--ink); }
+  .cap { font-size: 13px; font-weight: 800; color: var(--muted); margin: 16px 0 8px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .rank .b { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 28px; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0; text-decoration: none; }
+  .rank .lbl { display: flex; justify-content: flex-end; align-items: center; gap: 4px; min-width: 0; }
+  .rank .nm, .fig .b .l, .yt .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank .lbl .pill, .rank .ic { flex: none; }
+  .track { display: block; height: 18px; }
+  .fill { display: block; height: 100%; background: var(--bar); border-radius: 3px; min-width: 2px; }
+  .fill.hot { background: var(--acc); }
+  .rank .n { font-weight: 800; }
+  .toc { margin: 18px 0 4px; padding: 10px 12px; background: var(--card); border-radius: 10px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .toc a { color: var(--acc); font-weight: 700; }
+  .toc button { font: inherit; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 14px; border: 1.5px solid var(--acc); background: #fff; color: var(--acc); cursor: pointer; white-space: nowrap; }
+  .art { padding: 16px 0 14px; border-top: 1.5px solid var(--line); }
+  .art .top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .art h3 { font-size: 19px; font-weight: 900; line-height: 1.35; letter-spacing: -.3px; margin: 10px 0; }
+  .thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; margin-bottom: 12px; background: var(--bar); }
+  .one { border-left: 4px solid var(--acc); padding: 2px 0 2px 12px; font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 14px; }
+  .fig { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .fig .cap { margin: 0 0 8px; font-size: 12px; }
+  .fig .cap .pill { margin-left: 4px; vertical-align: 1px; }
+  .fig .src { font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .fig .b { display: grid; grid-template-columns: minmax(0, 96px) 1fr 58px; gap: 6px; align-items: center; font-size: 12.5px; margin: 5px 0; }
+  .fig .b .l { text-align: right; }
+  .fig .b .track { height: 14px; }
+  .fig .b .fill { border-radius: 2px; }
+  .fig .b .n { font-weight: 800; }
+  .flow { display: flex; align-items: stretch; gap: 4px; }
+  .flow .s { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px 6px; text-align: center; font-size: 12.5px; line-height: 1.35; }
+  .flow .s b { display: block; color: var(--acc); font-size: 18px; }
+  .flow .s small { display: block; color: var(--muted); margin-top: 2px; }
+  .flow .ar { flex: none; align-self: center; color: var(--acc); font-weight: 900; }
+  .flow.col { flex-direction: column; }
+  .flow.col .s { flex: none; display: flex; align-items: baseline; gap: 10px; text-align: left; padding: 6px 10px; }
+  .flow.col .s b { font-size: 16px; }
+  .flow.col .s small { margin: 0 0 0 auto; text-align: right; }
+  .flow.col .ar { transform: rotate(90deg); line-height: 1; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px; }
+  .cards .sk { background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px; font-size: 12px; line-height: 1.35; min-width: 0; }
+  .cards .sk b { display: block; font-size: 13.5px; }
+  .cards .st { color: var(--acc); font-weight: 900; font-size: 15px; margin-top: 4px; }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check li { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 6px 0; line-height: 1.4; }
+  .check .i { flex: none; width: 20px; height: 20px; border-radius: 50%; background: #5E8C4A; color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .check .i.new { background: var(--acc); }
+  .pts { margin: 0 0 10px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+  details.more { font-size: 14px; }
+  details summary { list-style: none; cursor: pointer; font-weight: 800; }
+  details summary::-webkit-details-marker { display: none; }
+  details.more > summary { font-size: 13.5px; }
+  details.more > summary::after { content: " ▸"; }
+  details.more[open] > summary::after { content: " ▾"; }
+  .body { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .body p { margin: 0 0 9px; font-size: 15px; }
+  .body .follow { font-size: 13px; color: var(--muted); }
+  .body .follow a, .links a, .box a { color: var(--acc); }
+  .box { margin: 6px 0 9px; padding: 8px 10px; background: #EEF3E8; border-left: 3px solid #5E8C4A; border-radius: 4px; font-size: 13.5px; }
+  .box.w { background: #fff; border-left-color: var(--acc); }
+  .box.r { background: #F8E3DE; border-left-color: #B83A2B; }
+  .links { font-size: 13.5px; color: var(--muted); }
+  .react { margin: 6px 0 10px; padding: 8px 12px; background: var(--card); border-radius: 8px; font-size: 13.5px; }
+  .react a { color: var(--acc); }
+  #reading { margin-top: 12px; }
+  #reading .subt { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .funnel { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+  .funnel .big { font-size: 20px; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+  .funnel .big em { font-style: normal; color: var(--acc); }
+  .funnel .big small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .stack { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+  .stack span { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+  .dc { background: var(--acc); color: #fff; }
+  .youtube { background: #E9A56B; }
+  .github { background: var(--bar); }
+  .official { background: #B9A48B; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .fail { font-size: 13px; color: #B83A2B; margin: 0 0 8px; }
+  #reading .src { background: var(--card); border-left: 5px solid var(--acc); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  #reading .src .h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  #reading .src .h b { font-size: 15px; }
+  #reading .src .num { font-size: 13px; font-weight: 800; white-space: nowrap; }
+  #reading .src .num em { font-style: normal; color: var(--acc); font-size: 16px; }
+  #reading .src .rule { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .yt { display: grid; grid-template-columns: minmax(0, 92px) 1fr 74px; gap: 6px; align-items: center; font-size: 12.5px; margin: 6px 0; }
+  .yt .l { text-align: right; }
+  .yt .t { display: flex; height: 16px; }
+  .yt .v, .cap .v { background: var(--acc); }
+  .yt .s, .cap .s { background: var(--bar); }
+  .yt .o { background: #E9A56B; }
+  .cap i { display: inline-block; width: 10px; height: 10px; margin: 0 3px 0 6px; vertical-align: -1px; }
+  .yt .n { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .yt .n b { color: var(--ink); }
+  .yt.none .l, .yt.none .n { color: #B3A08D; }
+  details.appx { margin: 12px 0 0; font-size: 14px; }
+  details.appx ul { margin: 6px 0 0 18px; padding: 0; }
+  details.appx li { margin-bottom: 4px; }
+  details.appx a { color: var(--acc); }
+  details.appx details { margin: 6px 0 0 8px; }
+  details.appx > summary::after, details.appx details > summary::after { content: " ▸"; color: var(--muted); }
+  details.appx[open] > summary::after, details.appx details[open] > summary::after { content: " ▾"; }
+</style>
+</head>
+<body>
+<div id="np">
+  <div class="date">11월 4일 (수) 저녁판 · 훑어보기 약 9분 · 전체 약 42분 · <a href="#reading">92개 읽고 25개 기사로 ▸</a></div>
+  <h1>AI 데일리</h1>
+  <div class="callout"><div class="k">오늘 한 줄</div><div class="v">Claude Code v2.1.318과 새 스킬 소식이 이어졌다. 데이터센터 논쟁의 수치는 상당수가 확인 전이다.</div></div>
+  <div class="tags">
+    <a class="issue" href="#s2"><span class="pill">큰 이슈</span><span>텍사스 데이터센터 중단 공약 논란</span></a>
+    <a class="skill" href="#s21"><span class="pill">떠오르는 스킬</span><span>한국 앱 디자인 스킬 k-style-ui-ux</span></a>
+    <a class="person" href="#s7"><span class="pill">인물 발언</span><span>올트먼, X 이름을 &#39;Ram Altman&#39;으로</span></a>
+  </div>
+  <h2 class="lv2">오늘 화제 순위 <small>(다룬 글·영상 수)</small></h2>
+  <div class="rank">
+    <a class="b" href="#s2"><span class="lbl"><span class="nm">미국 데이터센터 규제 논란…</span><span class="ic">⚠️</span></span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">7</span></a>
+    <a class="b" href="#s6"><span class="lbl"><span class="nm">전력 부족 경고와 우주 데…</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:57%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s7"><span class="lbl"><span class="nm">올트먼, X 이름을 &#39;Ra…</span><span class="ic">✅</span></span><span class="track"><span class="fill" style="width:43%"></span></span><span class="n">3</span></a>
+    <a class="b" href="#s21"><span class="lbl"><span class="nm">기획 문서로 한국 앱 화면…</span><span class="ic">⚠️</span></span><span class="track"><span class="fill" style="width:14%"></span></span><span class="n">1</span></a>
+    <a class="b" href="#s20"><span class="lbl"><span class="nm">말로 Mac 전용 앱을 만…</span><span class="ic">✅</span></span><span class="track"><span class="fill" style="width:14%"></span></span><span class="n">1</span></a>
+  </div>
+  <div class="note">막대를 누르면 그 기사로 이동 · 많이 다뤄졌다는 뜻일 뿐, 사실이라는 뜻은 아님</div>
+
+  <div class="toc"><span>업데이트 1 · 새 도구 9 · 팁 6 · 이슈 9 · <a href="#reading">읽은 자료</a></span>
+    <button onclick="var d=document.querySelectorAll('#np details.sec, #np details.more');var open=this.dataset.o!=='1';d.forEach(function(x){x.open=open});this.dataset.o=open?'1':'0';this.textContent=open?'모두 접기':'모두 펼치기';">모두 펼치기</button></div>
+
+  <details class="sec"><summary><h2 class="lv2">업데이트 · Claude Code와 모델 <span class="cnt">1</span></h2></summary>
+  <article class="art" id="s1">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>Claude Code v2.1.318 출시…mod 작업별 effort 지정, 로그인 만료일 표시</h3>
+    <div class="one">보조 작업의 추론 수준을 따로 정하고, 로그인 종료일을 미리 알 수 있게 됐다</div>
+    <div class="fig">
+      <div class="cap">v2.1.318 주요 변경 사항</div>
+      <ul class="check">
+        <li><span class="i new">+</span><span>mod의 $.model.fork에 effort 옵션 추가</span></li>
+        <li><span class="i new">+</span><span>claude auth status·claude -p JSON에 로그인 종료일 표시</span></li>
+        <li><span class="i new">+</span><span>claude -p 텍스트 출력에 종료 10일 전부터 stderr 경고</span></li>
+        <li><span class="i new">+</span><span>mantle 업스트림에 assume_role 추가</span></li>
+        <li><span class="i new">+</span><span>세션 중 쓴 mod를 켤지 답한 내용을 기록</span></li>
+        <li><span class="i">✓</span><span>--continue가 이전 대화를 잃던 문제 수정</span></li>
+        <li><span class="i">✓</span><span>메시지 직후 친 키가 권한 창의 답이 되던 문제 수정</span></li>
+        <li><span class="i">✓</span><span>실행 중 프로세스의 바이너리가 지워지던 문제 수정</span></li>
+      </ul>
+      <div class="src">출처: Claude Code</div>
+    </div>
+    <ul class="pts"><li>mod의 `$.model.fork`에 effort 옵션이 생겨 보조 작업만 low로 돌릴 수 있다</li><li>로그인 종료일 표시가 추가되고, `claude -p`는 종료 10일 전부터 경고한다</li><li>`--continue` 대화 유실, 권한 창 오입력 등 버그를 다수 고쳤다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude Code v2.1.318이 나왔다. 공식 릴리스 노트에서 눈에 띄는 변화는 mod의 `$.model.fork`에 `effort` 옵션이 생긴 점이다. mod는 Claude Code의 동작에 사용자가 기능을 덧붙이는 확장이고, effort는 모델이 얼마나 공들여 추론할지 정하는 값이다. 이제 세션이 어떤 effort로 돌든 간단한 보조 작업만 `low`로 돌릴 수 있고, 결과에는 실제로 보낸 effort가 함께 나온다.</p>
+      <p>자동화 환경에서 쓸모 있는 변화도 있다. 저장된 claude.ai 로그인이 끝나는 날짜가 `claude auth status`에는 `loginExpiresAt`으로, `claude -p`의 JSON 결과에는 `credential_expires_at`으로 표시된다. `claude -p` 텍스트 출력에는 로그인이 끝나기 10일 전부터 표준 오류(stderr)로 경고가 한 줄 나온다. 밤새 돌던 작업이 로그인 만료로 멈추는 일을 미리 막을 수 있는 장치다.</p>
+      <p>이 밖에 세션 중 Claude Code가 직접 쓴 mod를 켤지 물었을 때의 답을 기록으로 남기게 됐다. Claude apps gateway(Claude 앱 요청을 중계하는 관문)의 mantle 업스트림에는 `assume_role`이 추가됐다. 다른 AWS 계정의 역할을 쓰거나 개발자별로 AWS 비용을 나눠 볼 때 쓰는 설정이다.</p>
+      <p>고친 버그는 훨씬 많다. 2.1.314에서 생긴 문제로 잘못된 도구 호출의 재시도가 끝나면 `--continue`가 이전 대화를 잃는 경우가 있었는데 이를 바로잡았다. Bash 명령을 많이 돌리는 macOS 세션이 메모리가 늘며 멈추던 문제, 메시지를 보낸 직후 친 키가 권한 확인 창의 답으로 처리되던 문제도 고쳤다. 후자는 의도하지 않은 승인으로 이어질 수 있어 눈여겨볼 수정이다.</p>
+      <p>유휴 상태의 대화 압축이 요약이 아닌 답변으로 대화를 덮어쓰던 문제, 백그라운드 서브에이전트가 도는 동안 &#39;Now using usage credits&#39; 알림이 약 30초마다 다시 뜨던 문제도 고쳤다. `claude mcp add`와 `remove`는 이제 설정 파일 잠금을 기다리거나 코드 1로 끝난다. 다만 릴리스 노트는 다른 작업의 저장이 등록한 서버를 덮어쓸 수 있다고 함께 밝혔다.</p>
+      <p>여러 터미널과 원격 실행 환경의 문제도 다뤘다. 다른 터미널에서 같은 계정으로 다시 로그인하면 작업이 `Not logged in`으로 끝나던 문제, 업데이트로 실행 중인 프로세스의 바이너리가 지워져 `claude remote-control`과 자체 호스팅 러너가 새 세션을 띄우지 못하던 문제(`spawn ENOENT`)가 해결됐다. 클라우드 세션 재시작 뒤 승인된 셸 명령이 요청한 폴더가 아니라 시작 폴더에서 실행되던 문제도 고쳤다. 이제 그 폴더에 들어갈 수 없으면 명령을 실행하지 않는다.</p>
+      <div class="box ">✅ 확인됨 · Claude Code v2.1.318에서 mod의 $.model.fork에 effort 옵션이 추가되고 로그인 만료일 표시가 추가됐다 — 공식 릴리스 노트에 effort 옵션과 loginExpiresAt, credential_expires_at이 있다. · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.318" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · claude -p 텍스트 출력에 로그인 종료 10일 전부터 stderr 경고가 한 줄 나온다 — 공식 릴리스 노트와 일치한다. · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.318" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Claude apps gateway의 mantle 업스트림에 assume_role이 추가됐다 — 공식 릴리스 노트와 일치한다. · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.318" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.318" target="_blank" rel="noopener">Claude Code v2.1.318 릴리스 노트</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">새 도구 · 스킬 · 훅 <span class="cnt">9</span></h2></summary>
+  <article class="art" id="s21">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 6</span></div>
+    <h3>기획 문서로 한국 앱 화면을 만드는 무료 스킬 k-style-ui-ux 공개</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/zw06AHpmdAA/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">화면 초안을 순서대로 만들어 주는 오픈소스 스킬이다. 토스풍 여부는 확인되지 않았다</div>
+    <ul class="pts"><li>PRD를 넣으면 시작·보기·고치기·끝 화면을 만드는 MIT 오픈소스다</li><li>Claude Code·Codex·Cursor용 플러그인으로 제공된다</li><li>&#39;토스풍&#39;은 확인되지 않았고, README는 초안용 도구라고 밝힌다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>기획 문서 한 장을 넣으면 한국 앱 스타일의 화면을 순서대로 만들어 준다는 스킬 k-style-ui-ux가 유튜브 채널 바이브마피아의 영상들로 소개됐다. 저장소 README를 확인한 결과 PRD(제품 요구 사항 문서)를 입력받아 시작·보기·고치기·끝 화면을 만드는 구조이고, 라이선스는 MIT다. Claude Code뿐 아니라 Codex, Cursor용 플러그인으로도 제공된다.</p>
+      <p>영상 제목과 설명은 &#39;토스·당근 같은 디자인&#39;을 내세우지만 이 대목은 그대로 받아들이기 어렵다. README에서 당근은 색 팔레트의 출처로 나오고, 토스는 언급을 찾지 못했다. README는 이 도구를 초안용이라고도 밝힌다. 곧바로 출시할 완성 디자인을 뽑는 도구가 아니라 방향을 빠르게 잡는 출발점으로 보는 편이 맞다.</p>
+      <p>함께 올라온 짧은 영상 다섯 편은 모두 「K-디자인 하네스를 소개합니다」 라이브에서 발췌했다. 하네스는 AI가 일할 때 지켜야 할 규칙과 도구, 검사 절차를 묶은 틀을 뜻한다. 제목은 &#39;AI 디자인, 왜 티가 날까요?&#39;, &#39;AI로 디자인할 때 피그마 써야 할까?&#39;, &#39;하네스에 꼭 넣어야 하는 것&#39;, &#39;하네스가 1시간씩 걸린다면&#39;, &#39;UI랑 UX, 하나만 챙긴다면?&#39;이다. 설명란에는 영상별 결론이 적혀 있지 않아, 각 편의 주장은 이번에 확인하지 못했다.</p>
+      <p>소개 쇼츠 한 편은 영상 속 인물이 얼굴과 목소리 모두 AI로 만든 클론이라고 설명란에 밝혔다. 사용법과 프롬프트 요령을 담은 자료 링크도 안내했다.</p>
+      <div class="box ">✅ 확인됨 · k-style-ui-ux는 기획 문서를 넣으면 한국 앱 스타일 화면을 순서대로 만들어 주는 무료 오픈소스 스킬이다 — README에 PRD 입력, 시작·보기·고치기·끝 화면 생성, MIT 라이선스가 적혀 있고 Claude Code·Codex·Cursor용 플러그인이다. · <a href="https://github.com/vmc-inner-circle/k-style-ui-ux" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 토스·당근 같은 디자인을 만들어 준다 — README에서 당근은 색 팔레트 출처로 나오지만 토스는 언급을 찾지 못했고, 초안용 도구라고 밝힌다. · <a href="https://github.com/vmc-inner-circle/k-style-ui-ux" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=zw06AHpmdAA" target="_blank" rel="noopener">미친 AI 디자인 스킬이 나왔어요</a> · <a href="https://www.youtube.com/watch?v=L5FeZBzIm-8" target="_blank" rel="noopener">AI 디자인, 왜 티가 날까요?</a> · <a href="https://www.youtube.com/watch?v=0FPFPVljiUc" target="_blank" rel="noopener">AI로 디자인할 때 피그마 써야 할까?</a> · <a href="https://www.youtube.com/watch?v=880ctrkHr0g" target="_blank" rel="noopener">하네스에 꼭 넣어야 하는 것</a> · <a href="https://www.youtube.com/watch?v=L0gjLLski4o" target="_blank" rel="noopener">하네스가 1시간씩 걸린다면</a> · <a href="https://www.youtube.com/watch?v=HIBePLwPQck" target="_blank" rel="noopener">UI랑 UX, 하나만 챙긴다면?</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s20">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브</span></div>
+    <h3>말로 Mac 전용 앱을 만드는 Claude Code 플러그인 BAMA</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/RkAMrpQtHXo/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">스킬 21개가 Swift와 SwiftUI로 내 Mac에서 돌아갈 앱을 만들어 준다</div>
+    <div class="fig">
+      <div class="cap">BAMA로 앱을 만드는 흐름</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>밑그림 준비<small>마음에 드는 앱의 화면을 찍거나 설계도 파일로 시작한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>기능 나누기<small>기능을 체크할 수 있는 목록으로 쪼갠다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>단계별 구현<small>Swift·SwiftUI로 목록을 하나씩 만든다</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>픽셀 비교<small>크기와 글꼴, 색을 재서 원래 화면에 맞춘다</small></div><span class="ar">→</span>
+        <div class="s"><b>5</b>커밋 전 검사<small>모든 화면을 밝은·어두운 모드로 찍고 테스트를 돌린다</small></div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>스킬 21개가 Swift·SwiftUI로 Mac 전용 앱을 만든다</li><li>작은 Mac 앱 설계도 12개가 들어 있다</li><li>macOS 26 이상, Xcode 26 이상이 필요하다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI에게 앱을 시켰다가 웹페이지 같은 결과만 받아 본 사람을 겨냥한 Claude Code 플러그인이 소개됐다. BAMA는 아이디어부터 Dock에 올리는 단계까지 Mac 앱 제작을 돕는 플러그인이다. 스킬 21개를 담았고, Mac 앱을 만드는 언어 Swift와 화면 틀 SwiftUI를 쓴다. 모두 저장소 README로 확인됐다. 저장소는 2026년 10월 24일 공개됐다. 영상은 11월 3일 GitHub API로 확인한 별이 1,459개라고 전했다.</p>
+      <p>영상 설명에 따르면 작업 방식은 이렇다. 마음에 드는 앱의 화면을 전부 찍어 밑그림으로 삼고, 기능은 체크할 수 있는 목록으로 나눠 단계별로 만든다. 크기와 글꼴, 색을 재서 픽셀 단위로 비교하며 원래 화면에 맞춘다.</p>
+      <p>처음부터 구상하기 어렵다면 설계도를 쓸 수 있다. 창 정리, 클립보드 기록, 화면 녹화 같은 작은 Mac 앱 설계도 12개가 들어 있어 파일 하나로 시작할 수 있다. 품질 확인 절차도 정해 뒀다. 커밋(변경 내용 저장) 전마다 모든 화면을 밝은 모드와 어두운 모드로 찍어 보고 테스트를 돌린다. 이 내용도 README 문구와 일치한다.</p>
+      <p>요구 사항은 낮지 않다. macOS 26 이상과 Xcode 26 이상이 필요하다. Xcode는 설치만 하면 되고 열 필요는 없다. 영상 제작자는 Claude Code 2.1.317에서 직접 설치해 `/bama`를 실행한 화면을 보여 줬다. 다만 영상의 나머지 장면은 저장소와 README 캡처, 이를 바탕으로 만든 그림이라고 밝혔다. 완성 앱의 품질을 검증한 자료는 이번에 나오지 않았다.</p>
+      <div class="box ">✅ 확인됨 · BAMA는 Swift·SwiftUI로 Mac 전용 앱을 만드는 Claude Code 플러그인으로 스킬 21개를 담고 있다 — README의 플러그인 설치 명령, 스킬 21개, Swift·SwiftUI 설명과 일치한다. · <a href="https://github.com/daveebbelaar/bama" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 작은 Mac 앱 설계도 12개가 들어 있다 — README가 specs 폴더의 빌드 계획 12개를 안내한다. · <a href="https://github.com/daveebbelaar/bama" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 커밋 전마다 모든 화면을 밝은 모드와 어두운 모드로 찍고 테스트를 돌린다 — README 문구와 일치한다. · <a href="https://github.com/daveebbelaar/bama" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · macOS 26 이상과 Xcode 26 이상이 필요하고 Xcode를 열 필요는 없다 — README의 요구 사항과 일치한다. · <a href="https://github.com/daveebbelaar/bama" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 저장소 공개일은 2026년 10월 24일이다 — GitHub API의 생성일이 2026-10-24다. · <a href="https://api.github.com/repos/daveebbelaar/bama" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=RkAMrpQtHXo" target="_blank" rel="noopener">App Store 대신 말로 만드는 Mac 앱 | BAMA</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s19">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>픽셀 이펙트 244개를 코드로 담은 Claude Code 스킬 pixelfx</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/1SwiCfJQCHY/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">이미지 파일 없이 코드로 그려 색을 바꾸고 게임 엔진용으로 내보낼 수 있다</div>
+    <div class="fig">
+      <div class="cap">pixelfx로 이펙트를 만들어 넣는 순서</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>초안 쓰기<small>새 이펙트를 코드로 작성한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>렌더 후 확인<small>결과를 직접 보고 고치기를 반복한다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>색 바꾸기<small>색 목록을 넘겨 코드 수정 없이 바꾼다</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>내보내기<small>투명 PNG 스프라이트 시트와 JSON을 엔진에 가져간다</small></div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>픽셀 이펙트 244개를 담은 MIT 라이브러리이자 Claude Code 스킬이다</li><li>색 목록만 넘겨 색을 바꾸고 스프라이트 시트로 내보낼 수 있다</li><li>Node.js 18 이상이 필요하다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>게임 이펙트를 직접 그릴 시간이 없는 개발자를 겨냥한 pixelfx가 영상으로 소개됐다. 픽셀 아트 이펙트 244개를 각각 작은 코드 파일로 담은 라이브러리이자, 새 이펙트를 만드는 Claude Code 스킬이다. README와 일치하며 라이선스는 MIT다. 저장소는 2026년 10월 30일 공개됐다.</p>
+      <p>이미지가 아니라 코드라는 점이 핵심이다. 색 목록 하나만 넘기면 코드를 고치지 않고 같은 이펙트를 다른 색으로 쓸 수 있고, 이미지를 뒤집는 것도 가능하다. 게임 엔진으로 옮길 때는 투명 PNG 스프라이트 시트와 프레임 정보 JSON으로 내보낸다. 스프라이트 시트는 애니메이션의 각 장면을 한 장에 모은 이미지다. README에 `--sheet` 출력과 Aseprite 임포터 안내가 있으며, 영상은 Godot와 Unity 사용을 예로 들었다.</p>
+      <p>영상 설명에 따르면 스킬은 초안을 쓰고 렌더한 뒤 결과를 직접 보고 고치는 과정을 반복한다. 캐릭터가 나오는 이펙트는 준비 동작, 맞는 순간의 멈춤, 상대의 반응까지 함께 재생한다. 제작자는 2026년 11월 4일 pixelfx를 직접 받아 렌더했고, 목록에 없는 서리 마법진을 Claude Code에 부탁해 만든 결과도 보여 줬다.</p>
+      <p>준비물은 Claude Code와 Node.js 18 이상이다. 별 수는 숫자가 엇갈린다. 영상은 11월 4일 기준 4,020개라고 했지만 사실 확인 시점의 API 값은 4,430개였다. 조회 시점 차이일 수 있어 영상 수치는 확인하지 못한 것으로 남긴다.</p>
+      <div class="box ">✅ 확인됨 · pixelfx는 픽셀 아트 이펙트 244개를 코드로 담은 라이브러리이자 Claude Code 스킬이다 — README와 일치하며 MIT 라이선스다. · <a href="https://github.com/patch-gg/pixelfx" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 색 목록을 넘기면 코드를 고치지 않고 다른 색으로 쓸 수 있다 — README의 palette 옵션 설명과 일치한다. · <a href="https://github.com/patch-gg/pixelfx" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Godot·Unity용 투명 PNG 스프라이트 시트와 프레임 정보 JSON으로 내보낼 수 있다 — README의 --sheet 출력과 Aseprite 임포터 안내와 일치한다. · <a href="https://github.com/patch-gg/pixelfx" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Node.js 18 이상이 필요하다 — package.json의 engines.node가 &gt;=18이다. · <a href="https://raw.githubusercontent.com/patch-gg/pixelfx/main/package.json" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 저장소 공개일은 2026년 10월 30일이다 — GitHub API의 생성일이 2026-10-30이다. · <a href="https://api.github.com/repos/patch-gg/pixelfx" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · GitHub 별이 4,020개다 — 조회 시점 API 값은 4,430개로 다르며, 시점 차이일 수 있어 영상 수치는 확인하지 못했다. · <a href="https://api.github.com/repos/patch-gg/pixelfx" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=1SwiCfJQCHY" target="_blank" rel="noopener">게임 이펙트 244개가 전부 코드 | pixelfx</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s38">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>학습 없이 언어 모델의 거부·아첨을 줄인다는 오픈소스 heretic</h3>
+    <div class="one">모델 재학습 없이 응답 성향을 바꾸는 AGPL-3.0 도구가 깃허브에 올랐다</div>
+    <ul class="pts"><li>학습 없이 모델의 거부를 억제하는 것이 기본 동작이다</li><li>noslop·nosyco 설정으로 슬롭과 아첨을 줄이는 기능을 둔다</li><li>AGPL-3.0 라이선스이며, 효과 수치는 확인하지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>heretic은 언어 모델을 재학습하지 않고 고치는 오픈소스 도구다. 저장소는 검열 제거, 슬롭 억제, 아첨 감소를 내세운다. 슬롭은 틀에 박힌 저품질 글을, 아첨은 사용자 말에 무조건 맞장구치는 성향을 뜻한다. README에는 값비싼 학습 과정이 없다고 적혀 있다. 기본 동작은 거부 억제이고, noslop과 nosyco 설정을 따로 두었다. 라이선스는 AGPL-3.0이다.</p>
+      <p>거부 억제는 모델이 사양하던 요청에도 답하게 만든다는 뜻이다. 쓰임새에 따라 안전장치까지 약해질 수 있으니 결과를 직접 검증해야 한다. 이번 자료로는 도구의 존재와 기능 설정까지만 확인했고, 슬롭과 아첨이 얼마나 줄어드는지 효과를 측정한 수치는 확인하지 않았다.</p>
+      <div class="box ">✅ 확인됨 · heretic은 학습 없이 언어 모델의 검열을 없애고 슬롭과 아첨을 줄이는 오픈소스 도구다 — README에 값비싼 학습이 없다고 적혀 있고 거부 억제 기본 동작과 noslop·nosyco 설정이 있으며 AGPL-3.0이다. · <a href="https://github.com/p-e-w/heretic" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/p-e-w/heretic" target="_blank" rel="noopener">p-e-w/heretic 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s25">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>사진 한 장으로 위치를 찾는 스킬 geo-sleuth 사용기…정확도 보장은 없어</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/w-KYU0UprCw/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">지형으로 후보를 검증하는 스킬로, 공식 정확도 수치는 아직 없다</div>
+    <ul class="pts"><li>사진으로 촬영 위치를 추정하는 MIT 스킬로 Codex 등도 지원한다</li><li>약 25분 만에 지우펀 계단길 근처를 짚은 사례는 1회 기록이다</li><li>허락받은 사진에만 쓰라는 것이 README의 사용 원칙이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>사진 한 장으로 촬영 위치를 추정하는 Claude Code 스킬 geo-sleuth를 직접 써 본 영상이 나왔다. Codex 등 다른 에이전트도 지원하는 MIT 프로젝트다. 설치는 `npx skills add Oldcircle/geo-sleuth`이고, 사진을 주면서 찍은 곳을 찾아 달라고 요청하면 된다.</p>
+      <p>제작자는 GPS 값이 비어 있는 대만 여행 사진 1장으로 실험했다. 글자는 없었고 바다 위 섬, 산비탈 마을, 상록 활엽수 숲이 단서였다. 단서 표는 대만을 96%로 꼽았고, 모델이 &#39;지우펀에서 지룽위 섬을 본 풍경&#39;이라고 짚었다. 이어 해발 약 296m에서 11.1km 떨어진 섬 꼭대기가 수평선보다 살짝 아래에 보여야 한다는 계산이 사진과 맞았다고 한다. 결과는 약 25분 뒤 제작자가 서 있던 수치로(豎崎路) 계단길 근처를 짚었다.</p>
+      <p>이 기록은 제작자의 1회 실행일 뿐 공식 자료로 확인되지 않았다. 제작자도 한계를 여럿 밝혔다. 장소 이름은 모델이 먼저 짚었고 스킬은 지형으로 맞는지 확인했다. 능선이 밋밋한 호숫가 사진은 후보 세 곳에서 더 좁히지 못했다. 정답 좌표가 아니라 자신의 기억과 비교했다는 점도 있다. README 역시 처음 보는 사진에 대한 공식 정확도 수치는 없다고 하며, 공개 블라인드 테스트 세트는 아직 로드맵 항목이다.</p>
+      <p>위치 추정은 악용 위험이 큰 기술이다. README의 Responsible use는 내 사진이나 허락받은 사진에만 쓰고, 찾아지기를 원치 않는 사람을 찾는 데 쓰면 안 된다고 못 박았다.</p>
+      <div class="box ">✅ 확인됨 · geo-sleuth는 사진 한 장으로 촬영 위치를 추정하는 Claude Code용 스킬이다 — README와 일치하며 Codex 등 다른 에이전트도 지원하는 MIT 프로젝트다. · <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 처음 보는 사진에 대한 공식 정확도 수치는 없고 공개 블라인드 테스트 세트는 로드맵에 있다 — README가 사례는 회귀 점검이라고 밝히고 해당 항목은 미완료 로드맵이다. · <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 내 사진이나 허락받은 사진에만 써야 하며 찾아지기를 원치 않는 사람을 찾는 데 쓰면 안 된다 — README의 Responsible use 문구와 일치한다. · <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 실험에서 약 25분 만에 지우펀 수치로 계단길 근처를 짚었다 — 영상 제작자의 1회 실행 기록으로 공식 자료가 없다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=w-KYU0UprCw" target="_blank" rel="noopener">사진 한 장으로 위치 찾기, geo-sleuth 사용기</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s27">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>한 줄 요청으로 움직이는 선 그림을 만드는 스킬 Hairline</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/ITje4Fphgno/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">마우스에 반응하는 선 그림을 HTML 파일 하나로 만들어 주는 MIT 스킬이다</div>
+    <div class="fig">
+      <div class="cap">Hairline이 그림을 만드는 순서</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>아이디어 제안<small>바로 그리지 않고 2~3개를 먼저 낸다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>하나 고르기<small>사람이 고르거나, 고를 사람이 없으면 스스로 고른다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>그리기<small>그림 하나에 아이디어 하나만 담는다</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>스스로 검수<small>검수 사진 8장을 찍어 확인한다</small></div><span class="ar">→</span>
+        <div class="s"><b>5</b>HTML 결과<small>파일 하나를 브라우저로 열면 바로 움직인다</small></div>
+      </div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>한 줄 요청으로 마우스 반응형 선 그림을 HTML 파일 하나로 만든다</li><li>아이디어 2~3개를 먼저 내고 검수 사진 8장으로 스스로 확인한다</li><li>200줄·240px 규칙과 Chrome 필요 여부는 문서로 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>코딩 에이전트에 넣는 스킬 Hairline으로 &#39;아기자기한 도시&#39;, &#39;스마트 공장 모양 한개&#39;, &#39;dj용 복잡한 턴테이블판&#39; 세 그림을 만든 영상이 나왔다. 한 줄 요청으로 마우스에 반응하는 선 그림을 HTML 파일 하나에 담아 주는 도구로, README와 일치하며 MIT 라이선스다. 도시는 마우스를 댄 칸이 한 층 자라고, 턴테이블은 해당 층이 들리고, 공장은 지붕이 열리며 안에서 로봇이 팔을 든다.</p>
+      <p>작동 절차는 SKILL.md로 확인된다. 바로 그리지 않고 아이디어를 2~3개 먼저 내고, 그림 하나에 아이디어 하나만 담으며, 다 그린 뒤 검수 사진 8장을 찍어 스스로 확인한다. 결과 파일을 브라우저로 열면 바로 움직이고, 영상 설명에 따르면 play 버튼을 누르면 보이지 않는 마우스가 정해 둔 자리를 돈다.</p>
+      <p>일부 수치는 확인되지 않았다. 영상은 그림 코드가 200줄 안이고 가로 240px로 줄여도 알아볼 수 있어야 한다는 규칙을 소개했지만 SKILL.md 본문과 README에서 이 수치를 찾지 못했다. 검수에 Chrome이 필요하다는 설명도 문서에는 브라우저 필요와 playwright-core 자동 설치만 있어 그대로 확인되지 않는다.</p>
+      <p>제작자는 2026년 11월 1일 Claude Code(Opus 5.5)에서 0.5.1 버전을 그림마다 새 대화로 돌렸다고 했다. 그 결과 복잡한 장면은 단순하게 정리돼, 복잡한 그림보다 아기자기한 인터랙티브 UI에 어울린다는 평이다. 그림 옆 이름표와 설명 글은 한국어로 요청해도 세 번 모두 영어로 나왔다고 한다. 설치는 `npx skills add lucasmarkes/hairline`이고, 에이전트에서 `/hairline-create`를 쓴다.</p>
+      <div class="box ">✅ 확인됨 · Hairline은 한 줄 요청으로 마우스에 반응하는 선 그림을 HTML 파일 하나로 만드는 스킬이다 — README의 hairline-create 설명과 일치하며 MIT 라이선스다. · <a href="https://github.com/lucasmarkes/hairline" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 아이디어를 2~3개 먼저 내고, 검수 사진 8장을 찍어 확인하며, 그림 하나에 아이디어 하나를 담는다 — SKILL.md 절차와 일치한다. · <a href="https://raw.githubusercontent.com/lucasmarkes/hairline/main/skills/hairline-create/SKILL.md" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 그림 코드는 200줄 안이고 가로 240px로 줄여도 알아볼 수 있어야 한다 — SKILL.md 본문과 README에서 이 수치를 찾지 못했고 별도 규칙 문서는 확인하지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 검수에는 Chrome이 필요하고 없으면 Playwright Chromium을 쓴다 — SKILL.md는 브라우저 필요와 playwright-core 자동 설치만 말하고 Chrome을 명시하지 않는다. · <a href="https://raw.githubusercontent.com/lucasmarkes/hairline/main/skills/hairline-create/SKILL.md" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=ITje4Fphgno" target="_blank" rel="noopener">&#39;아기자기한 도시&#39; 한 줄로 만든 선 그림</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s31">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 4</span></div>
+    <h3>편집 프로그램 없이 3D 영상을…Claude Code 모션 스킬 huashu-motion</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/XQ-iyn1fCnU/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">코드로 3D 장면과 음악을 맞춰 영상을 만드는 스킬로, 한국어판도 나왔다</div>
+    <div class="fig">
+      <div class="cap">어느 저장소를 쓸까<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="cards">
+        <div class="sk"><b>huashu-motion (원본)</b>코드·문서 MIT, npx 설치 가능, macOS에서 테스트</div>
+        <div class="sk"><b>huashu-motion-ko (한국어판)</b>스튜디오 메뉴만 번역, 클론 설치 권장</div>
+      </div>
+      <div class="src">출처: 코난쌤 conanssam</div>
+    </div>
+    <ul class="pts"><li>코드로 3D 장면이 든 영상을 만드는 MIT 기반 스킬이다</li><li>Node 22 이상, Chrome 계열 브라우저, FFmpeg가 필요하고 macOS에서만 테스트됐다</li><li>&#39;100달러 구독&#39;과 &#39;11초를 5초에 렌더링&#39;은 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>편집 프로그램을 열지 않고 Claude Code로 3D 채널 소개 영상을 만드는 과정을 담은 영상이 나왔다. huashu-motion은 코드로 영상을 만드는 Claude Code·Codex 스킬이다. README는 Three.js 기반 3D 장면과 MP4 등의 출력을 안내한다. 영상은 방향을 고르고, 음악의 박자에 장면을 맞추고, C 키로 화면을 콕 찍어 수정하는 과정을 보여 준다.</p>
+      <p>준비물은 Node 22 이상, Chrome 계열 브라우저, FFmpeg다. 원작자는 macOS에서만 테스트했다고 밝혀 Windows 동작은 보장되지 않는다. 사람이나 실사 장면을 새로 생성하는 기능은 없고, 직접 준비한 사진과 영상을 합성하고 꾸밀 수는 있다. 코드와 문서는 MIT이지만, 영상 설명에 따르면 동봉된 제삼자 자료와 원작자 캐릭터에는 별도 라이선스가 적용된다.</p>
+      <p>한국어판 huashu-motion-ko는 스튜디오 메뉴만 번역한 판이다. 스킬 본문과 명령, 렌더 기능은 원본과 같다고 하며, README는 npx 한 줄 설치 대신 저장소 클론을 권한다. 한글 제목을 쓰려면 한글 글꼴을 프로젝트에 넣어야 한다. 영상은 11월 3일 기준 원본 별을 약 2.2k로 전했다.</p>
+      <p>제작자가 강조한 한계는 음악이다. 음악을 악보와 수치로 검사하다 보니 자동 검사를 통과하고도 귀에 걸리는 불협화음이 있었다고 한다. 마지막에는 직접 들어 보라는 조언이다. 시간과 토큰 수치는 이번 실행의 사례이며, 모델과 환경에 따라 달라진다고 영상이 밝혔다.</p>
+      <p>같이 묶인 쇼츠 세 편은 별도로 봐야 한다. &#39;100달러 정도의 유료 구독이 필요하다&#39;, &#39;11초 영상을 5초쯤에 굽는다&#39;는 내용은 제작자의 말이다. 이 쇼츠들이 huashu-motion을 다룬 것인지도, 수치의 공식 근거도 확인되지 않았다.</p>
+      <div class="box ">✅ 확인됨 · huashu-motion은 편집 프로그램 없이 코드로 3D 장면을 포함한 영상을 만드는 Claude Code 스킬이다 — README가 Claude Code·Codex 스킬, Three.js 기반 3D 장면, MP4 등 출력을 안내한다. · <a href="https://github.com/alchaincyf/huashu-motion" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Node 22 이상, Chrome 계열 브라우저, FFmpeg가 필요하고 원작자는 macOS에서만 테스트했다 — README와 일치한다. · <a href="https://github.com/alchaincyf/huashu-motion" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 사람이나 실사 장면을 새로 생성하지 않고 코드와 MIT 라이선스 기반이다 — README가 실사 미생성과 코드·문서 MIT를 밝힌다. · <a href="https://github.com/alchaincyf/huashu-motion" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 한국어판은 스튜디오 메뉴만 번역했고 npx 대신 클론 설치를 권한다 — 한국어 README와 일치한다. · <a href="https://github.com/jkf87/huashu-motion-ko/blob/main/README.ko.md" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 클로드 모션그래픽 도구를 쓰려면 100달러 정도의 유료 구독이 필요하고, 11초 영상을 5초쯤에 렌더링한다 — 쇼츠 속 제작자 발언이며 huashu-motion에 관한 내용인지도, 수치의 공식 근거도 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=XQ-iyn1fCnU" target="_blank" rel="noopener">편집 프로그램 없이 3D 영상 만들기</a> · <a href="https://www.youtube.com/watch?v=XQ-iyn1fCnU&amp;t=317s" target="_blank" rel="noopener">직접 들어야 잡히는 불협화음</a> · <a href="https://www.youtube.com/watch?v=CU54cHvSueM" target="_blank" rel="noopener">클로드 모션그래픽에 100달러가 필요한 이유</a> · <a href="https://www.youtube.com/watch?v=AtiB9gXoAEo" target="_blank" rel="noopener">시안 3개부터 MP4까지</a> · <a href="https://www.youtube.com/watch?v=Q72hfpO4sj0" target="_blank" rel="noopener">11초 영상을 5초에 굽는 메뉴판</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s37">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>AI 에이전트 병렬 작업용 Git 워크트리 관리 CLI, worktrunk</h3>
+    <div class="one">에이전트 여러 개를 동시에 돌릴 때 쓰는 워크트리 관리 도구가 깃허브에 올랐다</div>
+    <ul class="pts"><li>Git 워크트리 관리를 돕는 CLI다</li><li>AI 에이전트 병렬 작업용으로 설계됐다고 저장소가 밝힌다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>worktrunk는 Git 워크트리를 관리하는 명령줄 도구(CLI)다. 저장소 설명과 README는 AI 에이전트 병렬 작업을 위해 설계했다고 밝힌다. 워크트리는 한 저장소에서 여러 브랜치를 각각 다른 폴더에 꺼내 동시에 작업하는 Git 기능이다. 에이전트 여러 개가 같은 폴더에서 파일을 건드리다 충돌하는 일을 피할 때 쓴다.</p>
+      <p>오늘 소개한 코덱스 앱 영상에도 워크트리 작업이 실전 요령으로 나올 만큼, 병렬 작업은 AI 코딩 도구에서 흔한 방식이 됐다. 다만 이번 자료에는 저장소 설명 외의 사용 후기나 성능 정보가 없다. 세부 명령은 저장소에서 직접 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · worktrunk는 AI 에이전트 병렬 작업을 위한 Git 워크트리 관리 CLI다 — 저장소 설명과 README가 일치한다. · <a href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noopener">max-sixty/worktrunk 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s29">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 5</span></div>
+    <h3>한글 문서 자동화 스킬 hwpx-skill…제작자 실측 공문 1분대, 안내문 10장 2분대</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/c2JWozbnAOM/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">HWP·HWPX를 다루는 에이전트 스킬이다. 시간은 제작자의 실행 사례 값이다</div>
+    <ul class="pts"><li>hwpx-skill은 HWP·HWPX를 변환·생성·읽기·편집하는 에이전트 스킬이다</li><li>공문 1분 13초, 안내문 10장 2분 47초는 제작자 사례로 공식 확인은 없다</li><li>복잡한 서식은 달라질 수 있어 원본을 보존하고 직접 확인해야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>공문과 안내문을 한글 파일로 자동 생성하는 과정을 담은 영상이 교사와 공무원을 겨냥해 나왔다. hwpx-skill은 HWP·HWPX 문서를 변환·생성·읽기·편집하는 AI 에이전트 스킬이다. HWPX는 한글 문서의 개방형 파일 형식이다. 이 설명은 README와 일치한다.</p>
+      <p>시간 기록은 제작자의 실행 사례다. 공문은 1분 13초, 양식과 엑셀 명단으로 만든 안내문 10장은 2분 47초가 걸렸고 10명 대조도 모두 맞았다고 한다. HWP를 HWPX로 바꾸는 작업은 1분 17초가 걸렸고 표가 무너지지 않았다고 전했다. 공식 자료가 없어 확인되지 않았고, 같은 결과를 보장하지도 않는다. 영상 스스로도 큰 깨짐이 없었다는 것은 이번 실측 결과일 뿐 모든 문서의 서식 보존을 보장하지 않는다고 밝혔다.</p>
+      <p>HWP 변환은 Windows에 설치된 한컴오피스 한글을 우선 쓰고, 안 되면 별도 변환 방식(rhwp WASM)으로 진행한다. 복잡한 도형, 표 음영, 간격, 쪽 나눔은 달라질 수 있다는 것이 README의 주의 사항이다. 영상 설명은 한컴 외 변환 방식에서 OLE 객체와 수식의 표시가 보장되지 않는다고 덧붙인다. 원본을 보존하고 한글에서 직접 확인하라는 권고다.</p>
+      <p>업무에 쓸 때의 주의도 분명히 했다. 소속 기관 지침을 먼저 확인하고 공개 가능한 자료나 가명 데이터로 연습하라고 안내한다. 경기도교육청 자료는 수업 활용 지침이어서 기관별 업무 문서 이용 허가를 대신하지 않는다. AI가 만든 문서의 이름·날짜·금액·세부 일정은 직접 대조하고, 모르는 사실은 지어내지 말고 미정으로 표시하도록 요청하라는 조언도 실었다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · hwpx-skill 실측에서 공문은 1분 13초, 안내문 10장은 2분 47초가 걸렸다 — 영상 제작자의 실행 사례 값으로 공식 자료가 없다.</div>
+      <div class="box ">✅ 확인됨 · hwpx-skill은 HWP·HWPX 문서를 변환·생성·읽기·편집하는 AI 에이전트 스킬이다 — README 설명과 일치한다. · <a href="https://github.com/jkf87/hwpx-skill" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · HWP 변환은 Windows의 한컴오피스 한글을 우선 쓰고 안 되면 별도 변환 방식을 쓴다 — README가 COM 우선과 rhwp WASM 대체 변환을 설명한다. · <a href="https://github.com/jkf87/hwpx-skill" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 복잡한 도형, 표 음영, 간격, 쪽 나눔은 달라질 수 있다 — README의 주의 사항과 일치한다. · <a href="https://github.com/jkf87/hwpx-skill" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · HWP를 HWPX로 바꾸는 데 1분 17초 걸렸고 표가 무너지지 않았다 — 영상 제작자의 1회 실행 결과로 공식 자료가 없다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=c2JWozbnAOM" target="_blank" rel="noopener">한글 문서 자동화 총정리</a> · <a href="https://www.youtube.com/watch?v=c2JWozbnAOM&amp;t=186s" target="_blank" rel="noopener">안내문 10장 만들고 결과 대조</a> · <a href="https://www.youtube.com/watch?v=x9QneH9UkPE" target="_blank" rel="noopener">코덱스 공문, 1분 13초 만에 완성</a> · <a href="https://www.youtube.com/watch?v=kfebAO9WQS8" target="_blank" rel="noopener">한글 안내문 10장, 2분 47초 만에 자동화</a> · <a href="https://www.youtube.com/watch?v=j1cYuLSq11U" target="_blank" rel="noopener">HWP를 HWPX로 바꿔도 표가 안 무너진 이유</a> · <a href="https://www.youtube.com/watch?v=FIEGLHrOyaw" target="_blank" rel="noopener">프롬프트 하나로 한글 공문 만드는 법</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">활용 팁 <span class="cnt">6</span></h2></summary>
+  <article class="art" id="s26">
+    <div class="top"><span class="pill">팁</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>바이브 코딩한 사이트, 클라우드플레어 무료로 올릴 때 알아 둘 것</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/Mgyucb9JHfM/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">무료로 쓸 수 있는 서비스 4가지와, 검색 유입을 막을 수 있는 AI 봇 설정을 정리했다</div>
+    <div class="fig">
+      <div class="cap">클라우드플레어에서 무료로 쓸 수 있는 것<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="cards">
+        <div class="sk"><b>Workers</b>정적 파일 무제한, 서버 코드 요청 하루 10만 번 무료</div>
+        <div class="sk"><b>R2</b>10GB, 월 쓰기 100만 번·읽기 1,000만 번, 전송 요금 없음</div>
+        <div class="sk"><b>Quick Tunnel</b>계정 없이 쓰는 임시 주소, 동시 요청 200개 제한</div>
+        <div class="sk"><b>Registrar</b>도메인 등록·갱신을 웃돈 없이 원가로</div>
+      </div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>Workers는 정적 파일 무제한, 서버 코드 요청 하루 10만 번까지 무료다</li><li>R2의 무료 등급은 10GB이고 내려받기 전송 요금이 없다</li><li>AI 학습 봇을 막으면 Googlebot까지 막힐 수 있어 확인이 필요하다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI로 만든 사이트를 어디에 올릴지 고민하는 사람을 위해 클라우드플레어의 무료 서비스를 정리한 영상이 나왔다. 금액과 한도는 2026년 11월 1일 공식 문서 기준이라고 밝혔고, 대부분 공식 문서와 일치했다.</p>
+      <p>첫째는 사이트를 올리는 Workers다. Claude Code나 Codex에 배포를 요청하면 &#39;이름.workers.dev&#39; 주소가 생긴다. 정적 파일 요청은 무제한 무료이고 서버 코드 요청은 하루 10만 번까지 무료다. 이를 넘으면 그날은 Error 1027이 나오고 UTC 자정, 곧 한국 시간 오전 9시에 초기화된다. 영상은 넘친 만큼 내는 요금은 유료 플랜에만 있다고 설명한다.</p>
+      <p>둘째는 파일 저장소 R2다. Standard 저장소 기준으로 10GB, 한 달 쓰기 100만 번·읽기 1,000만 번이 무료이고 내려받기 전송 요금(egress)이 없다. 영상은 시작할 때 결제 수단 등록이 필요하다고 했지만, 공식 문서는 구독 결제 절차만 말하고 필수 여부를 명시하지 않아 확인되지 않았다.</p>
+      <p>셋째는 Quick Tunnel이다. 내 컴퓨터에서 돌아가는 사이트를 임시 주소로 잠깐 보여 주는 기능이다. `cloudflared tunnel --url http://localhost:8080` 한 줄이면 되고 계정이 필요 없다. 시험용이라 동시 요청은 200개로 제한된다. `--allowed-mail` 옵션을 쓰면 메일로 받은 일회용 번호를 넣어야 들어올 수 있다. 넷째인 Registrar는 도메인을 등록·갱신할 때 웃돈 없이 원가로 제공한다.</p>
+      <p>영상이 따로 짚은 것은 AI 봇 설정이다. 2026년 7월부터 무료 플랜을 포함해 봇을 검색용·에이전트용·학습용으로 나눠 막을 수 있다. 9월 15일부터 새로 연결한 사이트는 광고가 붙은 페이지에서 학습용과 에이전트용 봇을 기본으로 막는다. 문제는 Googlebot처럼 검색과 학습을 겸하는 봇이다. 학습을 막으면 이런 봇도 막힐 수 있다고 클라우드플레어가 안내했다.</p>
+      <p>검색 유입이 중요한 사이트라면 보안 메뉴의 이벤트 기록에서 Googlebot이 막힌 적이 있는지 보라고 영상은 권한다. 구글의 AI 학습만 빼고 싶다면 robots.txt에서 Google-Extended를 막는 방법이 있다. 구글 공식 문서는 이 설정이 검색 포함 여부와 순위에 영향을 주지 않는다고 밝힌다.</p>
+      <div class="box ">✅ 확인됨 · Workers 무료 플랜은 정적 파일 요청이 무제한 무료이고 서버 코드 요청은 하루 10만 번까지 무료다 — 공식 가격 문서와 일치한다. · <a href="https://developers.cloudflare.com/workers/platform/pricing/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 무료 한도를 넘으면 Error 1027이 나오고 UTC 자정에 초기화된다 — 공식 한도 문서와 일치한다. · <a href="https://developers.cloudflare.com/workers/platform/limits/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · R2 무료 등급은 10GB, 월 쓰기 100만 번·읽기 1,000만 번이고 내려받기 전송 요금이 없다 — 공식 가격 문서와 일치하며 Standard 저장소 기준이다. · <a href="https://developers.cloudflare.com/r2/pricing/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · R2를 시작할 때 결제 수단 등록이 필요하다 — 문서는 R2 구독 결제 절차만 말하고 결제 수단 필수 여부는 명시하지 않는다. · <a href="https://developers.cloudflare.com/r2/get-started/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Quick Tunnel은 계정 없이 쓸 수 있고 동시 요청 200개 제한이 있으며 --allowed-mail로 메일 일회용 번호 인증을 걸 수 있다 — 공식 문서와 일치한다. · <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Registrar는 도메인 등록과 갱신을 웃돈 없이 원가로 제공한다 — 공식 문서에 at cost, without markup fees로 적혀 있다. · <a href="https://developers.cloudflare.com/registrar/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 2026년 7월부터 AI 봇을 검색용·에이전트용·학습용으로 나눠 막을 수 있고 무료 플랜도 포함된다 — 7월 1일 공식 블로그와 일치한다. · <a href="https://blog.cloudflare.com/content-independence-day-ai-options" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 9월 15일부터 새로 연결한 사이트는 광고가 붙은 페이지에서 학습용·에이전트용 봇을 기본으로 막는다 — 공식 블로그와 일치한다. · <a href="https://blog.cloudflare.com/content-independence-day-ai-options" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 학습을 막으면 Googlebot처럼 검색과 학습을 겸하는 봇도 막힐 수 있다 — 공식 블로그가 학습 차단 고객에게 Googlebot 등이 차단된다고 안내한다. · <a href="https://blog.cloudflare.com/content-independence-day-ai-options" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · robots.txt에서 Google-Extended를 막아도 구글 검색 노출에는 영향이 없다 — 구글 공식 문서가 검색 포함 여부와 순위에 영향이 없다고 밝힌다. · <a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=Mgyucb9JHfM" target="_blank" rel="noopener">클라우드플레어 무료로 올릴 때 알아 둘 것</a> · <a href="https://www.youtube.com/watch?v=Mgyucb9JHfM&amp;t=138s" target="_blank" rel="noopener">AI 봇 설정 대목</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s22">
+    <div class="top"><span class="pill">팁</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">유튜브</span></div>
+    <h3>바이브코딩 풀코스 라이브 추가 발췌…&#39;요즘 클로드랑 일하는 법&#39;</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/rBO5viC9vks/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">현업 개발자 라이브에서 또 한 편의 짧은 영상이 나왔다. 내용은 제목까지만 확인된다</div>
+    <ul class="pts"><li>바이브코딩 풀코스 라이브의 발췌 영상이 한 편 추가됐다</li><li>Claude와 일하는 구체적 방법은 설명란에 없어 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-02.html#s40" target="_blank" rel="noopener">비개발자도 앱 운영까지?…바이브코딩 풀코스 발췌</a></p>
+      <p>본지가 11월 2일 &#39;비개발자도 앱 운영까지?…바이브코딩 풀코스 발췌&#39;에서 다룬 라이브의 발췌 영상이 한 편 더 나왔다. 바이브코딩은 AI에게 말로 시켜 코드를 만드는 방식을 말한다. 원본은 「기획부터 배포까지 | 현업 개발자의 바이브코딩 풀코스」이고, 이번 영상 제목은 &#39;요즘 클로드랑 OO하면서 일합니다&#39;다.</p>
+      <p>지난번 발췌가 기획부터 출시·운영까지의 흐름을 다뤘다면, 이번 편은 제목으로 보아 Claude와 함께 일하는 방식에 초점을 둔 것으로 보인다. 다만 제목의 &#39;OO&#39;가 무엇인지는 설명란에 적혀 있지 않다. 구체적인 방법은 이번 자료로 확인하지 못했으니 전체 영상이나 발췌본을 직접 봐야 한다.</p>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=rBO5viC9vks" target="_blank" rel="noopener">요즘 클로드랑 OO하면서 일합니다</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s18">
+    <div class="top"><span class="pill">팁</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">유튜브</span></div>
+    <h3>&#39;내가 AI를 학습시켰어요&#39;라면…컨텍스트 입문 영상</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/GmQYsY4QpLA/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">AI 입문자에게 컨텍스트와 컨텍스트 윈도우를 풀어 준 시리즈 첫 편이 나왔다</div>
+    <ul class="pts"><li>컨텍스트와 컨텍스트 윈도우를 다룬 시리즈 첫 편이다</li><li>&#39;AI를 학습시켰다&#39;고 말하는 사람에게 권하는 입문 영상이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>&#39;한 입으로 알아보는&#39; 시리즈의 첫 영상으로 컨텍스트와 컨텍스트 윈도우를 다룬 입문 영상이 올라왔다. 컨텍스트는 AI가 답할 때 참고하는 대화와 자료를 말하고, 컨텍스트 윈도우는 한 번에 담아 볼 수 있는 양의 한계를 말한다.</p>
+      <p>설명란은 &#39;내가 AI를 학습시켰어요&#39;라고 하는 사람이라면 꼭 보라고 권한다. 대화로 알려 준 내용과 모델 학습을 구분하자는 취지로 읽히지만, 설명란은 한 줄뿐이어서 영상의 구체적인 설명은 이번에 확인하지 못했다.</p>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=GmQYsY4QpLA" target="_blank" rel="noopener">한 입으로 알아보는 컨텍스트&amp;컨텍스트 윈도우</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s30">
+    <div class="top"><span class="pill">팁</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 4</span></div>
+    <h3>무료 제미나이 활용 요령…일정 예약, 없는 숫자 막기, 결과 검수, 한도 확인</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/fvfpsV5Dhlo/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">코난쌤 쇼츠 네 편의 요령을 정리했다. 수치는 개인 실행 사례다</div>
+    <div class="fig">
+      <div class="cap">무료 제미나이 요령 네 가지</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>일정 예약<small>&#39;일정을 설정해줘&#39;로 요청하고 예약 메뉴에서 관리한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>없는 숫자 막기<small>&#39;메모에 없는 수치는 넣지마&#39;를 프롬프트에 넣는다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>결과 검수<small>금지한 글자가 들어가지 않았는지 직접 본다</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>한도 확인<small>현재 한도와 주간 한도를 나눠 본다</small></div>
+      </div>
+      <div class="src">출처: 코난쌤 conanssam</div>
+    </div>
+    <ul class="pts"><li>&#39;일정을 설정해줘&#39; 요청으로 예약 작업을 만들 수 있다. 무료 플랜 명시는 없다</li><li>사용량은 5시간 갱신 한도와 주간 한도로 나뉜다</li><li>&#39;메모에 없는 수치는 넣지마&#39; 효과와 43%·2% 값은 개인 사례다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>제미나이를 무료로 쓸 때 도움이 될 요령을 담은 쇼츠 네 편이 올라왔다. 첫째는 예약이다. &#39;매주 월요일 오전 8시에 이번 주 AI 소식 3가지를 요약하는 일정을 설정해줘&#39;처럼 말하면 예약 메뉴에 실행 대기 중으로 올라온다고 한다. 구글 공식 도움말은 모든 개인 계정에 단계적으로 제공하며 Scheduled 메뉴에서 관리한다고 안내한다. 다만 도움말이 무료 플랜을 명시한 것은 아니어서 내 계정에서 되는지 직접 봐야 한다.</p>
+      <p>둘째는 지어낸 숫자를 막는 한 줄이다. 영상은 보고서 프롬프트에 &#39;메모에 없는 수치는 넣지마&#39;를 넣으라고 권한다. 이 말이 없던 프롬프트에서는 메모에 없던 마진 시뮬레이션 이야기가 나왔다고 한다. 어디까지나 제작자의 사례다.</p>
+      <p>셋째는 검수다. 제작자의 실행에서는 이미지 생성에 20초쯤 걸렸고, 글자를 넣지 말라고 했는데도 그림에 third, second가 들어갔다고 한다. 공식 자료로 확인된 내용은 아니지만, 지시를 해도 결과를 직접 봐야 한다는 사례로 볼 수 있다.</p>
+      <p>넷째는 한도다. 공식 도움말에 따르면 사용량은 5시간마다 갱신되는 한도와 주간 한도로 나뉜다. 제작자 화면에서는 현재 사용량이 43%일 때 주간 한도는 2%였다고 하는데, 이 값은 개인 사례이고 공식 비율이 아니다.</p>
+      <div class="box ">✅ 확인됨 · 무료 제미나이에서 &#39;일정을 설정해줘&#39; 요청으로 예약 작업을 만들고 예약 메뉴에서 관리할 수 있다 — 공식 도움말은 모든 개인 계정에 단계적 제공과 Scheduled 메뉴를 안내하지만 무료 플랜을 명시하지는 않는다. · <a href="https://support.google.com/gemini/answer/16316416" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 제미나이 무료 사용량은 현재 한도와 주간 한도로 나뉜다 — 공식 도움말이 5시간마다 갱신되는 한도와 주간 한도를 설명한다. · <a href="https://support.google.com/gemini/answer/16275805" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 현재 사용량 43%일 때 주간 한도 사용량은 2%였다 — 영상 제작자의 실행 사례 값으로 공식 자료가 없다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 이미지 생성에 약 20초가 걸렸고, 글자를 넣지 말라고 해도 그림에 글자가 들어갔다 — 영상 제작자의 실행 사례로 공식 자료가 없다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=fvfpsV5Dhlo" target="_blank" rel="noopener">제미나이 무료 예약 쇼츠</a> · <a href="https://www.youtube.com/watch?v=mQno_iRtd6E" target="_blank" rel="noopener">없는 숫자 막는 한 줄 쇼츠</a> · <a href="https://www.youtube.com/watch?v=CgWohDPW7hQ" target="_blank" rel="noopener">결과물 검수 쇼츠</a> · <a href="https://www.youtube.com/watch?v=MAxNs0qdziM" target="_blank" rel="noopener">무료 한도 쇼츠</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s36">
+    <div class="top"><span class="pill">팁</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>HeyGen의 무료 모션그래픽 도구 하이퍼프레임, Claude Code로 따라간 강의 영상</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/PcY0oV2sx1k/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">HTML을 영상으로 바꾸는 도구의 무료 강의를 따라갔다. &#39;6단계&#39;는 확인되지 않았다</div>
+    <ul class="pts"><li>하이퍼프레임은 HeyGen이 공개한 Apache 2.0 도구로, HTML을 영상으로 만든다</li><li>공식 강의는 무료이지만 &#39;6단계&#39; 구성은 확인되지 않았다</li><li>브리프 쓰기부터 촬영본 편집, 소리까지 Claude Code로 따라간다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>하이퍼프레임 공식 강의를 Claude Code에 직접 시켜 보며 정리한 14분짜리 영상이 나왔다. 하이퍼프레임은 HeyGen 조직이 Apache 2.0 라이선스로 공개한 도구로, HTML을 영상으로 렌더링한다. 에이전트가 쓰도록 만들어졌다. 공식 강의 페이지에도 무료라고 적혀 있다.</p>
+      <p>영상은 공식 강의가 6단계라고 소개한다. 그러나 해당 페이지에서는 세 단계 안내만 보였고, 6단계와 세부 주제는 확인하지 못했다. 영상의 구성 자체는 첫 메시지 브리프 쓰는 법, 짚어서 고치기, 로고 애니메이션, 내 촬영본 편집, 소리, 장면 짚기 순서다.</p>
+      <p>생성 AI 영상과의 차이도 다룬다. 챕터 제목으로 보면 생성 AI 영상과 무엇이 다른지, 설치하자마자 무엇부터 꺼야 하는지를 짚는다. 다만 설명란에는 그 답이 적혀 있지 않아 이번 기사에서는 구체 내용을 옮기지 않는다. 영상에서 쓴 메시지 여섯 개는 프롬프트 팩으로 무료 공유한다고 안내했다.</p>
+      <div class="box ">✅ 확인됨 · 하이퍼프레임은 HeyGen이 만든 무료 AI 모션그래픽 도구다 — heygen-com 조직의 Apache 2.0 저장소이며 HTML을 영상으로 렌더링하는 에이전트용 도구다. · <a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 하이퍼프레임 공식 강의는 6단계다 — 해당 페이지에는 세 단계 안내만 보이고 영상이 말한 6단계와 세부 주제는 확인하지 못했다. · <a href="https://hyperframes.studio/lessons" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 하이퍼프레임 강의는 무료다 — 페이지에 무료라고 적혀 있다. · <a href="https://hyperframes.studio/lessons" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=PcY0oV2sx1k" target="_blank" rel="noopener">하이퍼프레임 올인원 무료 강의</a> · <a href="https://www.youtube.com/watch?v=PcY0oV2sx1k&amp;t=288s" target="_blank" rel="noopener">첫 메시지 브리프 쓰는 법</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s34">
+    <div class="top"><span class="pill">팁</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>코덱스 앱 실전 7가지…클로드 세션 불러오기는 확인, 일부 기능은 미확인</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/6KU-_0ZbhRU/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">Claude Code 작업을 코덱스로 잇는 영상이다. 기능마다 확인 정도가 다르다</div>
+    <div class="fig">
+      <div class="cap">영상이 다룬 7가지와 확인 상태</div>
+      <ul class="check">
+        <li><span class="i">✓</span><span>클로드 세션 불러오기: 공식 문서 확인</span></li>
+        <li><span class="i">✓</span><span>사이드 채팅: 확인 안 됨</span></li>
+        <li><span class="i">✓</span><span>추론 수준을 바꿔도 캐시 유지: 확인 안 됨, 실험 기능</span></li>
+        <li><span class="i">✓</span><span>반복 작업 녹화로 스킬 만들기: 확인 안 됨</span></li>
+        <li><span class="i">✓</span><span>Stop 훅 검증: 공식 문서 확인, 테스트 예제는 영상 내용</span></li>
+        <li><span class="i">✓</span><span>포크·워크트리 작업과 머지: 영상 내용</span></li>
+        <li><span class="i">✓</span><span>대화 드래그 참조: 클로드에서 가져온 대화는 오류</span></li>
+      </ul>
+      <div class="src">출처: 코난쌤 conanssam</div>
+    </div>
+    <ul class="pts"><li>설정의 Import로 Claude Code의 최근 30일 대화를 가져올 수 있다</li><li>Stop 훅으로 테스트 실패 시 턴 종료를 막는 검증 게이트를 만든다</li><li>캐시 유지 설정, 사이드 채팅, 녹화 스킬화는 공식 문서로 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude Code에서 세운 계획을 코덱스 앱으로 가져와 이어서 구현하는 과정을 작은 웹앱으로 보여 준 영상이 나왔다. 세션 가져오기, 사이드 채팅, 캐시 유지 설정, 스킬 녹화, Stop 훅 검증, 워크트리, 대화 참조까지 일곱 가지를 다룬다.</p>
+      <p>공식 문서로 확인되는 것은 세션 가져오기와 Stop 훅이다. 데스크톱 앱의 설정 &gt; Import에서 최근 30일 대화를 가져올 수 있다. 영상은 대화를 워크트리나 클라우드로 넘기는 핸드오프 메뉴와 구분하라고 당부한다. Stop 훅은 AI가 턴을 끝내려 할 때 끼어드는 장치로, block 결정을 내리면 작업을 계속하게 할 수 있다. 영상은 이를 이용해 테스트가 실패하면 끝내지 못하게 하는 &#39;검증 게이트&#39;를 만들었다. 이 테스트 예제 자체는 공식 문서가 아니라 영상의 내용이며, 훅 승인과 앱 재시작 과정도 함께 확인하라고 안내한다.</p>
+      <p>확인되지 않은 기능도 있다. `reasoning_effort_override`로 추론 수준을 바꿔도 캐시를 유지한다는 설정은 공식 문서에서 찾지 못했고, 영상도 실험 기능이라고 밝힌다. 영상의 캐시 수치는 그 실행에서 관찰한 결과일 뿐이다. 사이드 채팅과 반복 작업을 녹화해 스킬로 만드는 기능도 공식 문서로 확인하지 못했다. 문서 메뉴에는 Record &amp; Replay만 보인다.</p>
+      <p>대화 드래그로 참조하는 기능은 코덱스 대화에서 확인했지만, 클로드에서 가져온 대화는 영상의 실행에서 참조 오류가 났다고 한다. 영상에 함께 소개된 ide-mod는 Claude Code 플러그인이다. 핸드오프 화면에서 y는 세션 ID를, c는 핸드오프 글을 복사한다. Claude Code의 early access function hooks를 쓰며 README의 시험 버전은 2.1.290이라 업데이트 후 호환성이 달라질 수 있다. 다른 컴퓨터로 넘기는 핸드오프는 인수인계서와 Git 위치를 공유할 뿐, 로컬 파일이 자동으로 옮겨지지 않는다.</p>
+      <div class="box ">✅ 확인됨 · 코덱스 앱에서 설정의 가져오기로 클로드 코드 세션을 불러올 수 있다 — 공식 문서가 데스크톱 앱 Settings &gt; Import와 최근 30일 대화 가져오기를 안내한다. · <a href="https://learn.chatgpt.com/docs/import" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Stop 훅으로 테스트 실패 시 턴 종료를 막을 수 있다 — 공식 문서가 Stop 훅의 block 결정으로 작업을 계속하게 한다고 설명하며, 테스트 예제 자체는 영상 내용이다. · <a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · reasoning_effort_override로 추론 수준을 바꿔도 캐시를 유지할 수 있다 — 공식 문서에서 이 설정을 찾지 못했고 영상도 실험 기능이라고 밝힌다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 코덱스 앱에 사이드 채팅과 반복 작업을 녹화해 스킬로 만드는 기능이 있다 — 문서 메뉴에 Record &amp; Replay만 보이고 사이드 채팅과 스킬 변환 설명은 찾지 못했다.</div>
+      <div class="box ">✅ 확인됨 · ide-mod 핸드오프 화면에서 y는 세션 ID, c는 핸드오프 글을 복사한다 — README와 일치한다. · <a href="https://github.com/jkf87/ide-mod" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · ide-mod는 Claude Code의 early access function hooks를 쓰며 시험 버전은 2.1.290이다 — README와 일치한다. · <a href="https://github.com/jkf87/ide-mod" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=6KU-_0ZbhRU" target="_blank" rel="noopener">코덱스 앱 실전 7가지</a> · <a href="https://www.youtube.com/watch?v=6KU-_0ZbhRU&amp;t=240s" target="_blank" rel="noopener">Stop 훅으로 테스트 통과 후 끝내기</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">이슈 · 이야기거리 <span class="cnt">9</span></h2></summary>
+  <article class="art" id="s2">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 7</span></div>
+    <h3>미국 데이터센터 규제 논란…텍사스 건설 중단 공약, 주민투표 소식은 확인 중</h3>
+    <div class="one">이노호사의 중단 공약은 확인됐지만, 당선과 도시별 투표는 보도 수준이다</div>
+    <ul class="pts"><li>이노호사의 신규 데이터센터 중단 공약과 재개 조건은 캠프 사이트로 확인됐다</li><li>당선 소식과 도시별 주민투표는 보도로만 확인돼 단정하기 어렵다</li><li>신규 용량 10~20% 감소 전망은 챗봇 추정치로, 공식 근거가 없다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>미국 선거 뒤 AI 데이터센터 규제를 둘러싼 글이 커뮤니티에 잇따라 올라왔다. 가장 또렷하게 확인된 것은 텍사스의 지나 이노호사 공약이다. 선거 캠프 공식 사이트에는 신규 데이터센터 건설을 일시 중단(모라토리엄)하라는 요구가 실려 있다.</p>
+      <p>재개 조건도 캠프 사이트에서 확인된다. 주의회가 보호 장치를 입법할 때까지 멈추자는 내용이고, 물과 전기 보호, 요금 전가 방지, 투명성, 지역 결정권이 항목으로 꼽힌다. 다만 이노호사가 주지사 선거에서 이겼다는 소식은 AP 판정을 전한 보도로만 확인했고 주 공식 개표 자료는 확인하지 못했다. 공약이 실제 정책으로 이어질지도 아직 알 수 없다.</p>
+      <p>미국 수십 개 도시가 주민투표로 데이터센터 규제나 금지를 결정했다는 글도 퍼졌다. 검색 결과의 보도는 40건 이상의 안건을 전하지만 본문을 열지 못했고, 집계도 비공식 잠정치여서 사실로 단정하기 어렵다.</p>
+      <p>연방 차원의 목소리도 있다. 민주당 상원 후보 압둘 엘사예드는 AI 개발을 진지하게 멈춰야 한다고 주장했고, 이는 캠프 공식 사이트에서 확인된다. 커뮤니티에 올라온 인터뷰 번역에서 그는 &#39;완전 일시 중지&#39;를 말하며 중국 연구의 상당 부분이 미국 모델을 베끼는 것이라고 했다. 이 발언은 인터뷰 원문을 찾지 못해 확인되지 않았다. 대부분의 민주당 후보가 같은 입장이라는 글쓴이의 말도 근거가 제시되지 않았다.</p>
+      <p>영향 전망은 더 조심해서 봐야 한다. 한 이용자는 2027~28년 미국 데이터센터 신규 가동 용량이 예상보다 10~20% 줄고, 가격 인하와 사용량 한도 확대가 늦어질 수 있다는 요약을 올렸다. 그러나 이는 챗봇에게 물어 얻은 추정치이고 공식 자료가 없다. 규제를 &#39;100% 포퓰리즘&#39;으로 본 글 역시 글쓴이의 의견일 뿐이다. 규제가 AI 이용료나 한도에 어떤 영향을 줄지는 아직 확인된 자료로 말할 단계가 아니다.</p>
+      <div class="box ">✅ 확인됨 · 지나 이노호사 텍사스 주지사 당선인이 신규 AI 데이터센터 건설 일시중지를 공약했다 — 선거 캠프 공식 사이트에서 신규 데이터센터 모라토리엄 요구를 확인했다. · <a href="https://ginafortexas.com/2026/07/in-the-news-hinojosa-calls-for-data-center-moratorium-until-abbott-convenes-legislature/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 재개 조건은 주의회가 물·전기 보호, 요금 전가 방지, 투명성, 지역 결정권 등 보호 장치를 통과시키는 것이다 — 캠프 사이트가 주의회 입법 때까지의 중단과 보호 항목을 안내한다. · <a href="https://ginafortexas.com/2026/07/in-the-news-hinojosa-calls-for-data-center-moratorium-until-abbott-convenes-legislature/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 이노호사가 텍사스 주지사 선거에서 당선됐다 — AP 판정을 전한 보도로만 확인했고 주 공식 개표 자료는 확인하지 않았다. · <a href="https://finance.yahoo.com/economy/article/a-democrat-won-the-texas-governors-race-after-promising-to-halt-new-data-center-construction-044536389.html" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 미국 수십 개 도시가 데이터센터 규제·금지를 주민투표로 결정했다 — 검색 결과의 보도는 40건 이상의 안건을 전하지만 본문은 열리지 않았고 집계도 비공식 잠정치다.</div>
+      <div class="box ">✅ 확인됨 · 민주당 상원 후보 압둘 엘사예드가 AI 개발의 전면적인 일시 중지를 주장했다 — 캠프 공식 사이트에 AI 개발을 진지하게 멈춰야 한다는 발언이 실려 있다. · <a href="https://abdulforsenate.com/2026/09/new-dr-abdul-el-sayed-calls-for-pausing-ai-development/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 엘사예드가 중국 연구의 상당 부분이 미국 모델을 베끼는 것이라고 말했다 — 글에 실린 인터뷰 원문을 찾지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 2027~28년 미국 데이터센터 신규 가동 용량이 예상보다 10~20% 줄어든다 — 글쓴이가 챗봇에 물어 얻은 추정치로 공식 자료가 없다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510622" target="_blank" rel="noopener">이노호사 신규 데이터센터 건설 일시중지 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510704" target="_blank" rel="noopener">텍사스 건설 재개 조건 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510647" target="_blank" rel="noopener">텍사스 상원 당선인 발언 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510605" target="_blank" rel="noopener">미국 도시별 주민투표 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510495" target="_blank" rel="noopener">엘사예드 인터뷰 번역 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510660" target="_blank" rel="noopener">규제 비판 의견 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511109" target="_blank" rel="noopener">신규 용량 감소 추정 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s6">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 4</span></div>
+    <h3>전력 부족 경고와 우주 데이터센터 낙관론…머스크·베이커 발언은 확인 전</h3>
+    <div class="one">커뮤니티 논쟁이 이어졌지만 발언 원문과 &#39;5배&#39; 수치는 찾지 못했다</div>
+    <ul class="pts"><li>머스크의 전력 부족 경고는 원문을 찾지 못했다</li><li>베이커 발언은 지난해 12월 팟캐스트 요약과 같은 것인지 알 수 없다</li><li>&#39;방열판의 5배&#39; 수치의 출처도 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI의 전력 병목과 우주 데이터센터를 두고 커뮤니티 글이 이어졌다. 그러나 논쟁의 출발점인 발언들은 대부분 확인되지 않았다. &#39;머스크가 전력 부족으로 AI가 곧 벽에 부딪힌다고 했다&#39;는 글에는 본문이 없고 발언 원문도 찾지 못했다. 전력 병목이라는 주장 자체는 뉴스 보도로만 확인했다.</p>
+      <p>투자자 개빈 베이커가 우주 데이터센터를 크게 낙관했다는 글도 마찬가지다. 2025년 12월 팟캐스트를 요약한 기사에서 비슷한 내용을 볼 수 있지만, 이번 글이 가리킨 발언과 같은 것인지는 알 수 없다.</p>
+      <p>태양광 패널을 방열판 면적의 5배 정도로 하면 우주에서 열을 내보낼 수 있다는 머스크의 트윗을 언급한 글도 올라왔다. 우주에는 공기가 없어 열을 내보내는 일이 난제로 꼽히기에 눈길을 끈 대목이다. 하지만 해당 트윗과 5배 수치의 원문을 찾지 못했다. 최고 공학자들을 모아 실제로 만들었다거나, 규제를 내다보고 우주에 짓기로 했다는 대목은 글쓴이의 해석이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 머스크가 전력 부족으로 AI가 곧 벽에 부딪힌다고 경고했다 — 원문 글에 본문이 없고 해당 발언 원문을 못 찾았으며, 전력 병목 주장 자체는 뉴스 보도로만 확인했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 개빈 베이커가 우주 데이터센터에 큰 낙관을 밝혔다 — 2025년 12월 팟캐스트 요약 기사에서만 확인했고, 이번 글이 가리킨 발언과 같은 것인지는 알 수 없다. · <a href="https://www.theneuron.ai/explainer-articles/gavin-baker-on-invest-like-the-best-re-why-the-next-massive-data-center-might-be-in-space/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 머스크가 태양광 패널을 방열판 면적의 5배 정도로 하면 우주 데이터센터의 열 방출이 가능하다고 말했다 — 해당 트윗과 5배 수치의 원문을 찾지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510206" target="_blank" rel="noopener">머스크 전력 부족 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510113" target="_blank" rel="noopener">개빈 베이커 우주 데이터센터 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510054" target="_blank" rel="noopener">머스크 사고방식 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510888" target="_blank" rel="noopener">우주 데이터센터 예측 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s7">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">디시 3</span></div>
+    <h3>올트먼, X 이름을 &#39;Ram Altman&#39;으로…&#34;메모리 생산 늘려야 한다는 게 내 주장&#34;</h3>
+    <div class="one">램 발언 논쟁 뒤 표시 이름을 바꾸고, 말이 맥락 없이 돌아다닌다고 밝혔다</div>
+    <ul class="pts"><li>올트먼의 X 표시 이름이 &#39;Ram Altman&#39;으로 바뀐 것을 확인했다</li><li>본인은 메모리 생산을 늘려야 한다고 오래전부터 주장했다고 밝혔다</li><li>논쟁을 부른 원 발언의 전문은 여전히 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-03.html#s13" target="_blank" rel="noopener">올트먼 &#34;PC 램은 낭비&#34; vs 머스크 &#34;사람도 램 가질 자격 있어&#34;…원 발언은 확인 전</a></p>
+      <p>샘 올트먼 OpenAI 최고경영자가 X 표시 이름을 &#39;Ram Altman&#39;으로 바꿨다. 전날 본지가 다룬 &#39;올트먼 &#34;PC 램은 낭비&#34; vs 머스크 &#34;사람도 램 가질 자격 있어&#34;…원 발언은 확인 전&#39; 기사의 후속이다. x.com이 열리지 않아 원글을 그대로 보여 주는 조회 주소로 @sama의 표시 이름을 확인했다.</p>
+      <p>새로 나온 것은 올트먼 본인의 설명이다. 커뮤니티에 옮겨진 글에 따르면 올트먼은 세상에 메모리가 차고 넘쳐서 사람들이 컴퓨터에 원하는 만큼 꽂을 수 있으면 좋겠다고 생각한다고 썼다. 그런데 이 말이 앞뒤 맥락이 잘린 채 돌아다니는 것이 몹시 짜증스러워 이름을 바꿨다는 취지다. 세상이 메모리 생산을 늘려야 한다고 오래전부터 주장해 왔다는 문장도 본인 게시글에서 확인된다.</p>
+      <p>그렇다고 전날 기사의 의문이 다 풀린 것은 아니다. 이번 글은 올트먼의 입장 표명이지, &#39;PC 램은 낭비&#39;라고 전해진 원 발언의 전문이나 맥락을 보여 주는 자료가 아니다. 그 발언이 실제로 어떤 말이었는지는 이번 자료로도 확인되지 않는다. 커뮤니티 반응은 이름 변경 자체를 재밌어하는 글이 주를 이뤘다.</p>
+      <div class="box ">✅ 확인됨 · 샘 올트먼이 X 표시 이름을 &#39;Ram Altman&#39;으로 바꿨다 — x.com은 열리지 않아 원글을 그대로 보여 주는 조회 주소로 @sama의 표시 이름을 확인했다. · <a href="https://api.fxtwitter.com/sama/status/2117846298472886419" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 올트먼이 세상이 메모리 생산을 늘려야 한다고 오래전부터 주장해 왔다고 말했다 — 본인 게시글에 같은 내용의 문장이 있다. · <a href="https://api.fxtwitter.com/sama/status/2117846298472886419" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511162" target="_blank" rel="noopener">알트만이 Ram Altman으로 바꾼 이유</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511067" target="_blank" rel="noopener">X 계정명이 램 알트만이 된 이유</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511064" target="_blank" rel="noopener">Ram Altman 반응 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s17">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>&#39;MS, 직원 4분의 1인 6만 명에 희망퇴직 제안&#39; 보도…공식 자료는 확인 전</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/5F7HnUbVh6Q/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">메모를 인용한 보도가 잇따랐다. 6만 명은 감원 수가 아니라 제안 대상 수다</div>
+    <ul class="pts"><li>약 6만 명 희망퇴직 제안은 메모를 인용한 보도로만 확인됐다</li><li>6만 명은 감원 수가 아니라 제안 대상 수다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>마이크로소프트(MS)가 전체 직원의 약 4분의 1인 약 6만 명에게 희망퇴직을 제안했다는 소식을 조코딩 채널이 영상으로 다뤘다. NBC 등의 보도가 메모를 인용해 같은 내용을 전했지만, MS 공식 페이지는 찾지 못해 확인되지 않은 소식으로 남긴다.</p>
+      <p>숫자를 읽을 때 주의할 점이 있다. 6만 명은 실제로 회사를 떠나는 사람 수가 아니라 제안을 받은 대상 수다. 이를 &#39;6만 명 감원&#39;으로 옮기면 틀린 말이 된다. 희망퇴직은 직원이 스스로 선택하는 절차이기 때문이다.</p>
+      <p>이번 조치와 AI 도입의 관계도 이번 자료로는 알 수 없다. 영상 설명란에는 책과 교육 안내, 해시태그만 있어 영상이 어떤 해석을 내놓았는지 확인하지 못했다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · MS가 전체 직원의 약 4분의 1인 약 6만 명에게 희망퇴직(자발적 퇴직)을 제안했다 — NBC 등 보도는 메모를 인용해 일치하나 MS 공식 페이지는 못 찾았고, 6만 명은 감원 수가 아니라 제안 대상 수다. · <a href="https://www.nbcnews.com/business/corporations/microsoft-offers-buyouts-60000-employees-rcna605765" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=5F7HnUbVh6Q" target="_blank" rel="noopener">MS, 직원 1/4인 6만명에게 희망퇴직 제안</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s16">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>ChatGPT 한도 2배, 반길 일인가 묻는 영상…대상 범위는 보도 기준</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/9VrDqRayNDs/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">Pro·Business Premium의 한도 2배 보도가 있지만 OpenAI 도움말로는 확인하지 못했다</div>
+    <ul class="pts"><li>한도 2배는 Pro·Business Premium의 Work·Codex에 관한 보도로만 확인됐다</li><li>같은 보도는 Plus에 변동이 없다고 전한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>조코딩 채널이 &#39;2배로 늘어난 챗 GPT 한도!! 근데 좋은건가?&#39;라는 영상을 올렸다. 그러나 한도가 정말 모두에게 두 배가 됐는지는 따져 볼 필요가 있다. 확인된 자료는 10월 29일 Pro와 Business Premium의 Work·Codex 한도가 2배가 됐다는 보도뿐이다. OpenAI 도움말은 열리지 않아 공식 확인을 하지 못했다.</p>
+      <p>같은 보도에 따르면 Plus는 변동이 없다고 한다. 사실이라면 제목만 보고 모든 ChatGPT 이용자의 한도가 늘었다고 받아들이면 안 된다. 쓰는 요금제의 한도 화면을 직접 확인하는 편이 확실하다. 영상 설명란에는 내용 요약이 없어 &#39;좋은 일인가&#39;에 대한 영상의 답은 확인하지 못했다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · ChatGPT 사용 한도가 2배로 늘었다 — 10월 29일 Pro·Business Premium의 Work·Codex 한도 2배라는 보도뿐이고 OpenAI 도움말은 열리지 않았으며, Plus는 변동이 없다고 한다. · <a href="https://www.datastudios.org/post/openai-doubles-chatgpt-pro-business-premium-usage-limits-cancels-pro-200-cut" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=9VrDqRayNDs" target="_blank" rel="noopener">2배로 늘어난 챗 GPT 한도!! 근데 좋은건가?</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s4">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;한국인 71%가 데이터센터 찬성&#34;…칼럼 인용만 있고 원자료는 확인 못 해</h3>
+    <div class="one">자기 지역 찬성 71%는 칼럼에서 확인했을 뿐, 조사 원자료는 찾지 못했다</div>
+    <ul class="pts"><li>71%는 한국리서치를 인용한 칼럼에서만 확인했다</li><li>태양광·의료시설 비교와 진영별 수치는 자료를 찾지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>한국인의 71%가 데이터센터에 찬성하며, 태양광 단지나 의료시설보다 찬성률이 높고 모든 진영에 걸쳐 찬성이 나왔다는 글이 커뮤니티에 올라왔다. 출처가 적히지 않은 수치 세 줄짜리 글이다.</p>
+      <p>확인해 보니 한국리서치 조사를 인용한 칼럼에서 자기 지역 찬성 71%라는 대목을 찾을 수 있었다. 그러나 한국리서치 원자료는 찾지 못해 질문 문구와 표본을 알 수 없다. 시설별 비교와 진영별 수치가 담긴 자료도 찾지 못했다. 원자료가 나오기 전까지 여론 전체를 대표하는 숫자로 쓰기는 이르다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 한국인 71%가 데이터센터에 찬성한다 — 한국리서치 조사를 인용한 칼럼에서 자기 지역 찬성 71%를 확인했으나 한국리서치 원자료는 못 찾았다. · <a href="http://www.newstomato.com/ReadNews.aspx?no=1317801" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 데이터센터 찬성률이 태양광 단지와 의료시설보다 높고 모든 진영에 걸쳐 찬성이 나왔다 — 시설별 비교와 진영별 수치가 담긴 자료를 찾지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510535" target="_blank" rel="noopener">한국인들의 데센에 대한 의견</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s14">
+    <div class="top"><span class="pill">이슈</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">유튜브</span></div>
+    <h3>조코딩 쇼츠 &#39;바이브코딩에 절여진 개발자&#39;</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/cZ8HZDrBpOY/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">AI 코딩에 익숙해진 개발자를 소재로 한 쇼츠다. 구체 내용은 확인하지 못했다</div>
+    <ul class="pts"><li>바이브코딩에 익숙해진 개발자를 소재로 한 쇼츠다</li><li>설명란에 내용 요약이 없어 구체적 주장은 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>조코딩 채널에 &#39;바이브코딩에 절여진 개발자&#39;라는 쇼츠가 올라왔다. 바이브코딩은 코드를 직접 치는 대신 AI에게 말로 시켜 만드는 방식을 가리킨다. 제목은 이런 방식에 푹 젖은 개발자를 소재로 삼았음을 보여 준다.</p>
+      <p>설명란에는 책과 교육 안내, 후원자 명단, 해시태그만 있고 영상 내용의 요약이 없다. 따라서 어떤 사례나 주장을 담았는지는 이번 자료로 확인하지 못했고, 사실 확인 대상이 된 주장도 없다.</p>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=cZ8HZDrBpOY" target="_blank" rel="noopener">바이브코딩에 절여진 개발자</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s5">
+    <div class="top"><span class="pill">이슈</span><span class="pill bad">❌ 사실과 다름</span><span class="pill soft">디시</span></div>
+    <h3>[바로잡기] 칠레 데이터센터 &#39;물 1000배&#39;는 틀렸다…고치면 1.045배</h3>
+    <div class="one">과장 수치를 짚은 글도 일부 틀렸다. 물 수치 말고는 상당수가 확인 전이다</div>
+    <div class="fig">
+      <div class="cap">칠레 데이터센터 물 사용 수치, 주민 사용량 대비 배수<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="b"><span class="l">퍼진 수치(오류)</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">1000배</span></div>
+      <div class="b"><span class="l">정정 수치(허가 최대치 기준)</span><span class="track"><span class="fill hot" style="width:0.1%"></span></span><span class="n">약 1.045배</span></div>
+      <div class="src">출처: 디시 특이점갤</div>
+    </div>
+    <ul class="pts"><li>&#39;물 1000배&#39;는 오류이며 허가 최대치 기준으로 고치면 약 1.045배다</li><li>오류 원인이 단위 혼동이라는 설명은 틀렸다. 정부 문서의 표기 오류였다</li><li>전기요금·소음·최대 온도 수치는 아직 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>데이터센터 반대 논거에 쓰인 수치가 과장됐다는 글이 커뮤니티에 올라왔다. 이 글의 내용을 하나씩 확인해 보니 맞는 대목, 틀린 대목, 확인되지 않은 대목이 섞여 있었다.</p>
+      <p>가장 분명한 것은 칠레 사례다. 데이터센터가 주민 전체의 1000배에 달하는 물을 쓴다는 수치는 오류다. 저자 캐런 하오의 정정 글에 따르면 구글이 허가받은 최대치인 초당 169리터, 연 약 53억 리터를 주민 사용량 약 51억 리터와 견주면 약 1.045배다. 실제 사용량이 아니라 허가 최대치 기준이라는 점은 짚어 둬야 한다.</p>
+      <p>그런데 글이 밝힌 오류의 원인은 틀렸다. 글쓴이는 초당 리터와 시간당 세제곱미터를 혼동한 탓이라고 했지만, 정정 글은 정부 문서가 세제곱미터 값을 리터로 표기한 것이 원인이라고 설명한다. 실제 사용량이 도시의 약 0.22배, 지역 상수도의 3% 정도라는 대목은 앤디 매슬리의 원문이나 공식 자료를 찾지 못해 확인되지 않았다.</p>
+      <p>온도 수치는 절반만 확인된다. 데이터센터 주변 지표 온도가 평균 약 2°C 올랐다는 연구는 arXiv 초록에서 확인됐다. 공기가 아니라 땅 표면 온도를 잰 연구이고, 저널 게재 표시가 없는 동료 심사 전 논문이다. 극단적인 경우 9°C 올랐다는 수치는 포천 보도에만 있고 초록에는 없다. 글이 지적한 &#39;15.5도 상승&#39; 수치의 근거 유무도 이번에 따로 확인하지 못했다.</p>
+      <p>전기요금 267%에 대해 글은 일부 지점의 도매가격이 2020년 4월~2025년 4월 사이 오른 수치라고 했다. 도매가격이 영향을 주는 공급 부분은 요금의 약 30~50%라고도 했다. 다만 블룸버그 분석과 폴리티팩트를 전한 검색 결과로만 확인했고 본문은 열지 못했다.</p>
+      <p>소음 수치도 근거가 약하다. 96데시벨은 내부 밀집 랙 근처 수치이고 부지 경계선에서는 45~65dBA라는 설명은 글이 인용한 업체 페이지 외에 공식 측정 자료를 찾지 못했다. 버지니아에서 약 15개 시설이 문제였고 부지의 29%가 주거지 200피트 안에 있다는 수치도 확인하지 못했다. 검색 결과의 보도는 3분의 1 가까이라고만 전한다. 반대 여론을 근거 없는 지역 이기주의로 본 결론은 글쓴이의 의견이다. 한 수치가 과장이라는 사실이 다른 우려까지 틀렸음을 뜻하지는 않는다.</p>
+      <div class="box ">✅ 확인됨 · 칠레 데이터센터가 주민 전체의 1000배 물을 쓴다는 수치는 오류이며, 허가 최대치 기준으로 고치면 약 1.045배다 — 저자 캐런 하오의 정정 글이 초당 169리터, 연 약 53억 리터, 약 51억 리터, 1.045배를 밝힌다. · <a href="https://karendhao.com/20251217/empire-water-changes" target="_blank" rel="noopener">근거</a></div>
+      <div class="box r">❌ 사실과 다름 · 1000배 오류의 원인은 초당 리터와 시간당 세제곱미터를 혼동한 것이다 — 저자 정정 글은 정부 문서가 세제곱미터 값을 리터로 표기한 것이 원인이라고 설명한다. · <a href="https://karendhao.com/20251217/empire-water-changes" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 실제 사용량은 도시의 약 0.22배, 지역 상수도 시스템의 3% 정도다 — 앤디 매슬리의 원문이나 공식 자료를 찾지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 267%는 일부 지점의 도매 전기 가격이 2020년 4월~2025년 4월 사이 오른 수치이고, 도매 가격이 영향을 주는 공급 부분은 요금의 약 30~50%다 — 블룸버그 분석과 폴리티팩트를 전한 검색 결과로만 확인했고 본문은 열지 못했다.</div>
+      <div class="box ">✅ 확인됨 · 데이터센터 주변 지표 온도가 평균 약 2°C 올랐다는 연구는 땅 표면 온도를 측정했고 피어리뷰 전 논문이다 — arXiv 초록이 지표 온도 평균 2°C 상승을 밝히고 저널 게재 표시가 없다. · <a href="https://arxiv.org/abs/2603.20897" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 극단적인 경우 주변 온도가 9°C 올랐다 — 포천 보도에서 확인했으나 arXiv 초록에는 최댓값이 없다. · <a href="https://fortune.com/2026/04/01/ai-data-centers-heat-island-hyperscalers/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 96데시벨은 데이터센터 내부 밀집 랙 근처 수치이고 부지 경계선에서는 45~65dBA다 — 글이 인용한 업체 페이지 외 공식 측정 자료를 찾지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 버지니아 소음 문제는 약 15개 시설, 운영 시설의 약 10%에서 확인됐고 데이터센터 부지의 29%가 주거지에서 200피트 안에 있다 — JLARC 페이지가 열리지 않았고, 검색 결과의 보도는 3분의 1 가까이라고만 전해 15개와 29%는 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511333" target="_blank" rel="noopener">데이터센터에 대한 여러 과장들</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s11">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>앤트로픽 S-1에 &#39;생명과학 핵심 성장 전략&#39; 보도…SEC 원문은 확인 못 해</h3>
+    <div class="one">코딩 다음은 신약 개발이라는 AI타임스 보도가 공유됐지만, 서류 원문은 열지 못했다</div>
+    <ul class="pts"><li>S-1에 생명과학 성장 전략이 담겼다는 보도가 나왔다. SEC 원문은 확인하지 못했다</li><li>2조 달러 시장 전망과 제약사 9곳·의료기업 8곳 수치도 보도 수준이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 상장 신청서 S-1에서 생명과학을 주요 성장 전략으로 내세웠다는 기사가 커뮤니티에 공유됐다. AI타임스가 비즈니스 인사이더의 지난달 31일 보도를 전한 내용이다. 다만 사실 확인 과정에서 미국 증권거래위원회(SEC) 원문은 용량 초과로 열지 못했고, 검색 결과의 보도 요약으로만 확인했다.</p>
+      <p>보도에 따르면 앤트로픽은 AI가 과학적 발견을 앞당기고 주요 질병 치료법 개발을 가속할 수 있다고 강조했다. 2026년 전 세계 제약 지출이 2조 달러를 넘을 것으로 예상되는 가운데 Claude가 신약 발굴과 개발에 쓰인다고 설명했다는 것이다. 소프트웨어 코딩과 기업용 AI 성과를 바탕으로 제약·바이오로 사업을 넓히고, 자체 연구소와 바이오 기업 인수로 직접 연구에도 나선다는 내용도 있다.</p>
+      <p>고객 수치도 보도됐다. 최근 1년간 포춘 500 상위 10개 제약사 중 9곳, 상위 10개 의료기업 중 8곳이 앤트로픽에 각각 최소 10만 달러를 썼다는 것이다. 이 수치 역시 2차 게시물로만 확인돼, 서류 원문을 볼 때까지는 보도 내용으로 읽어야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 앤트로픽이 S-1 상장 신청서에서 생명과학을 주요 성장 전략으로 제시했다 — SEC 원문은 용량 초과로 열지 못했고 검색 결과의 보도 요약으로만 확인했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 신청서는 2026년 전 세계 제약 지출이 2조 달러를 넘을 것으로 예상한다 — SEC 원문을 열지 못해 검색 결과의 보도 요약으로만 확인했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 최근 1년간 포춘 500 상위 10개 제약사 중 9곳, 상위 10개 의료기업 중 8곳이 각각 최소 10만 달러를 지출했다 — SEC 원문을 열지 못했고 2차 게시물로만 확인했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1509321" target="_blank" rel="noopener">앤트로픽, 코딩 다음은 신약 개발 (보도 공유 글)</a></div>
+    </div></details>
+  </article>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-03.html#s40" target="_blank" rel="noopener">숨바꼭질 꼼수를 스스로 찾아낸 AI 실험, 다시 화제</a>)</div>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-02.html#s37" target="_blank" rel="noopener">별 7만 5천 &#39;PhotoCraft&#39;는 REA로 만든 앱이 아니었다</a>)</div>
+  </details>
+
+  <section id="reading">
+    <h2 class="lv2">오늘 읽은 자료</h2>
+    <div class="subt">19:00 수집 · 최근 48시간</div>
+    <div class="funnel">
+      <div class="big"><em>92개</em> 읽고 → 기사 <em>25개</em>로 <small>(이미 실린 19개는 뺐음)</small></div>
+      <div class="stack"><span class="dc" style="width:45.7%">42</span><span class="youtube" style="width:46.7%">43</span><span class="github" style="width:6.5%"></span><span class="official" style="width:1.1%"></span></div>
+      <div class="legend"><span><i class="dc"></i>디시 42</span><span><i class="youtube"></i>유튜브 43</span><span><i class="github"></i>트렌딩 6</span><span><i class="official"></i>공식 1</span></div>
+    </div>
+    <div class="src"><div class="h"><b>디시 특이점갤</b><span class="num"><em>42</em>개 읽음 → 17개 씀</span></div>
+      <div class="rule">개념글 탭 · 최근 48시간 · 목록 최대 5페이지 · 글마다 본문 4,000자<br>본문 없는 글 7개</div></div>
+    <div class="src"><div class="h"><b>유튜버 9명</b><span class="num"><em>43</em>개 읽음 → 33개 씀</span></div>
+      <div class="rule">긴 영상 + 쇼츠 · 최근 48시간 · 제목·설명·자막<br>긴 영상 9 · 쇼츠 34</div></div>
+    <div class="src"><div class="h"><b>깃허브 트렌딩</b><span class="num"><em>6</em>개 중 AI 관련 2개</span></div>
+      <div class="rule">github.com/trending · 오늘 · 모든 언어 · 페이지에 보인 저장소 전부</div></div>
+    <div class="src"><div class="h"><b>공식 발표</b><span class="num"><em>1</em>개 읽음 → 1개 씀</span></div>
+      <div class="rule">Claude Code 릴리스 · Anthropic 뉴스 · 최근 48시간</div></div>
+    <div class="cap">유튜버별 (<i class="v"></i>긴 영상 <i class="s"></i>쇼츠)</div>
+    <div class="yt"><span class="l">코난쌤 conanssam</span><span class="t"><span class="v" style="width:25%"></span><span class="s" style="width:75%"></span></span><span class="n">5 · 15 → <b>15</b></span></div>
+    <div class="yt"><span class="l">조코딩 JoCoding</span><span class="t"><span class="s" style="width:35%"></span></span><span class="n">0 · 7 → <b>4</b></span></div>
+    <div class="yt"><span class="l">바이브마피아 | AI Native 엔지니어</span><span class="t"><span class="s" style="width:35%"></span></span><span class="n">0 · 7 → <b>7</b></span></div>
+    <div class="yt"><span class="l">Solostack</span><span class="t"><span class="v" style="width:10%"></span><span class="s" style="width:15%"></span></span><span class="n">2 · 3 → <b>3</b></span></div>
+    <div class="yt"><span class="l">Claudical</span><span class="t"><span class="s" style="width:10%"></span></span><span class="n">0 · 2 → <b>2</b></span></div>
+    <div class="yt"><span class="l">편집자P</span><span class="t"><span class="v" style="width:5%"></span></span><span class="n">1 · 0 → <b>1</b></span></div>
+    <div class="yt"><span class="l">달비의 작업실 | AI 자동화</span><span class="t"><span class="v" style="width:5%"></span></span><span class="n">1 · 0 → <b>1</b></span></div>
+    <div class="yt none"><span class="l">@codefundkimflip</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@codefactory_official</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="note">숫자는 "긴 영상 · 쇼츠 → 신문에 쓴 수"</div>
+
+    <details class="appx"><summary>확인 안 된 주장 모음 (34)</summary>
+      <ul><li>⚠️ 확인 안 됨 · MS가 전체 직원의 약 4분의 1인 약 6만 명에게 희망퇴직(자발적 퇴직)을 제안했다 — NBC 등 보도는 메모를 인용해 일치하나 MS 공식 페이지는 못 찾았고, 6만 명은 감원 수가 아니라 제안 대상 수다. <a href="#s17">기사로</a></li><li>⚠️ 확인 안 됨 · 머스크가 전력 부족으로 AI가 곧 벽에 부딪힌다고 경고했다 — 원문 글에 본문이 없고 해당 발언 원문을 못 찾았으며, 전력 병목 주장 자체는 뉴스 보도로만 확인했다. <a href="#s6">기사로</a></li><li>⚠️ 확인 안 됨 · 개빈 베이커가 우주 데이터센터에 큰 낙관을 밝혔다 — 2025년 12월 팟캐스트 요약 기사에서만 확인했고, 이번 글이 가리킨 발언과 같은 것인지는 알 수 없다. <a href="#s6">기사로</a></li><li>⚠️ 확인 안 됨 · 머스크가 태양광 패널을 방열판 면적의 5배 정도로 하면 우주 데이터센터의 열 방출이 가능하다고 말했다 — 해당 트윗과 5배 수치의 원문을 찾지 못했다. <a href="#s6">기사로</a></li><li>⚠️ 확인 안 됨 · ChatGPT 사용 한도가 2배로 늘었다 — 10월 29일 Pro·Business Premium의 Work·Codex 한도 2배라는 보도뿐이고 OpenAI 도움말은 열리지 않았으며, Plus는 변동이 없다고 한다. <a href="#s16">기사로</a></li><li>⚠️ 확인 안 됨 · 토스·당근 같은 디자인을 만들어 준다 — README에서 당근은 색 팔레트 출처로 나오지만 토스는 언급을 찾지 못했고, 초안용 도구라고 밝힌다. <a href="#s21">기사로</a></li><li>⚠️ 확인 안 됨 · 한국인 71%가 데이터센터에 찬성한다 — 한국리서치 조사를 인용한 칼럼에서 자기 지역 찬성 71%를 확인했으나 한국리서치 원자료는 못 찾았다. <a href="#s4">기사로</a></li><li>⚠️ 확인 안 됨 · 데이터센터 찬성률이 태양광 단지와 의료시설보다 높고 모든 진영에 걸쳐 찬성이 나왔다 — 시설별 비교와 진영별 수치가 담긴 자료를 찾지 못했다. <a href="#s4">기사로</a></li><li>⚠️ 확인 안 됨 · R2를 시작할 때 결제 수단 등록이 필요하다 — 문서는 R2 구독 결제 절차만 말하고 결제 수단 필수 여부는 명시하지 않는다. <a href="#s26">기사로</a></li><li>⚠️ 확인 안 됨 · 이노호사가 텍사스 주지사 선거에서 당선됐다 — AP 판정을 전한 보도로만 확인했고 주 공식 개표 자료는 확인하지 않았다. <a href="#s2">기사로</a></li><li>⚠️ 확인 안 됨 · 미국 수십 개 도시가 데이터센터 규제·금지를 주민투표로 결정했다 — 검색 결과의 보도는 40건 이상의 안건을 전하지만 본문은 열리지 않았고 집계도 비공식 잠정치다. <a href="#s2">기사로</a></li><li>⚠️ 확인 안 됨 · 엘사예드가 중국 연구의 상당 부분이 미국 모델을 베끼는 것이라고 말했다 — 글에 실린 인터뷰 원문을 찾지 못했다. <a href="#s2">기사로</a></li><li>⚠️ 확인 안 됨 · 2027~28년 미국 데이터센터 신규 가동 용량이 예상보다 10~20% 줄어든다 — 글쓴이가 챗봇에 물어 얻은 추정치로 공식 자료가 없다. <a href="#s2">기사로</a></li><li>❌ 사실과 다름 · 1000배 오류의 원인은 초당 리터와 시간당 세제곱미터를 혼동한 것이다 — 저자 정정 글은 정부 문서가 세제곱미터 값을 리터로 표기한 것이 원인이라고 설명한다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · 실제 사용량은 도시의 약 0.22배, 지역 상수도 시스템의 3% 정도다 — 앤디 매슬리의 원문이나 공식 자료를 찾지 못했다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · 267%는 일부 지점의 도매 전기 가격이 2020년 4월~2025년 4월 사이 오른 수치이고, 도매 가격이 영향을 주는 공급 부분은 요금의 약 30~50%다 — 블룸버그 분석과 폴리티팩트를 전한 검색 결과로만 확인했고 본문은 열지 못했다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · 극단적인 경우 주변 온도가 9°C 올랐다 — 포천 보도에서 확인했으나 arXiv 초록에는 최댓값이 없다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · 96데시벨은 데이터센터 내부 밀집 랙 근처 수치이고 부지 경계선에서는 45~65dBA다 — 글이 인용한 업체 페이지 외 공식 측정 자료를 찾지 못했다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · 버지니아 소음 문제는 약 15개 시설, 운영 시설의 약 10%에서 확인됐고 데이터센터 부지의 29%가 주거지에서 200피트 안에 있다 — JLARC 페이지가 열리지 않았고, 검색 결과의 보도는 3분의 1 가까이라고만 전해 15개와 29%는 확인하지 못했다. <a href="#s5">기사로</a></li><li>⚠️ 확인 안 됨 · GitHub 별이 4,020개다 — 조회 시점 API 값은 4,430개로 다르며, 시점 차이일 수 있어 영상 수치는 확인하지 못했다. <a href="#s19">기사로</a></li><li>⚠️ 확인 안 됨 · 현재 사용량 43%일 때 주간 한도 사용량은 2%였다 — 영상 제작자의 실행 사례 값으로 공식 자료가 없다. <a href="#s30">기사로</a></li><li>⚠️ 확인 안 됨 · 이미지 생성에 약 20초가 걸렸고, 글자를 넣지 말라고 해도 그림에 글자가 들어갔다 — 영상 제작자의 실행 사례로 공식 자료가 없다. <a href="#s30">기사로</a></li><li>⚠️ 확인 안 됨 · 하이퍼프레임 공식 강의는 6단계다 — 해당 페이지에는 세 단계 안내만 보이고 영상이 말한 6단계와 세부 주제는 확인하지 못했다. <a href="#s36">기사로</a></li><li>⚠️ 확인 안 됨 · reasoning_effort_override로 추론 수준을 바꿔도 캐시를 유지할 수 있다 — 공식 문서에서 이 설정을 찾지 못했고 영상도 실험 기능이라고 밝힌다. <a href="#s34">기사로</a></li><li>⚠️ 확인 안 됨 · 코덱스 앱에 사이드 채팅과 반복 작업을 녹화해 스킬로 만드는 기능이 있다 — 문서 메뉴에 Record &amp; Replay만 보이고 사이드 채팅과 스킬 변환 설명은 찾지 못했다. <a href="#s34">기사로</a></li><li>⚠️ 확인 안 됨 · 앤트로픽이 S-1 상장 신청서에서 생명과학을 주요 성장 전략으로 제시했다 — SEC 원문은 용량 초과로 열지 못했고 검색 결과의 보도 요약으로만 확인했다. <a href="#s11">기사로</a></li><li>⚠️ 확인 안 됨 · 신청서는 2026년 전 세계 제약 지출이 2조 달러를 넘을 것으로 예상한다 — SEC 원문을 열지 못해 검색 결과의 보도 요약으로만 확인했다. <a href="#s11">기사로</a></li><li>⚠️ 확인 안 됨 · 최근 1년간 포춘 500 상위 10개 제약사 중 9곳, 상위 10개 의료기업 중 8곳이 각각 최소 10만 달러를 지출했다 — SEC 원문을 열지 못했고 2차 게시물로만 확인했다. <a href="#s11">기사로</a></li><li>⚠️ 확인 안 됨 · 실험에서 약 25분 만에 지우펀 수치로 계단길 근처를 짚었다 — 영상 제작자의 1회 실행 기록으로 공식 자료가 없다. <a href="#s25">기사로</a></li><li>⚠️ 확인 안 됨 · 그림 코드는 200줄 안이고 가로 240px로 줄여도 알아볼 수 있어야 한다 — SKILL.md 본문과 README에서 이 수치를 찾지 못했고 별도 규칙 문서는 확인하지 못했다. <a href="#s27">기사로</a></li><li>⚠️ 확인 안 됨 · 검수에는 Chrome이 필요하고 없으면 Playwright Chromium을 쓴다 — SKILL.md는 브라우저 필요와 playwright-core 자동 설치만 말하고 Chrome을 명시하지 않는다. <a href="#s27">기사로</a></li><li>⚠️ 확인 안 됨 · 클로드 모션그래픽 도구를 쓰려면 100달러 정도의 유료 구독이 필요하고, 11초 영상을 5초쯤에 렌더링한다 — 쇼츠 속 제작자 발언이며 huashu-motion에 관한 내용인지도, 수치의 공식 근거도 확인하지 못했다. <a href="#s31">기사로</a></li><li>⚠️ 확인 안 됨 · hwpx-skill 실측에서 공문은 1분 13초, 안내문 10장은 2분 47초가 걸렸다 — 영상 제작자의 실행 사례 값으로 공식 자료가 없다. <a href="#s29">기사로</a></li><li>⚠️ 확인 안 됨 · HWP를 HWPX로 바꾸는 데 1분 17초 걸렸고 표가 무너지지 않았다 — 영상 제작자의 1회 실행 결과로 공식 자료가 없다. <a href="#s29">기사로</a></li></ul>
+    </details>
+    <details class="appx"><summary>오늘 수집한 원문 전체 (92)</summary>
+      <details><summary>디시 42</summary>
+        <ul><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511341" target="_blank" rel="noopener">월드모델을 지배한자 모든것을 지배한다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511333" target="_blank" rel="noopener">데이터센터에 대한 여러 과장들</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511306" target="_blank" rel="noopener">지금 이 특이점 갤러리는 진짜가 아닙니다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511260" target="_blank" rel="noopener">AI가 나 5대 중독 치료해줌ㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511181" target="_blank" rel="noopener">미국 테크 엔지니어 근황</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511162" target="_blank" rel="noopener">알트만이 Ram Altman으로 바꾼 이유</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511109" target="_blank" rel="noopener">짚프로가 말하는 데센 예상 감소량</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511099" target="_blank" rel="noopener">근들갑갤에서 근들갑 안하면 뭐함? 왜 나쁜 소식에만 뿔남?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511073" target="_blank" rel="noopener">&#39;특이점이 온다&#39; 갤러리는 유토피아의 필연적 도래를 기본 기조로 삼습니다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511067" target="_blank" rel="noopener">샘 알트만 X 계정명이 갑자기 램 알트만이 된 이유..</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1511064" target="_blank" rel="noopener">Ram Altman ㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510888" target="_blank" rel="noopener">우주 데센 &lt;----- 예측 정확하게 한거면 개추</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510704" target="_blank" rel="noopener">텍사스 신임 주지사 ai데센 건설 재개조건</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510660" target="_blank" rel="noopener">데센 금지는 전형적인 반대를 위한 반대임</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510647" target="_blank" rel="noopener">이번 당선된 텍사스 상원 ai관련 발언들</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510640" target="_blank" rel="noopener">알트만 다 알고 이제 선수치네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510622" target="_blank" rel="noopener">이노호사 텍사스 주지사 &#34;신규 ai데센 건설 일시중지&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510605" target="_blank" rel="noopener">미국 수십개 도시, 데센 규제 및 금지 주민투표 결정</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510599" target="_blank" rel="noopener">갤주 29 agi라고 한 이유가 다 있구나</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510593" target="_blank" rel="noopener">날조뉴스 좀 하지마셈</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510535" target="_blank" rel="noopener">한국인들의 데센에 대한 의견</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510495" target="_blank" rel="noopener">민 주 당상원후보 “ai데센 개발을 완전 중지” ㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510351" target="_blank" rel="noopener">알트만, 곧 출시될 다음 GPT가 밀레니엄 문제 증명한 모델</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510329" target="_blank" rel="noopener">미국 국민 57% &#34;AI는 인류에 해악 끼칠 것&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510323" target="_blank" rel="noopener">니케 따거 해커들 개웃기네 ㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510318" target="_blank" rel="noopener">오픈AI, 최신 내부 모델이 아스트라 씹압살 가능성 슬쩍 공개</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510299" target="_blank" rel="noopener">(앤트로픽) 모델 라우팅 사기 방지 기술 공개 및 오픈소스화</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510283" target="_blank" rel="noopener">(오픈AI) 물리적 세계를 위한 엔지니어링 가속화</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510206" target="_blank" rel="noopener">머스크) 전력부족으로 ai가 곧 벽에 부딪힌다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510113" target="_blank" rel="noopener">개빈 베이커 : &#34;우주 데이터센터에 엄청난 낙관&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1509321" target="_blank" rel="noopener">앤트로픽, 코딩 다음은 신약 개발…IPO 앞두고 생명과학 투자 확대</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510125" target="_blank" rel="noopener">학술, 학계 망했다고</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510112" target="_blank" rel="noopener">아스트리 봇치 svg</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510109" target="_blank" rel="noopener">GPT 이미지 후보정기 만드는 중</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510084" target="_blank" rel="noopener">가중치 프로그래밍의 의의</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510075" target="_blank" rel="noopener">와 이게되네 ㄷㄷ.jpg</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510059" target="_blank" rel="noopener">qwen3-4b에서 강아지에 집착하는 뉴런 발견</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510054" target="_blank" rel="noopener">이 트윗보면 머스크 사고방식부터가 물리학에 기초함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1510041" target="_blank" rel="noopener">1년전에 테슬라가 하늘나는 자동차 만든다고 주장했다면..</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1509952" target="_blank" rel="noopener">올해초중반까진 심심할때 ai연구도 취미로 했었는데</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1509923" target="_blank" rel="noopener">와 뭐지? 진짜 곧 오나?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1509914" target="_blank" rel="noopener">테슬라 &#39;로보택시&#39; 국내 첫 상륙!!!!!!!!!!!!!!</a></li></ul></details>
+      <details><summary>유튜브 43</summary>
+        <ul><li><a href="https://www.youtube.com/watch?v=cZ8HZDrBpOY" target="_blank" rel="noopener">바이브코딩에 절여진 개발자</a></li><li><a href="https://www.youtube.com/watch?v=G1b5PxcPyWM" target="_blank" rel="noopener">Ctrl+Z 는 아무것도 취소하지 않습니다</a></li><li><a href="https://www.youtube.com/watch?v=9VrDqRayNDs" target="_blank" rel="noopener">2배로 늘어난 챗 GPT 한도!! 근데 좋은건가?</a></li><li><a href="https://www.youtube.com/watch?v=IFC3sWCo0C4" target="_blank" rel="noopener">아이폰 듀오를 맥북으로 만드는 법</a></li><li><a href="https://www.youtube.com/watch?v=V-mFztCvapc" target="_blank" rel="noopener">8.5조원이 털려버린 사상 최악의 암호화폐 해킹사고</a></li><li><a href="https://www.youtube.com/watch?v=244636L-gGc" target="_blank" rel="noopener">맥에 숨어있는 기능을 끌어쓰는 방법</a></li><li><a href="https://www.youtube.com/watch?v=5F7HnUbVh6Q" target="_blank" rel="noopener">MS, 직원 1/4인 6만명에게 희망퇴직 제안ㄷㄷ</a></li><li><a href="https://www.youtube.com/watch?v=GmQYsY4QpLA" target="_blank" rel="noopener">[시즌 4] 한 입으로 알아보는 컨텍스트&amp;컨텍스트 윈도우</a></li><li><a href="https://www.youtube.com/watch?v=1SwiCfJQCHY" target="_blank" rel="noopener">픽셀 한 칸 안 그려요, 게임 이펙트 244개가 전부 코드 | Claude Code pixelfx</a></li><li><a href="https://www.youtube.com/watch?v=RkAMrpQtHXo" target="_blank" rel="noopener">App Store 대신 말로 만드는 Mac 앱 | Claude Code 플러그인 BAMA</a></li><li><a href="https://www.youtube.com/watch?v=0FPFPVljiUc" target="_blank" rel="noopener">AI로 디자인할 때 피그마 써야 할까?</a></li><li><a href="https://www.youtube.com/watch?v=880ctrkHr0g" target="_blank" rel="noopener">하네스에 꼭 넣어야 하는 것</a></li><li><a href="https://www.youtube.com/watch?v=zw06AHpmdAA" target="_blank" rel="noopener">미친 AI 디자인 스킬이 나왔어요</a></li><li><a href="https://www.youtube.com/watch?v=L0gjLLski4o" target="_blank" rel="noopener">하네스가 1시간씩 걸린다면</a></li><li><a href="https://www.youtube.com/watch?v=HIBePLwPQck" target="_blank" rel="noopener">UI랑 UX, 하나만 챙긴다면?</a></li><li><a href="https://www.youtube.com/watch?v=L5FeZBzIm-8" target="_blank" rel="noopener">AI 디자인, 왜 티가 날까요?</a></li><li><a href="https://www.youtube.com/watch?v=rBO5viC9vks" target="_blank" rel="noopener">요즘 클로드랑 OO하면서 일합니다</a></li><li><a href="https://www.youtube.com/watch?v=e2udqPs5m8Q" target="_blank" rel="noopener">예고편 느낌은 레터박스에 브람 | 분위기별 영상 효과 조합 7</a></li><li><a href="https://www.youtube.com/watch?v=U0XB5-GUkEk" target="_blank" rel="noopener">이번 주 개발자가 놓치면 안 될 GitHub 트렌딩 Top 10 총정리 (11월 1주)</a></li><li><a href="https://www.youtube.com/watch?v=w-KYU0UprCw" target="_blank" rel="noopener">사진 한 장으로 위치 찾기, 레인볼트처럼 해 주는 Claude Code 스킬 써 봄</a></li><li><a href="https://www.youtube.com/watch?v=Mgyucb9JHfM" target="_blank" rel="noopener">바이브 코딩한 사이트, 클라우드플레어 무료로 올릴 때 알아 둘 것</a></li><li><a href="https://www.youtube.com/watch?v=ITje4Fphgno" target="_blank" rel="noopener">&#34;아기자기한 도시&#34; 한 줄로 만든 움직이는 선 그림 — 헤어라인 스킬</a></li><li><a href="https://www.youtube.com/watch?v=b0PzyM_8WCo" target="_blank" rel="noopener">GRPO 50스텝 중 실제 학습은 21번뿐 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=x9QneH9UkPE" target="_blank" rel="noopener">코덱스 공문, 1분 13초 만에 한글로 완성 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=fvfpsV5Dhlo" target="_blank" rel="noopener">제미나이 무료 예약, ‘일정을 설정해줘’ 한마디 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=CU54cHvSueM" target="_blank" rel="noopener">클로드 모션그래픽에 100달러가 필요한 이유 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=c2JWozbnAOM" target="_blank" rel="noopener">한글 문서 자동화 총정리｜공무원·교사, 설치부터 계획서까지</a></li><li><a href="https://www.youtube.com/watch?v=AtiB9gXoAEo" target="_blank" rel="noopener">시안 3개부터 MP4까지, 클로드 자동 검수 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=CgWohDPW7hQ" target="_blank" rel="noopener">제미나이 무료 결과물, 꼭 검수해야 하는 이유 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=Q72hfpO4sj0" target="_blank" rel="noopener">11초 영상을 5초에 굽는 클로드 메뉴판 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=mQno_iRtd6E" target="_blank" rel="noopener">제미나이 보고서, 없는 숫자 막는 한 줄 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=kfebAO9WQS8" target="_blank" rel="noopener">한글 안내문 10장, 2분 47초 만에 자동화 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=6uTgVgfiWN4" target="_blank" rel="noopener">8KB leanrea, 75점 vs 74점인데 비용은 더 낮다 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=XQ-iyn1fCnU" target="_blank" rel="noopener">클로드 코드 모션 스킬 1황 미쳤다 | 편집 프로그램 없이 3D 영상만들기</a></li><li><a href="https://www.youtube.com/watch?v=DjWKZp6iKCw" target="_blank" rel="noopener">REA 분석 9개 중 8개 적중, 그런데 비용은 2배 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=j1cYuLSq11U" target="_blank" rel="noopener">HWP를 HWPX로 바꿔도 표가 안 무너진 이유 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=6KU-_0ZbhRU" target="_blank" rel="noopener">코덱스 앱 실전 7가지｜클로드 세션 불러오기부터 검증 게이트까지</a></li><li><a href="https://www.youtube.com/watch?v=Kw5Ghct-lc8" target="_blank" rel="noopener">AI 수학 성적표 17점 → 57점, 끝내 못 푼 16문제｜추론 모델 8편</a></li><li><a href="https://www.youtube.com/watch?v=MAxNs0qdziM" target="_blank" rel="noopener">무료 제미나이 한도, 43% 써도 주간은 2% #shorts</a></li><li><a href="https://www.youtube.com/watch?v=FIEGLHrOyaw" target="_blank" rel="noopener">프롬프트 하나로 한글 공문 만드는 법 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=z3MSiihGyKk" target="_blank" rel="noopener">별 7.5만 PhotoCraft, REA로 만든 게 아니다 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=nDFOhIS91L4" target="_blank" rel="noopener">클로드코드 팀의 코드 리뷰법 4분정리 ｜여섯 겹 검사하기</a></li><li><a href="https://www.youtube.com/watch?v=PcY0oV2sx1k" target="_blank" rel="noopener">2026 하이퍼프레임 올인원 무료 강의|AI 모션그래픽 14분 총정리</a></li></ul></details>
+      <details><summary>트렌딩 6</summary>
+        <ul><li><a href="https://github.com/max-sixty/worktrunk" target="_blank" rel="noopener">max-sixty/worktrunk</a></li><li><a href="https://github.com/p-e-w/heretic" target="_blank" rel="noopener">p-e-w/heretic</a></li><li><a href="https://github.com/spotify/portal-ai-plugins" target="_blank" rel="noopener">spotify/portal-ai-plugins</a></li><li><a href="https://github.com/floci-io/floci" target="_blank" rel="noopener">floci-io/floci</a></li><li><a href="https://github.com/Usagi-org/ai-goofish-monitor" target="_blank" rel="noopener">Usagi-org/ai-goofish-monitor</a></li><li><a href="https://github.com/D4Vinci/Scrapling" target="_blank" rel="noopener">D4Vinci/Scrapling</a></li></ul></details>
+      <details><summary>공식 1</summary>
+        <ul><li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.318" target="_blank" rel="noopener">Claude Code v2.1.318</a></li></ul></details>
+    </details>
+  </section>
+</div>
+<script>
+  // 닫힌 섹션 안의 기사로 가는 링크(#s3, 다른 날 신문의 ...html#s3)도 보이게: 목표를 감싼 <details>를 모두 연다
+  function openTo(id) {
+    var el = id && document.getElementById(id);
+    for (var p = el && el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    return el;
+  }
+  function openHash() { var el = openTo(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+  // 페이지 안 링크는 여기서 연 뒤 브라우저가 원래대로 그 자리로 스크롤한다
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) openTo(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+</script>
+</body>
+</html>
