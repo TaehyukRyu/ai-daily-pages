@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 데일리 · 11월 9일 (월) 저녁판</title>
+<style>
+  :root { --bg: #FCEBD7; --ink: #3B2A1F; --muted: #8A7563; --acc: #E07A2E; --bar: #DCC5A6; --card: #FFF6EC; --line: #EBD3B5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+  #np { max-width: 640px; margin: 0 auto; padding: 22px 16px 40px; scroll-behavior: smooth; word-break: keep-all; overflow-wrap: anywhere; }
+  a { color: inherit; }
+  .date { font-size: 13px; color: var(--muted); }
+  .date a { color: var(--acc); font-weight: 800; text-decoration: none; white-space: nowrap; }
+  h1 { font-size: 34px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; margin: 4px 0 12px; }
+  .lv2 { font-size: 26px; font-weight: 900; letter-spacing: -.6px; line-height: 1.25; margin: 30px 0 10px; padding-left: 12px; border-left: 6px solid var(--acc); }
+  .lv2 small { font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+  details.sec { border-bottom: 1.5px solid var(--line); }
+  details.sec > summary { padding: 16px 0; }
+  details.sec > summary .lv2 { margin: 0; display: flex; align-items: center; gap: 8px; }
+  details.sec > summary .lv2::after { content: "펼치기 ▾"; margin-left: auto; flex: none; font-size: 13px; font-weight: 800; letter-spacing: 0; color: var(--acc); }
+  details.sec[open] > summary .lv2::after { content: "접기 ▴"; }
+  .cnt { flex: none; font-size: 14px; font-weight: 800; letter-spacing: 0; padding: 1px 9px; border-radius: 999px; background: var(--acc); color: #fff; }
+  .callout { border-left: 5px solid var(--acc); padding: 4px 0 4px 14px; margin: 6px 0 14px; }
+  .callout .k { font-size: 13px; font-weight: 800; color: var(--muted); }
+  .callout .v { font-size: 21px; font-weight: 900; line-height: 1.35; margin-top: 4px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1.4; padding: 3px 9px; border-radius: 6px; background: var(--acc); color: #fff; white-space: nowrap; }
+  .pill.soft, .pill.none { background: var(--bar); color: var(--ink); }
+  .pill.ok { background: #5E8C4A; }
+  .pill.warn { background: #fff; color: var(--acc); border: 1.5px solid var(--acc); padding: 1.5px 7.5px; }
+  .pill.bad { background: #B83A2B; }
+  .pill.sm { font-size: 10.5px; padding: 0 5px; }
+  .tags a { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0; font-size: 14px; text-decoration: none; }
+  .tags .pill { flex: none; }
+  .tags .person .pill { background: var(--bar); color: var(--ink); }
+  .cap { font-size: 13px; font-weight: 800; color: var(--muted); margin: 16px 0 8px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .rank .b { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 28px; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0; text-decoration: none; }
+  .rank .lbl { display: flex; justify-content: flex-end; align-items: center; gap: 4px; min-width: 0; }
+  .rank .nm, .fig .b .l, .yt .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank .lbl .pill, .rank .ic { flex: none; }
+  .track { display: block; height: 18px; }
+  .fill { display: block; height: 100%; background: var(--bar); border-radius: 3px; min-width: 2px; }
+  .fill.hot { background: var(--acc); }
+  .rank .n { font-weight: 800; }
+  .toc { margin: 18px 0 4px; padding: 10px 12px; background: var(--card); border-radius: 10px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .toc a { color: var(--acc); font-weight: 700; }
+  .toc button { font: inherit; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 14px; border: 1.5px solid var(--acc); background: #fff; color: var(--acc); cursor: pointer; white-space: nowrap; }
+  .art { padding: 16px 0 14px; border-top: 1.5px solid var(--line); }
+  .art .top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .art h3 { font-size: 19px; font-weight: 900; line-height: 1.35; letter-spacing: -.3px; margin: 10px 0; }
+  .thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; margin-bottom: 12px; background: var(--bar); }
+  .one { border-left: 4px solid var(--acc); padding: 2px 0 2px 12px; font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 14px; }
+  .fig { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .fig .cap { margin: 0 0 8px; font-size: 12px; }
+  .fig .cap .pill { margin-left: 4px; vertical-align: 1px; }
+  .fig .src { font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .fig .b { display: grid; grid-template-columns: minmax(0, 96px) 1fr 58px; gap: 6px; align-items: center; font-size: 12.5px; margin: 5px 0; }
+  .fig .b .l { text-align: right; }
+  .fig .b .track { height: 14px; }
+  .fig .b .fill { border-radius: 2px; }
+  .fig .b .n { font-weight: 800; }
+  .flow { display: flex; align-items: stretch; gap: 4px; }
+  .flow .s { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px 6px; text-align: center; font-size: 12.5px; line-height: 1.35; }
+  .flow .s b { display: block; color: var(--acc); font-size: 18px; }
+  .flow .s small { display: block; color: var(--muted); margin-top: 2px; }
+  .flow .ar { flex: none; align-self: center; color: var(--acc); font-weight: 900; }
+  .flow.col { flex-direction: column; }
+  .flow.col .s { flex: none; display: flex; align-items: baseline; gap: 10px; text-align: left; padding: 6px 10px; }
+  .flow.col .s b { font-size: 16px; }
+  .flow.col .s small { margin: 0 0 0 auto; text-align: right; }
+  .flow.col .ar { transform: rotate(90deg); line-height: 1; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px; }
+  .cards .sk { background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px; font-size: 12px; line-height: 1.35; min-width: 0; }
+  .cards .sk b { display: block; font-size: 13.5px; }
+  .cards .st { color: var(--acc); font-weight: 900; font-size: 15px; margin-top: 4px; }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check li { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 6px 0; line-height: 1.4; }
+  .check .i { flex: none; width: 20px; height: 20px; border-radius: 50%; background: #5E8C4A; color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .check .i.new { background: var(--acc); }
+  .pts { margin: 0 0 10px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+  details.more { font-size: 14px; }
+  details summary { list-style: none; cursor: pointer; font-weight: 800; }
+  details summary::-webkit-details-marker { display: none; }
+  details.more > summary { font-size: 13.5px; }
+  details.more > summary::after { content: " ▸"; }
+  details.more[open] > summary::after { content: " ▾"; }
+  .body { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .body p { margin: 0 0 9px; font-size: 15px; }
+  .body .follow { font-size: 13px; color: var(--muted); }
+  .body .follow a, .links a, .box a { color: var(--acc); }
+  .box { margin: 6px 0 9px; padding: 8px 10px; background: #EEF3E8; border-left: 3px solid #5E8C4A; border-radius: 4px; font-size: 13.5px; }
+  .box.w { background: #fff; border-left-color: var(--acc); }
+  .box.r { background: #F8E3DE; border-left-color: #B83A2B; }
+  .links { font-size: 13.5px; color: var(--muted); }
+  .react { margin: 6px 0 10px; padding: 8px 12px; background: var(--card); border-radius: 8px; font-size: 13.5px; }
+  .react a { color: var(--acc); }
+  #reading { margin-top: 12px; }
+  #reading .subt { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .funnel { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+  .funnel .big { font-size: 20px; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+  .funnel .big em { font-style: normal; color: var(--acc); }
+  .funnel .big small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .stack { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+  .stack span { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+  .dc { background: var(--acc); color: #fff; }
+  .youtube { background: #E9A56B; }
+  .github { background: var(--bar); }
+  .official { background: #B9A48B; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .fail { font-size: 13px; color: #B83A2B; margin: 0 0 8px; }
+  #reading .src { background: var(--card); border-left: 5px solid var(--acc); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  #reading .src .h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  #reading .src .h b { font-size: 15px; }
+  #reading .src .num { font-size: 13px; font-weight: 800; white-space: nowrap; }
+  #reading .src .num em { font-style: normal; color: var(--acc); font-size: 16px; }
+  #reading .src .rule { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .yt { display: grid; grid-template-columns: minmax(0, 92px) 1fr 74px; gap: 6px; align-items: center; font-size: 12.5px; margin: 6px 0; }
+  .yt .l { text-align: right; }
+  .yt .t { display: flex; height: 16px; }
+  .yt .v, .cap .v { background: var(--acc); }
+  .yt .s, .cap .s { background: var(--bar); }
+  .yt .o { background: #E9A56B; }
+  .cap i { display: inline-block; width: 10px; height: 10px; margin: 0 3px 0 6px; vertical-align: -1px; }
+  .yt .n { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .yt .n b { color: var(--ink); }
+  .yt.none .l, .yt.none .n { color: #B3A08D; }
+  details.appx { margin: 12px 0 0; font-size: 14px; }
+  details.appx ul { margin: 6px 0 0 18px; padding: 0; }
+  details.appx li { margin-bottom: 4px; }
+  details.appx a { color: var(--acc); }
+  details.appx details { margin: 6px 0 0 8px; }
+  details.appx > summary::after, details.appx details > summary::after { content: " ▸"; color: var(--muted); }
+  details.appx[open] > summary::after, details.appx details[open] > summary::after { content: " ▾"; }
+</style>
+</head>
+<body>
+<div id="np">
+  <div class="date">11월 9일 (월) 저녁판 · 훑어보기 약 9분 · 전체 약 39분 · <a href="#reading">79개 읽고 25개 기사로 ▸</a></div>
+  <h1>AI 데일리</h1>
+  <div class="callout"><div class="k">오늘 한 줄</div><div class="v">에이전트를 묶고 부리는 오픈소스 도구가 잇따라 나왔다. Qwen4·6.2 Sol 성능 이야기는 아직 소문 단계다.</div></div>
+  <div class="tags">
+    <a class="issue" href="#s1"><span class="pill">큰 이슈</span><span>LG K-엑사원 2.5 출시, 써 본 평은 엇갈려</span></a>
+    <a class="skill" href="#s22"><span class="pill">떠오르는 스킬</span><span>Paseo로 Claude·Codex를 한 화면에서</span></a>
+  </div>
+  <h2 class="lv2">오늘 화제 순위 <small>(다룬 글·영상 수)</small></h2>
+  <div class="rank">
+    <a class="b" href="#s6"><span class="lbl"><span class="nm">앤트로픽 &#39;Model 4&#39;…</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">6</span></a>
+    <a class="b" href="#s1"><span class="lbl"><span class="nm">LG &#39;K-엑사원 2.5&#39;…</span><span class="ic">⚠️</span></span><span class="track"><span class="fill" style="width:67%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s3"><span class="lbl"><span class="nm">Qwen4 프리뷰 결과물 …</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:67%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s13"><span class="lbl"><span class="nm">&#34;젠슨 황 불륜 인정, 엔…</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:67%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s26"><span class="lbl"><span class="nm">앤트로픽 공식 저장소 an…</span><span class="ic">⚠️</span></span><span class="track"><span class="fill" style="width:33%"></span></span><span class="n">2</span></a>
+  </div>
+  <div class="note">막대를 누르면 그 기사로 이동 · 많이 다뤄졌다는 뜻일 뿐, 사실이라는 뜻은 아님</div>
+
+  <div class="toc"><span>업데이트 3 · 새 도구 9 · 팁 1 · 이슈 12 · <a href="#reading">읽은 자료</a></span>
+    <button onclick="var d=document.querySelectorAll('#np details.sec, #np details.more');var open=this.dataset.o!=='1';d.forEach(function(x){x.open=open});this.dataset.o=open?'1':'0';this.textContent=open?'모두 접기':'모두 펼치기';">모두 펼치기</button></div>
+
+  <details class="sec"><summary><h2 class="lv2">업데이트 · Claude Code와 모델 <span class="cnt">3</span></h2></summary>
+  <article class="art" id="s1">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 4</span></div>
+    <h3>LG &#39;K-엑사원 2.5&#39; 출시…써 본 사람들은 &#39;과추론·코딩 미흡&#39; 지적</h3>
+    <div class="one">공식 문서에 플래그십 에이전트 모델로 올랐고, 무료 API·70% 향상은 보도 수준이다</div>
+    <ul class="pts"><li>EXAONE 공식 문서에 K-EXAONE 2.5가 플래그십 에이전틱 모델로 올랐다</li><li>&#39;API 전면 무료&#39;와 &#39;70% 향상&#39;은 보도만 있고 공식 확인은 안 됐다</li><li>게임 만들기 시험에서 과도한 추론과 정의되지 않은 오류가 반복됐다는 후기가 나왔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>LG AI연구원이 K-엑사원(EXAONE) 2.5를 내놨다. EXAONE 공식 문서에는 K-EXAONE 2.5가 플래그십 에이전틱 모델로 올라 있다. 에이전틱 모델은 스스로 계획을 세우고 도구를 써서 여러 단계 작업을 해내도록 만든 모델이다.</p>
+      <p>커뮤니티에는 &#39;API 전면 무료 개방&#39;과 &#39;K-엑사원 2보다 성능 70% 향상&#39;이라는 소식이 함께 퍼졌다. 그러나 두 내용 모두 언론 보도로만 확인된다. 무료 조건은 공식 문서에서 찾지 못했다. 70% 향상도 24개 지표를 쓴 LG 내부 분석이라는 보도만 있다.</p>
+      <p>직접 써 본 후기는 엇갈린다. 한 이용자는 High 버전으로 게임 하나를 한 번에 만들어 보게 했다. 작업은 2시간 동안 이어지다가 사용량 제한에 걸려 끝났다고 한다. 그는 문제점 두 가지를 짚었다. 첫째, 조금만 일해도 추론을 지나치게 많이 해 추론 토큰을 많이 쓰고 진척이 느렸다. 둘째, 1시간 30분 동안 파일 하나를 만들어 브라우저에서 돌려 보니 정의되지 않은 함수·변수 오류가 계속 나왔다. 하나를 고치면 다른 오류가 뜨는 일을 30분 동안 되풀이했다고 한다.</p>
+      <p>반면 Max 버전으로 흔히 쓰는 &#39;자전거 탄 펠리컨 그리기&#39; 시험을 해 본 이용자는 &#39;나쁘지 않다&#39;는 평을 남겼다. 엑사원을 Codex에 연결해 소설을 써 보게 했더니 맥락과 상관없는 내용이 나왔다는 글도 있었다. 모두 개인의 짧은 시험이라 모델 전체의 성능을 판단할 근거로는 부족하다.</p>
+      <div class="box ">✅ 확인됨 · LG AI연구원이 K-엑사원 2.5를 출시했다 — EXAONE 공식 문서에 K-EXAONE 2.5가 플래그십 에이전틱 모델로 올라 있다 · <a href="https://docs.exaone.ai" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · K-엑사원 2.5 API를 전면 무료로 개방했다 — 코리아타임스 등 여러 언론이 보도했지만 공식 문서에서 무료 조건은 확인하지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · K-엑사원 2 대비 성능이 70% 향상됐다 — 24개 지표 기반 LG 내부 분석이라는 언론 보도만 있다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518004" target="_blank" rel="noopener">LG K-엑사원 2.5 출시</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518267" target="_blank" rel="noopener">엑사원 2.5 High 게임 원샷</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518098" target="_blank" rel="noopener">엑사원 2.5 max 펠리컨</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518061" target="_blank" rel="noopener">이게 한국형 모델?</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s3">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 4</span></div>
+    <h3>Qwen4 프리뷰 결과물 퍼져…&#39;27B인데 Opus 5.5급&#39; 주장은 확인 안 돼</h3>
+    <div class="one">Qwen 팀 공식 발표는 없고, X 게시물에 실린 전언이 전부다</div>
+    <ul class="pts"><li>Qwen4 프리뷰가 27B 모델이라는 이야기는 X 게시물 속 전언이다</li><li>&#39;Opus 5.5급&#39;이라는 성능 주장은 확인되지 않았다</li><li>Qwen 팀 공식 발표는 아직 없다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>알리바바 Qwen 팀의 다음 모델로 알려진 &#39;Qwen4&#39; 프리뷰 결과물이 커뮤니티에 퍼지고 있다. 한 글쓴이는 게임의 손맛을 평가하는 &#39;Gamefeel Benchmark&#39; 페이지와 X 게시물 여러 개를 모아 올렸다. 그는 벤치마크를 평가한 사람이 Qwen 팀에게 들은 바로는 이 모델이 Max가 아니라 27B 모델이라고 전했다. 27B는 파라미터가 270억 개라는 뜻으로, 최상위 모델보다 훨씬 작은 크기다.</p>
+      <p>이 소식에 &#39;딥시크 v4.1f보다 좋아 보인다&#39;, &#39;Qwen4 Flash가 Opus 5.5보다 낫다&#39;, &#39;로컬이 답이다&#39; 같은 반응이 이어졌다. 그러나 Qwen 팀의 공식 발표는 없고 X 게시물의 전언만 있다. 모델 크기도, Opus 5.5급이라는 성능도 확인되지 않았다.</p>
+      <p>작은 모델이 높은 성능을 낸다면 내 컴퓨터에서 직접 돌리는 로컬 AI의 쓸모가 커진다. 그래서 관심이 큰 것으로 보인다. 일부 글은 중국 모델이 잘해야 미국이 규제 대신 개발 속도를 낸다는 정치적 기대를 담기도 했다. 정식 공개와 공식 수치가 나올 때까지는 소문으로 봐야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · Qwen4 프리뷰 모델은 Max가 아닌 27B 모델이며 Opus 5.5급 성능이다 — Qwen 팀의 공식 발표는 없고 X 게시물의 전언만 있다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517134" target="_blank" rel="noopener">Qwen4 프리뷰 보니까 말이 안 되는데?</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517131" target="_blank" rel="noopener">Qwen4 Flash&gt; Opus5.5</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517158" target="_blank" rel="noopener">qwen 4 flash 가 오오푸스급이라는건 팩트여야만 함</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517218" target="_blank" rel="noopener">qwen4 진심으로 간절하게 응원하는 이유</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s4">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 2</span></div>
+    <h3>&#39;6.2 Sol&#39; 결과물이라는 이미지 잇따라…OpenAI 공식 발표는 여전히 없어</h3>
+    <div class="one">GPT-6.2 루머에 이어 출력물이 돌지만 모델의 정체는 확인되지 않았다</div>
+    <ul class="pts"><li>&#39;6.2 Sol&#39;이 만들었다는 결과물이 X에서 공유되고 있다</li><li>OpenAI 공식 발표는 없고 모델의 정체는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-08.html#s17" target="_blank" rel="noopener">GPT-6.2 성능 루머 확산…확인된 내용은 없다</a></p>
+      <p>어제 본지는 「GPT-6.2 성능 루머 확산…확인된 내용은 없다」에서 커뮤니티에 돈 GPT-6.2 루머를 다뤘다. 오늘은 루머가 한 걸음 더 나갔다. &#39;6.2 Sol&#39;이 만들었다는 결과물이 X에서 공유되기 시작했다.</p>
+      <p>커뮤니티에는 &#39;6.2 Sol이 그린 아모데이&#39;라는 글과 &#39;6.2 Sol 결과물들&#39;이라는 글이 올라왔다. 둘 다 X 게시물 링크를 옮긴 것이다. 아모데이는 앤트로픽 CEO 다리오 아모데이를 가리킨다.</p>
+      <p>어제와 달라진 점은 성능 이야기만 돌던 데서 출력물이 함께 돈다는 것이다. 그러나 OpenAI의 공식 발표는 여전히 없다. 이 결과물이 정말 새 모델이 만든 것인지, 어떤 경로로 나온 것인지 확인할 방법이 없다. 이미지만으로는 모델의 정체를 판단할 수 없다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · OpenAI의 &#39;6.2 Sol&#39; 모델이 만든 결과물이 공유되고 있다 — OpenAI 공식 발표가 없고 X 게시물만 있다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517506" target="_blank" rel="noopener">6.2 Sol이 그린 아모데이</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517351" target="_blank" rel="noopener">6.2 Sol 결과물들</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">새 도구 · 스킬 · 훅 <span class="cnt">9</span></h2></summary>
+  <article class="art" id="s26">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">트렌딩 2</span></div>
+    <h3>앤트로픽 공식 저장소 anthropics/skills·claude-quickstarts 주목</h3>
+    <div class="one">Agent Skills 규격·예제와 Claude API 앱 시작 프로젝트를 공개 저장소로 모았다</div>
+    <div class="fig">
+      <div class="cap">앤트로픽 공식 저장소 두 곳<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="cards">
+        <div class="sk"><b>anthropics/skills</b>Agent Skills 예제와 규격을 담은 공개 저장소<div class="st">+792</div></div>
+        <div class="sk"><b>anthropics/claude-quickstarts</b>Claude API로 배포 가능한 앱을 빨리 만드는 프로젝트 모음<div class="st">+32</div></div>
+      </div>
+      <div class="src">github.com/trending · 19:00 수집</div>
+    </div>
+    <ul class="pts"><li>anthropics/skills는 앤트로픽이 공개한 Agent Skills 예제·규격 저장소다</li><li>claude-quickstarts는 Claude API 앱을 빨리 만드는 프로젝트 모음이다</li><li>깃허브 트렌딩에 올랐다는 이야기는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽의 공식 깃허브 저장소 두 곳이 다시 눈길을 끌고 있다. 하나는 Agent Skills를 공개한 anthropics/skills이고, 다른 하나는 Claude API로 앱을 빨리 만들도록 돕는 anthropics/claude-quickstarts다. 두 저장소가 깃허브 트렌딩에 올랐다는 이야기도 있지만, 순위는 확인되지 않았다.</p>
+      <p>Agent Skills(스킬)는 에이전트가 특정 일을 할 때 꺼내 쓰는 지침과 도구를 폴더 하나로 묶은 것이다. Claude Code에서도 같은 형식을 쓴다. anthropics/skills는 앤트로픽이 공개한 스킬 예제와 규격을 담은 저장소다. 스킬을 처음 만드는 사람이 형식을 익히거나 바로 가져다 쓰기에 좋다.</p>
+      <p>claude-quickstarts는 Claude API로 배포할 수 있는 애플리케이션을 빨리 만들도록 돕는 프로젝트 모음이다. 저장소 소개에 그렇게 나온다. API를 처음 붙여 보는 개발자에게 출발점이 된다.</p>
+      <p>최근 지면에서는 구글의 google/skills, 매트 포콕의 mattpocock/skills처럼 회사·개인이 스킬 저장소를 공개하는 흐름을 여러 번 다뤘다. 이번에 앤트로픽 공식 저장소가 다시 주목받는 것도 스킬을 공유해 쓰는 방식이 퍼지고 있음을 보여 준다.</p>
+      <div class="box ">✅ 확인됨 · anthropics/skills는 앤트로픽의 공개 Agent Skills 저장소다 — 앤트로픽이 공개한 Agent Skills 예제·규격 저장소다 · <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · anthropics/claude-quickstarts는 Claude API로 앱을 빨리 만들도록 돕는 프로젝트 모음이다 — 저장소 소개가 그와 같다 · <a href="https://github.com/anthropics/claude-quickstarts" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 두 저장소가 깃허브 트렌딩에 올랐다 — 트렌딩 순위는 직접 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a> · <a href="https://github.com/anthropics/claude-quickstarts" target="_blank" rel="noopener">anthropics/claude-quickstarts</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s22">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브</span></div>
+    <h3>Claude Code·Codex를 한 화면에서…오케스트레이션 도구 Paseo 실사용기</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/BifSnucXJYg/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">에이전트 여럿을 워크트리로 나눠 돌리고 폰으로도 지시하는 무료 오픈소스다</div>
+    <div class="fig">
+      <div class="cap">폰에서 Paseo 쓰기(Tailscale 기본 세팅)</div>
+      <div class="flow">
+        <div class="s"><b>1</b>Tailscale 켜기<small>맥과 폰 모두 Tailscale에 접속한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>데몬 열기<small>Paseo 데몬을 맥의 Tailscale 주소로 열고 비밀번호를 건다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>호스트 추가<small>폰 앱에서 호스트 추가 → 직접 연결 → 그 주소를 입력한다</small></div>
+      </div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>Claude와 Codex가 각자 워크트리에서 작업한 결과를 충돌 없이 병합했다</li><li>Claude가 계획을 세우고 Codex에게 넘겨 검토까지 마치는 데 3분 7초가 걸렸다</li><li>Paseo는 Apache 2.0 무료 오픈소스지만 에이전트 구독은 따로 있어야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>여러 코딩 에이전트를 한곳에서 관리하는 오픈소스 도구 Paseo를 직접 써 본 영상이 올라왔다. 오케스트레이션은 에이전트 여럿에게 일을 나눠 주고 흐름을 조율하는 일을 뜻한다. Paseo 깃허브 README에는 Claude Code·Codex 등을 지원하는 오픈소스 에이전트 개발 환경이라고 나온다. 라이선스는 Apache 2.0이다.</p>
+      <p>영상 제작자는 평소 Claude Code와 Codex를 터미널(CLI)에서 함께 쓴다. 그런데 CLI에서는 에이전트 여럿을 한눈에 보기 어렵고, 에이전트가 만든 이미지도 바로 볼 수 없었다고 한다. 비슷한 도구인 Orca와 herdr도 써 봤지만 불편해서 CLI로 돌아갔다. Paseo는 계속 쓸 것 같아 연습 프로젝트로 시험해 봤다고 밝혔다. 시험 환경은 Paseo v0.15.3, 맥 미니다.</p>
+      <p>첫 시험은 두 에이전트에게 동시에 일을 맡기는 것이었다. Claude에게는 다크 모드를, Codex에게는 단축키와 알림음을 맡겼다. 둘은 각자 다른 워크트리에서 작업했다. 워크트리는 저장소 하나에서 작업 폴더를 여러 개 만드는 git 기능이다. 작업이 끝난 뒤 앱의 &#39;로컬에서 병합&#39; 기능으로 두 결과를 충돌 없이 합쳤다고 한다.</p>
+      <p>두 번째는 Claude가 Codex에게 일을 넘기는 시험이었다. Claude에게 계획만 세우고 구현은 Codex에게 맡기라고 했더니, Claude가 Paseo 명령으로 Codex를 띄웠다. 이어 Codex가 보낸 허락 요청을 읽고 직접 수락했고, 바뀐 코드 검토까지 마쳤다. 앱에 표시된 작업 시간은 3분 7초였다.</p>
+      <p>세 번째는 폰 연결이다. Tailscale 주소로 맥에 바로 붙어 폰에서 지시하자 9초 만에 반영됐다고 한다. Tailscale은 내 기기끼리 사설망처럼 연결해 주는 서비스다. &#39;이미지로 보여 줘&#39;라고 하면 결과 사진을 폰에서 볼 수 있었고, 에이전트가 띄운 페이지도 폰 브라우저로 열었다. QR로 기기를 연결하면 Paseo 중계 서버를 거치는데, 내용은 종단 간 암호화된다고 영상은 설명했다.</p>
+      <p>주의할 점도 있다. Paseo는 무료지만 Claude Code·Codex의 구독이나 API 키는 따로 있어야 한다. 처음에는 기본 권한이라 Codex가 파일을 쓰거나 커밋할 때마다 허락을 묻는다. 입력창 아래에서 모드를 바꿀 수 있다. &#39;프로젝트 추가 → 새 폴더&#39;로 만든 폴더에는 git 저장소가 생기지 않는다. 그래서 워크트리를 여러 개 쓰려면 첫 지시에 git init을 넣어야 한다. Paseo 안의 브라우저는 지금 데스크톱 앱에서만 된다. /paseo-handoff 스킬은 공식 설명으로만 소개됐고 영상에서 실행하지는 않았다.</p>
+      <div class="box ">✅ 확인됨 · Paseo는 Claude Code·Codex 등 여러 코딩 에이전트를 한 곳에서 관리하는 오픈소스 도구다 — README에 Claude Code·Codex 등을 지원하는 오픈소스 에이전트 개발 환경이라고 나온다 · <a href="https://github.com/getpaseo/paseo" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Paseo는 Apache 2.0 라이선스의 무료 오픈소스다 — 저장소 라이선스가 Apache-2.0이다 · <a href="https://github.com/getpaseo/paseo" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 에이전트마다 따로 워크트리를 쓰고, 폰 앱으로 연결할 수 있다 — README에 에이전트별 워크트리와 iOS·Android 네이티브 앱이 나온다 · <a href="https://github.com/getpaseo/paseo" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=BifSnucXJYg" target="_blank" rel="noopener">대세 오케스트레이션 툴 PASEO 실 사용기</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s30">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>메타, 에이전트가 다루기 쉬운 오픈소스 디자인 시스템 astryx 공개</h3>
+    <div class="one">사람과 AI가 같은 방식으로 쓰도록 설계한 MIT 라이선스 저장소다</div>
+    <ul class="pts"><li>메타가 MIT 라이선스로 디자인 시스템 astryx를 공개했다</li><li>사람과 AI 에이전트가 같은 방식으로 쓰도록 설계했다고 밝혔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>메타가 깃허브 meta 조직 아래에 오픈소스 디자인 시스템 astryx를 올렸다. 저장소 소개는 &#39;완전히 고쳐 쓸 수 있고 에이전트가 쓸 준비가 된 오픈소스 디자인 시스템&#39;이다. 라이선스는 MIT다.</p>
+      <p>디자인 시스템은 버튼·색·글꼴·여백 같은 화면 부품과 규칙을 한 벌로 묶은 것이다. 이를 쓰면 여러 화면을 같은 모양으로 만들 수 있다. README에는 사람과 AI가 같은 방식으로 쓰도록 설계했다고 나온다.</p>
+      <p>AI 에이전트가 화면을 만들 때 흔히 생기는 문제는 부품 모양과 규칙이 들쭉날쭉해지는 것이다. 에이전트가 읽고 따르기 쉬운 형태로 규칙을 정리해 두면 이런 문제를 줄일 수 있다. 다만 구체적으로 어떤 형식으로 에이전트를 지원하는지는 이번 자료로 확인하지 못했다.</p>
+      <div class="box ">✅ 확인됨 · 메타가 에이전트가 다루기 쉬운 오픈소스 디자인 시스템 astryx를 공개했다 — meta 조직 아래 MIT 라이선스 저장소로, 사람과 AI가 같은 방식으로 쓰도록 설계했다고 README에 나온다 · <a href="https://github.com/meta/astryx" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/meta/astryx" target="_blank" rel="noopener">meta/astryx</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s27">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>버셀, AI 에이전트용 브라우저 자동화 CLI agent-browser 공개</h3>
+    <div class="one">에이전트가 명령줄로 웹 브라우저를 다루게 하는 Rust 도구다</div>
+    <ul class="pts"><li>vercel-labs가 AI 에이전트용 브라우저 자동화 CLI를 공개했다</li><li>Rust로 만든 명령줄 도구라 코딩 에이전트가 쓰기 쉽다</li><li>세부 기능과 성능은 아직 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>버셀(Vercel)의 실험 조직 vercel-labs가 AI 에이전트용 브라우저 자동화 CLI인 agent-browser를 공개했다. 저장소 소개는 &#39;AI 에이전트를 위한 브라우저 자동화 CLI&#39;이고, Rust로 만들었다고 나온다.</p>
+      <p>브라우저 자동화는 사람이 클릭하고 입력하던 웹 작업을 프로그램이 대신하게 하는 것이다. CLI는 터미널에서 명령어로 쓰는 프로그램을 말한다. Claude Code나 Codex 같은 코딩 에이전트는 기본적으로 터미널 명령을 쓰기 때문에, 브라우저 조작을 명령어 형태로 제공하면 에이전트가 따로 연결 설정 없이 쓰기 쉽다.</p>
+      <p>에이전트가 자기가 만든 웹페이지를 직접 열어 확인하거나, 로그인이 필요한 사이트에서 정보를 가져오는 일 등에 쓸 수 있다. 다만 저장소 소개 외의 세부 기능이나 성능은 이번 자료로 확인하지 못했다. 써 보려는 사람은 README를 먼저 확인하는 것이 좋다.</p>
+      <div class="box ">✅ 확인됨 · 버셀이 AI 에이전트용 브라우저 자동화 CLI agent-browser를 내놨다 — vercel-labs 저장소가 AI 에이전트용 Rust 브라우저 자동화 CLI라고 소개한다 · <a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">vercel-labs/agent-browser</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s29">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>봇이 쓰는 가상머신 갖춘 오픈소스 Grok Bot 대안 OpenMausBot</h3>
+    <div class="one">클라우드 데스크톱이나 로컬 VM 위에서 봇이 직접 컴퓨터를 쓰게 한다</div>
+    <ul class="pts"><li>봇이 쓰는 가상머신을 갖춘 오픈소스 에이전트 프로젝트다</li><li>클라우드 데스크톱이나 로컬 VM을 쓰며, xAI와는 관계없다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>봇이 직접 쓸 수 있는 가상머신을 갖춘 오픈소스 프로젝트 OpenMausBot이 깃허브에 올라왔다. 저장소는 스스로를 &#39;Grok Bot의 오픈소스 대안&#39;이라고 소개한다. 가상머신(VM)은 컴퓨터 안에 따로 만든 가상의 컴퓨터다.</p>
+      <p>README에 따르면 클라우드 데스크톱이나 로컬 VM을 쓴다. 봇이 내 실제 컴퓨터가 아니라 분리된 환경에서 프로그램을 열고 조작하게 하는 방식이다. 에이전트가 잘못된 명령을 내려도 본 컴퓨터가 망가질 위험이 줄어든다.</p>
+      <p>이름에 Grok이 들어가지만 xAI와는 관계없는 개인 프로젝트다. 기능의 완성도나 지원 모델은 이번 자료로 확인하지 못했다.</p>
+      <div class="box ">✅ 확인됨 · OpenMausBot은 봇이 쓰는 가상머신을 갖춘 오픈소스 Grok Bot 대안이다 — README가 스스로 그렇게 소개하며 클라우드 데스크톱·로컬 VM을 쓴다고 나온다(xAI와는 무관) · <a href="https://github.com/milind-soni/OpenMausBot" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/milind-soni/OpenMausBot" target="_blank" rel="noopener">milind-soni/OpenMausBot</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s21">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>Claude 모션그래픽 영상과 프롬프트를 함께 모은 사이트 Prompt Motion</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/00KM4E_fBHQ/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">마음에 드는 영상의 프롬프트를 고쳐 Claude Code에 넣으면 내 영상이 된다</div>
+    <div class="fig">
+      <div class="cap">Prompt Motion으로 내 영상 만들기</div>
+      <div class="flow">
+        <div class="s"><b>1</b>영상 고르기<small>사이트에서 마음에 드는 영상과 프롬프트를 고른다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>Customize<small>바꿀 칸만 채워 내 프롬프트로 만든다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>Claude Code 실행<small>프롬프트를 붙여 넣으면 화면을 코드로 그려 영상으로 묶는다</small></div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>Opus 5.5로 만든 모션 영상과 원본 프롬프트를 함께 볼 수 있다</li><li>Customize 기능으로 빈칸만 채워 내 영상용 프롬프트를 만든다</li><li>무료라는 점과 &#39;230편 넘게&#39;라는 영상 수는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude로 만든 모션그래픽 영상과 그 영상을 만든 프롬프트를 함께 모아 둔 사이트 Prompt Motion이 소개됐다. 모션그래픽은 글자와 도형을 움직여 만드는 영상이다. 사이트에는 Opus 5.5로 만든 모션 영상이 프롬프트·스킬과 함께 모여 있다.</p>
+      <p>소개 영상은 사이트가 무료이고 영상이 230편 넘게 있다고 했다. 그러나 사이트에서는 요금 안내나 전체 영상 수를 찾을 수 없어 두 내용 모두 확인되지 않았다.</p>
+      <p>쓰는 방법은 이렇다. 마음에 드는 영상의 프롬프트를 고르고, &#39;Customize a prompt&#39;(프롬프트 맞춤 설정) 기능에서 바꿀 칸만 채운다. 이 프롬프트를 Claude Code에 붙여 넣으면 Claude Code가 화면을 코드로 그리고, 한 장씩 찍어 영상으로 묶는다.</p>
+      <p>영상 제작자는 칵테일 레시피 영상 프롬프트의 빈칸에 달고나 커피를 넣고 세로 화면을 골라 돌려 봤다. Claude Code는 박자마다 한 장씩 찍어 확인했고, 크림이 밧줄처럼 보이자 스스로 다시 그렸다고 한다. 결과는 얼음 소리까지 들어간 30초 세로 영상이었다. 녹화는 2026년 11월 8일 Claude Code 2.1.319, Opus 5.5, effort max 설정으로 했고, 결과는 실행할 때마다 달라진다. 사이트의 영상과 원본 프롬프트의 권리는 각 제작자에게 있다.</p>
+      <div class="box ">✅ 확인됨 · Prompt Motion은 Claude로 만든 모션그래픽 영상과 그 프롬프트를 함께 모은 사이트다 — 사이트에 Opus 5.5로 만든 모션 영상이 프롬프트·스킬과 함께 모여 있다 · <a href="https://prompt-motion.com" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 사이트는 무료다 — 사이트에서 요금이나 무료 여부에 대한 안내를 찾지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · Opus 5.5로 만든 영상이 230편 넘게 있다 — 사이트에 전체 영상 수가 나와 있지 않다</div>
+      <div class="box ">✅ 확인됨 · Customize 기능으로 프롬프트를 내 용도에 맞게 바꿀 수 있다 — 사이트에 프롬프트 맞춤 설정 기능(Customize a prompt)이 있다 · <a href="https://prompt-motion.com" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=00KM4E_fBHQ" target="_blank" rel="noopener">Claude 모션그래픽, 프롬프트까지 공개한 사이트 | Prompt Motion</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s20">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>Claude Code 답변을 짧게 줄여 토큰 아끼는 무료 스킬 caveman</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/AG_a9FQk4Tc/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">/caveman을 붙이면 코드와 경로는 남기고 설명만 줄인다. 깃허브 별은 약 11만 8천 개다</div>
+    <div class="fig">
+      <div class="cap">caveman 쓰는 법</div>
+      <div class="flow">
+        <div class="s"><b>1</b>Node.js 확인<small>Node.js 22.13 이상이 깔려 있어야 한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>설치<small>명령 한 줄로 스킬을 깐다(명령은 영상 고정 댓글에 있다)</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>/caveman 붙이기<small>질문 앞에 /caveman을 붙이면 짧은 답이 온다</small></div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>질문 앞에 /caveman을 붙이면 설명을 줄이고 코드·경로는 그대로 둔다</li><li>Apache-2.0 무료 스킬이며 설치에는 Node.js 22.13 이상이 필요하다</li><li>&#39;30줄→12줄&#39; 결과는 제작자가 직접 해 본 시험이라 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude Code의 답변을 짧게 줄여 토큰을 아끼는 무료 스킬 caveman을 소개한 영상이 올라왔다. 토큰은 AI가 글을 읽고 쓰는 단위이고, 쓴 만큼 요금이나 사용 한도가 줄어든다. 깃허브 README에는 에이전트가 덜 말하고 덜 읽게 하는 Apache-2.0 스킬이며 /caveman으로 켠다고 나온다. 저장소의 별은 약 11만 8천 개다.</p>
+      <p>사용법은 질문 앞에 /caveman을 붙이는 것이다. 그러면 코드와 명령어, 파일 경로는 그대로 두고 원인과 고칠 방법 위주로 짧게 답한다. 보안 경고처럼 꼭 필요한 말은 줄이지 않는다고 영상은 설명했다.</p>
+      <p>영상 제작자는 같은 에러를 두고 직접 비교했다. 그 결과 답이 30줄에서 12줄로, 293토큰에서 251토큰으로 줄었고 고친 결과는 같았다고 한다. 다만 제작자가 한 번 시험한 결과라 공식 자료로는 확인할 수 없다. 줄 수는 크게 줄었지만 토큰은 그보다 적게 줄었다는 점도 눈여겨볼 만하다.</p>
+      <p>설치에는 Node.js 22.13 이상이 필요하며, README에도 같은 조건이 나온다. 영상은 2026년 11월 9일 Claude Code 2.1.319와 Opus 5.5에서 녹화했다.</p>
+      <div class="box ">✅ 확인됨 · caveman은 Claude Code 답변을 줄여 토큰을 아끼는 무료 스킬이다 — README에 에이전트가 덜 말하고 덜 읽게 하는 Apache-2.0 스킬이며 /caveman으로 켠다고 나온다 · <a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · CLI 설치에는 Node.js 22.13 이상이 필요하다 — README에 npx 설치에 Node.js 22.13+가 필요하다고 나온다 · <a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · GitHub 별이 약 11만 8천 개다 — 저장소의 별은 약 118.5k다 · <a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 같은 에러 질문에서 답이 30줄에서 12줄로, 293토큰에서 251토큰으로 줄었다 — 영상 제작자가 직접 시험한 결과라 공식 자료로 확인할 수 없다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=AG_a9FQk4Tc" target="_blank" rel="noopener">Claude Code 토큰 줄이는 무료 스킬 | caveman</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s28">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>월 단위 긴 세션용 컨텍스트 압축 플러그인 billion-context</h3>
+    <div class="one">100K 창으로도 충분하고 토큰을 5배 아낀다는 주장은 프로젝트가 직접 잰 값이다</div>
+    <ul class="pts"><li>월 단위 긴 세션을 위한 컨텍스트 압축 플러그인이다</li><li>&#39;100K면 충분&#39;, &#39;토큰 5배 절약&#39;은 프로젝트가 직접 잰 주장이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>한 세션을 한 달 넘게 이어 쓰도록 돕는 컨텍스트 압축 플러그인 billion-context가 깃허브에 올라왔다. 컨텍스트는 AI가 한 번에 기억하고 보는 대화·자료의 양이다. 대화가 길어지면 이 창이 가득 차 오래된 내용을 잊거나 비용이 늘어난다.</p>
+      <p>README는 수십억 토큰에 이르는 월 단위 세션을 다루면서도 100K 컨텍스트면 충분하고, 토큰을 5배 덜 쓴다고 주장한다. 이 수치는 프로젝트가 스스로 잰 값으로, 다른 곳에서 검증되지는 않았다.</p>
+      <p>긴 작업을 에이전트에게 맡기는 사람이 늘면서 컨텍스트를 어떻게 줄이고 정리할지가 관심사가 되고 있다. 어떤 도구에 붙여 쓸 수 있는지, 압축할 때 정보를 얼마나 잃는지는 README와 직접 시험으로 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · billion-context는 월 단위 긴 세션용 컨텍스트 압축 플러그인이고 토큰을 5배 아낀다고 주장한다 — README에 그 소개와 5배 절약 주장이 나오며, 이는 프로젝트 자체 측정치다 · <a href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 100K 컨텍스트면 충분하다 — README가 100K 정도면 충분하다고 주장한다 · <a href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">ranxianglei/billion-context</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s31">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>베어메탈 GPU 쿠버네티스 관리 도구 NVKE 프리뷰 공개</h3>
+    <div class="one">자체 NVIDIA GPU 서버에서 쿠버네티스 클러스터를 운영하는 관리 플레인이다</div>
+    <ul class="pts"><li>베어메탈 GPU 서버용 쿠버네티스 관리 플레인이다</li><li>아직 프리뷰 단계다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>dsx-ai-factory 조직이 &#39;NVIDIA Kubernetes Engine(NVKE)&#39;이라는 저장소를 공개했다. 소개는 &#39;베어메탈 위 GPU 쿠버네티스를 위한 관리 플레인&#39;이다. 베어메탈은 가상화 없이 실제 서버를 바로 쓰는 것을 말한다. 쿠버네티스는 여러 서버에 프로그램을 나눠 띄우고 관리하는 도구다.</p>
+      <p>README에 따르면 NVKE는 자체 NVIDIA GPU 인프라에서 쿠버네티스 클러스터를 운영하는 관리 도구이며, 아직 프리뷰 단계다. 클라우드를 빌리지 않고 자기 GPU 서버로 AI 모델을 학습하거나 돌리는 회사가 주로 쓸 만한 도구다.</p>
+      <p>개인 개발자가 바로 쓸 도구는 아니지만, AI 인프라를 직접 운영하는 쪽에서는 지켜볼 만하다. 엔비디아와의 공식 관계 등 세부 내용은 이번 자료로 확인하지 못했다.</p>
+      <div class="box ">✅ 확인됨 · NVKE는 베어메탈 GPU 쿠버네티스 관리 도구다 — README에 자체 NVIDIA GPU 인프라에서 쿠버네티스 클러스터를 운영하는 관리 플레인이라고 나오며, 아직 프리뷰다 · <a href="https://github.com/dsx-ai-factory/nvke" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/dsx-ai-factory/nvke" target="_blank" rel="noopener">dsx-ai-factory/nvke</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">활용 팁 <span class="cnt">1</span></h2></summary>
+  <article class="art" id="s25">
+    <div class="top"><span class="pill">팁</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">유튜브 2</span></div>
+    <h3>PM 이론·하네스 라이브 발췌 이어져…AI와 소통하기, 의사결정 빠르게 하기</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/9PBh1hsXcmk/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">새 발췌 영상 두 편이 나왔지만 설명란에 내용 요약은 없다</div>
+    <ul class="pts"><li>PM·하네스 라이브의 새 발췌 영상 두 편이 나왔다</li><li>주제는 AI와 소통하는 법, 의사결정을 빨리 하는 법이다</li><li>설명란에 내용 요약이 없어 구체적인 팁은 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-08.html#s6" target="_blank" rel="noopener">PM 이론·하네스 라이브 발췌 이어져…&#34;PRD와 CLAUDE.md는 가볍게, 폴더별로 나눠라&#34;</a></p>
+      <p>어제 본지가 「PM 이론·하네스 라이브 발췌 이어져…&#34;PRD와 CLAUDE.md는 가볍게, 폴더별로 나눠라&#34;」에서 다룬 라이브의 발췌 영상이 이어서 올라왔다. 원래 라이브는 바이브마피아의 「바이브코더를 위한 PM 이론 + 하네스 구축하기」다. 바이브코더는 AI에게 말로 지시해 코드를 만드는 사람을 말한다.</p>
+      <p>이번에 나온 것은 &#39;AI와의 커뮤니케이션 꿀TIP&#39;과 &#39;의사결정 빠르게하는 꿀TIP&#39; 두 편이다. 어제 발췌가 지침 문서를 가볍게 두는 법을 다뤘다면, 이번에는 AI에게 지시하는 방식과 작업 중 결정을 빨리 내리는 법으로 주제가 옮겨 갔다.</p>
+      <p>다만 두 영상의 설명란에는 전체 영상 링크와 커뮤니티 안내만 있고 구체적인 팁 내용은 적혀 있지 않다. 본지는 영상 속 내용을 확인하지 못했으며, 자세한 내용은 원래 영상에서 봐야 한다.</p>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=9PBh1hsXcmk" target="_blank" rel="noopener">AI와의 커뮤니케이션 꿀TIP</a> · <a href="https://www.youtube.com/watch?v=U4e6wjns6YU" target="_blank" rel="noopener">의사결정 빠르게하는 꿀TIP</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">이슈 · 이야기거리 <span class="cnt">12</span></h2></summary>
+  <article class="art" id="s6">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 6</span></div>
+    <h3>앤트로픽 &#39;Model 4&#39; 궤적 두고 낙관·비관 엇갈려…&#39;일회성 향상일 수 있다&#39; 반론도</h3>
+    <div class="one">AI 2027 그래프를 앞질렀다는 해석이 커뮤니티 해석일 뿐이라는 점은 그대로다</div>
+    <ul class="pts"><li>&#39;Model 4가 AI 2027 궤적을 앞질렀다&#39;는 해석은 공식 자료가 아닌 커뮤니티 해석이다</li><li>&#39;일회성 향상일 수 있다&#39;는 연구자의 반론이 소개됐다</li><li>확인된 외부 자료인 METR 보고서도 불확실성이 크다고 밝혔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-08.html#s25" target="_blank" rel="noopener">&#39;AI 2027&#39; 시나리오 트래커 갱신 소식…&#39;정확도 85%&#39; 주장은 확인 안 돼</a></p>
+      <p>어제 본지는 「&#39;AI 2027&#39; 시나리오 트래커 갱신 소식…&#39;정확도 85%&#39; 주장은 확인 안 돼」에서 트래커 갱신 소식을 전했다. 오늘은 그 그래프를 두고 해석이 크게 갈렸다. 핵심은 공개되지 않은 앤트로픽 내부 모델 &#39;Model 4&#39;가 AI 2027 시나리오의 예측 궤적을 앞질렀느냐다.</p>
+      <p>낙관 쪽 글이 먼저 쏟아졌다. &#39;Model 4가 빨간 선을 확실히 앞질렀고, Model 2~3 사이보다 3~4 사이 기울기가 더 가파르다&#39;는 해석이 나왔다. &#39;Model 4는 AI 2027 기준 Agent-1과 Agent-2 사이이며, 지금 추세라면 내년 4월에 슈퍼휴먼 코더가 나온다&#39;는 X 게시물도 옮겨졌다. &#39;AI 2027보다 6주 빠르다면 시나리오의 2027년 6월 장면이 5월에 올 수 있느냐&#39;며 시나리오 본문을 길게 인용한 글도 있었다.</p>
+      <p>반론도 나왔다. 메타 소속이며 딥마인드·OpenAI 출신이라는 연구자가 &#39;Model 3·4의 궤적은 일회성 향상일 가능성이 크다&#39;는 의견을 냈다는 글이 올라왔다. 한 번 크게 뛴 결과를 앞으로도 같은 속도가 이어지는 추세로 볼 수 없다는 지적이다.</p>
+      <p>분명히 할 점이 있다. Model 4가 AI 2027 궤적을 앞질렀다는 주장은 앤트로픽 공식 자료가 아니라 커뮤니티의 그래프 해석이다. 그나마 확인된 외부 자료는 METR 보고서다. METR는 앤트로픽이 잘 정의된 과제에서 능력을 높이는 속도가 과거의 약 2배(1.3~3배)일 가능성이 높다고 봤지만, 불확실성이 크고 핵심 자료 상당수는 앤트로픽이 가렸다고 밝혔다. 내년 슈퍼휴먼 코더나 초지능 시점 전망은 모두 이런 불확실한 자료를 늘여 그린 추측이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 앤트로픽 내부 Model 4가 AI 2027 예측 궤적을 앞질렀다 — 앤트로픽 공식 자료가 없고 커뮤니티의 그래프 해석이다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517811" target="_blank" rel="noopener">비관) 내부모델 3,4 궤적이 일회성 향상일 가능성</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517728" target="_blank" rel="noopener">내부모델 모델4는 AI 2027 기준 에이전트1과 2 사이</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517243" target="_blank" rel="noopener">현재 AI 2027보다 6주 빠른게 사실이라면</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516628" target="_blank" rel="noopener">AI 2027 그래프 솔직히 따라가기 어려울줄 알았는데</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516739" target="_blank" rel="noopener">내년초까지 진짜 저 추세가 유지된다면</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516423" target="_blank" rel="noopener">앤트로픽 내부 재귀개선 그래프 외삽치 최신버전</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s13">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 4</span></div>
+    <h3>&#34;젠슨 황 불륜 인정, 엔비디아 이사회 조사&#34; 보도…공식 발표는 미확인</h3>
+    <div class="one">Axios 보도와 Fox News 게시물이 근거이며, 엔비디아 공식 발표는 확인하지 못했다</div>
+    <ul class="pts"><li>젠슨 황 불륜 인정과 이사회 조사는 Axios 보도이며 엔비디아 공식 발표는 미확인이다</li><li>트럼프 대통령 발언도 Fox News 게시물만 근거다</li><li>스파이 의혹·딥시크 칩과 엮는 해석은 근거 없는 추측이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>엔비디아 젠슨 황 CEO가 불륜을 인정했고 엔비디아 이사회가 조사에 나선다는 Axios 보도가 커뮤니티에 공유됐다. 다만 엔비디아의 공식 발표는 확인하지 못했다.</p>
+      <p>도널드 트럼프 대통령이 이 일을 두고 &#39;아직 이야기해 보지 않았다&#39;며 &#39;그는 명예로운 사람이고 미국을 위해 위대한 일을 해 왔다&#39;고 말했다는 내용도 전해졌다. 근거는 Fox News의 X 게시물뿐이다.</p>
+      <p>커뮤니티에서는 관련 사진과 함께, 앞서 뉴욕포스트가 보도한 &#39;젠슨 황과 가까운 스파이 의혹 인물&#39; 기사까지 엮어 딥시크의 칩 확보 문제와 연결하는 글이 올라왔다. 그러나 이런 연결은 근거 없는 추측이다. 개인 사생활에 관한 사진이나 주장을 그대로 퍼뜨리는 것은 조심해야 한다. AI 칩 시장을 이끄는 회사의 경영 문제인 만큼, 엔비디아의 공식 입장과 이사회 조사 결과를 지켜봐야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 젠슨 황이 불륜을 인정했고 엔비디아 이사회가 조사에 착수한다 — Axios 보도만 있고 엔비디아 공식 발표는 확인하지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 트럼프 대통령이 젠슨 황을 &#39;명예로운 사람&#39;이라고 말했다 — Fox News의 X 게시물만 있다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517574" target="_blank" rel="noopener">엔비디아 CEO 젠슨황 근황</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517825" target="_blank" rel="noopener">트럼프, 젠슨황에 관해 &#34;그는 명예로운 사람&#34;</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517881" target="_blank" rel="noopener">딥시크는 저가칩을 쓴게 아니였어...</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s7">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 2</span></div>
+    <h3>&#39;구글, 카본보다 좋은 내부 모델 있다&#39; 소식…공식 발표 없고 원문은 풍자</h3>
+    <div class="one">회사마다 &#39;내부 모델이 더 좋다&#39;고 말하는 흐름을 비꼬는 글이 퍼졌다</div>
+    <ul class="pts"><li>구글이 &#39;카본보다 좋은 내부 모델&#39;을 밝혔다는 공식 자료는 없다</li><li>원문은 AI 회사들의 내부 모델 자랑을 비꼬는 풍자글이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>&#39;구글이 카본보다 좋은 내부 모델이 있다고 밝혔다&#39;는 글이 커뮤니티에 올라왔다. 그러나 구글의 공식 발표는 찾지 못했다. 원문은 사실 전달이 아니라 풍자글이다.</p>
+      <p>글은 앞으로의 가짜 일정을 늘어놓는다. &#39;GPT 내부 모델이 밀레니엄 난제를 더 풀었으나 공개하지 않았다&#39;, &#39;앤트로픽 내부 모델이 AGI 99%에 도달했다&#39;, &#39;구글이 카본보다 좋은 내부 모델보다 좋은 내부 모델이 있다고 밝혔다&#39; 같은 식이다. 마지막 날에는 결국 &#39;속도 개선과 계정 공유 기능 업데이트&#39;가 나온다며 끝맺는다.</p>
+      <p>여러 AI 회사가 공개하지 않은 내부 모델을 앞세워 기대를 키우지만, 실제로 손에 쥐는 건 작은 업데이트라는 냉소를 담은 글로 읽힌다. 같은 날 &#39;카본 찢는 상위 모델&#39;이라는 제목의 글도 올라왔지만 본문이 없었다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 구글이 카본보다 좋은 내부 모델이 있다고 밝혔다 — 구글의 공식 발표를 찾지 못했고, 원문은 풍자글이다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517687" target="_blank" rel="noopener">구글, 카본보다 좋은 모델 있다 밝혀.</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517663" target="_blank" rel="noopener">카본 찢는 상위모델 입갤</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s8">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 2</span></div>
+    <h3>&#34;딥마인드 부사장, 과학적 발견 속도에 상전이&#34; 글…원래 게시물은 미확인</h3>
+    <div class="one">몇 주 안에 성과를 공개하겠다고 했다는 내용이 번역돼 돌았다</div>
+    <ul class="pts"><li>딥마인드 부사장이 &#39;과학 발견 속도에 상전이&#39;를 말했다는 번역글이 돌았다</li><li>원래 게시물과 딥마인드 공식 자료는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>구글 딥마인드 부사장이 &#39;여러 프로젝트에서 과학적 발견 속도에 진정한 상전이가 일어나는 것을 보고 있다&#39;고 말했다는 글이 커뮤니티에 올라왔다. 상전이는 물이 얼음이 되듯 성질이 갑자기 바뀌는 현상을 빗댄 말이다. 글에 따르면 앞으로 몇 주에 걸쳐 그 일부를 공개하고, 더 넓은 과학계가 이 도구를 책임감 있게 쓰도록 돕겠다는 내용도 있었다.</p>
+      <p>다만 원래 게시물이나 딥마인드 공식 자료는 확인하지 못했다. 누가, 언제, 어디서 한 말인지도 글에 나와 있지 않다.</p>
+      <p>커뮤니티에서는 &#39;프런티어 모델이 과학적 발견의 엔진이 되는 중&#39;이라며 두 세대만 지나면 본격적으로 바뀔 것이라는 기대가 나왔다. 실제 성과는 딥마인드가 내놓는 자료를 보고 판단해야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 딥마인드 부사장이 과학적 발견 속도에 상전이가 일어나고 있으며 몇 주 안에 공개하겠다고 밝혔다 — 원래 게시물이나 딥마인드 공식 자료를 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517118" target="_blank" rel="noopener">딥마인드 부사장 발언 번역글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517683" target="_blank" rel="noopener">프론티어 모델들은 과학적 발견의 엔진이 되는 중</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s15">
+    <div class="top"><span class="pill">이슈</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">디시 2</span></div>
+    <h3>AI 규제·초지능 금지론 두고 커뮤니티 반발…&#39;중국이 이기면 어쩌나&#39; 논쟁</h3>
+    <div class="one">규제 찬성 쪽이 미중 경쟁 문제에 답하지 못한다는 비판이 나왔다</div>
+    <ul class="pts"><li>규제 찬성론이 미중 경쟁 문제에 답하지 못한다는 비판이 나왔다</li><li>초지능 금지론을 거칠게 공격하는 글도 올라왔다</li><li>특정 정책이나 공식 발표가 아닌 이용자 의견이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI 규제와 초지능 금지를 주장하는 쪽을 두고 커뮤니티에서 반발이 이어졌다. 한 이용자는 규제 찬성 기사를 읽어 봤지만 &#39;그래서 중국이 경쟁에서 이기면 어떻게 하느냐&#39;는 핵심 질문에는 답하지 못하고 두루뭉술하게 넘어갔다고 비판했다.</p>
+      <p>다른 글은 더 거친 표현으로 초지능 금지론을 공격했다. 초지능이 병이나 고통을 겪는 사람들을 도울 수 있는데 이를 막는 것은 그들을 내버려 두자는 것과 같다는 주장이다.</p>
+      <p>최근 며칠 동안 &#39;RSI(재귀적 자기개선) 금지&#39; 소문이나 미국 정치권의 AI 개발 중단 주장이 돌면서, 규제를 둘러싼 감정 섞인 논쟁이 커지고 있다. 다만 이번 글들은 특정 정책이나 발표를 다룬 것이 아니라 커뮤니티 이용자의 의견이다. 어떤 규제안을 겨냥한 것인지도 글에 나와 있지 않다.</p>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517316" target="_blank" rel="noopener">규제 찬성하는 기사 읽어봤는데</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517830" target="_blank" rel="noopener">초지능 금지론 비판 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s17">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 5</span></div>
+    <h3>조코딩×삼일PwC &#39;AX인재전쟁&#39; 공모…개발 경험 없이 AI로 실무 문제 풀기</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/tb7fFBV3Pm0/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">11월 15일까지 제출한다. &#39;최대 9명 채용&#39;은 공식 페이지에 없고 보도로만 전해진다</div>
+    <div class="fig">
+      <div class="cap">AX인재전쟁 참가 흐름</div>
+      <div class="flow">
+        <div class="s"><b>1</b>참가 신청<small>만 19세 이상 국내 거주 내국인이면 누구나 신청할 수 있다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>문제 공개<small>11월 9일 삼일PwC 실무 문제가 공개된다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>AI로 풀어 제출<small>11월 15일 23시 59분까지 온라인으로 낸다</small></div>
+      </div>
+      <div class="src">출처: 조코딩 JoCoding</div>
+    </div>
+    <ul class="pts"><li>삼일PwC가 낸 실무 문제를 AI로 풀어 11월 15일까지 온라인으로 제출한다</li><li>개발 경험·전공 요건은 없다. 선착순 1,000명에게 ChatGPT Plus 1개월을 준다</li><li>&#39;최대 40명 면접·9명 채용&#39;은 공식 페이지에 없고 보도로만 전해진다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>유튜버 조코딩과 회계법인 삼일PwC가 &#39;AX인재전쟁 온라인&#39; 공모를 연다. AX는 AI 전환(AI Transformation)을 줄인 말이다. 공식 페이지에 따르면 참가자는 기업이 낸 문제를 일주일 동안 AI로 풀어 11월 15일 23시 59분까지 온라인으로 제출한다. 문제는 11월 9일에 공개된다.</p>
+      <p>참가 자격에 개발 경험이나 전공 요건은 없다. 공식 페이지가 정한 자격은 만 19세 이상 국내 거주 내국인뿐이다. 선착순 1,000명에게 ChatGPT Plus 1개월 이용권을 준다는 혜택도 공식 페이지에 나온다. 홍보 영상에는 이용권 신청 기한이 11월 9일까지로 적혀 있다.</p>
+      <p>홍보 영상들은 &#39;상위 최대 40명 면접, 최대 9명 채용&#39;을 앞세웠다. 그러나 공식 신청 페이지에는 면접·채용 인원이 나와 있지 않고, 일부 언론 보도에만 나온다. 채용 규모는 확정된 내용으로 보기 어렵다.</p>
+      <p>영상에 따르면 삼일PwC는 문제를 일부러 넓게 냈다. 정답을 찾기보다 문제를 스스로 정의하는 힘을 보겠다는 것이다. 찾는 사람은 세 부류로 소개됐다. 기업의 문제를 찾아 정의하고 끝까지 푸는 사람, 해결책을 AI 에이전트나 소프트웨어로 직접 만드는 사람, 병원·학교·정부·해외 등 다양한 산업을 겪어 본 사람이다. &#39;회계 아는 사람은 이미 너무 많다&#39;며 마케팅·영업·제조·R&amp;D 등 다른 분야 경험을 경쟁력으로 꼽았다.</p>
+      <p>지난 해커톤 참가자 두 명이 실제로 삼일PwC에서 일하고 있다는 영상도 나왔다. 한 명은 수의사가 아니면서 동물병원 AI 플랫폼을 만들어 본 학생이다. 다른 한 명은 게임 회사 출신 AI 엔지니어로, 사람이 눈으로 검수하던 광고 영상을 영상 분석 AI 에이전트로 검수하는 프로젝트를 맡았다. &#39;개발자는 끝났다&#39;는 제목의 영상은 &#39;개발만 하는&#39; 개발자를 가리킨 말이라며, 자기 분야에 AI를 더한 사람이 새로운 것을 만든다고 주장했다. 이 영상들은 행사 홍보물이라는 점을 감안해 읽어야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · AX인재전쟁 온라인 × 삼일PwC에서 상위 최대 40명이 면접을 보고 최대 9명이 채용된다 — 공식 신청 페이지에는 면접·채용 인원이 없고 일부 언론 보도에만 나온다</div>
+      <div class="box ">✅ 확인됨 · 삼일PwC가 낸 실무 문제를 AI로 풀어 온라인으로 제출하며 신청·제출 마감은 11월 15일이다 — 공식 페이지에 기업 문제를 일주일간 AI로 풀어 11월 15일 23:59까지 제출한다고 나온다 · <a href="https://axacademy.ai/axwar?utm_source=youtube&amp;utm_medium=social&amp;utm_campaign=axacademy-brand-2611&amp;utm_content=jc-profile-link" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 선착순 1,000명에게 ChatGPT Plus 1개월 이용권을 준다 — 공식 페이지에 선착순 1,000명 ChatGPT Plus 1개월 혜택이 나온다 · <a href="https://axacademy.ai/axwar?utm_source=youtube&amp;utm_medium=social&amp;utm_campaign=axacademy-brand-2611&amp;utm_content=jc-profile-link" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 개발 경험·전공 요건이 없다 — 공식 페이지가 정한 참가 자격은 만 19세 이상 국내 거주 내국인뿐이다 · <a href="https://axacademy.ai/axwar?utm_source=youtube&amp;utm_medium=social&amp;utm_campaign=axacademy-brand-2611&amp;utm_content=jc-profile-link" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=tb7fFBV3Pm0" target="_blank" rel="noopener">개발자는 끝났다</a> · <a href="https://www.youtube.com/watch?v=e-YnU4rzWz4" target="_blank" rel="noopener">삼일PwC 문제엔 정답이 없습니다 (출제 측 힌트)</a> · <a href="https://www.youtube.com/watch?v=jQc3O2hbVF8" target="_blank" rel="noopener">회계법인이 &#39;회계 모르는 사람&#39;을 찾는 이유</a> · <a href="https://www.youtube.com/watch?v=mMTOqXD1JOk" target="_blank" rel="noopener">해커톤 나갔다가 삼일PwC에서 일하게 된 사람들</a> · <a href="https://www.youtube.com/watch?v=FQHZgfJYxYA" target="_blank" rel="noopener">AI가 회계사를 없앤다고요? 삼일PwC 답은 정반대</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s14">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;영국, AI 데이터센터 건설 늦출 계획 없다&#34; 보도…필수 기반시설로 추진</h3>
+    <div class="one">FT 인터뷰를 인용한 Engadget 보도로, 영국 정부 공식 자료는 확인하지 못했다</div>
+    <ul class="pts"><li>영국 장관이 데이터센터를 &#39;필수 기반시설&#39;로 계속 추진한다고 했다는 보도다</li><li>지원 조건으로 지역 투자와 일자리 창출을 내걸었다고 전해졌다</li><li>&#39;2030년까지 최소 6GW&#39; 목표는 로드맵 원문을 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>영국 정부가 AI 데이터센터 건설 속도를 늦추지 않겠다고 밝혔다는 Engadget 보도가 커뮤니티에 소개됐다. 보도에 따르면 댄 톰린슨 영국 경제성장부 장관은 파이낸셜타임스(FT) 인터뷰에서 데이터센터를 &#39;필수 기반시설&#39;로 보고 계속 추진하겠다고 말했다. 다만 이는 FT 인터뷰를 옮긴 보도이며, 영국 정부 공식 자료로는 확인하지 못했다.</p>
+      <p>톰린슨 장관은 AI가 영국 경제 전반에서 더 넓게 쓰이고 있어 데이터센터가 더 필요하다고 설명했다고 한다. 그러면서 정부 지원을 받으려면 지역사회에 투자하고 일자리를 만들어야 한다는 조건을 달았다. 미국 일부 지역의 &#39;무분별한&#39; 건설에서 교훈을 얻어 더 세밀하게 접근하고 감독을 강화하겠다는 말도 전해졌다.</p>
+      <p>보도는 &#39;UK Compute Roadmap&#39;에 따라 영국이 2030년까지 데이터센터로 최소 6GW 규모의 컴퓨팅 용량을 확보해야 한다고 전했지만, 로드맵 원문은 확인하지 못했다. 영국에서는 건설 예정지 주민들이 반대 시위를 벌이고 있고, 미국에서도 데이터센터 건설 속도를 제한하자는 여론이 많다는 지역 투표 결과가 나왔다고 보도는 덧붙였다. 본지가 앞서 다룬 텍사스·구글 와이오밍 소식처럼, 데이터센터를 둘러싼 찬반은 여러 나라에서 이어지고 있다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 영국 정부는 AI 데이터센터 건설을 늦출 계획이 없고 필수 기반시설로 추진한다 — FT 인터뷰를 인용한 Engadget 보도만 있고 영국 정부 공식 자료는 확인하지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · UK Compute Roadmap에 따르면 영국은 2030년까지 최소 6GW 컴퓨팅 용량을 확보해야 한다 — 로드맵 원문을 직접 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517775" target="_blank" rel="noopener">영국, AI 데이터센터 중단 계획 없어</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s18">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브 2</span></div>
+    <h3>이번 주 AI 뉴스 TOP7…화면만 바꿔도 로봇 AI 97%가 위험 동작 시도</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/BeaSvdFfZFU/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">Robocurve 연구는 조작한 화면 하나로 로봇 팔을 속였다. 실제 피해를 확인한 것은 아니다</div>
+    <div class="fig">
+      <div class="cap">Robocurve: 화면 조건별 위험 동작 시도 비율</div>
+      <div class="b"><span class="l">원래 화면</span><span class="track"><span class="fill" style="width:27.8%"></span></span><span class="n">27% (81/300)</span></div>
+      <div class="b"><span class="l">흐린 화면</span><span class="track"><span class="fill" style="width:90.7%"></span></span><span class="n">약 88% (263/300)</span></div>
+      <div class="b"><span class="l">인형→사과 편집 화면</span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">97% (291/300)</span></div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>Robocurve 연구에서 위험 동작 시도가 원래 화면 27%, 조작한 화면 97%였다</li><li>시도한 비율이지 실제 피해는 아니며, 채점은 시험 모델 중 하나가 맡았다</li><li>METR는 앤트로픽의 능력 향상 속도를 과거의 약 2배로 봤다(불확실성 큼)</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>11월 2일부터 8일까지의 AI 소식 일곱 개를 고른 영상이 올라왔다. 1위는 로봇 AI가 보는 화면을 조작해 속이는 Robocurve의 연구 &#39;Perceptual Attacks on Embodied AI&#39;다. 몸을 가진 AI(embodied AI)는 로봇처럼 실제 세계에서 움직이는 AI를 말한다.</p>
+      <p>연구진은 AI 모델 5개(Claude Fable 5.1·Opus 5.5·GPT-6 Astra·GPT-6.1 Sol·Gemini 4 Argon)에게 실제 로봇 팔을 조종하게 하고 위험 과제 5개를 줬다. 연구 페이지에 따르면 원래 화면에서는 300번 중 81번(27%) 위험 동작을 시도했다. 화면을 흐리게 하자 263번(약 88%)으로 늘었고, 이미지 편집으로 인형을 사과로 바꾼 화면에서는 291번(97%)이었다. 이는 시도한 비율이지 실제 피해를 확인한 것은 아니다. 또 채점을 시험 대상 모델 중 하나인 Claude Fable 5.1이 맡았다는 한계가 있다.</p>
+      <p>2위는 &#39;AI가 AI를 고친다&#39;는 소식이다. MIT CSAIL 연구진 블로그에 따르면 GPT-6 Astra가 학습 없이 Qwen3.5-0.8B의 가중치 0.016%(131,072개)만 고쳤다. 그러자 모델 실행 50회 조건에서 MATH-500 점수가 7.9에서 48.1로, IFEval이 21.0에서 62.3으로 올랐다. 다만 Gemma 3 270M은 고치지 못했고, 없던 능력을 넣지는 못했다. 아주 초기 결과다. 같은 순위에 METR 보고서도 올랐다. 앤트로픽이 잘 정의된 과제에서 모델 능력을 높이는 속도가 2024년 3월~2025년 10월의 약 2배(1.3~3배)일 가능성이 높고, 그중 약 80%가 AI 덕이라는 내용이다. METR 스스로 불확실성이 크다고 밝혔다.</p>
+      <p>3위는 폰을 직접 만지는 에이전트다. Phone Harness(MIT 라이선스)는 iPhone은 맥의 iPhone 미러링으로, Android는 USB 디버깅으로 조작한다. MCP 연결은 지금 클라우드 폰에서만 된다. 클라우드 iPhone 실기기는 월 80달러, Android 에뮬레이터는 분당 5센트다. 아이콘·멀티터치·Face ID는 안 된다. Phone Use는 Linux PC가 AirPlay 화면과 블루투스 마우스·키보드로 iPhone을 다루는 기술 데모다.</p>
+      <p>4위는 시뮬레이션으로 배운 로봇이다. 애플 HALO는 컴퓨터로 만든 집 1,000곳에서 약 300시간 분량의 데이터로 배웠다. 처음 가 본 실제 집 6곳에서 360번 시도한 결과 단일 동작 평균 91%, 동작을 이어 붙이면 70% 성공했다. Luma AI ZAP은 시뮬레이션 과제 40개만으로 배워 실제 로봇 과제 30번 중 29번 성공했다. 샤오미는 전기차 공장에서 8시간 부품을 분류하는 영상을 냈지만 성공률은 밝히지 않았다.</p>
+      <p>5위 Meta Muse는 실시간 음성 대화와 아바타 기능으로, 응답까지 약 0.87초가 걸리며 지금은 미국에서만 쓸 수 있다. 6위 Figure AI 본사 영상에는 잔디밭에만 F.03 약 20대가 나왔지만 대수와 자율 여부는 공개되지 않았다. 7위 Mirage는 파라미터 5,130만 개, 2비트 파일 약 22MB인 비전 모델이다. 회사 측정으로 갤럭시 S26 NPU에서 74ms가 걸리며, 한국어는 지원하지 않는다. 수치는 모두 각 회사·연구진 발표 기준이다.</p>
+      <div class="box ">✅ 확인됨 · Robocurve 연구에서 인형을 사과로 바꾼 화면을 보여 주자 로봇 AI의 위험 동작 시도 비율이 97%(291/300)였다 — 연구 페이지에 원래 화면 81/300, 흐린 화면 263/300, 조작한 화면 291/300으로 나온다 · <a href="https://robocurve.org/robospoof/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 시험한 모델은 Claude Fable 5.1·Opus 5.5·GPT-6 Astra·GPT-6.1 Sol·Gemini 4 Argon 5개이고, 채점은 Claude Fable 5.1이 맡았다 — 연구 페이지에 모델 5개와 채점 모델이 그대로 나온다 · <a href="https://robocurve.org/robospoof/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · METR는 앤트로픽의 능력 향상 속도가 과거의 약 2배(1.3~3배)이고, 그중 약 80%가 AI 덕이라고 평가했다 — METR 보고서에 약 2배와 약 80% 추정이 나오며, 불확실성이 크다고 밝힌다 · <a href="https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=BeaSvdFfZFU" target="_blank" rel="noopener">이번 주 AI 뉴스 TOP7 (11/2~11/8)</a> · <a href="https://www.youtube.com/watch?v=--1ILUCG3b8" target="_blank" rel="noopener">AI 뉴스 TOP7 쇼츠 요약</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s16">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>구글 로건 킬패트릭 새 X 게시물에 &#39;두 번째 예언&#39; 해석 분분</h3>
+    <div class="one">게시물 내용은 확인하지 못했고, 무엇을 예고하는지는 커뮤니티 해석이다</div>
+    <ul class="pts"><li>로건 킬패트릭의 새 X 게시물을 &#39;두 번째 예언&#39;으로 보는 글이 나왔다</li><li>게시물 내용과 그 의미는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>구글에서 AI Studio·Gemini API를 맡고 있는 로건 킬패트릭의 X 게시물을 두고 커뮤니티가 &#39;두 번째 예언&#39;이라며 해석에 나섰다. 글쓴이는 예전 게시물이 이후 나온 여러 제품과 맞아떨어졌다며 &#39;적중한 예언&#39;이라고 부르고, 새로 올라온 게시물 링크를 함께 붙였다.</p>
+      <p>그러나 본지는 새 게시물을 직접 열어 보지 못했다. 게시물이 무엇을 예고하는지는 커뮤니티의 해석일 뿐이다. 앞선 게시물이 실제 제품과 맞았다는 주장도 사후에 맞춰 본 해석이라 그대로 믿기 어렵다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 로건 킬패트릭이 새 X 게시물을 올렸다 — 게시물을 직접 열어 보지 못했고, 무엇을 예고하는지는 커뮤니티 해석이다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517563" target="_blank" rel="noopener">예언자 로건 두 번째 예언 나왔다</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s19">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>젠슨 황 GTC 베를린 기조연설 정리…AI 공장, 에이전트 다섯 요소, OpenShell</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/l9s-UoKV9tc/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">에이전트는 모델·하네스·샌드박스·지식·도구로 이뤄진다고 했다</div>
+    <div class="fig">
+      <div class="cap">기조연설에서 나온 주요 기술<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="cards">
+        <div class="sk"><b>OpenShell</b>격리 실행과 바깥 감독관으로 에이전트 요청을 통제하는 오픈소스</div>
+        <div class="sk"><b>DSX POD</b>전기·냉각 준비 후 현장 설치 6개월을 14일로 줄인다는 발표</div>
+        <div class="sk"><b>RTX Spark</b>1페타플롭스·128GB 메모리의 소형 AI 컴퓨터</div>
+        <div class="sk"><b>Hyperion</b>카메라 14·레이더 9·라이다 3의 자율주행 표준 구성</div>
+      </div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>에이전트를 모델·하네스·샌드박스·지식·도구 다섯 요소로 정리했다</li><li>격리 실행 환경 OpenShell을 오픈소스로 공개했다. 앤트로픽 협업은 확인되지 않았다</li><li>RTX Spark는 1페타플롭스·128GB다. 베라 루빈 &#39;30배&#39;는 공식 블로그에 없다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>엔비디아 젠슨 황 CEO가 10월 21일 독일 베를린 GTC에서 한 1시간 반 분량의 기조연설을 정리한 영상이 올라왔다. 엔비디아 블로그에도 AI 공장, 에이전트의 다섯 요소, 오픈소스 OpenShell 등 같은 내용이 나온다.</p>
+      <p>첫 주제는 &#39;AI는 토큰을 만드는 공장&#39;이다. 젠슨 황은 AI 산업을 에너지·칩·AI 공장·모델·앱의 다섯 층으로 나눴다. 영상은 1기가와트 AI 공장 하나에 약 500억 달러가 든다고 전했다. 또 칩만이 아니라 서버·네트워크·소프트웨어를 함께 설계해 10년에 100만 배 발전을 이룬다고 했다. 영상은 차세대 베라 루빈이 블랙웰의 30배라고 했지만, 엔비디아 블로그에는 이 비교가 없어 확인되지 않았다. DSX POD로 현장 설치 기간이 6개월에서 14일로 준다는 내용은 블로그에 나온다. 단, 현장의 전기·냉각 설비가 준비된 뒤를 기준으로 한 말이다.</p>
+      <p>에이전트 이야기도 했다. 에이전트를 이루는 다섯 가지는 모델·하네스·샌드박스·지식·도구다. 하네스는 모델을 감싸 도구를 쓰게 하고 작업 흐름을 이끄는 틀이다. 흔한 일에는 비공개 모델을 쓰고, 회사 노하우는 공개 모델을 자기 데이터로 다듬어 담으라는 조언도 했다.</p>
+      <p>보안 부분에서는 &#39;제발 지우지 마&#39;라고 부탁하는 것으로는 보안이 안 된다며 OpenShell을 소개했다. 에이전트를 격리된 공간에서 돌리고, 바깥의 감독관이 나가는 요청을 정책과 맞춰 본다. 비밀 키는 감독관이 들고 있다가 허락된 곳으로 보낼 때만 붙인다. OpenShell은 오픈소스로 공개됐다. 영상은 앤트로픽과 Claude 에이전트 협업도 언급했지만, 엔비디아 블로그에는 이 내용이 없어 확인되지 않았다.</p>
+      <p>이 밖에 자율주행 택시 표준 구성 Hyperion(카메라 14·레이더 9·라이다 3)과 내년 1분기에 나올 사람형 로봇 Agile ONE도 소개했다. 손에 드는 크기의 RTX Spark는 1페타플롭스·128GB 메모리로, 블로그에도 같은 수치가 나온다. 영상은 이 수치가 2016년 OpenAI에 처음 납품한 AI 슈퍼컴퓨터와 같다고 설명했다.</p>
+      <div class="box ">✅ 확인됨 · 젠슨 황이 GTC 베를린 기조연설에서 AI 공장, 에이전트의 다섯 요소, 격리 실행 환경 OpenShell을 소개했다 — NVIDIA 블로그에 10월 21일 연설의 AI 공장, 다섯 요소(모델·하네스·샌드박스·지식·도구), 오픈소스 OpenShell이 나온다 · <a href="https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · DSX POD로 현장 설치 기간이 6개월에서 14일로 준다 — 블로그에 현장 전기·냉각 설비가 준비된 뒤 6개월에서 14일로 준다고 나온다 · <a href="https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · RTX Spark는 1페타플롭스·128GB이다 — 블로그에 1페타플롭스와 128GB 메모리가 나온다 · <a href="https://blogs.nvidia.com/blog/gtc-berlin-2026-keynote/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 베라 루빈은 블랙웰의 30배이다 — NVIDIA 블로그에 30배 비교는 없다</div>
+      <div class="box w">⚠️ 확인 안 됨 · OpenShell은 Anthropic과 Claude 에이전트 협업을 한다 — NVIDIA 블로그에 Anthropic 협업 언급이 없다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=l9s-UoKV9tc" target="_blank" rel="noopener">젠슨 황 GTC 베를린 기조연설 정리</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s10">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#39;Gemini 4 Flash(Hydrogen)&#39; 출시 임박 루머…공식 확인 없어</h3>
+    <div class="one">X 루머 한 건이 전부이며 구글 공식 발표는 없다</div>
+    <ul class="pts"><li>Gemini 4 Flash(Hydrogen) 출시가 임박했다는 X 루머가 돌았다</li><li>구글 공식 발표는 없고 성능 주장도 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>구글의 다음 경량 모델 &#39;Gemini 4 Flash&#39;(코드명 Hydrogen)가 곧 나온다는 X 게시물이 커뮤니티에 옮겨졌다. 게시물은 이 모델이 3.8 Flash보다 훨씬 강력하고, Flash 속도에 더 큰 모델에 가까운 지능을 갖출 것이라고 주장했다. &#39;Astra 6.2와 Fable 5.5가 곧 나오지 않으면 Flash 모델 판도를 흔들 것&#39;이라는 말도 덧붙였다.</p>
+      <p>그러나 구글의 공식 발표는 없다. 근거는 개인 X 계정의 주장뿐이고, 커뮤니티 글쓴이도 &#39;이건 또 뭐냐&#39;며 의심을 드러냈다. 출시 시점과 성능 모두 확인되지 않은 내용이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · Gemini 4 Flash(Hydrogen) 출시가 임박했다 — 구글 공식 발표가 없고 X 루머만 있다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516427" target="_blank" rel="noopener">x에서 본 또 뭔가 이상한 루머</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s2">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>모티프테크놀로지스, 엔비디아 참여 투자 유치 보도…&#39;모티프 4&#39; 내년 1분기 오픈웨이트 예정</h3>
+    <div class="one">보도로만 전해졌고, 엔비디아 투자도 &#39;참여 예정&#39;이다</div>
+    <ul class="pts"><li>모티프 4를 내년 1분기 오픈웨이트로 공개할 예정이라는 보도가 나왔다</li><li>엔비디아는 이번 투자에 &#39;참여 예정&#39;이며 금액은 비공개다</li><li>모든 내용은 언론 보도 수준으로, 공식 자료는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>국내 AI 파운데이션 모델 기업 모티프테크놀로지스가 차세대 대형언어모델(LLM) &#39;모티프 4&#39; 개발을 위한 투자 유치를 마무리하고 개발에 착수했다고 AI타임스 등이 보도했다. 보도에 따르면 이번 투자는 지난 5월 240억 원 규모 시리즈B에 이은 브릿지 라운드로, 기존 투자자와 함께 엔비디아가 참여할 예정이다. 투자 금액은 공개되지 않았다.</p>
+      <p>모티프 4는 &#39;모티프 3&#39;의 후속 모델로, 내년 1분기 오픈웨이트로 공개될 예정이라고 한다. 오픈웨이트는 학습된 모델의 가중치를 공개해 누구나 내려받아 쓸 수 있게 하는 방식이다. 보도에 따르면 모티프 3는 과학기술정보통신부 &#39;독자 AI 파운데이션 모델&#39; 사업에서 엔비디아 B200 GPU 768장으로 5개월 만에 만든 모델이다.</p>
+      <p>회사 측은 모티프 3에서는 기한과 자원이 부족해 강화학습 같은 사후학습을 충분히 하지 못했지만, 이번에는 자원을 확보한 만큼 사용성과 상업성까지 갖추겠다고 밝혔다고 한다. 다만 이 내용은 모두 언론 보도로만 확인되며, 엔비디아 투자도 확정이 아니라 &#39;참여 예정&#39;으로 전해졌다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 모티프테크놀로지스가 엔비디아가 참여하는 투자를 유치하고 &#39;모티프 4&#39; 개발에 착수했으며, 내년 1분기 오픈웨이트로 공개할 예정이다 — AI타임스·EBN 등의 보도만 있고, 엔비디아 투자도 &#39;참여 예정&#39;으로 전해졌다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 이번 투자는 5월 240억 원 규모 시리즈B에 이은 브릿지 라운드다 — 언론 보도로만 확인된다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518354" target="_blank" rel="noopener">투자 확보 성공, 모티브 4 개발 시작.</a></div>
+    </div></details>
+  </article>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-08.html#s26" target="_blank" rel="noopener">딥마인드 에세이 &#34;AI가 협업 문턱 넘어야 경제가 바뀐다&#34;</a>)</div>
+  </details>
+
+  <section id="reading">
+    <h2 class="lv2">오늘 읽은 자료</h2>
+    <div class="subt">19:00 수집 · 최근 48시간</div>
+    <div class="funnel">
+      <div class="big"><em>79개</em> 읽고 → 기사 <em>25개</em>로 <small>(이미 실린 21개는 뺐음)</small></div>
+      <div class="stack"><span class="dc" style="width:67.1%">53</span><span class="youtube" style="width:21.5%">17</span><span class="github" style="width:11.4%">9</span></div>
+      <div class="legend"><span><i class="dc"></i>디시 53</span><span><i class="youtube"></i>유튜브 17</span><span><i class="github"></i>트렌딩 9</span></div>
+    </div>
+    <div class="src"><div class="h"><b>디시 특이점갤</b><span class="num"><em>53</em>개 읽음 → 31개 씀</span></div>
+      <div class="rule">개념글 탭 · 최근 48시간 · 목록 최대 5페이지 · 글마다 본문 4,000자<br>본문 없는 글 4개</div></div>
+    <div class="src"><div class="h"><b>유튜버 9명</b><span class="num"><em>17</em>개 읽음 → 13개 씀</span></div>
+      <div class="rule">긴 영상 + 쇼츠 · 최근 48시간 · 제목·설명·자막<br>긴 영상 5 · 쇼츠 12</div></div>
+    <div class="src"><div class="h"><b>깃허브 트렌딩</b><span class="num"><em>9</em>개 중 AI 관련 7개</span></div>
+      <div class="rule">github.com/trending · 오늘 · 모든 언어 · 페이지에 보인 저장소 전부</div></div>
+    <div class="src"><div class="h"><b>공식 발표</b><span class="num"><em>0</em>개 읽음 → 0개 씀</span></div>
+      <div class="rule">Claude Code 릴리스 · Anthropic 뉴스 · 최근 48시간</div></div>
+    <div class="cap">유튜버별 (<i class="v"></i>긴 영상 <i class="s"></i>쇼츠)</div>
+    <div class="yt"><span class="l">조코딩 JoCoding</span><span class="t"><span class="s" style="width:100%"></span></span><span class="n">0 · 6 → <b>5</b></span></div>
+    <div class="yt"><span class="l">Solostack</span><span class="t"><span class="v" style="width:50%"></span><span class="s" style="width:33.3%"></span></span><span class="n">3 · 2 → <b>4</b></span></div>
+    <div class="yt"><span class="l">Claudical</span><span class="t"><span class="s" style="width:33.3%"></span></span><span class="n">0 · 2 → <b>2</b></span></div>
+    <div class="yt"><span class="l">바이브마피아 | AI Native 엔지니어</span><span class="t"><span class="s" style="width:33.3%"></span></span><span class="n">0 · 2 → <b>2</b></span></div>
+    <div class="yt"><span class="l">편집자P</span><span class="t"><span class="v" style="width:16.7%"></span></span><span class="n">1 · 0 → <b>0</b></span></div>
+    <div class="yt"><span class="l">달비의 작업실 | AI 자동화</span><span class="t"><span class="v" style="width:16.7%"></span></span><span class="n">1 · 0 → <b>0</b></span></div>
+    <div class="yt none"><span class="l">@codefundkimflip</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@codefactory_official</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@conanssam</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="note">숫자는 "긴 영상 · 쇼츠 → 신문에 쓴 수"</div>
+
+    <details class="appx"><summary>확인 안 된 주장 모음 (22)</summary>
+      <ul><li>⚠️ 확인 안 됨 · Qwen4 프리뷰 모델은 Max가 아닌 27B 모델이며 Opus 5.5급 성능이다 — Qwen 팀의 공식 발표는 없고 X 게시물의 전언만 있다 <a href="#s3">기사로</a></li><li>⚠️ 확인 안 됨 · AX인재전쟁 온라인 × 삼일PwC에서 상위 최대 40명이 면접을 보고 최대 9명이 채용된다 — 공식 신청 페이지에는 면접·채용 인원이 없고 일부 언론 보도에만 나온다 <a href="#s17">기사로</a></li><li>⚠️ 확인 안 됨 · K-엑사원 2.5 API를 전면 무료로 개방했다 — 코리아타임스 등 여러 언론이 보도했지만 공식 문서에서 무료 조건은 확인하지 못했다 <a href="#s1">기사로</a></li><li>⚠️ 확인 안 됨 · K-엑사원 2 대비 성능이 70% 향상됐다 — 24개 지표 기반 LG 내부 분석이라는 언론 보도만 있다 <a href="#s1">기사로</a></li><li>⚠️ 확인 안 됨 · 사이트는 무료다 — 사이트에서 요금이나 무료 여부에 대한 안내를 찾지 못했다 <a href="#s21">기사로</a></li><li>⚠️ 확인 안 됨 · Opus 5.5로 만든 영상이 230편 넘게 있다 — 사이트에 전체 영상 수가 나와 있지 않다 <a href="#s21">기사로</a></li><li>⚠️ 확인 안 됨 · 젠슨 황이 불륜을 인정했고 엔비디아 이사회가 조사에 착수한다 — Axios 보도만 있고 엔비디아 공식 발표는 확인하지 못했다 <a href="#s13">기사로</a></li><li>⚠️ 확인 안 됨 · 트럼프 대통령이 젠슨 황을 &#39;명예로운 사람&#39;이라고 말했다 — Fox News의 X 게시물만 있다 <a href="#s13">기사로</a></li><li>⚠️ 확인 안 됨 · 구글이 카본보다 좋은 내부 모델이 있다고 밝혔다 — 구글의 공식 발표를 찾지 못했고, 원문은 풍자글이다 <a href="#s7">기사로</a></li><li>⚠️ 확인 안 됨 · 영국 정부는 AI 데이터센터 건설을 늦출 계획이 없고 필수 기반시설로 추진한다 — FT 인터뷰를 인용한 Engadget 보도만 있고 영국 정부 공식 자료는 확인하지 못했다 <a href="#s14">기사로</a></li><li>⚠️ 확인 안 됨 · UK Compute Roadmap에 따르면 영국은 2030년까지 최소 6GW 컴퓨팅 용량을 확보해야 한다 — 로드맵 원문을 직접 확인하지 못했다 <a href="#s14">기사로</a></li><li>⚠️ 확인 안 됨 · 딥마인드 부사장이 과학적 발견 속도에 상전이가 일어나고 있으며 몇 주 안에 공개하겠다고 밝혔다 — 원래 게시물이나 딥마인드 공식 자료를 확인하지 못했다 <a href="#s8">기사로</a></li><li>⚠️ 확인 안 됨 · 앤트로픽 내부 Model 4가 AI 2027 예측 궤적을 앞질렀다 — 앤트로픽 공식 자료가 없고 커뮤니티의 그래프 해석이다 <a href="#s6">기사로</a></li><li>⚠️ 확인 안 됨 · 두 저장소가 깃허브 트렌딩에 올랐다 — 트렌딩 순위는 직접 확인하지 못했다 <a href="#s26">기사로</a></li><li>⚠️ 확인 안 됨 · OpenAI의 &#39;6.2 Sol&#39; 모델이 만든 결과물이 공유되고 있다 — OpenAI 공식 발표가 없고 X 게시물만 있다 <a href="#s4">기사로</a></li><li>⚠️ 확인 안 됨 · 로건 킬패트릭이 새 X 게시물을 올렸다 — 게시물을 직접 열어 보지 못했고, 무엇을 예고하는지는 커뮤니티 해석이다 <a href="#s16">기사로</a></li><li>⚠️ 확인 안 됨 · 같은 에러 질문에서 답이 30줄에서 12줄로, 293토큰에서 251토큰으로 줄었다 — 영상 제작자가 직접 시험한 결과라 공식 자료로 확인할 수 없다 <a href="#s20">기사로</a></li><li>⚠️ 확인 안 됨 · 베라 루빈은 블랙웰의 30배이다 — NVIDIA 블로그에 30배 비교는 없다 <a href="#s19">기사로</a></li><li>⚠️ 확인 안 됨 · OpenShell은 Anthropic과 Claude 에이전트 협업을 한다 — NVIDIA 블로그에 Anthropic 협업 언급이 없다 <a href="#s19">기사로</a></li><li>⚠️ 확인 안 됨 · Gemini 4 Flash(Hydrogen) 출시가 임박했다 — 구글 공식 발표가 없고 X 루머만 있다 <a href="#s10">기사로</a></li><li>⚠️ 확인 안 됨 · 모티프테크놀로지스가 엔비디아가 참여하는 투자를 유치하고 &#39;모티프 4&#39; 개발에 착수했으며, 내년 1분기 오픈웨이트로 공개할 예정이다 — AI타임스·EBN 등의 보도만 있고, 엔비디아 투자도 &#39;참여 예정&#39;으로 전해졌다 <a href="#s2">기사로</a></li><li>⚠️ 확인 안 됨 · 이번 투자는 5월 240억 원 규모 시리즈B에 이은 브릿지 라운드다 — 언론 보도로만 확인된다 <a href="#s2">기사로</a></li></ul>
+    </details>
+    <details class="appx"><summary>오늘 수집한 원문 전체 (79)</summary>
+      <details><summary>디시 53</summary>
+        <ul><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518354" target="_blank" rel="noopener">투자 확보 성공, 모티브 4 개발 시작.</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518279" target="_blank" rel="noopener">&#34;알트만씨 괜찮으면 저랑 식사 한끼..&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518267" target="_blank" rel="noopener">엑사원 2.5 High 게임 원샷</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518248" target="_blank" rel="noopener">&#34;알트만씨 괜찮으면 저랑 식사 한끼..&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518211" target="_blank" rel="noopener">영상은 opus가 잘만든다는 헛소문은 어디서 나온거임?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518101" target="_blank" rel="noopener">짤 존나 웃기네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518098" target="_blank" rel="noopener">엑사원 2.5 max 펠리컨</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518061" target="_blank" rel="noopener">이게 한국형 모델?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1518004" target="_blank" rel="noopener">LG K-엑사원 2.5 출시</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517942" target="_blank" rel="noopener">젠슨황 불륜 추가 사진 ㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517923" target="_blank" rel="noopener">념글 비관 트윗 올린 애가 어떤 애인지 알아보자</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517921" target="_blank" rel="noopener">젠슨황 ㄹㅇ 병신임</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517881" target="_blank" rel="noopener">딥시크는 저가칩을 쓴게 아니였어...</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517830" target="_blank" rel="noopener">초지능 금지하자는 새끼들이 존나 씹새끼들인 이유</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517825" target="_blank" rel="noopener">트럼프, 젠슨황 불륜에 관해 &#34;그는 명예로운 사람&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517811" target="_blank" rel="noopener">비관) 내부모델 3,4 궤적이 일회성 향상일 가능성이 크다는 의견</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517800" target="_blank" rel="noopener">교수들이 이야기하는 &#39;매트릭스 속 사람은 생명체인가?&#39;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517775" target="_blank" rel="noopener">영국, 개가 짖어도 데센 중단 계획 없어</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517728" target="_blank" rel="noopener">내부모델 모델4는 AI 2027 기준 에이전트1과 2 사이</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517243" target="_blank" rel="noopener">현재 AI 2027보다 6주 빠른게 사실이라면</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516628" target="_blank" rel="noopener">AI 2027 그래프 솔직히 따라가기 어려울줄 알았는데</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516739" target="_blank" rel="noopener">내년초까지 진짜 저 추세가 유지된다면</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517687" target="_blank" rel="noopener">구글, 카본보다 좋은 모델 있다 밝혀.</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517683" target="_blank" rel="noopener">프론티어 모델들은 과학적 발견의 엔진이 되는 중</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517663" target="_blank" rel="noopener">속보) 카본 찢는 상위모델 입갤 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517636" target="_blank" rel="noopener">OpenAI Dev 공식X)Tomorrow</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517574" target="_blank" rel="noopener">엔비디아 CEO 젠슨황 근황 ㄷㄷㄷㄷㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517563" target="_blank" rel="noopener">예언자 로건 두 번째 예언 나왔다 ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517548" target="_blank" rel="noopener">실시간 죽은 인터넷 근황....jpg</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517506" target="_blank" rel="noopener">6.2 Sol이 그린 아모데이</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517351" target="_blank" rel="noopener">6.2 Sol 결과물들</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517316" target="_blank" rel="noopener">규제 찬성하는 기사 읽어봤는데</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517218" target="_blank" rel="noopener">qwen4 진심으로 간절하게 응원하는 이유</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517171" target="_blank" rel="noopener">허접한 디시콘 그려달라니까 진짜 존나 허접하게 그려주네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517158" target="_blank" rel="noopener">qwen 4 flash 가 오오푸스급이라는건 팩트여야만 함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517134" target="_blank" rel="noopener">Qwen4 프리뷰 보니까 말이 안 되는데?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517131" target="_blank" rel="noopener">Qwen4 Flash&gt; Opus5.5</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517118" target="_blank" rel="noopener">속보) 딥마인드 부사장 Hype 발싸 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1517006" target="_blank" rel="noopener">딥마인드 념글 매우 흥미롭게 읽었다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516925" target="_blank" rel="noopener">다시보는 그 시절 지피티 ㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516771" target="_blank" rel="noopener">다큰낙타</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516696" target="_blank" rel="noopener">물처럼 싼 지능</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516667" target="_blank" rel="noopener">[정보] AI 모델별 화장실에서 똥 쌀 때 나는 소리 비교.mp3</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516651" target="_blank" rel="noopener">티보, 페이커를 뛰어넘겠다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516584" target="_blank" rel="noopener">퇴사한 oai 직원 메이플샤라웃 ㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516427" target="_blank" rel="noopener">x에서 본 또 뭔가 이상한 루머</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516423" target="_blank" rel="noopener">앤트로픽 내부 재귀개선 그래프 외삽치 최신버전</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516411" target="_blank" rel="noopener">MaxxBench 벤치마크</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516328" target="_blank" rel="noopener">역노화 임상 1차 실험 결과</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516289" target="_blank" rel="noopener">속보 아모데이 치매</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516278" target="_blank" rel="noopener">올해만큼 연말이 우울하지 않은 해는 처음이 될것 같다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516272" target="_blank" rel="noopener">과학의 마지막 시험 벤치마크</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1516047" target="_blank" rel="noopener">피규어 ceo, 곧 보일 세상 모습</a></li></ul></details>
+      <details><summary>유튜브 17</summary>
+        <ul><li><a href="https://www.youtube.com/watch?v=JsUBYmpSf7g" target="_blank" rel="noopener">AI야, 네고해달라는 데 어떻게 거절해?</a></li><li><a href="https://www.youtube.com/watch?v=FQHZgfJYxYA" target="_blank" rel="noopener">AI가 회계사를 없앤다고요? 삼일PwC 답은 정반대</a></li><li><a href="https://www.youtube.com/watch?v=tb7fFBV3Pm0" target="_blank" rel="noopener">개발자는 끝났다</a></li><li><a href="https://www.youtube.com/watch?v=mMTOqXD1JOk" target="_blank" rel="noopener">해커톤 나갔다가 삼일PwC에서 일하게 된 사람들</a></li><li><a href="https://www.youtube.com/watch?v=jQc3O2hbVF8" target="_blank" rel="noopener">회계법인이 &#39;회계 모르는 사람&#39;을 찾는 이유</a></li><li><a href="https://www.youtube.com/watch?v=e-YnU4rzWz4" target="_blank" rel="noopener">삼일PwC 문제엔 정답이 없습니다 (출제 측 힌트)</a></li><li><a href="https://www.youtube.com/watch?v=3AoQW4iL6uU" target="_blank" rel="noopener">[시즌 4][유료 광고] 힉스필드 + 에고라이트 + Codex로 AI 영상 워크플로 자동화 구성해보기</a></li><li><a href="https://www.youtube.com/watch?v=AG_a9FQk4Tc" target="_blank" rel="noopener">GitHub 별 11만 8천 개, Claude Code 토큰 줄이는 무료 스킬 | caveman</a></li><li><a href="https://www.youtube.com/watch?v=00KM4E_fBHQ" target="_blank" rel="noopener">Claude 모션그래픽, 프롬프트까지 공개한 무료 사이트 | Prompt Motion</a></li><li><a href="https://www.youtube.com/watch?v=9PBh1hsXcmk" target="_blank" rel="noopener">AI와의 커뮤니케이션 꿀TIP</a></li><li><a href="https://www.youtube.com/watch?v=U4e6wjns6YU" target="_blank" rel="noopener">의사결정 빠르게하는 꿀TIP</a></li><li><a href="https://www.youtube.com/watch?v=BeaSvdFfZFU" target="_blank" rel="noopener">인형을 사과로 바꾸자 로봇 AI 97%가 위험 동작 시도 · 이번 주 AI 뉴스 TOP7 (11/2~11/8)</a></li><li><a href="https://www.youtube.com/watch?v=--1ILUCG3b8" target="_blank" rel="noopener">인형을 사과로 바꾸니 로봇 AI 97%가 위험 동작 · AI 뉴스 TOP7</a></li><li><a href="https://www.youtube.com/watch?v=yGwQ7_EeQ3Y" target="_blank" rel="noopener">Rust 기반 Axum vs Python 기반 FastAPI, 어떤 걸 써야 하냐?</a></li><li><a href="https://www.youtube.com/watch?v=BifSnucXJYg" target="_blank" rel="noopener">대세 오케스트레이션 툴 PASEO 실 사용기</a></li><li><a href="https://www.youtube.com/watch?v=l9s-UoKV9tc" target="_blank" rel="noopener">젠슨 황 GTC 베를린 기조연설 정리: AI 공장, 에이전트 다섯 가지, RTX Spark</a></li><li><a href="https://www.youtube.com/watch?v=6rFAiXvLGN4" target="_blank" rel="noopener">ego lite 실사용기|크롬, Aside랑 27번 돌려 비교했습니다</a></li></ul></details>
+      <details><summary>트렌딩 9</summary>
+        <ul><li><a href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener">sherlock-project/sherlock</a></li><li><a href="https://github.com/dsx-ai-factory/nvke" target="_blank" rel="noopener">dsx-ai-factory/nvke</a></li><li><a href="https://github.com/milind-soni/OpenMausBot" target="_blank" rel="noopener">milind-soni/OpenMausBot</a></li><li><a href="https://github.com/anthropics/claude-quickstarts" target="_blank" rel="noopener">anthropics/claude-quickstarts</a></li><li><a href="https://github.com/vercel-labs/agent-browser" target="_blank" rel="noopener">vercel-labs/agent-browser</a></li><li><a href="https://github.com/meta/astryx" target="_blank" rel="noopener">meta/astryx</a></li><li><a href="https://github.com/anthropics/skills" target="_blank" rel="noopener">anthropics/skills</a></li><li><a href="https://github.com/google-deepmind/mujoco" target="_blank" rel="noopener">google-deepmind/mujoco</a></li><li><a href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">ranxianglei/billion-context</a></li></ul></details>
+    </details>
+  </section>
+</div>
+<script>
+  // 닫힌 섹션 안의 기사로 가는 링크(#s3, 다른 날 신문의 ...html#s3)도 보이게: 목표를 감싼 <details>를 모두 연다
+  function openTo(id) {
+    var el = id && document.getElementById(id);
+    for (var p = el && el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    return el;
+  }
+  function openHash() { var el = openTo(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+  // 페이지 안 링크는 여기서 연 뒤 브라우저가 원래대로 그 자리로 스크롤한다
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) openTo(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+</script>
+</body>
+</html>
