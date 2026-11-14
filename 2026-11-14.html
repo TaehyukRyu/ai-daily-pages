@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 데일리 · 11월 14일 (토) 저녁판</title>
+<style>
+  :root { --bg: #FCEBD7; --ink: #3B2A1F; --muted: #8A7563; --acc: #E07A2E; --bar: #DCC5A6; --card: #FFF6EC; --line: #EBD3B5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+  #np { max-width: 640px; margin: 0 auto; padding: 22px 16px 40px; scroll-behavior: smooth; word-break: keep-all; overflow-wrap: anywhere; }
+  a { color: inherit; }
+  .date { font-size: 13px; color: var(--muted); }
+  .date a { color: var(--acc); font-weight: 800; text-decoration: none; white-space: nowrap; }
+  h1 { font-size: 34px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; margin: 4px 0 12px; }
+  .lv2 { font-size: 26px; font-weight: 900; letter-spacing: -.6px; line-height: 1.25; margin: 30px 0 10px; padding-left: 12px; border-left: 6px solid var(--acc); }
+  .lv2 small { font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+  details.sec { border-bottom: 1.5px solid var(--line); }
+  details.sec > summary { padding: 16px 0; }
+  details.sec > summary .lv2 { margin: 0; display: flex; align-items: center; gap: 8px; }
+  details.sec > summary .lv2::after { content: "펼치기 ▾"; margin-left: auto; flex: none; font-size: 13px; font-weight: 800; letter-spacing: 0; color: var(--acc); }
+  details.sec[open] > summary .lv2::after { content: "접기 ▴"; }
+  .cnt { flex: none; font-size: 14px; font-weight: 800; letter-spacing: 0; padding: 1px 9px; border-radius: 999px; background: var(--acc); color: #fff; }
+  .callout { border-left: 5px solid var(--acc); padding: 4px 0 4px 14px; margin: 6px 0 14px; }
+  .callout .k { font-size: 13px; font-weight: 800; color: var(--muted); }
+  .callout .v { font-size: 21px; font-weight: 900; line-height: 1.35; margin-top: 4px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1.4; padding: 3px 9px; border-radius: 6px; background: var(--acc); color: #fff; white-space: nowrap; }
+  .pill.soft, .pill.none { background: var(--bar); color: var(--ink); }
+  .pill.ok { background: #5E8C4A; }
+  .pill.warn { background: #fff; color: var(--acc); border: 1.5px solid var(--acc); padding: 1.5px 7.5px; }
+  .pill.bad { background: #B83A2B; }
+  .pill.sm { font-size: 10.5px; padding: 0 5px; }
+  .tags a { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0; font-size: 14px; text-decoration: none; }
+  .tags .pill { flex: none; }
+  .tags .person .pill { background: var(--bar); color: var(--ink); }
+  .cap { font-size: 13px; font-weight: 800; color: var(--muted); margin: 16px 0 8px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .rank .b { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 28px; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0; text-decoration: none; }
+  .rank .lbl { display: flex; justify-content: flex-end; align-items: center; gap: 4px; min-width: 0; }
+  .rank .nm, .fig .b .l, .yt .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank .lbl .pill, .rank .ic { flex: none; }
+  .track { display: block; height: 18px; }
+  .fill { display: block; height: 100%; background: var(--bar); border-radius: 3px; min-width: 2px; }
+  .fill.hot { background: var(--acc); }
+  .rank .n { font-weight: 800; }
+  .toc { margin: 18px 0 4px; padding: 10px 12px; background: var(--card); border-radius: 10px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .toc a { color: var(--acc); font-weight: 700; }
+  .toc button { font: inherit; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 14px; border: 1.5px solid var(--acc); background: #fff; color: var(--acc); cursor: pointer; white-space: nowrap; }
+  .art { padding: 16px 0 14px; border-top: 1.5px solid var(--line); }
+  .art .top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .art h3 { font-size: 19px; font-weight: 900; line-height: 1.35; letter-spacing: -.3px; margin: 10px 0; }
+  .thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; margin-bottom: 12px; background: var(--bar); }
+  .one { border-left: 4px solid var(--acc); padding: 2px 0 2px 12px; font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 14px; }
+  .fig { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .fig .cap { margin: 0 0 8px; font-size: 12px; }
+  .fig .cap .pill { margin-left: 4px; vertical-align: 1px; }
+  .fig .src { font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .fig .b { display: grid; grid-template-columns: minmax(0, 96px) 1fr 58px; gap: 6px; align-items: center; font-size: 12.5px; margin: 5px 0; }
+  .fig .b .l { text-align: right; }
+  .fig .b .track { height: 14px; }
+  .fig .b .fill { border-radius: 2px; }
+  .fig .b .n { font-weight: 800; }
+  .flow { display: flex; align-items: stretch; gap: 4px; }
+  .flow .s { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px 6px; text-align: center; font-size: 12.5px; line-height: 1.35; }
+  .flow .s b { display: block; color: var(--acc); font-size: 18px; }
+  .flow .s small { display: block; color: var(--muted); margin-top: 2px; }
+  .flow .ar { flex: none; align-self: center; color: var(--acc); font-weight: 900; }
+  .flow.col { flex-direction: column; }
+  .flow.col .s { flex: none; display: flex; align-items: baseline; gap: 10px; text-align: left; padding: 6px 10px; }
+  .flow.col .s b { font-size: 16px; }
+  .flow.col .s small { margin: 0 0 0 auto; text-align: right; }
+  .flow.col .ar { transform: rotate(90deg); line-height: 1; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px; }
+  .cards .sk { background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px; font-size: 12px; line-height: 1.35; min-width: 0; }
+  .cards .sk b { display: block; font-size: 13.5px; }
+  .cards .st { color: var(--acc); font-weight: 900; font-size: 15px; margin-top: 4px; }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check li { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 6px 0; line-height: 1.4; }
+  .check .i { flex: none; width: 20px; height: 20px; border-radius: 50%; background: #5E8C4A; color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .check .i.new { background: var(--acc); }
+  .pts { margin: 0 0 10px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+  details.more { font-size: 14px; }
+  details summary { list-style: none; cursor: pointer; font-weight: 800; }
+  details summary::-webkit-details-marker { display: none; }
+  details.more > summary { font-size: 13.5px; }
+  details.more > summary::after { content: " ▸"; }
+  details.more[open] > summary::after { content: " ▾"; }
+  .body { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .body p { margin: 0 0 9px; font-size: 15px; }
+  .body .follow { font-size: 13px; color: var(--muted); }
+  .body .follow a, .links a, .box a { color: var(--acc); }
+  .box { margin: 6px 0 9px; padding: 8px 10px; background: #EEF3E8; border-left: 3px solid #5E8C4A; border-radius: 4px; font-size: 13.5px; }
+  .box.w { background: #fff; border-left-color: var(--acc); }
+  .box.r { background: #F8E3DE; border-left-color: #B83A2B; }
+  .links { font-size: 13.5px; color: var(--muted); }
+  .react { margin: 6px 0 10px; padding: 8px 12px; background: var(--card); border-radius: 8px; font-size: 13.5px; }
+  .react a { color: var(--acc); }
+  #reading { margin-top: 12px; }
+  #reading .subt { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .funnel { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+  .funnel .big { font-size: 20px; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+  .funnel .big em { font-style: normal; color: var(--acc); }
+  .funnel .big small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .stack { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+  .stack span { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+  .dc { background: var(--acc); color: #fff; }
+  .youtube { background: #E9A56B; }
+  .github { background: var(--bar); }
+  .official { background: #B9A48B; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .fail { font-size: 13px; color: #B83A2B; margin: 0 0 8px; }
+  #reading .src { background: var(--card); border-left: 5px solid var(--acc); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  #reading .src .h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  #reading .src .h b { font-size: 15px; }
+  #reading .src .num { font-size: 13px; font-weight: 800; white-space: nowrap; }
+  #reading .src .num em { font-style: normal; color: var(--acc); font-size: 16px; }
+  #reading .src .rule { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .yt { display: grid; grid-template-columns: minmax(0, 92px) 1fr 74px; gap: 6px; align-items: center; font-size: 12.5px; margin: 6px 0; }
+  .yt .l { text-align: right; }
+  .yt .t { display: flex; height: 16px; }
+  .yt .v, .cap .v { background: var(--acc); }
+  .yt .s, .cap .s { background: var(--bar); }
+  .yt .o { background: #E9A56B; }
+  .cap i { display: inline-block; width: 10px; height: 10px; margin: 0 3px 0 6px; vertical-align: -1px; }
+  .yt .n { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .yt .n b { color: var(--ink); }
+  .yt.none .l, .yt.none .n { color: #B3A08D; }
+  details.appx { margin: 12px 0 0; font-size: 14px; }
+  details.appx ul { margin: 6px 0 0 18px; padding: 0; }
+  details.appx li { margin-bottom: 4px; }
+  details.appx a { color: var(--acc); }
+  details.appx details { margin: 6px 0 0 8px; }
+  details.appx > summary::after, details.appx details > summary::after { content: " ▸"; color: var(--muted); }
+  details.appx[open] > summary::after, details.appx details[open] > summary::after { content: " ▾"; }
+</style>
+</head>
+<body>
+<div id="np">
+  <div class="date">11월 14일 (토) 저녁판 · 훑어보기 약 10분 · 전체 약 42분 · <a href="#reading">117개 읽고 25개 기사로 ▸</a></div>
+  <h1>AI 데일리</h1>
+  <div class="callout"><div class="k">오늘 한 줄</div><div class="v">앤트로픽이 상장 서류를 냈고 Claude Code v2.1.325가 보안 문제를 고쳤다. Claude Meetings 풀이도 이어졌다.</div></div>
+  <div class="tags">
+    <a class="issue" href="#s4"><span class="pill">큰 이슈</span><span>앤트로픽, 나스닥 상장 서류 S-1 제출</span></a>
+    <a class="skill" href="#s18"><span class="pill">떠오르는 스킬</span><span>주식 분석용 Claude Code 스킬 모음 트렌딩</span></a>
+  </div>
+  <h2 class="lv2">오늘 화제 순위 <small>(다룬 글·영상 수)</small></h2>
+  <div class="rank">
+    <a class="b" href="#s21"><span class="lbl"><span class="nm">교황 트랜스휴머니즘 비판 …</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">5</span></a>
+    <a class="b" href="#s20"><span class="lbl"><span class="nm">&#39;지능 폭발&#39; 논쟁 계속……</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">5</span></a>
+    <a class="b" href="#s27"><span class="lbl"><span class="nm">개발자 대체 논쟁…&#34;손으로…</span></span><span class="track"><span class="fill" style="width:80%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s28"><span class="lbl"><span class="nm">AI 창작물 논쟁…웹소설 …</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:60%"></span></span><span class="n">3</span></a>
+    <a class="b" href="#s4"><span class="lbl"><span class="nm">앤트로픽, 상장 위한 S-…</span><span class="ic">⚠️</span></span><span class="track"><span class="fill" style="width:40%"></span></span><span class="n">2</span></a>
+  </div>
+  <div class="note">막대를 누르면 그 기사로 이동 · 많이 다뤄졌다는 뜻일 뿐, 사실이라는 뜻은 아님</div>
+
+  <div class="toc"><span>업데이트 6 · 새 도구 5 · 팁 3 · 이슈 11 · <a href="#reading">읽은 자료</a></span>
+    <button onclick="var d=document.querySelectorAll('#np details.sec, #np details.more');var open=this.dataset.o!=='1';d.forEach(function(x){x.open=open});this.dataset.o=open?'1':'0';this.textContent=open?'모두 접기':'모두 펼치기';">모두 펼치기</button></div>
+
+  <details class="sec"><summary><h2 class="lv2">업데이트 · Claude Code와 모델 <span class="cnt">6</span></h2></summary>
+  <article class="art" id="s2">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브 2</span></div>
+    <h3>Claude Meetings 풀이 잇따라…되는 것과 안 되는 것 정리</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/uhlDSbI7Eno/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">Google Meet 전용, Team·Enterprise 베타이며 외부 손님 회의엔 제약이 있다</div>
+    <div class="fig">
+      <div class="cap">Claude Meetings 베타에서 할 수 있는 것과 제약</div>
+      <ul class="check">
+        <li><span class="i new">+</span><span>Google Meet에 참석자로 들어와 채팅으로 답변</span></li>
+        <li><span class="i new">+</span><span>회의 중 문서·화이트보드·슬라이드 만들기</span></li>
+        <li><span class="i new">+</span><span>회의 뒤 요약·할 일·대화 기록을 회의 페이지에 정리</span></li>
+        <li><span class="i">✓</span><span>Team·Enterprise 요금제만, 차례로 배포</span></li>
+        <li><span class="i">✓</span><span>ZDR·HIPAA-ready·CMEK 조직은 베타 제외</span></li>
+        <li><span class="i">✓</span><span>외부 회의록 서비스 연동은 아직 안 됨</span></li>
+      </ul>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>캘린더 연결 뒤 회의마다 &#39;Add Claude&#39;로 넣거나 자동 참석시킨다</li><li>Google Meet·Team·Enterprise만, ZDR·HIPAA·CMEK 조직은 베타 제외</li><li>회의 중 만든 문서·화이트보드는 2027년 2월 10일까지 무료</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-13.html#s4" target="_blank" rel="noopener">앤트로픽 &#39;Claude Meetings&#39; 베타…화상 회의에 들어와 문서·화이트보드를 만든다</a></p>
+      <p>어제 신문의 「앤트로픽 &#39;Claude Meetings&#39; 베타…화상 회의에 들어와 문서·화이트보드를 만든다」에 이어, 이 기능을 공식 발표문과 도움말로 풀이한 영상이 잇따라 나왔다. 앤트로픽은 11월 12일 Claude가 Google Meet 회의에 눈에 보이는 참석자로 들어오는 Claude Meetings를 베타로 공개했다. 공식 글로 확인된 사실이다.</p>
+      <p>새로 정리된 것은 쓰는 방법이다. 풀이 영상에 따르면 Claude의 Meetings 화면에서 구글 캘린더를 연결하고 회의를 골라 &#39;Add Claude&#39;를 누르면 된다. 모든 회의 또는 1:1을 뺀 회의에 자동으로 참석하게 할 수도 있다. Claude는 참가자 칸으로 보이고, 칸에 지금 하는 일이 표시된다.</p>
+      <p>회의 중에는 &#34;Claude&#34; 하고 말로 부르거나 Meet 채팅에 입력해 묻는다. 기본 답은 채팅창에 글로 오며, 통화 참가자 모두에게 보인다. 문서·화이트보드·슬라이드 같은 결과물(아티팩트)을 회의 중에 만들고 초대된 팀원이 같이 고칠 수 있다. 슬랙 같은 연결 도구도 쓸 수 있는데, 각자의 도구는 그 사람의 허락을 처음 한 번 받고 이후 유지된다고 영상은 설명했다.</p>
+      <p>회의가 끝나면 요약·결정 사항·할 일·정하지 못한 질문이 담긴 회의록과 대화 기록, 만든 결과물이 claude.ai 회의 페이지에 모이고, 초대된 사내 사람에게 요약 메일이 간다. Gong·Granola·Fireflies.ai·Otter 등 다른 회의록 서비스로 기록을 보내는 기능은 &#39;곧&#39; 나온다고만 돼 있어 아직 쓸 수 없다.</p>
+      <p>제약도 분명하다. 지금은 Google Meet만, Team·Enterprise 요금제만 쓸 수 있고 차례로 열리는 중이다. 데이터를 남기지 않는 ZDR, HIPAA-ready, 고객 관리 키(CMEK)를 쓰는 조직은 베타 동안 제외된다. 이 내용은 공식 글로 확인됐다. 영상에 따르면 외부 손님이 있는 회의는 Enterprise에선 기본적으로 막히고 Team에선 허용되며, 허용된 회의에서도 Claude는 채팅으로 답하지 않고 듣고 적기만 한다. 음성 파일은 저장하지 않지만 대화 기록과 요약은 저장되므로, 넣기 전에 참석자 모두의 동의를 받으라는 것이 공식 안내다.</p>
+      <p>요금은 베타 동안 노트·대화 기록·연결 도구를 안 쓰는 답변이 요금제에 포함되고, 회의에서 만든 문서·화이트보드는 2027년 2월 10일까지 무료다. 이것도 공식 글과 일치한다. 연결 도구를 쓰면 그 사람의 사용량에서 빠진다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 11월 12일 Claude가 Google Meet 회의에 참석자로 들어오는 Claude Meetings를 베타로 공개했다 — 공식 글에 11월 12일 베타 공개와 현재 Google Meet만 지원한다는 내용이 있다. · <a href="https://claude.com/resources/articles/claude-meetings" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Team·Enterprise 플랜에 차례로 열리며 ZDR·HIPAA-ready·CMEK 조직은 베타 동안 제외된다 — 공식 글에 Team·Enterprise 배포와 제외 조직 목록이 적혀 있다. · <a href="https://claude.com/resources/articles/claude-meetings" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 회의 중 만든 문서·화이트보드 등은 2027년 2월 10일까지 무료이고, 노트·대화 기록은 베타 동안 요금제에 포함된다 — 공식 글의 요금 안내와 일치한다. · <a href="https://claude.com/resources/articles/claude-meetings" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=gy3i6dsm9tI&amp;t=175s" target="_blank" rel="noopener">Claude Meetings로 되는 것과 안 되는 것 (조심할 점)</a> · <a href="https://www.youtube.com/watch?v=uhlDSbI7Eno" target="_blank" rel="noopener">Claude가 이제 화상회의에 참석합니다</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s22">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">디시 2</span></div>
+    <h3>Gemini 4 Carbon, MathArena 종합 1위…고전 번역 후기도 공유</h3>
+    <div class="one">MathArena 순위표에서 Carbon(high)이 85.4%로 1위인 것이 확인됐다</div>
+    <ul class="pts"><li>MathArena 순위표에서 Gemini 4 Carbon(high)이 85.4%로 1위다</li><li>최신 경시대회 문제로 재는 수학 평가다</li><li>고전 번역 후기는 개인 감상이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-12.html#s4" target="_blank" rel="noopener">Gemini 4 Carbon 써 보니…&#34;Opus 5.5가 약 4.46배 비쌌다&#34;는 개인 측정</a></p>
+      <p>지난 12일 신문의 「Gemini 4 Carbon 써 보니…&#34;Opus 5.5가 약 4.46배 비쌌다&#34;는 개인 측정」에 이어 Carbon 관련 소식이 이어졌다. 이번엔 수학 성능이다. 특이점 갤러리에 Carbon이 MathArena 1위에 올랐다는 글이 올라왔고, 실제로 MathArena 대문 순위표에서 Gemini 4 Carbon(high)이 85.4%로 1위인 것이 확인됐다.</p>
+      <p>MathArena는 새로 나온 수학 경시대회 문제로 모델을 시험하는 평가다. 학습 데이터에 문제가 섞였을 가능성을 줄이려고 최신 대회 문제를 쓰는 것이 특징이다. 지난번 기사가 비용 쪽 이야기였다면, 이번에는 공개 순위표로 성능이 확인됐다는 점이 새롭다.</p>
+      <p>다른 이용자는 Carbon에게 100년 전 글을 번역시켰더니 &#39;잘 쓰인 고전 번역서 수준&#39;이었다는 후기를 남겼다. 개인 감상이라 다른 모델과 비교할 근거는 없다.</p>
+      <div class="box ">✅ 확인됨 · Gemini 4 Carbon이 MathArena 종합 1위에 올랐다 — MathArena 대문 순위표에서 Gemini 4 Carbon(high)이 85.4%로 1위다. · <a href="https://matharena.ai/" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528446" target="_blank" rel="noopener">특이점 갤러리: 카본 MathArena 1위</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529027" target="_blank" rel="noopener">특이점 갤러리: 카본 고전 번역 후기</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s1">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>Claude Code v2.1.325 출시…zstd 응답 해석 보안 문제 수정</h3>
+    <div class="one">보안 수정 1건과 서브에이전트·세션 복구 등 버그 수정이 대거 들어왔다</div>
+    <div class="fig">
+      <div class="cap">v2.1.325 주요 변경</div>
+      <ul class="check">
+        <li><span class="i">✓</span><span>zstd 압축 응답 디코딩 보안 문제 수정</span></li>
+        <li><span class="i new">+</span><span>정책 차단 시 /rewind·/clear 안내 줄 추가</span></li>
+        <li><span class="i new">+</span><span>Jupyter 노트북 셀 재실행 팁 추가</span></li>
+        <li><span class="i new">+</span><span>샌드박스 git이 보호 파일을 못 바꿀 때 Claude에 메모</span></li>
+        <li><span class="i">✓</span><span>opusplan·haiku 설정에서 서브에이전트 모델 바뀌던 문제 수정</span></li>
+        <li><span class="i">✓</span><span>게이트웨이·Foundry에서 압축 대신 오류로 멈추던 문제 수정</span></li>
+        <li><span class="i">✓</span><span>비정상 종료 뒤 재개 세션에서 최근 턴 누락 수정</span></li>
+        <li><span class="i">✓</span><span>plansDirectory 저장 실패 시 계획 유실 수정</span></li>
+      </ul>
+      <div class="src">출처: Claude Code</div>
+    </div>
+    <ul class="pts"><li>zstd 압축 응답 디코딩의 보안 문제를 고쳤다</li><li>정책 차단 오류 아래 &#39;/rewind 또는 /clear&#39; 안내가 붙는다</li><li>서브에이전트 모델이 계획 모드 모델로 바뀌던 버그 등을 수정했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 Claude Code v2.1.325를 내놨다. 공식 릴리스 노트의 첫 줄은 보안 수정이다. zstd로 압축된 응답을 풀어 읽는(디코딩) 과정에 있던 보안 문제를 고쳤다고 밝혔다. zstd는 데이터를 작게 줄여 주고받는 압축 방식이다. 노트는 문제의 구체적인 내용은 적지 않았지만, 보안 항목인 만큼 바로 업데이트하는 편이 낫다.</p>
+      <p>사용자가 직접 체감할 변화도 있다. 조직 정책이 요청을 막으면 지금까지는 오류만 떴는데, 이제 그 아래에 이어가는 방법이 한 줄 붙는다. `/rewind`로 되돌아가 메시지를 고치거나 `/clear`로 대화를 비우라는 안내다. 회사 계정에서 정책 차단을 자주 겪던 사용자에게는 막힌 자리에서 무엇을 해야 하는지 알려 주는 변화다.</p>
+      <p>VS Code처럼 편집기 안에 붙은 터미널에서는 Claude가 Jupyter 노트북을 읽거나 고친 뒤 &#39;노트북 셀을 다시 실행하라&#39;는 팁이 스피너(작업 중 표시)에 한 번 뜬다. 샌드박스 안에서 `git checkout`, `git stash`, 자동 stash가 `.claude` 폴더 같은 보호된 파일을 바꾸지 못하면 Claude에게 그 사실을 알려 주는 메모도 추가됐다.</p>
+      <p>서브에이전트 관련 수정이 눈에 띈다. 모델 설정이 `opusplan`이나 `haiku`일 때 자기 모델을 따로 지정한 서브에이전트가 계획 모드용 모델로 바뀌어 버리던 문제를 고쳤다. 다른 모델로 도는 서브에이전트가 파일 읽기와 MCP 결과 크기를 메인 세션 모델 기준으로 재던 문제도 고쳤다. 서브에이전트에 싼 모델을 붙여 비용을 나누던 사용자라면 의도대로 동작하는지 다시 볼 만하다.</p>
+      <p>세션 안정성도 손봤다. 여러 서드파티 게이트웨이와 Foundry에서 대화를 압축(compact)하지 못하고 매 턴 컨텍스트 길이 오류로 멈추던 문제, 깔끔하게 종료되지 않은 뒤 세션을 다시 열면 최근 턴이 빠지던 문제가 수정됐다. 작업 폴더가 지워진 뒤 셸 명령이 처음 실행한 폴더에서 돌던 문제는 이제 메시지와 함께 실패하고 다시 내릴 수 있게 바뀌었다.</p>
+      <p>계획 저장도 바뀌었다. `plansDirectory` 폴더에 승인된 계획을 저장하지 못하면 계획이 사라지던 문제를 고쳐, 기본 계획 폴더에 저장하고 어디에 왜 저장했는지 경고로 알려 준다. 저장된 `sonnet[1m]` 설정이 새로 설치할 때 API가 받지 않는 모델 ID로 바뀌던 문제도 고쳤다.</p>
+      <p>그 밖에 `/security-review`와 스킬 속 git 명령이 bare 저장소의 워크트리, `--separate-git-dir` 체크아웃, 안드로이드 `repo` 체크아웃에서 오류로 멈추던 문제, `/stats`의 활동 일수가 하루 많게 나오던 문제, `/insights`가 분석할 세션이 없는데도 보고서가 준비됐다고 하던 문제와 HTML 보고서에 값 두 개를 이스케이프 없이 쓰던 문제, `claude purge`가 터미널이 없을 때 조용히 멈추던 문제 등이 고쳐졌다. 로그인·`/fast`·`/model` 안내 문구가 실제 상태와 다르게 나오던 문제도 여럿 정리됐다.</p>
+      <div class="box ">✅ 확인됨 · Claude Code v2.1.325에서 zstd 압축 응답 해석의 보안 문제가 수정됐다 — 공식 릴리스 노트에 해당 수정 항목이 있다. · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.325" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 조직 정책이 요청을 막을 때 오류 아래에 /rewind로 메시지를 바꾸거나 /clear를 하라는 안내 줄이 추가됐다 — 공식 릴리스 노트에 같은 내용이 있다. · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.325" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.325" target="_blank" rel="noopener">Claude Code v2.1.325 릴리스 노트</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s3">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>Gemini 4 Hydrogen 직접 써 본 후기…&#34;Sonnet보다 싸다&#34;지만 비교 수치는 일부만 확인</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/qyiZ9QvEamo/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">Hydrogen 가격과 터미널 점수 57%는 확인됐고 Sonnet 5.5 쪽 수치는 확인 안 됐다</div>
+    <div class="fig">
+      <div class="cap">할 일 앱 만들기 과제 소요 시간(개인 측정, 5회 중앙값)<span class="pill warn sm">수치 확인 못 함</span></div>
+      <div class="b"><span class="l">Hydrogen high</span><span class="track"><span class="fill hot" style="width:57.5%"></span></span><span class="n">42초</span></div>
+      <div class="b"><span class="l">3.8 Flash high</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">73초</span></div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>Hydrogen 가격 입력 1.5달러·출력 7.5달러와 터미널 점수 57%는 확인됐다</li><li>Sonnet 5.5 대비 &#39;25% 싸다&#39;는 비교는 Sonnet 쪽 수치가 확인 안 됐다</li><li>개인 측정: 앱 과제는 Hydrogen이 빠르고, 짧은 답은 Opus 5.5가 빨랐다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-13.html#s2" target="_blank" rel="noopener">구글, 빠른 모델 Gemini 4 Hydrogen 공개…입력 1.5달러, xhigh 단계와 오케스트레이터 추가</a></p>
+      <p>어제 신문의 「구글, 빠른 모델 Gemini 4 Hydrogen 공개…입력 1.5달러, xhigh 단계와 오케스트레이터 추가」에 이어, 이 모델을 터미널과 API로 직접 불러 써 본 후기 영상이 나왔다. 구글이 11월 12일 Hydrogen을 출시했다는 점과 100만 토큰당 입력 1.50달러·출력 7.50달러 가격은 구글 블로그로 확인됐다. 100만 토큰 컨텍스트 전체에 같은 요금이 붙는다.</p>
+      <p>영상은 Claude Sonnet 5.5가 입력 2달러·출력 10달러라 Hydrogen이 25% 싸다고 했다. 또 터미널 작업 시험 Terminal-Bench 4.1에서 Hydrogen이 57.0%, Sonnet 5.5가 63.9%라고 비교했다. 이 가운데 Hydrogen의 57%는 구글 블로그로 확인됐지만, Sonnet 5.5의 가격과 점수는 공식 자료로 확인되지 않았다. 따라서 &#39;25% 싸다&#39;는 비교는 확인되지 않은 주장이다.</p>
+      <p>새로 알려진 것은 실사용 정보다. 영상에 따르면 Antigravity 앱·CLI에서 Google AI Pro·Ultra 구독으로 고를 수 있고, CLI에서는 low·medium·high·xhigh 4단계를 쓸 수 있다. API 모델 이름은 gemini-4-hydrogen이다. AI Studio 무료 키로도 쓸 수 있지만 제작자는 하루 20번에서 막혔다고 했다. 예전 Gemini CLI는 개인 구글 계정 로그인을 더 받지 않아 API 키가 필요하다고 한다.</p>
+      <p>캐시는 4,096토큰 이상 요청의 앞부분이 자동으로 저장되고, 캐시 읽기는 입력값의 5%인 0.075달러라고 영상은 설명했다. Vertex AI 가격표 기준으로 캐시 쓰기 요금 1.875달러는 2027년 1월 12일부터 붙는다고 했다.</p>
+      <p>제작자가 직접 잰 속도(Antigravity CLI, 모델마다 5회 중앙값)에서는 할 일 앱을 만들고 테스트까지 통과시키는 과제에 Hydrogen high가 42초, Gemini 3.8 Flash high가 73초 걸렸다. 반면 짧은 함수 하나는 Claude Opus 5.5 high가 2.5초, Hydrogen high가 4.3초로 Claude가 빨랐다. 개인 측정이라 조건에 따라 달라질 수 있다. 영상의 결론은 비슷한 급의 작업을 더 싸게 많이 돌리려면 써 볼 만하지만, 짧은 답을 빨리 받는 데는 Claude가 나았다는 것이다.</p>
+      <div class="box ">✅ 확인됨 · 구글이 11월 12일 Gemini 4 Hydrogen을 출시했다 — 구글 공식 블로그 게시일이 2026년 11월 12일이다. · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Gemini 4 Hydrogen API 가격은 100만 토큰당 입력 $1.50, 출력 $7.50이다 — 구글 블로그에 같은 가격이 적혀 있고, 100만 토큰 컨텍스트 전체에 단일 요금이 적용된다. · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · Hydrogen은 Sonnet 5.5($2/$10)보다 25% 싸지만 Terminal-Bench 4.1에서 57.0%로 Sonnet 5.5(63.9%)보다 낮다 — Hydrogen의 57%는 구글 블로그에서 확인했다. 그러나 Sonnet 5.5의 가격과 점수는 공식 자료에서 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=qyiZ9QvEamo" target="_blank" rel="noopener">제미나이 4 하이드로젠 직접 써 본 후기</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s5">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">디시</span></div>
+    <h3>앤트로픽, 제조업용 플러그인 &#39;Claude for Manufacturing&#39; 공개</h3>
+    <div class="one">공장 기록으로 견적서·품질 보고서·공급업체 요청 초안을 만들고 담당자가 승인한다</div>
+    <div class="fig">
+      <div class="cap">Claude for Manufacturing이 하는 일</div>
+      <ul class="check">
+        <li><span class="i new">+</span><span>고객 요청을 읽고 견적서 초안 작성</span></li>
+        <li><span class="i new">+</span><span>품질 보고서 초안 작성</span></li>
+        <li><span class="i new">+</span><span>공급업체 요청서 초안 작성</span></li>
+        <li><span class="i">✓</span><span>Autodesk Fusion·Infor·Microsoft 365·Oracle NetSuite 연결</span></li>
+        <li><span class="i">✓</span><span>보내기 전 담당자 검토·승인</span></li>
+      </ul>
+      <div class="src">출처: 디시 특이점갤</div>
+    </div>
+    <ul class="pts"><li>견적서·품질 보고서·공급업체 요청 초안을 만든다</li><li>Autodesk Fusion·Infor·Microsoft 365·Oracle NetSuite와 연결된다</li><li>보내기 전 담당자가 검토·승인하는 구조다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 제조업 현장을 위한 플러그인 Claude for Manufacturing을 공개했다. 공식 글에 따르면 견적서, 품질 보고서, 공급업체 요청서를 공장의 자체 기록을 바탕으로 초안으로 만들고, 담당자가 검토·승인한 뒤 고객이나 공급업체에 보내는 구조다.</p>
+      <p>견적 담당자는 Claude로 고객 요청을 읽고, 비슷한 작업의 비용을 비교해 견적서를 쓸 수 있다. 공식 소개는 새 작업 견적부터 고장 난 기계 진단까지 다양한 업무를 돕는다고 밝혔다. 연결 대상은 설계 도구 Autodesk Fusion, 기업용 소프트웨어 Infor, Microsoft 365, Oracle NetSuite 네 곳이다.</p>
+      <p>앤트로픽은 2025년 제조 리더십 위원회 조사를 인용해 제조업체의 79%가 데이터를 손으로 입력한다고 설명했다. Claude가 검토 단계까지 일을 처리하면 견적 담당자는 가격에, 품질 엔지니어는 문제 해결에 집중할 수 있다는 것이다. 코딩을 넘어 업종별 플러그인을 늘리는 흐름의 하나다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 견적서·품질 보고서·공급업체 요청을 초안으로 만드는 제조업용 플러그인 Claude for Manufacturing을 공개했다 — 공식 글에 플러그인 기능과 담당자 검토·승인 구조가 적혀 있다. · <a href="https://claude.com/resources/articles/claude-for-manufacturing" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Autodesk Fusion, Infor, Microsoft 365, Oracle NetSuite와 연결된다 — 공식 글에 같은 연결 대상 네 곳이 나온다. · <a href="https://claude.com/resources/articles/claude-for-manufacturing" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527751" target="_blank" rel="noopener">특이점 갤러리: Claude for Manufacturing 소개</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s11">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>&#34;OpenAI, 가게 정보 관리하는 &#39;Businesses in ChatGPT&#39; 베타&#34; 소개 영상…공식 확인은 안 돼</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/QPlpWvM-sdQ/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">영상은 한국 동네 가게는 대기 명단이라고 했지만 공식 페이지는 열리지 않았다</div>
+    <ul class="pts"><li>영상은 ChatGPT에 가게 정보를 등록·관리하는 베타라고 소개했다</li><li>OpenAI 공식 페이지가 열리지 않아 내용은 확인되지 않았다</li><li>영상 기준 한국 동네 가게는 아직 대기 명단이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>OpenAI가 11월 10일 &#39;Businesses in ChatGPT&#39;를 베타로 열었다는 소개 영상이 나왔다. 영상에 따르면 ChatGPT 왼쪽 메뉴의 Business Hub에서 내 가게를 찾아 등록하고, ChatGPT 답변에 쓰일 가게 정보를 직접 관리하는 기능이다. 다만 OpenAI 공식 페이지와 도움말이 접속 차단(403)으로 열리지 않아 출시 사실과 세부 내용은 확인되지 않았다.</p>
+      <p>영상이 설명한 내용은 다음과 같다. 전화·업무 이메일·홈페이지 도메인으로 가게를 확인하고 신원 확인을 통과하면 정보 수정과 통계가 열린다. 상품 목록 파일이나 Shopify 연결로 가격·재고를 공유할 수 있다. 통계는 지난 28일 언급 수와 홈페이지 클릭을 보여 주되 손님 질문 원문은 주지 않는다. AI 상담원(Business Agent)은 홈페이지가 있는 미국 온라인 업체만 쓸 수 있다고 했는데, 이 역시 확인되지 않았다.</p>
+      <p>영상 제작자가 11월 13일 한국 계정으로 열어 본 결과, 식당·카페 같은 동네 가게는 대기 명단 화면으로 넘어가 아직 등록할 수 없었고, 홈페이지가 있는 온라인 스토어는 웹사이트 입력 단계까지 열려 있었다고 한다. 유료 팀 요금제 &#39;ChatGPT Business&#39;와는 다른 서비스라는 점도 짚었다.</p>
+      <p>영상은 당장 등록할 필요는 없지만, ChatGPT 같은 챗봇에 내 가게를 물어 영업시간·연락처가 맞는지 확인해 보라고 권했다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · OpenAI가 11월 10일 가게 정보를 직접 관리하는 &#39;Businesses in ChatGPT&#39;를 베타로 공개했다 — OpenAI 공식 페이지가 403으로 막혀 내용을 확인하지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · AI 상담원(Business Agent)은 홈페이지가 있는 미국 온라인 업체만 쓸 수 있다 — OpenAI 도움말 페이지도 403으로 막혀 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=QPlpWvM-sdQ" target="_blank" rel="noopener">ChatGPT 속 우리 가게 정보 소개 영상</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">새 도구 · 스킬 · 훅 <span class="cnt">5</span></h2></summary>
+  <article class="art" id="s18">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩 2</span></div>
+    <h3>주식 분석용 Claude Code 스킬 모음과 LLM 주식 분석 시스템 트렌딩</h3>
+    <div class="one">투자자용 스킬 74개 모음과 무료로 정기 실행되는 분석 시스템이 함께 올라왔다</div>
+    <div class="fig">
+      <div class="cap">이번에 뜬 주식 분석 AI 도구</div>
+      <div class="cards">
+        <div class="sk"><b>claude-trading-skills</b>시장 분석·차트·스크리너용 Claude Code 스킬 모음<div class="st">+69</div></div>
+        <div class="sk"><b>daily_stock_analysis</b>여러 시장 데이터·뉴스로 LLM 분석, 자동 알림<div class="st">+256</div></div>
+      </div>
+      <div class="src">github.com/trending · 19:00 수집</div>
+    </div>
+    <ul class="pts"><li>claude-trading-skills는 Claude Code용 투자 스킬 74개 모음이다</li><li>daily_stock_analysis는 GitHub Actions로 무료 정기 실행을 권한다</li><li>투자 판단은 사람이 해야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>깃허브 트렌딩에 주식 분석용 AI 도구 두 개가 함께 올라왔다. 하나는 Claude Code 스킬 모음이고, 다른 하나는 LLM으로 돌아가는 주식 분석 시스템이다. 스킬은 Claude Code에 특정 작업 방법을 묶어 넣어 두는 확장 기능이다.</p>
+      <p>tradermonty/claude-trading-skills는 주식 투자자와 트레이더를 위한 Claude Code 스킬 모음이다. 시장 분석, 기술적 차트 분석, 경제 일정 확인, 종목 스크리너(조건으로 종목 거르기), 매매 전략 개발용 스킬이 들어 있다. README 카탈로그에는 스킬 74개가 올라 있다. Claude Code를 코딩이 아닌 분야 업무에 쓰는 사례로 볼 수 있다.</p>
+      <p>ZhuLinsen/daily_stock_analysis는 여러 시장의 시세 데이터와 실시간 뉴스를 모아 LLM이 분석하고, 결정 대시보드와 자동 알림을 제공하는 시스템이다. README는 GitHub Actions로 서버 없이 정기 실행하는 방법을 권하며, 이 방식으로 비용 없이 돌릴 수 있다고 밝혔다. 다만 LLM 호출 비용은 어떤 모델을 쓰느냐에 따라 따로 들 수 있다.</p>
+      <p>두 도구 모두 투자 판단을 대신해 주지 않는다. AI가 낸 분석은 틀릴 수 있으므로 참고 자료로 쓰고 최종 판단은 사람이 해야 한다.</p>
+      <div class="box ">✅ 확인됨 · tradermonty/claude-trading-skills는 시장 분석, 기술적 차트, 경제 일정, 종목 스크리너, 매매 전략 개발용 Claude Code 스킬 모음이다 — README가 주식 투자자·트레이더용 Claude Code 스킬 모음이라고 밝히고 있으며 카탈로그에 스킬 74개가 있다. · <a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · ZhuLinsen/daily_stock_analysis는 여러 시장 데이터, 실시간 뉴스, 결정 대시보드, 자동 알림을 갖춘 LLM 주식 분석 시스템이며 무료로 정기 실행할 수 있다 — README에 같은 기능 설명이 있고, GitHub Actions로 서버 없이 무료 정기 실행을 권장한다. · <a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">tradermonty/claude-trading-skills</a> · <a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">ZhuLinsen/daily_stock_analysis</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s15">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>알리바바, 규칙 검사와 LLM 에이전트를 섞은 코드 리뷰 도구 공개</h3>
+    <div class="one">줄 단위 코멘트와 다언어 보안 규칙을 넣고 OpenAI·Anthropic 모델과 호환된다</div>
+    <div class="fig">
+      <div class="cap">open-code-review 주요 기능</div>
+      <ul class="check">
+        <li><span class="i">✓</span><span>결정론적 파이프라인 + LLM 에이전트 하이브리드 구조</span></li>
+        <li><span class="i">✓</span><span>줄 단위 리뷰 코멘트</span></li>
+        <li><span class="i">✓</span><span>NPE·스레드 안전성·XSS·SQL 인젝션 다언어 규칙 내장</span></li>
+        <li><span class="i">✓</span><span>OpenAI·Anthropic 호환</span></li>
+      </ul>
+      <div class="src">github.com/trending · 19:00 수집</div>
+    </div>
+    <ul class="pts"><li>규칙 기반 파이프라인과 LLM 에이전트를 섞은 하이브리드 리뷰 도구다</li><li>NPE·스레드 안전성·XSS·SQL 인젝션 규칙을 내장했다</li><li>OpenAI·Anthropic 호환 API로 모델을 붙인다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>알리바바가 코드 리뷰 도구 open-code-review를 깃허브에 공개했다. 저장소 설명에 따르면 결정론적 파이프라인과 LLM 에이전트를 섞은 &#39;하이브리드&#39; 구조다. 결정론적 파이프라인은 같은 입력에 늘 같은 결과를 내는 규칙 기반 검사를 뜻한다. 규칙으로 잡을 수 있는 건 규칙으로 잡고, 맥락 판단이 필요한 부분은 LLM에게 맡기는 방식이다.</p>
+      <p>도구는 코드의 줄 단위로 정확한 코멘트를 단다고 밝혔다. 여러 언어에 쓸 수 있는 규칙 모음을 내장했는데, 널 포인터 예외(NPE), 스레드 안전성, 웹 페이지에 악성 스크립트를 심는 XSS, 데이터베이스 질의를 조작하는 SQL 인젝션 같은 흔한 결함과 보안 문제를 다룬다. 이 내용은 저장소 README로 확인됐다.</p>
+      <p>모델은 OpenAI와 Anthropic 호환 API로 붙일 수 있다. Claude 모델을 리뷰어로 쓰는 것도 가능하다는 뜻이다. 알리바바는 &#39;자사 규모에서 실전 검증됐다&#39;고 소개했지만, 실제 적용 규모나 성능 수치는 설명에 나오지 않는다.</p>
+      <p>LLM만으로 코드 리뷰를 하면 같은 코드에 매번 다른 지적이 나오거나 중요한 결함을 놓치는 문제가 있다. 규칙 검사와 섞는 구조는 이런 들쭉날쭉함을 줄이려는 시도로 볼 수 있다. Claude Code의 `/security-review`나 OpenAI의 Codex Security처럼 AI 보안 점검 도구가 잇따르는 가운데, 오픈소스로 직접 띄워 볼 수 있는 선택지가 하나 늘었다.</p>
+      <div class="box ">✅ 확인됨 · 알리바바 open-code-review는 결정론적 파이프라인과 LLM 에이전트를 섞은 코드 리뷰 도구로, 줄 단위 코멘트와 NPE·스레드 안전성·XSS·SQL 인젝션 등 다언어 규칙을 내장하고 OpenAI·Anthropic과 호환된다 — 저장소 README와 설명에 하이브리드 구조, 줄 단위 코멘트, 내장 규칙, 호환성이 적혀 있다. · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">alibaba/open-code-review</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s13">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>AI 비서 앱 &#39;피클&#39;에 전화·카톡·장보기 맡겨 본 후기</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/Nw3TGtj5VN0/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">무료·앱스토어 1위라는 소개는 확인되지 않았고, 카톡 연동엔 약관 문제가 남았다</div>
+    <ul class="pts"><li>피클로 전화·카톡·장바구니·예약 작업을 직접 써 봤다</li><li>&#39;무료&#39;와 &#39;앱스토어 생산성 1위&#39;는 확인되지 않았다</li><li>카카오톡 연동은 약관상 허용 여부를 확인하지 못했다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI 비서 앱 피클(Pickle)을 설치부터 전화 걸기, 오늘의집 장바구니 담기, 고속버스 조회, 카카오톡 연동까지 직접 써 본 후기 영상이 나왔다. 영상은 피클이 앱스토어 생산성 1위에 올랐고 무료로 쓸 수 있다고 소개했지만, 순위와 요금·기능을 확인할 공식 자료는 찾지 못했다.</p>
+      <p>영상에서 제작자는 피클에게 가족 단톡방 메시지를 보내게 하고, 전화를 대신 걸게 했다. 집들이 선물 세 개를 골라 장바구니에 담게 했고, 아침 브리핑 같은 예약 작업도 걸어 봤다. 고속버스 시간표를 조회해 캘린더에 연결하는 장면도 있다.</p>
+      <p>카카오톡 연결은 기기 인증 과정에서 PC 카카오톡이 로그아웃되는 일이 있었다고 한다. 제작자는 카카오 운영정책의 &#39;허용하지 않는 방법에 의한 이용&#39; 조항을 확인했지만 연동이 정책에 맞는지는 확인하지 못해 연동을 끊을지 판단해야 했다고 밝혔다.</p>
+      <p>장점으로는 쉬운 연결을, 단점으로는 느린 작업 속도와 적은 사용 한도를 꼽았다. 피클 이용자끼리 일정을 나누는 기능도 다뤘는데, 이때 어떤 정보가 상대에게 공개되는지 살펴야 한다고 짚었다. AI 비서에게 전화와 메신저를 맡기는 일은 편리하지만, 서비스 약관과 개인정보 범위를 먼저 확인할 필요가 있다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · AI 비서 앱 피클(Pickle)이 앱스토어 생산성 1위에 올랐다 — 순위를 확인할 공식 자료를 찾지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 피클은 무료로 쓸 수 있는 AI 비서 앱이며 전화 걸기와 카카오톡 연동을 지원한다 — 피클 요금 도움말 페이지에서 요금제와 기능 내용을 읽어 오지 못했다.</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=Nw3TGtj5VN0&amp;t=334s" target="_blank" rel="noopener">무료 AI 비서 피클 후기 (카카오 약관 확인)</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s16">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>에이전트 계획에 주석 달고 피드백 한 번에…plannotator 트렌딩</h3>
+    <div class="one">브라우저에서 계획을 검토하고 Claude Code·Codex에 피드백을 보낸다</div>
+    <ul class="pts"><li>에이전트 계획에 주석을 달고 승인·거절할 수 있다</li><li>피드백을 클릭 한 번으로 에이전트에 보낸다</li><li>Claude Code·Codex 등을 지원한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>코딩 에이전트가 세운 계획을 사람이 검토하기 쉽게 만드는 오픈소스 plannotator가 깃허브 트렌딩에 올랐다. 저장소는 &#39;에이전트를 계속 지켜보고 주도하기 위한 작업 공간&#39;이라고 스스로를 소개한다.</p>
+      <p>README에 따르면 에이전트가 낸 계획을 브라우저에서 열어 원하는 부분에 주석을 달고, 계획을 승인하거나 거절한 뒤, 모든 피드백을 클릭 한 번으로 에이전트에 보낼 수 있다. 코드 리뷰와 팀 공유 기능도 있다. 지원하는 에이전트로 Claude Code와 Codex 등이 적혀 있다. 이 내용은 저장소로 확인됐다.</p>
+      <p>큰 작업은 계획부터 받으라는 것이 공식 문서의 권고지만, 터미널에서 긴 계획을 읽고 고칠 점을 일일이 타이핑하기는 번거롭다. 문서 검토하듯 계획에 직접 표시하고 한꺼번에 돌려보내는 방식은 이 과정을 줄여 준다.</p>
+      <div class="box ">✅ 확인됨 · plannotator는 에이전트 계획에 주석을 달고 승인·거절하며 피드백을 에이전트에 한 번에 보내는 도구다 — README에 브라우저에서 계획에 주석을 달아 피드백을 보내는 기능과 Claude Code·Codex 등 지원 에이전트가 적혀 있다. · <a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">backnotprop/plannotator</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s12">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브</span></div>
+    <h3>여러 컴퓨터의 에이전트 세션을 한 화면에서…허더·오르카·파세오 비교</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/9iS4552JnaI/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">세션 검색·모바일 연결·메모리 사용량을 직접 써 보며 비교한 영상이다</div>
+    <div class="fig">
+      <div class="cap">영상 속 메모리 사용량(같은 조건 비교 아님)</div>
+      <div class="b"><span class="l">파세오</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">약 875MB</span></div>
+      <div class="b"><span class="l">오르카</span><span class="track"><span class="fill" style="width:61.7%"></span></span><span class="n">약 540MB</span></div>
+      <div class="b"><span class="l">허더 TUI</span><span class="track"><span class="fill hot" style="width:8%"></span></span><span class="n">약 70MB</span></div>
+      <div class="src">출처: 코난쌤 conanssam</div>
+    </div>
+    <ul class="pts"><li>오르카·파세오·허더로 여러 컴퓨터의 에이전트 세션을 한곳에서 본다</li><li>허더 모바일은 SSH로 herdr-core에 연결하고 TUI 세션은 안 된다(공식 확인)</li><li>메모리 수치는 같은 조건 비교가 아니다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>컴퓨터 세 대에 흩어진 코딩 에이전트와 세션을 한 화면에서 다루는 도구 세 가지를 비교한 영상이 나왔다. 오르카(Orca), 파세오(Paseo), 허더(herdr)다. 제작자는 기존 세션 검색, 화면 분할, 모바일 연결, 메모리 사용량을 직접 써 보며 견줬다.</p>
+      <p>오르카는 기존 세션을 불러오고 검색하는 기능이 강점으로 소개됐다. 파세오는 모바일 연결과 재시작 뒤 세션 복원을 지원하는데, 복원은 설정을 켜야 한다. 기존 세션을 대량으로 가져오기 어렵다는 평가는 제작자 개인 경험이다. 허더는 메모리를 적게 쓰고 화면을 레인으로 나눠 쓴다.</p>
+      <p>허더 모바일은 SSH로 herdr-core에 연결하며 허더 TUI(터미널 화면) 세션은 지원하지 않는다. 이 점은 허더 공식 안내로 확인됐다. herdr-core는 데스크톱 앱에 들어 있고 따로 설치할 수도 있다.</p>
+      <p>영상 속 메모리 수치는 맥 액티비티 모니터 기준으로 오르카 약 540MB, 파세오 약 875MB, 허더 TUI 약 70MB였다. 제작자는 앱·데몬·세션 상태가 달라 같은 조건의 성능 비교가 아니라고 밝혔다.</p>
+      <p>그 밖에 다른 컴퓨터로 작업을 넘기는 &#39;핸드오프&#39; 실습도 다뤘다. 이 핸드오프는 인수인계서를 전달할 뿐 로컬 파일이나 커밋하지 않은 변경은 옮기지 않으며, Claude Code의 얼리 액세스 기능 훅을 쓰므로 버전 호환성을 확인하라고 안내했다. 에이전트 실행 과정을 추적하는 Phoenix와 학습 지표를 보는 Trackio도 짧게 소개됐다.</p>
+      <div class="box ">✅ 확인됨 · 허더 모바일은 SSH로 herdr-core에 연결하며 허더 TUI 세션은 지원하지 않는다 — 허더 공식 모바일 안내에 SSH 연결 방식과 TUI 미지원이 적혀 있다. · <a href="https://herdr.dev/mobile/" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=9iS4552JnaI&amp;t=205s" target="_blank" rel="noopener">컴퓨터 여러 대를 하나로 제어하는 방법 (오르카 부분)</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">활용 팁 <span class="cnt">3</span></h2></summary>
+  <article class="art" id="s6">
+    <div class="top"><span class="pill">팁</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 2</span></div>
+    <h3>공식 문서로 본 Claude Code·Codex 사용 습관…작업마다 새 대화, 규칙 파일은 짧게</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/DZaqAU97l00/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">두 회사 문서에 적힌 권고를 모은 풀이 영상 두 편이 나왔다</div>
+    <div class="fig">
+      <div class="cap">공식 문서 기준 사용 습관</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>작업 바뀌면 새 대화<small>Claude Code /clear, Codex /new</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>끝난 기준 함께 말하기<small>테스트 통과까지 확인하라고 지시</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>큰 일은 계획 먼저<small>계획 모드로 계획을 받고 시작</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>두 번 틀리면 새로 시작<small>세 번째 수정 대신 첫 지시를 더 잘 쓴다</small></div><span class="ar">→</span>
+        <div class="s"><b>5</b>반복 지시는 규칙 파일에<small>CLAUDE.md는 200줄 아래로</small></div>
+      </div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>관련 없는 작업 사이엔 /clear(Codex는 /new)로 새로 시작한다</li><li>두 번 고쳐도 틀리면 새 대화에서 더 나은 첫 지시로 다시 한다</li><li>CLAUDE.md는 파일당 200줄 아래로 짧게 둔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude Code와 Codex를 만든 앤트로픽과 OpenAI가 공식 문서에 적어 둔 사용 습관을 정리한 영상 두 편이 공유됐다. 대화가 길어질수록 에이전트가 엉뚱해지는 문제를 줄이는 방법이 중심이다. 핵심 권고 가운데 Claude Code 쪽 내용은 공식 문서로 확인됐다.</p>
+      <p>첫째, 작업이 바뀌면 새 대화로 시작한다. Claude Code는 `/clear`, Codex는 `/new`다. Claude Code Best practices 문서에는 &#39;관련 없는 작업 사이에 /clear&#39;라는 권고가 실제로 있다. 끝난 작업 기록까지 매번 다시 읽지 않게 돼 비용도 줄어든다. 영상은 하나만 고르라면 이 습관이라고 했다. 다만 같은 문제를 계속 푸는 중이면 그 대화에 머무는 편이 낫다.</p>
+      <p>둘째, 두 번 고쳐 줬는데 또 틀리면 세 번째로 고치지 말고 새로 시작한다. 문서에는 &#39;두 번 수정에 실패하면 /clear 후 더 나은 프롬프트를 쓰라&#39;는 문구가 있다. 셋째, 시킬 때 끝난 기준까지 말한다. &#39;고친 다음 테스트를 실행해 통과하는지 확인해 줘&#39;처럼 확인 방법을 같이 주면 에이전트가 고치고 돌려 보기를 혼자 반복한다. Codex 문서가 쓰는 목표·맥락·조건·완료 기준(Goal·Context·Constraints·Done when) 틀도 소개됐다.</p>
+      <p>넷째, 같은 말을 반복하게 되면 규칙 파일(CLAUDE.md나 AGENTS.md)에 적되 짧게 유지한다. Claude Code Memory 문서는 CLAUDE.md 파일 하나를 200줄 아래로 두라고 권한다. 테스트 명령, 코드만 봐서는 오해하기 쉬운 부분, 두 번 고쳐 준 실수를 적는 식이다. 규칙 파일은 참고 사항이라 반드시 지켜야 할 규칙은 훅이나 자동 검사로 강제하라는 조언도 붙었다.</p>
+      <p>다섯째, 큰 작업은 계획부터 받는다. 영상은 두 도구 모두 Shift+Tab으로 계획 모드를 켜고 Codex는 `/plan`도 된다고 했지만, 이 부분은 확인되지 않았다. Claude Code 문서에서는 Shift+Tab이 권한 모드를 순서대로 바꾼다는 내용만 확인됐다.</p>
+      <p>긴 영상은 캐시도 다룬다. Claude Code 프롬프트 캐시 수명은 구독 한도 안에서 약 1시간, API 키·크레딧은 5분, 서브에이전트는 기본 5분이라는 내용은 문서로 확인됐다. 대화 도중 모델을 바꾸면 캐시가 모델마다 따로라 처음부터 다시 읽게 된다는 점, 에이전트를 여러 개 띄울 땐 워크트리로 작업 폴더를 나누라는 점도 다뤘다. 대문자 IMPORTANT 강조나 &#39;think hard&#39; 같은 주문은 이제 안 해도 된다는 표도 소개됐다. 영상은 11월 13일 기준 문서이며 문서가 자주 바뀐다고 밝혔다.</p>
+      <div class="box ">✅ 확인됨 · Claude Code 공식 문서는 관련 없는 작업 사이에 /clear로 새로 시작하라고 권한다 — Best practices 문서에 &#39;/clear between unrelated tasks&#39; 권고가 있다. · <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 같은 수정을 두 번 했는데도 틀리면 세 번째로 고치는 대신 /clear 후 더 나은 프롬프트로 다시 시작하라고 한다 — 문서에 &#39;after two failed corrections run /clear and write a better prompt&#39; 문구가 있다. · <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Claude Code 문서는 CLAUDE.md 파일 하나를 200줄 이하로 유지하라고 권한다 — Memory 문서에 &#39;target under 200 lines per CLAUDE.md file&#39;이라고 적혀 있다. · <a href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · Claude Code와 Codex 모두 Shift+Tab으로 계획 모드를 켜고, Codex는 /plan도 쓸 수 있다 — Claude Code 문서에서 Shift+Tab이 권한 모드를 순환한다는 내용만 확인했다. Codex 문서는 확인하지 못했다.</div>
+      <div class="box ">✅ 확인됨 · Claude Code 프롬프트 캐시는 구독에서 약 1시간, API 키·크레딧에서는 5분이며 서브에이전트는 기본 5분이다 — Best practices 문서에 같은 캐시 수명이 적혀 있다. · <a href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=DZaqAU97l00" target="_blank" rel="noopener">Claude Code·Codex 습관 5가지 (쇼츠)</a> · <a href="https://www.youtube.com/watch?v=6dZQ3Zco69U&amp;t=86s" target="_blank" rel="noopener">공식 문서로 정리한 7가지 (대화 하나에 일 하나)</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s8">
+    <div class="top"><span class="pill">팁</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브</span></div>
+    <h3>실물처럼 움직이는 UI 부품 15개 &#39;The Kitchen&#39;, Claude Code 앱에 붙여 본 사례</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/clpNutT4Fus/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">영수증 프린터·카세트 플레이어 같은 부품 코드를 복사해 앱에 맞추게 했다</div>
+    <div class="fig">
+      <div class="cap">영상에서 붙여 본 The Kitchen 부품</div>
+      <div class="cards">
+        <div class="sk"><b>영수증 프린터</b>결제하면 화면 속 프린터가 영수증을 뽑는다</div>
+        <div class="sk"><b>카세트 플레이어</b>재생하면 테이프 릴이 돈다</div>
+        <div class="sk"><b>자석 업로드 칸</b>파일을 끌어오면 칸이 먼저 다가온다</div>
+        <div class="sk"><b>꾹 눌러 삭제</b>1초 눌러야 지워져 실수를 막는다</div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>The Kitchen은 실물처럼 움직이는 UI 부품 15개를 코드와 함께 공개했다</li><li>영수증 프린터·카세트 플레이어·자석 업로드·꾹 눌러 삭제가 있다</li><li>부품을 복사해 Claude Code에 앱에 맞춰 붙이게 한 사례다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>dqnamo가 만든 사이트 The Kitchen에는 진짜 물건처럼 움직이는 화면 부품 15개가 코드와 함께 올라와 있다. 사이트에서 확인된 사실이다. 부품마다 페이지에 전체 코드와 복사 버튼이 있다.</p>
+      <p>확인된 부품에는 영수증 프린터(Receipt Printer), 카세트 플레이어(Cassette Audio Player), 자석 업로드 칸(Magnetic Drop Zone), 꾹 눌러 삭제(Hold to Confirm)가 있다. 영상 설명에 따르면 영수증 프린터는 결제하면 화면 속 프린터가 공급가액과 부가세가 적힌 영수증을 뽑아 주고, 카세트 플레이어는 재생하면 릴이 돈다. 자석 업로드 칸은 파일을 끌어오면 칸이 먼저 다가오고, 꾹 눌러 삭제는 버튼을 1초 동안 눌러야 지워져 실수로 지우는 일을 막는다.</p>
+      <p>영상 제작자는 Claude Code로 만든 연습용 앱에 이 부품 네 개를 복사해 넣고, Claude Code에 앱에 맞춰 달라고 요청한 실제 화면을 보여 줬다. 필요한 것은 React 앱과 Claude Code이고, 부품에 필요한 패키지는 Claude Code가 설치한다고 설명했다.</p>
+      <p>AI로 만든 앱 화면이 어디서 본 듯 비슷해진다는 불만이 많다. 공개된 부품 코드를 가져와 에이전트에게 맞춰 붙이게 하는 방식은 디자인 실력이 없어도 화면에 개성을 더하는 손쉬운 방법이다. 다만 남의 코드를 쓸 때는 사이트의 이용 조건을 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · dqnamo의 The Kitchen은 실물처럼 움직이는 UI 부품 15개를 공개한 사이트다 — 사이트에 실험 15개가 올라와 있다. · <a href="https://www.dqnamo.com/kitchen" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 영수증 프린터, 카세트 플레이어, 자석 업로드 칸, 꾹 눌러 삭제 부품이 있다 — Receipt Printer, Cassette Audio Player, Magnetic Drop Zone, Hold to Confirm 항목이 있다. · <a href="https://www.dqnamo.com/kitchen" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=clpNutT4Fus" target="_blank" rel="noopener">진짜 물건처럼 움직이는 화면 부품 15개 | The Kitchen</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s9">
+    <div class="top"><span class="pill">팁</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">유튜브 3</span></div>
+    <h3>바이브코딩 라이브 발췌…Claude 세션 정리, 문서 관리, AI 디자인 시안 고르기</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/-VA5KctJjf8/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">한 라이브 방송에서 나온 질문 세 가지를 짧은 영상으로 잘라 올렸다</div>
+    <ul class="pts"><li>바이브코딩 라이브에서 질문 세 가지를 발췌했다</li><li>세션 정리·문서 관리·디자인 시안 고르기를 다룬다</li><li>설명에 답의 내용은 없어 영상으로 확인해야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>바이브마피아 채널이 「라이브 바이브코딩 | 바이브마피아가 대신 만들어드림」 방송에서 세 장면을 잘라 짧은 영상으로 올렸다. 주제는 Claude 세션을 다 지우는지, 문서를 어떻게 관리하는지, AI가 만든 디자인 시안을 어떻게 고르는지다.</p>
+      <p>영상 설명에는 발췌 출처와 전체 방송 링크만 있고, 각 질문에 대한 답이 무엇인지는 적혀 있지 않다. 그래서 어떤 방법을 권했는지는 이 자료만으로 확인할 수 없다.</p>
+      <p>세 질문 모두 AI 코딩을 오래 하다 보면 부딪히는 문제다. 세션 관리에 대해서는 관련 없는 작업 사이에 /clear로 새로 시작하라는 것이 Claude Code 공식 문서의 권고다. 이 신문의 「공식 문서로 본 Claude Code·Codex 사용 습관」 기사도 함께 참고할 만하다.</p>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=-VA5KctJjf8" target="_blank" rel="noopener">Claude 세션, 다 지우시나요?</a> · <a href="https://www.youtube.com/watch?v=CoMgJXyTUDg" target="_blank" rel="noopener">문서, 어떻게 관리해야할까요?</a> · <a href="https://www.youtube.com/watch?v=A-19R603GFg" target="_blank" rel="noopener">AI 디자인 시안, 어떻게 고르나요?</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">이슈 · 이야기거리 <span class="cnt">11</span></h2></summary>
+  <article class="art" id="s21">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 5</span></div>
+    <h3>교황 트랜스휴머니즘 비판 트윗 화제…교황청 문서 &#39;Quo vadis, humanitas?&#39;는 확인</h3>
+    <div class="one">트윗은 직접 확인하지 못했고, 배경 문서는 국제신학위원회가 작성했다</div>
+    <ul class="pts"><li>교황 트윗 내용은 직접 확인하지 못했다</li><li>&#39;Quo vadis, humanitas?&#39;는 국제신학위원회 문서로 2월 9일 출판 허가됐다(확인)</li><li>교황청은 과거에도 인간 재설계·불멸 추구를 경계해 왔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>교황 계정(@Pontifex)이 트랜스휴머니즘과 포스트휴머니즘을 비판하는 트윗을 올렸다는 글이 특이점 갤러리에서 화제가 됐다. 트랜스휴머니즘은 기술로 인간의 몸과 능력을 넘어서려는 사상이다. 공유된 번역에 따르면 트윗은 기술이 질병·노화·죽음까지 없앨 것이라는 약속을 &#39;신기루&#39;라고 부르며, 과학의 진보를 불멸을 좇는 백만장자들의 특권과 혼동해선 안 된다고 했다. 다만 X 게시물을 직접 열어 확인하지 못해 트윗 내용은 확인되지 않았다.</p>
+      <p>한 이용자는 관련된 교황청 문서 &#39;Quo vadis, humanitas?(인류여, 어디로 가는가?)&#39;를 팩트체크했다. 이 문서는 교황이 직접 쓴 것이 아니라 국제신학위원회가 작성하고 2025년 전체회의에서 만장일치로 승인한 뒤, 레오 14세의 승인을 거쳐 2026년 2월 9일 출판이 허가된 신학 연구 문서다. 교황청 문서 서문으로 확인됐으며, 트랜스휴머니즘도 다룬다. 공개일은 3월 4일이다.</p>
+      <p>팩트체크 글은 이런 입장이 새삼스럽지 않다고 정리했다. 1983년 요한 바오로 2세의 &#39;초인을 만들려는 무모한 시도&#39; 경계부터 2025년 AI 문서 &#39;Antiqua et nova&#39;까지 교황청이 인간 재설계와 불멸 추구를 꾸준히 경계해 왔다는 것이다. 커뮤니티에서는 교황을 &#39;반특이점&#39;이라 부르는 반응과 농담 섞인 글도 이어졌다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 교황(@Pontifex)이 트랜스휴머니즘·포스트휴머니즘을 비판하는 트윗을 올렸다 — X 게시물을 직접 열어 확인하지 못했다.</div>
+      <div class="box ">✅ 확인됨 · &#39;Quo vadis, humanitas?&#39;는 국제신학위원회가 작성하고 레오 14세의 승인을 거쳐 2026년 2월 9일 출판이 허가된 문서다 — 교황청 문서 서문에 국제신학위원회 작성, 2025년 만장일치 승인, 교황 승인 뒤 2월 9일 출판 허가가 적혀 있고 트랜스휴머니즘도 다룬다. · <a href="https://www.vatican.va/roman_curia/congregations/cfaith/cti_documents/rc_cti_doc_20260304_quo-vadis-humanits_en.html" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529115" target="_blank" rel="noopener">특이점 갤러리: 교황 트윗 번역</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529464" target="_blank" rel="noopener">특이점 갤러리: &#39;Quo vadis, humanitas?&#39; 팩트체크</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529004" target="_blank" rel="noopener">특이점 갤러리: 교황 트윗 공유 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s20">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 5</span></div>
+    <h3>&#39;지능 폭발&#39; 논쟁 계속…&#34;파텔이 초지능 타임라인 앞당겼다&#34; 글 공유, 원 발언은 확인 안 돼</h3>
+    <div class="one">팟캐스터 드와르케시 파텔의 발언이라는 글이 돌았지만 출처가 없다</div>
+    <ul class="pts"><li>파텔이 초지능 예상 시점을 크게 앞당겼다는 글이 퍼졌다</li><li>원 발언 출처를 찾지 못해 확인되지 않았다</li><li>RSI·연구원 대체 관련 글도 모두 출처가 없다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-12.html#s10" target="_blank" rel="noopener">&#39;지능 폭발&#39; 논쟁 계속…&#34;내년엔 없다&#34; vs &#34;1년에 40년치&#34; 발언 공유</a></p>
+      <p>지난 12일 신문의 「&#39;지능 폭발&#39; 논쟁 계속…&#34;내년엔 없다&#34; vs &#34;1년에 40년치&#34; 발언 공유」에 이어, 이번엔 AI 팟캐스트 진행자 드와르케시 파텔의 발언이라는 글이 특이점 갤러리에 퍼졌다.</p>
+      <p>글에 따르면 파텔은 올해 초만 해도 초지능까지 빨라야 10년이 걸린다고 봤지만, 지난 3개월을 보니 AI가 최고 연구원 수준에 이르기까지 몇 달만 남은 것 같다고 말했다고 한다. 이르면 내년 초 모든 분야에서 최고 전문가급 AI가 나올 수 있다는 내용도 담겼다. 그러나 커뮤니티 글 외에 원 발언의 출처를 찾지 못해 확인되지 않았다.</p>
+      <p>같은 흐름의 글도 이어졌다. 파텔이 지금 속도로도 1년에 GPT-3.5에서 GPT-6 Astra급 도약이 가능하다고 했다는 글, 글래드스톤 CEO가 &#39;재귀적 자기개선(RSI)이 멀었다던 사람들이 생각을 바꾸는 중&#39;이라고 했다는 글, AI 기업 연구원이 1년 안에 대체된다는 글 등이다. 재귀적 자기개선은 AI가 스스로 더 나은 AI를 만드는 과정을 말한다. 이 글들 역시 원문 링크나 출처가 없어 확인되지 않았다.</p>
+      <p>지난번과 마찬가지로 이번에도 논쟁은 원문 없는 발언 요약을 중심으로 돌고 있다. 실제 발언 맥락은 원 출처가 나와야 판단할 수 있다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 드와르케시 파텔이 초지능 타임라인을 크게 앞당겨 수정했다고 말했다 — 커뮤니티 글 외에 원 발언 출처를 찾지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528589" target="_blank" rel="noopener">특이점 갤러리: 파텔 초지능 타임라인 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529889" target="_blank" rel="noopener">특이점 갤러리: 파텔 발전 속도 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529933" target="_blank" rel="noopener">특이점 갤러리: 글래드스톤 CEO 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s27">
+    <div class="top"><span class="pill">이슈</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">디시 4</span></div>
+    <h3>개발자 대체 논쟁…&#34;손으로 코드 짜는 사람 거의 없다&#34; vs &#34;시킬 일을 아는 사람이 필요&#34;</h3>
+    <div class="one">현직자들의 경험담이 오갔지만 모두 개인 의견이다</div>
+    <ul class="pts"><li>&#34;손 코딩은 거의 사라졌지만 낡은 프로세스가 생산성을 막는다&#34;는 주장</li><li>&#34;무엇을 시킬지 아는 사람이 필요하고 신입 자리가 준다&#34;는 반박</li><li>모두 커뮤니티 개인 의견이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>특이점 갤러리에서 AI가 개발자를 얼마나 빨리 대체할지를 두고 현직자들의 글이 이어졌다. 모두 개인 경험과 의견이다.</p>
+      <p>5년 차라고 밝힌 한 이용자는 주변에 손으로 코드를 짜는 사람이 거의 없고, AI가 짠 코드를 읽는 사람도 줄고 있다고 썼다. 그런데도 생산성이 크게 오르지 않는 이유로 회사가 외부 AI 기업에 정보를 주기 싫어 사내 시스템에 AI를 적극적으로 붙이지 않는 점, 그래서 성능이 낮은 오픈 웨이트 모델을 쓰는 점을 들었다. 문서로 정리되지 않고 사람 머릿속에만 있는 업무 지식이 많다는 점도 꼽았다. 이 지식이 AI가 접근할 수 있게 정리되면 유지보수 인력은 10분의 1 이하로 줄 것이라고 주장했다.</p>
+      <p>다른 이용자는 AI 실력은 이미 사람을 넘었지만 각 자리에서 무엇을 &#39;시켜야&#39; 하는지 아는 일은 아직 AI가 못 한다고 반박했다. 경험과 업무 지식이 있는 기존 인력은 AI를 잘 써서 자리를 지키지만, 신입이 들어올 자리가 사라지고 있다는 진단이다. AI가 지시를 잘못 이해했을 때 대처하는 능력이 핵심이라는 것이다.</p>
+      <p>두 글 모두 문서화되지 않은 업무 지식을 병목으로 본다는 점이 겹친다. CLAUDE.md 같은 규칙 파일에 프로젝트 지식을 적어 두라는 공식 권고와도 같은 방향이다.</p>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528744" target="_blank" rel="noopener">특이점 갤러리: 개발자 대체 금방 될 것 같긴 함</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528700" target="_blank" rel="noopener">특이점 갤러리: 개발자 대체가 느린 이유</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528557" target="_blank" rel="noopener">특이점 갤러리: 같은 개발 하는 사람으로서</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s28">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 3</span></div>
+    <h3>AI 창작물 논쟁…웹소설 랭킹 AI 도배 주장, &#39;AI 작곡 멜론 1위&#39;는 확인 안 돼</h3>
+    <div class="one">독자 경험담과 &#39;AI 대신 사람 제작 표시&#39; 제안이 함께 올라왔다</div>
+    <ul class="pts"><li>웹소설 랭킹이 AI 작품으로 채워졌다는 독자 주장이 나왔다</li><li>&#39;AI 작곡 멜론 1위&#39;와 AI 표시 논문 내용은 확인되지 않았다</li><li>&#39;사람 제작&#39; 인증 표시를 달자는 제안도 나왔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI가 만든 창작물이 퍼지는 상황을 두고 특이점 갤러리에 글 여러 개가 올라왔다. 한 웹소설 독자는 문피아·노벨피아 상위 랭킹이 AI로 쓰고 조금 손본 작품으로 채워졌다고 주장했다. 작품 안에 프롬프트가 그대로 노출됐는데도 성적이 유지되는 사례가 있고, 노벨피아는 이런 작품의 일부 등록을 거부하지만 효과는 제한적이라는 것이다. 개인 관찰이라 실제 비율은 알 수 없다.</p>
+      <p>같은 글은 2026년 11월 5일 공개된 논문을 소개하며, AI가 썼다고 알리면 작품 평가는 낮아지지만 실제로 내려는 돈이나 읽는 시간에는 거의 차이가 없었다고 전했다. 그러나 논문 원문을 찾아 확인하지 못했다.</p>
+      <p>AI가 작곡한 노래가 멜론 차트 1위에 올랐다는 글도 있었지만, 근거 자료가 없고 공식 자료도 찾지 못해 확인되지 않았다.</p>
+      <p>한편 AI 창작물에 &#39;AI&#39; 표시를 붙이기보다 사람이 직접 만든 작품에 인증 표시를 다는 편이 낫다는 제안도 나왔다. AI 창작물이 많아질수록 &#39;사람이 만들었다&#39;는 것이 오히려 자랑할 만한 표시가 될 것이라는 주장이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · AI가 작곡한 노래가 멜론 차트 1위에 올랐다 — 근거 자료가 없는 커뮤니티 글이며 공식 자료를 찾지 못했다.</div>
+      <div class="box w">⚠️ 확인 안 됨 · 2026년 11월 5일 공개된 논문은 AI 작성 표시가 주관적 평가는 낮추지만 실제 지불·읽기 의향에는 거의 영향이 없다고 밝혔다 — 논문 원문을 찾아 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528818" target="_blank" rel="noopener">특이점 갤러리: 웹소설 AI 대체 독자 시선</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527682" target="_blank" rel="noopener">특이점 갤러리: AI 작곡 멜론 1위 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528875" target="_blank" rel="noopener">특이점 갤러리: 사람 제작 표시 제안</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s4">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">공식</span><span class="pill soft">디시</span></div>
+    <h3>앤트로픽, 상장 위한 S-1 서류 SEC에 제출…나스닥 &#39;ANT&#39; 추진</h3>
+    <div class="one">공모 주식 수와 가격은 아직 정하지 않았고, 대담 생중계 소식은 확인 안 됐다</div>
+    <ul class="pts"><li>앤트로픽이 SEC에 IPO용 S-1 서류를 냈다(공식 발표)</li><li>나스닥 글로벌 셀렉트 마켓, 티커 &#39;ANT&#39;로 상장 계획</li><li>아모데이·다이먼 대담 생중계는 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 기업공개(IPO)를 위해 미국 증권거래위원회(SEC)에 Form S-1 등록 서류를 제출했다고 공식 발표했다. S-1은 미국에서 주식을 처음 공개적으로 팔기 전에 회사 사업과 재무를 알리는 서류다. 발표문 게시일은 자료마다 11월 10일과 10월 26일로 다르게 표시돼 있다.</p>
+      <p>발표에 따르면 앤트로픽은 Class A 보통주를 나스닥 글로벌 셀렉트 마켓에 티커 &#39;ANT&#39;로 상장할 계획이다. 공모할 주식 수와 가격 범위는 아직 정하지 않았다. 등록 서류는 제출됐지만 아직 효력이 생기지 않아 지금은 주식을 팔거나 매수 주문을 받을 수 없다고 밝혔다. 예비 투자설명서는 골드만삭스와 모건스탠리를 통해 받을 수 있다.</p>
+      <p>커뮤니티에서는 상장을 앞두고 다리오 아모데이 앤트로픽 CEO와 제이미 다이먼 J.P. Morgan CEO가 뉴욕 J.P. Morgan 본사에서 대담했고, 이 장면이 앤트로픽 공식 유튜브로 생중계됐다는 글이 공유됐다. 그러나 이번 생중계를 다룬 공식 자료는 찾지 못해 확인되지 않았다. 검색에서는 2026년 5월에 열린 두 사람의 별도 대담 기록만 나왔다.</p>
+      <p>상장이 이뤄지면 앤트로픽은 정기적으로 재무 정보를 공개해야 한다. Claude 요금이나 사용 한도 같은 정책이 어떤 사업 판단에서 나오는지 지금보다 더 드러날 수 있다는 점에서 개발자들에게도 지켜볼 만한 일이다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 IPO를 위해 SEC에 Form S-1 등록 서류를 제출했다 — 앤트로픽 공식 발표문에 S-1 제출 사실이 있다(페이지 게시일은 10월 26일로 표시돼 입력의 11월 10일과 다르다). · <a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Class A 보통주를 나스닥 글로벌 셀렉트 마켓에 티커 &#39;ANT&#39;로 상장할 계획이며 공모 주식 수와 가격 범위는 미정이다 — 공식 발표문에 나스닥 상장, 티커 ANT, 주식 수와 가격 미정이 그대로 적혀 있다. · <a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 상장을 앞두고 J.P. Morgan 본사에서 아모데이와 제이미 다이먼의 대담이 앤트로픽 공식 유튜브로 생중계됐다 — 이번 생중계를 다룬 공식 자료를 찾지 못했다. 검색으로는 2026년 5월에 열린 별도의 두 사람 대담 기록만 확인됐다.</div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">앤트로픽 공식 발표: S-1 제출</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528947" target="_blank" rel="noopener">특이점 갤러리: 아모데이 대담 소개 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s19">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 2</span></div>
+    <h3>젠슨 황 사임 뒤 &#34;트럼프가 자리 지키라 촉구&#34; 로이터 보도 공유…확인 안 돼</h3>
+    <div class="one">로이터 기사와 공식 자료를 찾지 못했고, 복귀설도 근거가 없다</div>
+    <ul class="pts"><li>트럼프의 &#39;자리 지키라&#39; 촉구 보도는 확인되지 않았다</li><li>젠슨 황 복귀설도 근거가 없다</li><li>확인된 것은 어제 전한 사임 발표까지다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-13.html#s7" target="_blank" rel="noopener">엔비디아, 젠슨 황 즉시 사임 공식 발표…콜레트 크레스 CFO가 임시 CEO</a></p>
+      <p>어제 신문의 「엔비디아, 젠슨 황 즉시 사임 공식 발표…콜레트 크레스 CFO가 임시 CEO」에 이어 후속 이야기가 돌았다. 로이터가 &#39;트럼프 대통령이 젠슨 황에게 자리를 지키라고 촉구했다&#39;고 보도했다는 글이 특이점 갤러리에 X 게시물 링크와 함께 올라왔다.</p>
+      <p>하지만 이 내용을 다룬 로이터 기사나 공식 자료는 찾지 못해 확인되지 않았다. 이어 젠슨 황이 복귀할 수 있다는 &#39;복귀설&#39; 글도 올라왔지만 내용 없는 한 줄 글이었다. 현재 확인할 수 있는 것은 어제 전한 사임 발표까지이며, 그 뒤 움직임은 공식 발표를 기다려야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 로이터에 따르면 트럼프가 사임한 젠슨 황에게 자리를 지키라고 촉구했다 — 젠슨 황 사임이나 트럼프의 촉구를 다룬 로이터 기사와 공식 자료를 찾지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527258" target="_blank" rel="noopener">특이점 갤러리: 로이터 트럼프 촉구 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528808" target="_blank" rel="noopener">특이점 갤러리: 젠슨 황 복귀설 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s35">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식 2</span></div>
+    <h3>앤트로픽, 미국 중간선거 앞두고 선거 안전장치 강화…공식 투표 정보·개표 결과 제공</h3>
+    <div class="one">미국 Claude.ai 대화 25만 건을 분석하고 정치 균형 평가 99%를 공개했다</div>
+    <div class="fig">
+      <div class="cap">미국 Claude.ai 대화 중 비율(대화 25만 건 분석)</div>
+      <div class="b"><span class="l">정치·정책·사회 이슈</span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">약 5.75%</span></div>
+      <div class="b"><span class="l">선거·투표</span><span class="track"><span class="fill" style="width:8.9%"></span></span><span class="n">약 0.51%</span></div>
+      <div class="b"><span class="l">누구에게 투표할지</span><span class="track"><span class="fill" style="width:0.2%"></span></span><span class="n">약 0.01%</span></div>
+      <div class="b"><span class="l">정책 위반 요청</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="n">약 0.002%</span></div>
+      <div class="src">출처: Anthropic</div>
+    </div>
+    <ul class="pts"><li>미국 Claude.ai 대화의 약 5.75%가 정치·정책, 약 0.51%가 선거 관련이다</li><li>Democracy Works의 공식 투표 정보와 최신 개표 결과를 대화에 보여 준다</li><li>Opus·Sonnet·Haiku 5.5는 정치 균형 평가에서 99%를 받았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 미국 중간선거를 앞두고 선거 관련 안전장치를 강화한 내용을 공식 블로그에 정리했다. Claude가 정치 대화에 쓸모 있는 도구가 되면서도 선거 관련 악용은 막겠다는 것이 목표라고 밝혔다.</p>
+      <p>앤트로픽은 최근 1주일 동안의 대화 25만 건을 분석했다. 미국 Claude.ai 대화 가운데 정치·공공정책·사회 이슈를 다룬 대화는 약 5.75%, 선거나 투표를 직접 다룬 대화는 약 0.51%였다. 누구에게 투표할지 묻는 대화는 약 0.01%로 드물었고, 선거 무결성 정책을 어긴 요청은 약 0.002%였다.</p>
+      <p>새 기능은 두 가지다. 미국 사용자가 투표 장소나 챙길 신분증을 물으면, Claude가 비당파 단체 Democracy Works의 공식 투표 정보를 써서 주(state)별로 맞춘 답을 대화 안에서 준다. 또 선거 당일 밤부터 며칠 동안 최신 공식 개표 결과를 대화에 보여 준다. 두 기능 모두 공식 글로 확인됐다.</p>
+      <p>정치적 균형 평가에서는 Claude Opus 5.5, Sonnet 5.5, Haiku 5.5가 99%를 받아 지금까지 가장 균형 잡힌 모델이라고 밝혔다. 10월 글에서 Opus 4.7과 Sonnet 4.6이 각각 95%, 96%였던 것과 비교된다. 최신 모델은 정치 토론에 더 잘 응하고 요청을 덜 거절한다고 덧붙였다. 밴더빌트대 싱크탱크 The Future of Free Speech 등 외부 단체 세 곳에 표현의 자유 관련 검토도 맡겼다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 미국 중간선거를 앞두고 선거 안전장치를 강화한 내용을 공개했다 — 공식 글 &#39;Preparing for the 2026 US midterms&#39;에 강화 내용이 정리돼 있다. · <a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Claude.ai가 미국 사용자에게 Democracy Works의 공식 투표 정보를 답변에 넣고, 선거 당일 밤부터 최신 개표 결과를 보여 준다 — 공식 글에 두 기능이 모두 적혀 있다. · <a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Claude Opus 5.5·Sonnet 5.5·Haiku 5.5는 정치적 균형 평가에서 99%를 받았다 — 공식 글에 99% 점수가 나온다. · <a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 미국 Claude.ai 대화의 약 5.75%가 정치·정책·사회 이슈, 약 0.51%가 선거·투표 관련이다 — 대화 25만 건 표본 분석 수치가 공식 글과 일치한다. · <a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">앤트로픽: Preparing for the 2026 US midterms</a> · <a href="https://www.anthropic.com/news/election-safeguards-update" target="_blank" rel="noopener">앤트로픽: An update on our election safeguards</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s23">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;OpenAI, GPT-6 Astra 보고 로보틱스 팀 해체&#34; 포춘 보도 공유…확인 안 돼</h3>
+    <div class="one">포춘 기사 원문과 OpenAI 공식 자료를 찾지 못했다</div>
+    <ul class="pts"><li>포춘이 OpenAI 로보틱스 팀 해체를 보도했다는 글이 돌았다</li><li>포춘 기사와 OpenAI 공식 자료는 찾지 못했다</li><li>해체 여부와 이유 모두 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>경제지 포춘이 &#39;OpenAI가 GPT-6 Astra를 보고 로보틱스 팀을 해체했다&#39;고 보도했다는 글이 특이점 갤러리에 올라왔다. 글쓴이는 Astra가 부족해서가 아니라, 월드모델 없이도 Astra가 로봇 일을 잘해 내는 것을 보고 별도 팀이 필요 없다고 판단했다는 취지라고 설명했다.</p>
+      <p>그러나 해당 포춘 기사나 OpenAI의 공식 자료는 찾지 못했다. 글에도 기사 링크가 없다. 팀 해체 여부와 그 이유 모두 확인되지 않은 주장이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 포춘 보도에 따르면 OpenAI가 GPT-6 Astra 성능을 보고 로보틱스 팀을 해체했다 — 해당 포춘 기사나 OpenAI 공식 자료를 찾지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528585" target="_blank" rel="noopener">특이점 갤러리: 포춘 보도 공유 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s24">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;비영리단체 4곳, AI 5개사에 개발 중단 소송&#34; 기사 공유…소송 자료는 확인 안 돼</h3>
+    <div class="one">검색으로는 9월 소비자 4명이 낸 별개의 반독점 소송만 나왔다</div>
+    <ul class="pts"><li>비영리단체 4곳이 AI 5개사에 개발 중단 소송을 냈다는 기사가 공유됐다</li><li>소송 자료는 찾지 못해 확인되지 않았다</li><li>9월 소비자 반독점 소송과는 다른 건이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>미국 비영리단체 4곳이 OpenAI·앤트로픽·구글·스페이스X·메타를 상대로 최첨단 AI 모델의 추가 개발과 배포를 막아 달라는 소송을 냈다는 AI타임스 기사가 특이점 갤러리에 공유됐다. 기사는 로이터와 AP를 인용해 12일(현지 시각) 샌프란시스코 법원에 소송이 제기됐고, AI 기업 경영진 스스로 위험을 경고해 온 만큼 안전이 확보될 때까지 개발을 멈춰야 한다는 주장이라고 전했다.</p>
+      <p>하지만 해당 소송 자료는 찾지 못해 확인되지 않았다. 검색에서는 9월에 소비자 4명이 낸 별개의 반독점 소송만 확인됐다. 두 소송을 혼동하지 않도록 주의가 필요하다. 원고와 소장이 공개되면 다시 살펴볼 일이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 미국 비영리단체 4곳이 11월 12일 OpenAI·앤트로픽·구글·스페이스X·메타를 상대로 최첨단 AI 개발 중단 소송을 샌프란시스코 법원에 냈다 — 해당 소송 자료를 찾지 못했다. 검색으로는 9월 소비자 4명이 낸 별개의 반독점 소송만 확인됐다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527382" target="_blank" rel="noopener">특이점 갤러리: 개발 중단 소송 기사 공유</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s29">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;필즈상 수상자, AI 때문에 수학자 쓸모없어져&#34; 발언 공유…누구 말인지도 몰라</h3>
+    <div class="one">발언자와 원 출처가 없어 확인되지 않았다</div>
+    <ul class="pts"><li>필즈상 수상자 발언이라는 글이 공유됐다</li><li>발언자와 원 출처가 없어 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>필즈상 수상자가 &#39;AI 때문에 수학자가 쓸모없어진다&#39;고 말했다는 글이 특이점 갤러리에 올라왔다. 필즈상은 수학계에서 가장 권위 있는 상 가운데 하나다.</p>
+      <p>그러나 글에는 누구의 발언인지와 원 출처가 없다. 그래서 발언이 실제로 있었는지, 어떤 맥락이었는지 확인되지 않았다. 같은 날 Gemini 4 Carbon이 수학 평가 MathArena에서 1위에 오른 것이 확인되며 AI 수학 능력에 관심이 커진 상황이지만, 이 발언은 별개로 근거가 없다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 필즈상 수상자가 AI 때문에 수학자가 쓸모없어진다고 말했다 — 누구의 발언인지와 원 출처가 없어 확인하지 못했다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527994" target="_blank" rel="noopener">특이점 갤러리: 필즈상 수상자 발언 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s32">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#34;테슬라, 운전대 없는 사이버캡 오스틴 고객에 판매 시작&#34; 글 공유…공식 발표 없다</h3>
+    <div class="one">보도로는 오스틴 유료 운행과 3만 달러 목표가만 확인된다</div>
+    <ul class="pts"><li>사이버캡 개인 판매 시작 글이 공유됐다</li><li>테슬라 공식 발표는 찾지 못했다</li><li>오스틴 유료 운행과 3만 달러 목표가만 보도로 확인된다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>테슬라가 로보택시를 운영 중인 미국 오스틴에서 선별된 고객에게 운전대와 페달이 없는 자율주행차 사이버캡을 얼리 액세스로 팔기 시작했다는 글이 X 게시물을 인용해 공유됐다. 글은 가격이 3만 달러 이하라고 전했다.</p>
+      <p>그러나 테슬라의 공식 발표는 찾지 못해 판매 시작은 확인되지 않았다. 보도로 확인되는 것은 오스틴에서의 유료 운행과 3만 달러라는 목표 가격뿐이다. 개인 판매 여부는 테슬라 발표가 나와야 판단할 수 있다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 테슬라가 오스틴 일부 고객에게 운전대·페달 없는 사이버캡을 3만 달러 이하에 얼리 액세스로 팔기 시작했다 — 테슬라 공식 발표를 찾지 못했다. 보도로는 오스틴 유료 운행과 3만 달러 목표가만 확인된다.</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528662" target="_blank" rel="noopener">특이점 갤러리: 사이버캡 판매 글</a></div>
+    </div></details>
+  </article>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-12.html#s26" target="_blank" rel="noopener">GPT-6 Astra 6와 6.2에 같은 펠리컨 SVG 그리게 한 비교 공유</a>)</div>
+  </details>
+
+  <section id="reading">
+    <h2 class="lv2">오늘 읽은 자료</h2>
+    <div class="subt">19:00 수집 · 최근 48시간</div>
+    <div class="funnel">
+      <div class="big"><em>117개</em> 읽고 → 기사 <em>25개</em>로 <small>(이미 실린 38개는 뺐음)</small></div>
+      <div class="stack"><span class="dc" style="width:41.9%">49</span><span class="youtube" style="width:15.4%">18</span><span class="github" style="width:8.5%">10</span><span class="official" style="width:34.2%">40</span></div>
+      <div class="legend"><span><i class="dc"></i>디시 49</span><span><i class="youtube"></i>유튜브 18</span><span><i class="github"></i>트렌딩 10</span><span><i class="official"></i>공식 40</span></div>
+    </div>
+    <div class="src"><div class="h"><b>디시 특이점갤</b><span class="num"><em>49</em>개 읽음 → 28개 씀</span></div>
+      <div class="rule">개념글 탭 · 최근 48시간 · 목록 최대 5페이지 · 글마다 본문 4,000자<br>본문 없는 글 7개</div></div>
+    <div class="src"><div class="h"><b>유튜버 9명</b><span class="num"><em>18</em>개 읽음 → 12개 씀</span></div>
+      <div class="rule">긴 영상 + 쇼츠 · 최근 48시간 · 제목·설명·자막<br>긴 영상 7 · 쇼츠 11</div></div>
+    <div class="src"><div class="h"><b>깃허브 트렌딩</b><span class="num"><em>10</em>개 중 AI 관련 4개</span></div>
+      <div class="rule">github.com/trending · 오늘 · 모든 언어 · 페이지에 보인 저장소 전부</div></div>
+    <div class="src"><div class="h"><b>공식 발표</b><span class="num"><em>40</em>개 읽음 → 4개 씀</span></div>
+      <div class="rule">Claude Code 릴리스 · Anthropic 뉴스 · 최근 48시간</div></div>
+    <div class="cap">유튜버별 (<i class="v"></i>긴 영상 <i class="s"></i>쇼츠)</div>
+    <div class="yt"><span class="l">Solostack</span><span class="t"><span class="v" style="width:50%"></span><span class="s" style="width:50%"></span></span><span class="n">3 · 3 → <b>5</b></span></div>
+    <div class="yt"><span class="l">Claudical</span><span class="t"><span class="s" style="width:50%"></span></span><span class="n">0 · 3 → <b>2</b></span></div>
+    <div class="yt"><span class="l">바이브마피아 | AI Native 엔지니어</span><span class="t"><span class="s" style="width:50%"></span></span><span class="n">0 · 3 → <b>3</b></span></div>
+    <div class="yt"><span class="l">코난쌤 conanssam</span><span class="t"><span class="v" style="width:50%"></span></span><span class="n">3 · 0 → <b>2</b></span></div>
+    <div class="yt"><span class="l">조코딩 JoCoding</span><span class="t"><span class="s" style="width:33.3%"></span></span><span class="n">0 · 2 → <b>0</b></span></div>
+    <div class="yt"><span class="l">달비의 작업실 | AI 자동화</span><span class="t"><span class="v" style="width:16.7%"></span></span><span class="n">1 · 0 → <b>0</b></span></div>
+    <div class="yt none"><span class="l">@codefundkimflip</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@codefactory_official</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@editorp89</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="note">숫자는 "긴 영상 · 쇼츠 → 신문에 쓴 수"</div>
+
+    <details class="appx"><summary>확인 안 된 주장 모음 (16)</summary>
+      <ul><li>⚠️ 확인 안 됨 · 상장을 앞두고 J.P. Morgan 본사에서 아모데이와 제이미 다이먼의 대담이 앤트로픽 공식 유튜브로 생중계됐다 — 이번 생중계를 다룬 공식 자료를 찾지 못했다. 검색으로는 2026년 5월에 열린 별도의 두 사람 대담 기록만 확인됐다. <a href="#s4">기사로</a></li><li>⚠️ 확인 안 됨 · AI 비서 앱 피클(Pickle)이 앱스토어 생산성 1위에 올랐다 — 순위를 확인할 공식 자료를 찾지 못했다. <a href="#s13">기사로</a></li><li>⚠️ 확인 안 됨 · 피클은 무료로 쓸 수 있는 AI 비서 앱이며 전화 걸기와 카카오톡 연동을 지원한다 — 피클 요금 도움말 페이지에서 요금제와 기능 내용을 읽어 오지 못했다. <a href="#s13">기사로</a></li><li>⚠️ 확인 안 됨 · 교황(@Pontifex)이 트랜스휴머니즘·포스트휴머니즘을 비판하는 트윗을 올렸다 — X 게시물을 직접 열어 확인하지 못했다. <a href="#s21">기사로</a></li><li>⚠️ 확인 안 됨 · Claude Code와 Codex 모두 Shift+Tab으로 계획 모드를 켜고, Codex는 /plan도 쓸 수 있다 — Claude Code 문서에서 Shift+Tab이 권한 모드를 순환한다는 내용만 확인했다. Codex 문서는 확인하지 못했다. <a href="#s6">기사로</a></li><li>⚠️ 확인 안 됨 · 드와르케시 파텔이 초지능 타임라인을 크게 앞당겨 수정했다고 말했다 — 커뮤니티 글 외에 원 발언 출처를 찾지 못했다. <a href="#s20">기사로</a></li><li>⚠️ 확인 안 됨 · Hydrogen은 Sonnet 5.5($2/$10)보다 25% 싸지만 Terminal-Bench 4.1에서 57.0%로 Sonnet 5.5(63.9%)보다 낮다 — Hydrogen의 57%는 구글 블로그에서 확인했다. 그러나 Sonnet 5.5의 가격과 점수는 공식 자료에서 확인하지 못했다. <a href="#s3">기사로</a></li><li>⚠️ 확인 안 됨 · 포춘 보도에 따르면 OpenAI가 GPT-6 Astra 성능을 보고 로보틱스 팀을 해체했다 — 해당 포춘 기사나 OpenAI 공식 자료를 찾지 못했다. <a href="#s23">기사로</a></li><li>⚠️ 확인 안 됨 · AI가 작곡한 노래가 멜론 차트 1위에 올랐다 — 근거 자료가 없는 커뮤니티 글이며 공식 자료를 찾지 못했다. <a href="#s28">기사로</a></li><li>⚠️ 확인 안 됨 · 2026년 11월 5일 공개된 논문은 AI 작성 표시가 주관적 평가는 낮추지만 실제 지불·읽기 의향에는 거의 영향이 없다고 밝혔다 — 논문 원문을 찾아 확인하지 못했다. <a href="#s28">기사로</a></li><li>⚠️ 확인 안 됨 · 미국 비영리단체 4곳이 11월 12일 OpenAI·앤트로픽·구글·스페이스X·메타를 상대로 최첨단 AI 개발 중단 소송을 샌프란시스코 법원에 냈다 — 해당 소송 자료를 찾지 못했다. 검색으로는 9월 소비자 4명이 낸 별개의 반독점 소송만 확인됐다. <a href="#s24">기사로</a></li><li>⚠️ 확인 안 됨 · 필즈상 수상자가 AI 때문에 수학자가 쓸모없어진다고 말했다 — 누구의 발언인지와 원 출처가 없어 확인하지 못했다. <a href="#s29">기사로</a></li><li>⚠️ 확인 안 됨 · 테슬라가 오스틴 일부 고객에게 운전대·페달 없는 사이버캡을 3만 달러 이하에 얼리 액세스로 팔기 시작했다 — 테슬라 공식 발표를 찾지 못했다. 보도로는 오스틴 유료 운행과 3만 달러 목표가만 확인된다. <a href="#s32">기사로</a></li><li>⚠️ 확인 안 됨 · 로이터에 따르면 트럼프가 사임한 젠슨 황에게 자리를 지키라고 촉구했다 — 젠슨 황 사임이나 트럼프의 촉구를 다룬 로이터 기사와 공식 자료를 찾지 못했다. <a href="#s19">기사로</a></li><li>⚠️ 확인 안 됨 · OpenAI가 11월 10일 가게 정보를 직접 관리하는 &#39;Businesses in ChatGPT&#39;를 베타로 공개했다 — OpenAI 공식 페이지가 403으로 막혀 내용을 확인하지 못했다. <a href="#s11">기사로</a></li><li>⚠️ 확인 안 됨 · AI 상담원(Business Agent)은 홈페이지가 있는 미국 온라인 업체만 쓸 수 있다 — OpenAI 도움말 페이지도 403으로 막혀 확인하지 못했다. <a href="#s11">기사로</a></li></ul>
+    </details>
+    <details class="appx"><summary>오늘 수집한 원문 전체 (117)</summary>
+      <details><summary>디시 49</summary>
+        <ul><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529933" target="_blank" rel="noopener">글래드스톤 CEO : &#34;RSI 아직 멀었다던 똑똑이들이 생각 바꾸는 중&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529889" target="_blank" rel="noopener">파텔 : &#34;이미 현재 발전속도로도 1년에 GPT 3.5 -&gt; 아스트라 급&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529895" target="_blank" rel="noopener">&#34;SSI는 이제 걍 공개하는게 낫다&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529867" target="_blank" rel="noopener">그냥 저희는 한결같습니다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529796" target="_blank" rel="noopener">속보) 한국.. 세계최초 AI 마인드 업로딩 성공 ㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529559" target="_blank" rel="noopener">교황 떡밥은 타이밍이 너무 나빴음 ㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529464" target="_blank" rel="noopener">교황측 &#39;인류여, 어디로 가는가?&#39; 원글에 대한 팩트 체크</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529115" target="_blank" rel="noopener">교황 트윗 번역 읽기 쉽게</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529084" target="_blank" rel="noopener">죽음이 인간의 위대함이라는 교황 한달전..png</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529027" target="_blank" rel="noopener">카본으로 100년전 글 번역시켰는데 ㄹㅇ 쫀득하네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1529004" target="_blank" rel="noopener">교황이 특이점에 전쟁선포했네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528947" target="_blank" rel="noopener">아모데이 &#34;우리는 모호한 포스팅을 하지 않는다&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528875" target="_blank" rel="noopener">Ai 창작 컨텐츠에 ai표시 해야됨</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528818" target="_blank" rel="noopener">념글 웹소 대체 관련 독자인 내 시선에서 본 현 상황</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528808" target="_blank" rel="noopener">젠슨황 복귀떡밥 입갤</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528755" target="_blank" rel="noopener">현재 개발자 근황</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528744" target="_blank" rel="noopener">뭐 개발자 대체 금방 될 것 같긴 함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528700" target="_blank" rel="noopener">개발자 대체가 느린 이유랄까.. (현재 기준)</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528662" target="_blank" rel="noopener">테슬라 사이버캡 개인에게 판매 시작</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528602" target="_blank" rel="noopener">앤트로픽 퇴사자 새 트윗</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528589" target="_blank" rel="noopener">드와르케시 파텔 : &#34;초지능 타임라인 크게 수정하게됨&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528585" target="_blank" rel="noopener">포츈 지, &#34;오픈AI는 아스트라를 보고 로보틱스 팀을 해체함&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528557" target="_blank" rel="noopener">같은 개발 하는 사람으로서 ai 문제 많음</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528446" target="_blank" rel="noopener">속보) 카본 MathArena 1황 등극 ㄷㄷㄷㄷㄷㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1528242" target="_blank" rel="noopener">첨단기술 갤러리라는 곳이 있었다고함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527994" target="_blank" rel="noopener">필즈상 수상자 &#34;AI 때문에 수학자 쓸모 없어짐&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527801" target="_blank" rel="noopener">특놀 산책로 출시합니다.</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527751" target="_blank" rel="noopener">이젠 제조업까지 정1복한 클로드</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527682" target="_blank" rel="noopener">AI 작곡 노래 멜론 차트 1위 달성</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527382" target="_blank" rel="noopener">비영리단체 4곳, 오픈AI 등 5개사에 &#39;최첨단 AI 개발 중단&#39; 소송</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527346" target="_blank" rel="noopener">믿습니다..</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527258" target="_blank" rel="noopener">[속보] 로이터 트럼프가 젠슨 황에게 자리를 지키라고 촉구</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1527244" target="_blank" rel="noopener">GPT 6.2 아스트라 펠리컨 자전거</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526940" target="_blank" rel="noopener">룬 : ai 기업 연구원들 1년 안에 대체됨</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526925" target="_blank" rel="noopener">구글 &#34;한국 정부에 감사…한국서 구글 지도 출시 기대&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526877" target="_blank" rel="noopener">구글지도 반출 확정</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526855" target="_blank" rel="noopener">로건 미친놈이긴 하네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526813" target="_blank" rel="noopener">태초에 용이 있었다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526729" target="_blank" rel="noopener">속보) TSMC 해킹입갤 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526546" target="_blank" rel="noopener">중국모델들에 금지된 블랙월 칩 사용된것으로밝혀져</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526637" target="_blank" rel="noopener">(구글x삼성) AI안경 사전 주문이 시작되었습니다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526623" target="_blank" rel="noopener">오픈AI, 앤트로픽과 함께 중국 AI칩 수출 통제 물결 동참</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1526373" target="_blank" rel="noopener">챗지피티 공계 업데이트 떴다 ㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525650" target="_blank" rel="noopener">“더 쓸 약 없다”던 말기암에서도… 새 약 나온다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525571" target="_blank" rel="noopener">나 저격 당했는데?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525397" target="_blank" rel="noopener">행복한 천국을 기원하기 478일차</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525231" target="_blank" rel="noopener">지금 상황 한짤요약</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525181" target="_blank" rel="noopener">&#34;strawberry에 f가 몇 개야? 검색하지 마.&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1525140" target="_blank" rel="noopener">GTA6 는 피라미드가 될 것 ㅋㅋ</a></li></ul></details>
+      <details><summary>유튜브 18</summary>
+        <ul><li><a href="https://www.youtube.com/watch?v=GW2FAReF9HI" target="_blank" rel="noopener">에어팟 케이스와 아이폰으로 마우스를 만들어버린 개발자들</a></li><li><a href="https://www.youtube.com/watch?v=33_JIZWdDb8" target="_blank" rel="noopener">터미널에 맥OS를 띄워버림</a></li><li><a href="https://www.youtube.com/watch?v=Wq76zO92cOQ" target="_blank" rel="noopener">Awwwards 오늘의 사이트로 뽑힌 무료 모션 그래픽 교과서 | Zajno Motion</a></li><li><a href="https://www.youtube.com/watch?v=clpNutT4Fus" target="_blank" rel="noopener">진짜 물건처럼 움직이는 화면 부품 15개 | The Kitchen</a></li><li><a href="https://www.youtube.com/watch?v=uhlDSbI7Eno" target="_blank" rel="noopener">Claude가 이제 화상회의에 참석합니다 | Claude Meetings</a></li><li><a href="https://www.youtube.com/watch?v=-VA5KctJjf8" target="_blank" rel="noopener">Claude 세션, 다 지우시나요?</a></li><li><a href="https://www.youtube.com/watch?v=CoMgJXyTUDg" target="_blank" rel="noopener">문서, 어떻게 관리해야할까요?</a></li><li><a href="https://www.youtube.com/watch?v=A-19R603GFg" target="_blank" rel="noopener">AI 디자인 시안, 어떻게 고르나요?</a></li><li><a href="https://www.youtube.com/watch?v=bQvV3Gf8Zgc" target="_blank" rel="noopener">K-EXAONE 2.5 무료 API 써 봤습니다 | 키 받는 법부터 GPT-6-Luna와 실력 비교까지</a></li><li><a href="https://www.youtube.com/watch?v=DZaqAU97l00" target="_blank" rel="noopener">Claude Code·Codex 쓸 때 들이면 좋은 습관 5가지 | 공식 문서 기준</a></li><li><a href="https://www.youtube.com/watch?v=qyiZ9QvEamo" target="_blank" rel="noopener">제미나이 4 하이드로젠, Sonnet 맞상대인데 25% 싸다</a></li><li><a href="https://www.youtube.com/watch?v=gy3i6dsm9tI" target="_blank" rel="noopener">Claude가 회의에 들어온다, Claude Meetings로 되는 것과 안 되는 것</a></li><li><a href="https://www.youtube.com/watch?v=6dZQ3Zco69U" target="_blank" rel="noopener">Claude Code·Codex, 만든 회사는 이렇게 쓰길 바랍니다 | 공식 문서로 정리한 7가지</a></li><li><a href="https://www.youtube.com/watch?v=QPlpWvM-sdQ" target="_blank" rel="noopener">자영업자 사장님들, 주목해 주세요! ChatGPT 속 우리 가게 정보</a></li><li><a href="https://www.youtube.com/watch?v=9iS4552JnaI" target="_blank" rel="noopener">컴퓨터 여러 대를 하나로 제어하는 방법｜허더·오르카·파세오 비교</a></li><li><a href="https://www.youtube.com/watch?v=vYBwEtXHY6c" target="_blank" rel="noopener">수능 450점 만점 AI, 안경에 들어오면 벌어질 일｜교사의 해법</a></li><li><a href="https://www.youtube.com/watch?v=Nw3TGtj5VN0" target="_blank" rel="noopener">무료 AI 비서 피클, 카톡에 전화까지 맡겨 봤더니</a></li><li><a href="https://www.youtube.com/watch?v=hjSYcGVmXHw" target="_blank" rel="noopener">AI한테 수능 수학이랑 세무사 시험 시켜 봤습니다 | 주간AI</a></li></ul></details>
+      <details><summary>트렌딩 10</summary>
+        <ul><li><a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">alibaba/open-code-review</a></li><li><a href="https://github.com/ZhuLinsen/daily_stock_analysis" target="_blank" rel="noopener">ZhuLinsen/daily_stock_analysis</a></li><li><a href="https://github.com/we-promise/sure" target="_blank" rel="noopener">we-promise/sure</a></li><li><a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">backnotprop/plannotator</a></li><li><a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener">louislam/uptime-kuma</a></li><li><a href="https://github.com/block/buzz" target="_blank" rel="noopener">block/buzz</a></li><li><a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">tradermonty/claude-trading-skills</a></li><li><a href="https://github.com/tailscale/tailcat" target="_blank" rel="noopener">tailscale/tailcat</a></li><li><a href="https://github.com/Likely7/Veyra-NRVideo" target="_blank" rel="noopener">Likely7/Veyra-NRVideo</a></li><li><a href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener">ChromeDevTools/chrome-devtools-mcp</a></li></ul></details>
+      <details><summary>공식 40</summary>
+        <ul><li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.325" target="_blank" rel="noopener">Claude Code v2.1.325</a></li><li><a href="https://www.anthropic.com/news/2026-us-midterms" target="_blank" rel="noopener">Preparing for the 2026 US midterms</a></li><li><a href="https://www.anthropic.com/news/a-new-initiative-for-developing-third-party-model-evaluations" target="_blank" rel="noopener">Funding third-party model evaluations</a></li><li><a href="https://www.anthropic.com/news/accenture-embedded-evaluation" target="_blank" rel="noopener">Partnering with Accenture on embedded evaluation</a></li><li><a href="https://www.anthropic.com/news/activating-asl3-protections" target="_blank" rel="noopener">Activating AI Safety Level 3 protections</a></li><li><a href="https://www.anthropic.com/news/an-update-on-independent-evaluators" target="_blank" rel="noopener">Anthropic update on independent evaluators</a></li><li><a href="https://www.anthropic.com/news/anthropic-institute-agenda" target="_blank" rel="noopener">Focus areas for The Anthropic Institute</a></li><li><a href="https://www.anthropic.com/news/anthropic-is-endorsing-sb-53" target="_blank" rel="noopener">Anthropic is endorsing SB 53</a></li><li><a href="https://www.anthropic.com/news/build-ai-in-america" target="_blank" rel="noopener">Build AI in America: Anthropic Energy Report</a></li><li><a href="https://www.anthropic.com/news/challenges-in-red-teaming-ai-systems" target="_blank" rel="noopener">Challenges in red teaming AI systems</a></li><li><a href="https://www.anthropic.com/news/claude-3-5-sonnet" target="_blank" rel="noopener">Introducing Claude 3.5 Sonnet</a></li><li><a href="https://www.anthropic.com/news/claude-3-family" target="_blank" rel="noopener">Introducing the next generation of Claude</a></li><li><a href="https://www.anthropic.com/news/claude-4" target="_blank" rel="noopener">Introducing Claude 4</a></li><li><a href="https://www.anthropic.com/news/claude-brazil" target="_blank" rel="noopener">Claude is now available in Brazil</a></li><li><a href="https://www.anthropic.com/news/claude-europe" target="_blank" rel="noopener">Claude is now available in the EU</a></li><li><a href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">Claude Fable 5 and Claude Mythos 5</a></li><li><a href="https://www.anthropic.com/news/claude-for-teachers" target="_blank" rel="noopener">Introducing Claude for Teachers</a></li><li><a href="https://www.anthropic.com/news/claude-new-constitution" target="_blank" rel="noopener">Claude&#39;s new constitution</a></li><li><a href="https://www.anthropic.com/news/claude-sonnet-5" target="_blank" rel="noopener">Introducing Claude Sonnet 5</a></li><li><a href="https://www.anthropic.com/news/claude-text-watermark" target="_blank" rel="noopener">How Claude&#39;s text watermarking works</a></li><li><a href="https://www.anthropic.com/news/deprecation-commitments" target="_blank" rel="noopener">Commitments on model deprecation and preservation</a></li><li><a href="https://www.anthropic.com/news/detecting-and-countering-malicious-uses-of-claude-march-2025" target="_blank" rel="noopener">Detecting and countering malicious uses of Claude</a></li><li><a href="https://www.anthropic.com/news/detecting-countering-misuse-aug-2025" target="_blank" rel="noopener">Detecting and countering misuse of AI: August 2025</a></li><li><a href="https://www.anthropic.com/news/donate-public-first-action" target="_blank" rel="noopener">Anthropic is donating $20 million to Public First Action</a></li><li><a href="https://www.anthropic.com/news/economic-futures-research-fund-agenda" target="_blank" rel="noopener">Economic Futures Research Fund agenda</a></li><li><a href="https://www.anthropic.com/news/election-safeguards-update" target="_blank" rel="noopener">An update on our election safeguards</a></li><li><a href="https://www.anthropic.com/news/improving-alignment-security-efforts" target="_blank" rel="noopener">Improving our alignment and security practices</a></li><li><a href="https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards" target="_blank" rel="noopener">Improving Fable 5&#39;s safeguards</a></li><li><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals" target="_blank" rel="noopener">Investigating three incidents in our cybersecurity evaluations</a></li><li><a href="https://www.anthropic.com/news/our-approach-to-understanding-and-addressing-ai-harms" target="_blank" rel="noopener">Understanding and addressing AI harms</a></li><li><a href="https://www.anthropic.com/news/protecting-well-being-of-users" target="_blank" rel="noopener">Protecting the wellbeing of our users</a></li><li><a href="https://www.anthropic.com/news/reflections-on-our-responsible-scaling-policy" target="_blank" rel="noopener">Reflections on our Responsible Scaling Policy</a></li><li><a href="https://www.anthropic.com/news/responsible-scaling-policy-v3" target="_blank" rel="noopener">Responsible Scaling Policy Version 3.0</a></li><li><a href="https://www.anthropic.com/news/s1-sec" target="_blank" rel="noopener">Anthropic files S-1 with the SEC for proposed initial public offering</a></li><li><a href="https://www.anthropic.com/news/securing-america-s-compute-advantage-anthropic-s-position-on-the-diffusion-rule" target="_blank" rel="noopener">Anthropic&#39;s position on the diffusion rule</a></li><li><a href="https://www.anthropic.com/news/statement-comments-secretary-war" target="_blank" rel="noopener">Statement on the comments from Secretary of War Pete Hegseth</a></li><li><a href="https://www.anthropic.com/news/the-need-for-transparency-in-frontier-ai" target="_blank" rel="noopener">A framework for AI development transparency</a></li><li><a href="https://www.anthropic.com/news/thoughts-on-america-s-ai-action-plan" target="_blank" rel="noopener">Thoughts on America’s AI Action Plan</a></li><li><a href="https://www.anthropic.com/news/us-elections-readiness" target="_blank" rel="noopener">U.S. elections readiness</a></li><li><a href="https://www.anthropic.com/news/wellbeing-research-grants" target="_blank" rel="noopener">Funding better evaluations of AI’s impact on wellbeing</a></li></ul></details>
+    </details>
+  </section>
+</div>
+<script>
+  // 닫힌 섹션 안의 기사로 가는 링크(#s3, 다른 날 신문의 ...html#s3)도 보이게: 목표를 감싼 <details>를 모두 연다
+  function openTo(id) {
+    var el = id && document.getElementById(id);
+    for (var p = el && el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    return el;
+  }
+  function openHash() { var el = openTo(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+  // 페이지 안 링크는 여기서 연 뒤 브라우저가 원래대로 그 자리로 스크롤한다
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) openTo(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+</script>
+</body>
+</html>
