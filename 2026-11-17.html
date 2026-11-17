@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 데일리 · 11월 17일 (화) 저녁판</title>
+<style>
+  :root { --bg: #FCEBD7; --ink: #3B2A1F; --muted: #8A7563; --acc: #E07A2E; --bar: #DCC5A6; --card: #FFF6EC; --line: #EBD3B5; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 15px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+  #np { max-width: 640px; margin: 0 auto; padding: 22px 16px 40px; scroll-behavior: smooth; word-break: keep-all; overflow-wrap: anywhere; }
+  a { color: inherit; }
+  .date { font-size: 13px; color: var(--muted); }
+  .date a { color: var(--acc); font-weight: 800; text-decoration: none; white-space: nowrap; }
+  h1 { font-size: 34px; font-weight: 900; letter-spacing: -1px; line-height: 1.15; margin: 4px 0 12px; }
+  .lv2 { font-size: 26px; font-weight: 900; letter-spacing: -.6px; line-height: 1.25; margin: 30px 0 10px; padding-left: 12px; border-left: 6px solid var(--acc); }
+  .lv2 small { font-size: 13px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+  details.sec { border-bottom: 1.5px solid var(--line); }
+  details.sec > summary { padding: 16px 0; }
+  details.sec > summary .lv2 { margin: 0; display: flex; align-items: center; gap: 8px; }
+  details.sec > summary .lv2::after { content: "펼치기 ▾"; margin-left: auto; flex: none; font-size: 13px; font-weight: 800; letter-spacing: 0; color: var(--acc); }
+  details.sec[open] > summary .lv2::after { content: "접기 ▴"; }
+  .cnt { flex: none; font-size: 14px; font-weight: 800; letter-spacing: 0; padding: 1px 9px; border-radius: 999px; background: var(--acc); color: #fff; }
+  .callout { border-left: 5px solid var(--acc); padding: 4px 0 4px 14px; margin: 6px 0 14px; }
+  .callout .k { font-size: 13px; font-weight: 800; color: var(--muted); }
+  .callout .v { font-size: 21px; font-weight: 900; line-height: 1.35; margin-top: 4px; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; line-height: 1.4; padding: 3px 9px; border-radius: 6px; background: var(--acc); color: #fff; white-space: nowrap; }
+  .pill.soft, .pill.none { background: var(--bar); color: var(--ink); }
+  .pill.ok { background: #5E8C4A; }
+  .pill.warn { background: #fff; color: var(--acc); border: 1.5px solid var(--acc); padding: 1.5px 7.5px; }
+  .pill.bad { background: #B83A2B; }
+  .pill.sm { font-size: 10.5px; padding: 0 5px; }
+  .tags a { display: flex; align-items: flex-start; gap: 8px; margin: 6px 0; font-size: 14px; text-decoration: none; }
+  .tags .pill { flex: none; }
+  .tags .person .pill { background: var(--bar); color: var(--ink); }
+  .cap { font-size: 13px; font-weight: 800; color: var(--muted); margin: 16px 0 8px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .rank .b { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) 28px; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0; text-decoration: none; }
+  .rank .lbl { display: flex; justify-content: flex-end; align-items: center; gap: 4px; min-width: 0; }
+  .rank .nm, .fig .b .l, .yt .l { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rank .lbl .pill, .rank .ic { flex: none; }
+  .track { display: block; height: 18px; }
+  .fill { display: block; height: 100%; background: var(--bar); border-radius: 3px; min-width: 2px; }
+  .fill.hot { background: var(--acc); }
+  .rank .n { font-weight: 800; }
+  .toc { margin: 18px 0 4px; padding: 10px 12px; background: var(--card); border-radius: 10px; font-size: 13.5px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .toc a { color: var(--acc); font-weight: 700; }
+  .toc button { font: inherit; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 14px; border: 1.5px solid var(--acc); background: #fff; color: var(--acc); cursor: pointer; white-space: nowrap; }
+  .art { padding: 16px 0 14px; border-top: 1.5px solid var(--line); }
+  .art .top { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .art h3 { font-size: 19px; font-weight: 900; line-height: 1.35; letter-spacing: -.3px; margin: 10px 0; }
+  .thumb { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; display: block; margin-bottom: 12px; background: var(--bar); }
+  .one { border-left: 4px solid var(--acc); padding: 2px 0 2px 12px; font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 14px; }
+  .fig { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+  .fig .cap { margin: 0 0 8px; font-size: 12px; }
+  .fig .cap .pill { margin-left: 4px; vertical-align: 1px; }
+  .fig .src { font-size: 11px; color: var(--muted); margin-top: 8px; }
+  .fig .b { display: grid; grid-template-columns: minmax(0, 96px) 1fr 58px; gap: 6px; align-items: center; font-size: 12.5px; margin: 5px 0; }
+  .fig .b .l { text-align: right; }
+  .fig .b .track { height: 14px; }
+  .fig .b .fill { border-radius: 2px; }
+  .fig .b .n { font-weight: 800; }
+  .flow { display: flex; align-items: stretch; gap: 4px; }
+  .flow .s { flex: 1 1 0; min-width: 0; background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px 6px; text-align: center; font-size: 12.5px; line-height: 1.35; }
+  .flow .s b { display: block; color: var(--acc); font-size: 18px; }
+  .flow .s small { display: block; color: var(--muted); margin-top: 2px; }
+  .flow .ar { flex: none; align-self: center; color: var(--acc); font-weight: 900; }
+  .flow.col { flex-direction: column; }
+  .flow.col .s { flex: none; display: flex; align-items: baseline; gap: 10px; text-align: left; padding: 6px 10px; }
+  .flow.col .s b { font-size: 16px; }
+  .flow.col .s small { margin: 0 0 0 auto; text-align: right; }
+  .flow.col .ar { transform: rotate(90deg); line-height: 1; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 6px; }
+  .cards .sk { background: #fff; border: 2px solid var(--acc); border-radius: 10px; padding: 8px; font-size: 12px; line-height: 1.35; min-width: 0; }
+  .cards .sk b { display: block; font-size: 13.5px; }
+  .cards .st { color: var(--acc); font-weight: 900; font-size: 15px; margin-top: 4px; }
+  .check { list-style: none; padding: 0; margin: 0; }
+  .check li { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; margin: 6px 0; line-height: 1.4; }
+  .check .i { flex: none; width: 20px; height: 20px; border-radius: 50%; background: #5E8C4A; color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+  .check .i.new { background: var(--acc); }
+  .pts { margin: 0 0 10px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+  details.more { font-size: 14px; }
+  details summary { list-style: none; cursor: pointer; font-weight: 800; }
+  details summary::-webkit-details-marker { display: none; }
+  details.more > summary { font-size: 13.5px; }
+  details.more > summary::after { content: " ▸"; }
+  details.more[open] > summary::after { content: " ▾"; }
+  .body { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--line); }
+  .body p { margin: 0 0 9px; font-size: 15px; }
+  .body .follow { font-size: 13px; color: var(--muted); }
+  .body .follow a, .links a, .box a { color: var(--acc); }
+  .box { margin: 6px 0 9px; padding: 8px 10px; background: #EEF3E8; border-left: 3px solid #5E8C4A; border-radius: 4px; font-size: 13.5px; }
+  .box.w { background: #fff; border-left-color: var(--acc); }
+  .box.r { background: #F8E3DE; border-left-color: #B83A2B; }
+  .links { font-size: 13.5px; color: var(--muted); }
+  .react { margin: 6px 0 10px; padding: 8px 12px; background: var(--card); border-radius: 8px; font-size: 13.5px; }
+  .react a { color: var(--acc); }
+  #reading { margin-top: 12px; }
+  #reading .subt { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .funnel { background: var(--card); border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+  .funnel .big { font-size: 20px; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+  .funnel .big em { font-style: normal; color: var(--acc); }
+  .funnel .big small { font-size: 12px; font-weight: 400; color: var(--muted); }
+  .stack { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+  .stack span { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+  .dc { background: var(--acc); color: #fff; }
+  .youtube { background: #E9A56B; }
+  .github { background: var(--bar); }
+  .official { background: #B9A48B; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+  .fail { font-size: 13px; color: #B83A2B; margin: 0 0 8px; }
+  #reading .src { background: var(--card); border-left: 5px solid var(--acc); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+  #reading .src .h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  #reading .src .h b { font-size: 15px; }
+  #reading .src .num { font-size: 13px; font-weight: 800; white-space: nowrap; }
+  #reading .src .num em { font-style: normal; color: var(--acc); font-size: 16px; }
+  #reading .src .rule { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.45; }
+  .yt { display: grid; grid-template-columns: minmax(0, 92px) 1fr 74px; gap: 6px; align-items: center; font-size: 12.5px; margin: 6px 0; }
+  .yt .l { text-align: right; }
+  .yt .t { display: flex; height: 16px; }
+  .yt .v, .cap .v { background: var(--acc); }
+  .yt .s, .cap .s { background: var(--bar); }
+  .yt .o { background: #E9A56B; }
+  .cap i { display: inline-block; width: 10px; height: 10px; margin: 0 3px 0 6px; vertical-align: -1px; }
+  .yt .n { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .yt .n b { color: var(--ink); }
+  .yt.none .l, .yt.none .n { color: #B3A08D; }
+  details.appx { margin: 12px 0 0; font-size: 14px; }
+  details.appx ul { margin: 6px 0 0 18px; padding: 0; }
+  details.appx li { margin-bottom: 4px; }
+  details.appx a { color: var(--acc); }
+  details.appx details { margin: 6px 0 0 8px; }
+  details.appx > summary::after, details.appx details > summary::after { content: " ▸"; color: var(--muted); }
+  details.appx[open] > summary::after, details.appx details[open] > summary::after { content: " ▾"; }
+</style>
+</head>
+<body>
+<div id="np">
+  <div class="date">11월 17일 (화) 저녁판 · 훑어보기 약 9분 · 전체 약 41분 · <a href="#reading">79개 읽고 25개 기사로 ▸</a></div>
+  <h1>AI 데일리</h1>
+  <div class="callout"><div class="k">오늘 한 줄</div><div class="v">Claude Code v2.1.326이 나왔고, 알리바바·구글 리서치가 에이전트 도구를 공개했다. 상장설과 &#39;지능 폭발&#39; 발언은 여전히 확인되지 않았다.</div></div>
+  <div class="tags">
+    <a class="issue" href="#s23"><span class="pill">큰 이슈</span><span>Fable 5.2·Gemini 4 Carbon 공개 확인</span></a>
+    <a class="skill" href="#s13"><span class="pill">떠오르는 스킬</span><span>에이전트용 로컬 영상 편집 ffmpeg-skill</span></a>
+    <a class="person" href="#s28"><span class="pill">인물 발언</span><span>연준 의장 &#34;초지능은 생애 최대 변화&#34;</span></a>
+  </div>
+  <h2 class="lv2">오늘 화제 순위 <small>(다룬 글·영상 수)</small></h2>
+  <div class="rank">
+    <a class="b" href="#s25"><span class="lbl"><span class="nm">올트먼 세마포 대담 번역 …</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill hot" style="width:100%"></span></span><span class="n">4</span></a>
+    <a class="b" href="#s26"><span class="lbl"><span class="nm">&#39;지능 폭발&#39; 논쟁 이어져…</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:75%"></span></span><span class="n">3</span></a>
+    <a class="b" href="#s22"><span class="lbl"><span class="nm">&#39;전문직은 책임 때문에 A…</span></span><span class="track"><span class="fill" style="width:50%"></span></span><span class="n">2</span></a>
+    <a class="b" href="#s20"><span class="lbl"><span class="nm">세무사 AI 부정행위 파장…</span><span class="pill warn sm">확인 안 됨</span></span><span class="track"><span class="fill" style="width:50%"></span></span><span class="n">2</span></a>
+    <a class="b" href="#s11"><span class="lbl"><span class="nm">알리바바, 규칙 파이프라인…</span><span class="ic">✅</span></span><span class="track"><span class="fill" style="width:25%"></span></span><span class="n">1</span></a>
+  </div>
+  <div class="note">막대를 누르면 그 기사로 이동 · 많이 다뤄졌다는 뜻일 뿐, 사실이라는 뜻은 아님</div>
+
+  <div class="toc"><span>업데이트 2 · 새 도구 8 · 팁 1 · 이슈 14 · <a href="#reading">읽은 자료</a></span>
+    <button onclick="var d=document.querySelectorAll('#np details.sec, #np details.more');var open=this.dataset.o!=='1';d.forEach(function(x){x.open=open});this.dataset.o=open?'1':'0';this.textContent=open?'모두 접기':'모두 펼치기';">모두 펼치기</button></div>
+
+  <details class="sec"><summary><h2 class="lv2">업데이트 · Claude Code와 모델 <span class="cnt">2</span></h2></summary>
+  <article class="art" id="s1">
+    <div class="top"><span class="pill">업데이트</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>Claude Code v2.1.326 출시…에이전트 팀에서도 Code Mode, 도구 설정 실수는 시작할 때 경고</h3>
+    <div class="one">팀 기능과 Code Mode를 함께 쓰게 됐고 권한·설정 버그도 대거 고쳤다</div>
+    <div class="fig">
+      <div class="cap">v2.1.326 주요 변경</div>
+      <ul class="check">
+        <li><span class="i new">+</span><span>에이전트 팀 + Code Mode 동시 사용</span></li>
+        <li><span class="i new">+</span><span>--allowedTools·--tools 불완전 규칙 시작 경고</span></li>
+        <li><span class="i new">+</span><span>/status에 기능 꺼짐 이유 표시</span></li>
+        <li><span class="i new">+</span><span>Ctrl+O로 숨은 시작 알림 보기</span></li>
+        <li><span class="i">✓</span><span>삭제·덮어쓰기 명령이 &#39;읽기&#39;로 보이던 문제 수정</span></li>
+        <li><span class="i">✓</span><span>관리형 PreToolUse 훅 거부 기록 누락 수정</span></li>
+        <li><span class="i">✓</span><span>저장 실패한 권한 규칙이 저장된 듯 보이던 문제 수정</span></li>
+      </ul>
+      <div class="src">출처: Claude Code</div>
+    </div>
+    <ul class="pts"><li>에이전트 팀을 켠 상태에서도 Code Mode를 쓸 수 있다</li><li>--allowedTools 등에 불완전한 규칙이 있으면 시작할 때 경고한다</li><li>파일을 지우는 Bash 명령이 &#39;읽기&#39;로 표시되던 문제를 고쳤다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 Claude Code v2.1.326을 내놨다. 공식 릴리스 노트 첫 항목은 에이전트 팀(여러 에이전트가 나눠 일하는 기능)을 켠 상태에서도 Code Mode를 켤 수 있게 했다는 내용이다. 이미 Code Mode를 켜 둔 사용자라면 팀 기능이 켜진 세션도 처음부터 Code Mode로 시작한다.</p>
+      <p>설정 실수를 미리 잡아 주는 장치도 늘었다. `--allowedTools`, `--disallowedTools`, `--tools`에 넣은 값 가운데 완전한 규칙처럼 보이지 않는 것이 있으면 시작할 때 경고를 띄운다. 허용·차단 목록을 잘못 적어 의도와 다르게 도구가 열리거나 막히는 일을 줄이려는 조치다. 세션 도중 관리자가 `managed-mcp.json`을 추가해 MCP 서버(외부 도구를 에이전트에 연결하는 서버)가 더 이상 불러와지지 않을 때 그 이유를 설명하는 메시지도 붙었다.</p>
+      <p>`/status`에는 사용 중인 제공자나 `DISABLE_TELEMETRY` 같은 환경 변수 때문에 기능이 꺼졌을 때 이를 알려 주는 줄이 생겼다. `/plugin`과 `claude plugin list`는 `plugin.json`의 `author`·`homepage` 같은 필드가 잘못돼 무시될 때 알려 준다. Ctrl+O로 숨겨진 시작 알림을 볼 수 있고, 요청이 실패한 뒤 빈 입력창에는 다음에 할 일을 알려 주는 힌트가 뜬다. 서브에이전트 화면에는 Esc로 멈출 수 있다는 안내가 붙었다.</p>
+      <p>권한과 관련된 버그 수정이 많다. `find -delete`, `cat a &gt; b`, `sort -o`처럼 파일을 지우거나 덮어쓰는 Bash 명령이 대화 기록에 &#39;검색&#39;이나 &#39;읽기&#39;로 요약되던 문제를 고쳤다. 실제로는 파일을 바꾸는 명령이 읽기처럼 보이면 사용자가 위험을 놓칠 수 있었다. `/permissions`나 도구 승인 창에서 추가한 규칙이 설정 파일에 써지지 않았는데도 저장된 것처럼 보이던 문제도 고쳐, 이제는 어떤 파일인지 이름을 대며 경고한다.</p>
+      <p>관리형 설정 쪽도 손봤다. 관리형 설정에 넣은 PreToolUse 훅(도구 실행 직전에 도는 스크립트)이 도구 호출을 거부했을 때 OpenTelemetry `tool_decision` 이벤트와 `permission_denials` 기록이 남지 않던 문제가 고쳐졌다. 훅으로 사내 정책을 강제하는 팀은 거부 기록을 감사 로그에서 확인할 수 있게 됐다. 수천 단계로 중첩된 설정 값이 프로그램을 멈추게 하던 문제는 64단계를 넘는 값을 경고와 함께 버리는 방식으로 막았다.</p>
+      <p>백그라운드 세션이 충돌 뒤나 다른 폴더에서 다시 열릴 때 셸이 내보낸 LLM 게이트웨이 설정을 잃던 문제는, 이제 모델 요청을 보내기 전에 멈추도록 바뀌었다. 게이트웨이를 거쳐야 하는 회사 환경에서 엉뚱한 경로로 요청이 나가는 일을 막는 변경이다. 이 밖에 폴더 신뢰 확인 창에서 위 화살표와 Enter가 &#39;예&#39;로 처리되던 문제, 설치 마지막 Enter가 자동 모드 기본값 제안을 받아들이던 문제 등 실수로 승인되는 경로도 여럿 막았다.</p>
+      <div class="box ">✅ 확인됨 · Claude Code v2.1.326이 나왔고, 에이전트 팀을 켠 상태에서 Code Mode를 쓸 수 있게 됐다 — 공식 릴리스 노트 첫 항목에 있다 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.326" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · --allowedTools·--disallowedTools·--tools 값이 완전한 규칙이 아니면 시작할 때 경고한다 — 공식 릴리스 노트에 있다 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.326" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.326" target="_blank" rel="noopener">Claude Code v2.1.326 릴리스 노트</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s33">
+    <div class="top"><span class="pill">업데이트</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#39;구글 Gemini 4 Oxygen&#39; 언급 글…본문 없어 확인 안 돼</h3>
+    <div class="one">제목만 있는 커뮤니티 글이며 구글 공식 자료도 없다</div>
+    <ul class="pts"><li>본문 없는 제목 글이다</li><li>구글 공식 자료를 찾지 못했다</li><li>공식 확인된 것은 Gemini 4 Carbon뿐이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>&#39;구글 제미니 4 옥시젠&#39;이라는 제목의 글이 커뮤니티에 올라왔다. 본문은 비어 있고 구글 공식 자료도 찾지 못해 Gemini 4 Oxygen이 나왔다는 주장은 확인되지 않았다.</p>
+      <p>Gemini 4 계열에서 공식 확인된 것은 구글 블로그에 실린 Gemini 4 Carbon 전체 공개다. 전날 신문에서는 &#39;Gemini 4 Krypton 곧 출시&#39; 루머와 원소 이름으로 등급을 나눈다는 설을 다뤘지만 이것도 확인되지 않았다. 원소 이름 모델명이 계속 돌고 있으나 공식 발표가 나오기 전까지는 소문으로 봐야 한다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 구글이 Gemini 4 Oxygen을 냈다 — 게시글 본문이 비어 있고 구글 공식 자료도 찾지 못했다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534988" target="_blank" rel="noopener">&#39;제미니 4 옥시젠&#39; 글</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">새 도구 · 스킬 · 훅 <span class="cnt">8</span></h2></summary>
+  <article class="art" id="s11">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>알리바바, 규칙 파이프라인과 LLM 에이전트를 섞은 코드 리뷰 도구 &#39;open-code-review&#39; 공개</h3>
+    <div class="one">정해진 규칙 검사와 AI 판단을 함께 써 줄 단위 리뷰 댓글을 단다</div>
+    <ul class="pts"><li>결정적 규칙 파이프라인 + LLM 에이전트 하이브리드 구조</li><li>NPE·스레드 안전성·XSS·SQL 인젝션 규칙을 기본 제공</li><li>OpenAI·Anthropic 호환이라 Claude로도 돌릴 수 있다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>알리바바가 코드 리뷰 도구 open-code-review를 깃허브에 공개했다. README는 이 도구를 &#39;Deterministic Engineering × Agent Hybrid&#39; 구조라고 설명한다. 같은 입력이면 늘 같은 결과를 내는 결정적(deterministic) 파이프라인과, 맥락을 읽고 판단하는 LLM 에이전트를 함께 쓴다는 뜻이다.</p>
+      <p>LLM만으로 리뷰를 맡기면 같은 코드에 매번 다른 지적이 나오거나 놓치는 문제가 생기기 쉽다. 반대로 규칙 검사만 쓰면 맥락을 못 읽는다. 하이브리드 방식은 규칙으로 잡을 수 있는 것은 확실히 잡고, 나머지 판단을 에이전트에 맡기려는 설계다.</p>
+      <p>리뷰 결과는 줄 단위로 정확하게 다는 댓글(line-level comments)로 나온다. 다국어 규칙 모음이 기본으로 들어 있어 NPE(널 포인터 예외), 스레드 안전성, XSS(사이트 간 스크립팅), SQL 인젝션 같은 흔한 결함과 보안 취약점을 잡는다.</p>
+      <p>모델은 OpenAI와 Anthropic 호환 방식으로 붙일 수 있다. Claude나 GPT 계열 API를 이미 쓰고 있다면 그대로 연결해 사내 리뷰 파이프라인에 넣어 볼 수 있다. 저장소 소개는 &#39;알리바바 규모에서 검증됐다&#39;고 하지만, 실제 성능 수치는 이번에 확인한 자료에 없다.</p>
+      <div class="box ">✅ 확인됨 · 알리바바가 규칙 기반(결정적) 파이프라인과 LLM 에이전트를 섞은 하이브리드 코드 리뷰 도구 open-code-review를 공개했다 — README에 &#39;Deterministic Engineering × Agent Hybrid&#39; 구조가 적혀 있다 · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 줄 단위로 정확한 리뷰 댓글을 단다 — README에 line-level precision 댓글이라고 적혀 있다 · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · NPE·스레드 안전성·XSS·SQL 인젝션을 잡는 다국어 규칙 모음이 들어 있고 OpenAI·Anthropic 호환이다 — 저장소 About 설명에 규칙 모음과 OpenAI·Anthropic 호환이 적혀 있다 · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">alibaba/open-code-review 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s13">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>코딩 에이전트가 직접 영상을 자른다…FFmpeg 도구 42개 담은 &#39;ffmpeg-skill&#39;</h3>
+    <div class="one">Claude Code·Cursor·Codex용 로컬 영상 편집 스킬로 클라우드와 API 키가 필요 없다</div>
+    <ul class="pts"><li>FFmpeg 도구 42개와 MCP 서버를 제공한다</li><li>Claude Code·Cursor·Codex에서 쓰고 클라우드·API 키가 필요 없다</li><li>자르기·자막·리프레임·라우드니스·플랫폼 내보내기 지원</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>코딩 에이전트에게 영상 편집을 맡기는 오픈소스 ffmpeg-skill이 깃허브에서 주목받고 있다. FFmpeg(영상·음성 변환에 널리 쓰는 명령줄 프로그램)을 감싼 도구 42개를 제공하고, MCP 서버도 함께 들어 있다. README의 도구 표를 세면 42개이고, 저장소에 mcp/server.py가 있다.</p>
+      <p>지원 대상은 Claude Code, Cursor, Codex다. 도구마다 기계가 읽을 수 있는 약속(contract)을 붙여, 에이전트가 어떤 입력을 넣으면 무엇이 나오는지 알고 호출하게 했다. FFmpeg 옵션은 복잡해 에이전트가 명령을 틀리게 짜기 쉬운데, 도구 단위로 정리해 실수를 줄이려는 방식이다.</p>
+      <p>할 수 있는 일로는 자르기, 자막 넣기, 화면 비율 바꾸기(리프레임), 소리 크기 맞추기(라우드니스), 플랫폼별 내보내기가 소개돼 있다. 모든 작업이 내 컴퓨터에서 돌아 클라우드에 영상을 올리지 않고 API 키도 필요 없다.</p>
+      <p>짧은 영상을 자주 만드는 사람이라면 &#39;이 영상을 세로로 바꾸고 자막을 넣어 줘&#39; 같은 요청을 에이전트에게 맡겨 볼 수 있다. 다만 FFmpeg 자체는 따로 설치해야 하는지 등 세부 요구 사항은 저장소 문서를 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · ffmpeg-skill은 FFmpeg 도구 42개와 MCP 서버를 제공한다 — README의 도구 표를 세면 42개이고 mcp/server.py가 있다 · <a href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Claude Code·Cursor·Codex용이고 클라우드와 API 키가 필요 없다 — About와 README 머리말에 적혀 있다 · <a href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">kajisho5/ffmpeg-skill 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s9">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>주식 투자자용 Claude Code 스킬 모음 &#39;claude-trading-skills&#39; 트렌딩</h3>
+    <div class="one">시장 분석·차트·경제 일정·종목 검색·전략 개발을 스킬로 묶었다</div>
+    <ul class="pts"><li>시장 분석·차트·경제 일정·스크리너·전략 개발 스킬 포함</li><li>Claude Code 스킬 형식으로 만들어졌다</li><li>분석 결과는 투자 조언이 아니므로 따로 검증해야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>주식 투자자와 트레이더를 위한 Claude Code 스킬 모음 claude-trading-skills가 깃허브에서 주목받고 있다. 스킬은 Claude Code가 특정 작업을 할 때 불러 쓰는 지침·스크립트 묶음이다.</p>
+      <p>README에 따르면 시장 분석, 기술적 차트 분석, 경제 일정 확인, 종목 검색(스크리너), 매매 전략 개발용 스킬이 들어 있다. Claude Skills를 기반으로 트레이딩 작업 흐름을 짜는 도구 모음이라는 설명이다.</p>
+      <p>스킬 형식이 금융처럼 전문 분야로 넓어지고 있다는 점을 보여 주는 사례다. 다만 스킬이 내놓는 분석은 투자 조언이 아니며, 실제 돈이 걸린 판단은 데이터 출처와 결과를 따로 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · claude-trading-skills는 시장 분석·차트·경제 일정·종목 검색·전략 개발용 Claude Code 스킬 모음이다 — README에 Claude Skills 기반 트레이딩 워크플로 도구 모음으로 나와 있고, 이런 기능이 다 들어 있다 · <a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">tradermonty/claude-trading-skills 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s8">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>에이전트 계획에 주석 달고 피드백 한 번에 보내는 &#39;plannotator&#39; 트렌딩</h3>
+    <div class="one">계획 검토·코드 리뷰·팀 공유를 한 화면에서 하는 작업 공간이다</div>
+    <ul class="pts"><li>에이전트 계획에 주석을 달고 코드 리뷰까지 한다</li><li>모은 피드백을 한 번에 에이전트로 보낸다</li><li>팀과 계획을 공유할 수 있다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>코딩 에이전트가 세운 계획을 사람이 검토하고 고치는 작업 공간 plannotator가 깃허브에서 주목받고 있다. 저장소 소개는 &#39;에이전트를 계속 따라가며 위에서 관리하는 작업 공간&#39;이다.</p>
+      <p>README에 따르면 에이전트의 계획에 주석을 달고, 코드를 리뷰하고, 팀과 공유한 뒤, 모은 피드백을 클릭 한 번으로 에이전트에 보낼 수 있다. 계획 모드에서 에이전트가 긴 계획을 내놓으면 사람은 보통 대화창에 수정 사항을 길게 적어야 하는데, 이 과정을 문서에 메모하듯 바꾼 것이다.</p>
+      <p>에이전트에게 큰 작업을 맡길수록 계획 단계에서 방향을 잡아 주는 일이 중요해진다. plannotator는 사람이 판단할 지점을 놓치지 않게 하려는 도구다. 어떤 에이전트를 지원하는지, 설치 방식은 무엇인지는 저장소 문서에서 확인해야 한다.</p>
+      <div class="box ">✅ 확인됨 · plannotator는 에이전트의 계획에 주석을 달고 코드를 리뷰한 뒤 피드백을 에이전트에 보내는 작업 공간이다 — README에 계획 주석, 코드 리뷰, 에이전트로 피드백 보내기 기능이 적혀 있다 · <a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">backnotprop/plannotator 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s15">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>캐릭터형 에이전트 앱 &#39;부이(Vooy)&#39; 초대권 출시 소개 영상…공식 자료는 확인 안 돼</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/JLPUO9vUec8/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">메신저 대화방에 각자의 AI 비서를 데려와 함께 일을 시키는 개념이다</div>
+    <ul class="pts"><li>초대권 방식 출시는 유튜버 영상으로만 전해졌다</li><li>메신저 방에 각자의 AI 비서를 데려와 함께 일을 시킨다</li><li>캘린더·메일·쇼핑 연결 시 권한 범위를 확인해야 한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>캐릭터형 에이전트 앱 &#39;부이(Vooy)&#39;가 초대권 방식으로 출시됐다는 유튜브 영상이 올라왔다. 영상을 올린 유튜버가 초대권 100장을 나눠 주는 이벤트 영상이다. 이번 확인에서는 유튜버 소개 영상 외에 공식 자료를 찾지 못해, 출시 여부와 기능은 영상 속 설명으로만 전해진다.</p>
+      <p>영상 설명에 따르면 사용자는 먼저 자기 &#39;부이&#39;를 만들고 이름, 성격, 말투 지침을 넣는다. 부이는 대화를 바탕으로 기억을 쌓고, 정해진 일정에 맞춰 반복 작업도 한다. 앱은 기본적으로 메신저 형태이고, 다른 사용자와 대화하는 방에 내 부이를 초대해 사람 둘과 에이전트 둘이 함께 이야기하는 식으로 쓴다. 상대방의 부이에게도 일을 시킬 수 있다고 했다.</p>
+      <p>유튜버는 구글 캘린더, 쿠팡, Gmail을 연결해 쿠팡에서 최저가 라면을 찾아 장바구니에 담게 하는 장면을 보여 줬다. 회사 계정 메일·일정을 보고 놓친 일을 알려 주기도 했다고 한다. 쇼핑·예약 앱 등 연결 서비스 목록도 화면에 나왔다.</p>
+      <p>다만 메일·일정·쇼핑 계정을 에이전트에 연결하는 만큼 권한 범위를 꼼꼼히 봐야 한다. 유튜버도 &#39;제조사 의도와 다른 해석일 수 있다&#39;고 밝혔다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 캐릭터형 에이전트 앱 부이(Vooy)가 초대권 방식으로 출시됐다 — 유튜버 소개 영상만 있고 공식 자료는 찾지 못했다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=JLPUO9vUec8&amp;t=61s" target="_blank" rel="noopener">부이(Vooy) 소개 영상 – 앱 개념 설명</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s12">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">트렌딩</span></div>
+    <h3>구글 리서치, AI 연구 논문 작성을 자동화하는 멀티 에이전트 틀 &#39;PaperOrchestra&#39; 공개</h3>
+    <div class="one">여러 에이전트가 나눠 논문을 쓰게 하는 연구용 프레임워크다</div>
+    <ul class="pts"><li>구글 리서치 공식 저장소로 공개됐다</li><li>AI 논문 작성을 여러 에이전트로 나눠 자동화한다</li><li>세부 구성과 성능은 이번 자료로 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>구글 리서치가 깃허브에 PaperOrchestra를 공개했다. 공식 저장소 README는 이를 &#39;AI 연구 논문 작성을 자동화하는 멀티 에이전트 프레임워크&#39;라고 설명한다. 멀티 에이전트란 여러 AI 에이전트가 역할을 나눠 하나의 일을 처리하는 구조다.</p>
+      <p>논문 작성은 자료 조사, 실험 결과 정리, 본문 작성, 그림·표 만들기, 검토처럼 단계가 많다. 이를 에이전트 여러 개에 나눠 맡기는 방식으로 보인다. 다만 입력 자료에는 저장소 한 줄 소개만 있어, 에이전트가 몇 개인지, 어떤 모델을 쓰는지, 결과 품질이 어떤지는 확인되지 않았다.</p>
+      <p>에이전트를 나눠 긴 문서를 쓰게 하는 설계는 논문 말고도 보고서·기술 문서 작성에 참고할 만하다. 구조가 궁금하다면 저장소 코드를 직접 보는 편이 정확하다.</p>
+      <div class="box ">✅ 확인됨 · 구글 리서치가 AI 연구 논문 작성을 자동화하는 멀티 에이전트 틀 PaperOrchestra를 공개했다 — 공식 저장소 README에 &#39;multi-agent framework for automated AI research paper writing&#39;이라고 적혀 있다 · <a href="https://github.com/google-research/paper-orchestra" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://github.com/google-research/paper-orchestra" target="_blank" rel="noopener">google-research/paper-orchestra 저장소</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s6">
+    <div class="top"><span class="pill">새 도구</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>움직이는 버튼·메뉴 83개를 Claude Code 지시서로 복사하는 &#39;DesignBookmark Motion&#39;</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/R6joL6672FM/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">부품마다 Copy for Claude·Codex·code 버튼이 있어 말로 설명할 필요가 없다</div>
+    <div class="fig">
+      <div class="cap">DesignBookmark Motion 쓰는 순서</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>부품 고르기<small>사이트에서 버튼·메뉴를 직접 눌러 보고 고른다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>Copy for Claude<small>원본 코드 위치와 작업 순서가 담긴 지시서를 복사한다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>Claude Code에 붙이기<small>웹 접근을 허용해 원본 파일을 읽게 한다</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>결과 확인<small>Claude가 알려 준 화면에서 움직임과 스타일을 확인한다</small></div>
+      </div>
+      <div class="src">출처: Claudical</div>
+    </div>
+    <ul class="pts"><li>부품 83개마다 Copy for Claude·Codex·code 버튼이 있다</li><li>지시서에 원본 코드 위치와 다섯 단계 작업 순서가 담긴다</li><li>무료·로그인 불필요라는 설명은 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>움직이는 버튼과 메뉴를 직접 눌러 본 뒤 Claude Code용 지시서로 복사하는 웹사이트 DesignBookmark Motion을 소개한 영상이 올라왔다. 사실 확인 결과 페이지에는 중복 하나를 빼고 부품 83개가 있고, 카드마다 Copy for Claude, Copy for Codex, Copy code 세 가지 복사 버튼이 있다.</p>
+      <p>영상 설명에 따르면 Copy for Claude는 원본 코드 위치와 다섯 단계 작업 순서를 담은 지시서를 복사한다. 이를 Claude Code에 붙이면 원본 파일을 읽고 같은 스프링 값(튕기듯 움직이는 애니메이션의 세기 설정)으로 움직임을 다시 만들며, 색·글꼴·모서리는 내 프로젝트에 맞춘다. 작업이 끝나면 어디서 확인하면 되는지 알려 준다고 한다.</p>
+      <p>AI에게 움직임을 말로만 설명하면 생각과 다른 결과가 나오기 쉽다. 원본 코드를 지시서에 넣으면 이런 어긋남을 줄일 수 있다는 것이 이 사이트의 발상이다. 전날 신문에서 다룬 &#39;Zajno Motion&#39;이 기법 이름을 알려 주는 방식이었다면, 이쪽은 코드 자체를 넘긴다.</p>
+      <p>영상은 &#39;무료이고 복사에 로그인이 필요 없다&#39;고 했지만, 이번 확인에서는 페이지에서 무료 여부와 로그인 필요 여부를 확인하지 못했다. 쓰려면 Claude Code가 designbookmark.com에 접근할 수 있도록 웹 접근을 허용해야 한다.</p>
+      <div class="box ">✅ 확인됨 · DesignBookmark Motion은 움직이는 버튼·메뉴 83개를 Copy for Claude·Copy for Codex·Copy code로 복사하게 해 준다 — 페이지에 중복 하나를 빼고 83개 부품과 세 가지 복사 버튼이 있다 · <a href="https://designbookmark.com/motion" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 무료이고 복사에 로그인이 필요 없다 — 페이지에서 무료 여부와 로그인 필요 여부를 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=R6joL6672FM" target="_blank" rel="noopener">DesignBookmark Motion 소개 영상</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s4">
+    <div class="top"><span class="pill">새 도구</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">디시</span></div>
+    <h3>Fable 5.2가 코드로만 만든 3D 장면 모음 &#39;awesome-fable-5.2&#39; 공유</h3>
+    <div class="one">수중 다이빙 영상과 경로 추적 실내 장면을 코드 계산만으로 그렸다</div>
+    <ul class="pts"><li>Fable 5.2가 Claude Code에서 짠 코드만으로 만든 작품 모음이다</li><li>수중 다이빙 영상, 경로 추적 실내 장면 등이 있다</li><li>README로 제작 방식이 확인됐다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>Claude Fable 5.2가 짠 코드로만 만든 그림과 영상을 모은 깃허브 저장소 awesome-fable-5.2가 커뮤니티에 공유됐다. README에는 claude-fable-5-2가 Claude Code에서 짠 코드로만 계산한 작품이라고 적혀 있다.</p>
+      <p>저장소 소개에 따르면 1인칭 수중 다이빙 영상과 경로 추적(빛이 튕기는 경로를 하나하나 계산하는 렌더링 방식)으로 그린 오후 실내 장면 등이 들어 있다. 커뮤니티에는 고양이 정원(cat-garden) 장면이 링크됐다. 3D 모델 파일이나 이미지 생성 모델 없이 코드 계산으로 만든 결과물이라는 점이 화제다.</p>
+      <p>새 모델이 나오면 이런 &#39;코드만으로 만든 작품&#39; 모음이 능력 시연처럼 돈다. 결과물은 저장소에서 직접 볼 수 있다.</p>
+      <div class="box ">✅ 확인됨 · awesome-fable-5.2 저장소에는 Claude Fable 5.2가 코드로만 만든 3D 장면이 모여 있다 — README에 claude-fable-5-2가 Claude Code에서 짠 코드로만 계산한 작품이라고 적혀 있다 · <a href="https://github.com/BubbleBrainBB/awesome-fable-5.2" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535739" target="_blank" rel="noopener">커뮤니티 공유 글(저장소 링크 포함)</a></div>
+    </div></details>
+  </article>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">활용 팁 <span class="cnt">1</span></h2></summary>
+  <article class="art" id="s16">
+    <div class="top"><span class="pill">팁</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">유튜브</span></div>
+    <h3>브라우저가 GPU로 AI를 돌린다…ExecuTorch WebGPU 공개 계기로 본 WebGPU와 실측 속도</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/rdz6ly1ZYnA/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">같은 맥에서 WebGPU를 켜면 작은 언어 모델이 초당 24토큰에서 166토큰이 됐다</div>
+    <div class="fig">
+      <div class="cap">Qwen3 0.6B 초당 토큰 수(맥 미니 M5 Pro 실측)</div>
+      <div class="b"><span class="l">브라우저 WebGPU 끔(WASM)</span><span class="track"><span class="fill" style="width:5.5%"></span></span><span class="n">24토큰/초</span></div>
+      <div class="b"><span class="l">브라우저 WebGPU</span><span class="track"><span class="fill hot" style="width:37.9%"></span></span><span class="n">166토큰/초</span></div>
+      <div class="b"><span class="l">llama.cpp(Metal)</span><span class="track"><span class="fill" style="width:78.3%"></span></span><span class="n">343토큰/초</span></div>
+      <div class="b"><span class="l">MLX</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">438토큰/초</span></div>
+      <div class="src">출처: Solostack</div>
+    </div>
+    <ul class="pts"><li>PyTorch가 브라우저 GPU 실행용 ExecuTorch WebGPU를 공식 공개했다</li><li>실측에서 WebGPU를 켜면 Qwen3 0.6B가 초당 24→166토큰으로 빨라졌다</li><li>네이티브 앱(MLX 438토큰)과는 아직 2~4배 차이가 난다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>PyTorch가 PyTorch로 만든 모델을 브라우저에서 GPU로 실행하는 &#39;ExecuTorch WebGPU&#39;를 공개했다. PyTorch 공식 블로그(2026년 11월 11일)에서 확인된다. 블로그는 Llama 3.2, Qwen3, Gemma 3 같은 작은 언어 모델과 Whisper(받아쓰기), MODNet(배경 지우기) 등을 검증된 모델로 소개했다.</p>
+      <p>이를 계기로 WebGPU를 풀어 설명한 영상이 올라왔다. WebGPU는 웹페이지가 내 컴퓨터의 그래픽카드(GPU)에 그림뿐 아니라 계산까지 시킬 수 있게 하는 웹 표준이다. 2011년에 나온 WebGL은 원래 그림을 그리려고 만든 통로라 계산을 시키기 어려웠다. WebGPU는 계산을 정식으로 지원하고, 맥에서는 Metal, 윈도우에서는 DirectX 12, 안드로이드·리눅스에서는 Vulkan 위에서 돈다.</p>
+      <p>영상 제작자는 맥 미니 M5 Pro, Chrome 157에서 3회 중앙값으로 직접 쟀다. 같은 크롬에서 WebGPU를 켰을 때와 껐을 때(꺼지면 CPU·WASM이 대신 계산)를 비교하면 30초 한국어 받아쓰기(Whisper base)는 1.5초 대 1.9초, 사진 한 장 배경 지우기(ISNet)는 0.2초 대 1.8초, 작은 언어 모델(Qwen3 0.6B)은 초당 166토큰 대 24토큰이었다.</p>
+      <p>같은 GPU에서 브라우저와 네이티브 앱을 비교하면 차이가 남았다. 언어 모델은 브라우저 WebGPU가 초당 166토큰, llama.cpp(Metal)가 343토큰, MLX가 438토큰이었다. 받아쓰기는 브라우저 1.3초, MLX 0.3초였다. 제작자는 실행 도구와 모델 형식 차이도 포함된 값이라고 밝혔다. 수치는 맥 한 대에서 잰 것이라 기기·브라우저에 따라 달라진다.</p>
+      <p>브라우저에서 AI를 돌리면 서비스 쪽은 계산을 사용자 GPU에 맡겨 서버 GPU 부담을 줄일 수 있다. 쓰는 쪽은 사이트가 따로 올리지 않는 한 사진·목소리가 서버를 거치지 않고, 모델을 받은 뒤엔 인터넷이 끊겨도 돌아간다. 단점도 있다. 처음 한 번 모델 파일을 통째로 내려받아야 해(Qwen3 0.6B 4비트 파일 약 919MB) 큰 모델은 아직 어렵다.</p>
+      <p>지원 범위는 Chrome·Edge가 윈도우·맥과 안드로이드 12 이상, Safari가 26 버전부터, Firefox가 윈도우와 애플 실리콘 맥이다. 크롬 주소창에 chrome://gpu를 넣어 &#39;WebGPU: Hardware accelerated&#39;가 보이면 된다. 써 볼 곳으로 chat.webllm.ai와 executorch.ai/playground가 소개됐다. Figma가 2025년 9월 렌더링 엔진을 WebGL에서 WebGPU로 옮기고 안 되는 기기에서는 WebGL로 돌아가게 한 사례도 Figma 블로그로 확인됐다. WebGPU 표준 자체는 아직 W3C 후보 권고안 초안 단계다.</p>
+      <div class="box ">✅ 확인됨 · PyTorch가 PyTorch 모델을 브라우저에서 GPU로 실행하는 ExecuTorch WebGPU를 공개했다 — PyTorch 공식 블로그(2026-11-11)에서 WebGPU 백엔드 공개가 확인된다 · <a href="https://pytorch.org/blog/executorch-webgpu-pytorch-models-on-the-gpu-in-the-browser/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Llama·Qwen·Gemma 같은 작은 언어 모델과 Whisper, 배경 지우기 모델이 브라우저에서 돌아간다 — 블로그에 Llama 3.2, Qwen3, Gemma 3, Whisper, MODNet 등이 검증된 모델로 나와 있다 · <a href="https://pytorch.org/blog/executorch-webgpu-pytorch-models-on-the-gpu-in-the-browser/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Figma가 2025년 9월 렌더링 엔진을 WebGL에서 WebGPU로 옮겼고, 안 되는 기기에서는 WebGL로 돌아간다 — Figma 블로그(2025-09-18)에 WebGPU 전환과 WebGL 대체 경로가 적혀 있다 · <a href="https://www.figma.com/blog/figma-rendering-powered-by-webgpu/" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=rdz6ly1ZYnA&amp;t=170s" target="_blank" rel="noopener">WebGPU 풀이 영상 – 실측 대목</a></div>
+    </div></details>
+  </article>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-16.html#s6" target="_blank" rel="noopener">바이브코딩 라이브 발췌 이어져…멀티 에이전트 속도 최적화, AOP 개념</a>)</div>
+  </details>
+
+  <details class="sec"><summary><h2 class="lv2">이슈 · 이야기거리 <span class="cnt">14</span></h2></summary>
+  <article class="art" id="s25">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 4</span></div>
+    <h3>올트먼 세마포 대담 번역 돌아…&#34;젠슨 황, 영웅에게도 결점은 있다&#34; 발언은 보도 단계</h3>
+    <div class="one">한국경제 보도와 커뮤니티 번역만 있고 공식 영상·녹취록은 확인 안 됐다</div>
+    <ul class="pts"><li>&#39;영웅에게도 결점은 있다&#39; 발언은 보도·번역으로만 전해졌다</li><li>번역문에는 상장, 칩 수요 이중 집계, 사람 중심 통제 발언도 있다</li><li>&#39;RSI에 전력 안 한다&#39;는 제목만 있는 글로 확인 안 됐다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>샘 올트먼 OpenAI CEO가 11월 16일 미국 매체 세마포(Semafor)가 연 &#39;실리콘밸리와 세계&#39; 행사 대담에 나왔다는 소식과 함께, 대담 번역문이 커뮤니티에 여러 건 올라왔다. 한국경제도 이 내용을 보도했다. 다만 이번 확인에서는 공식 영상이나 녹취록을 찾지 못해, 아래 발언은 모두 보도·번역으로 전해진 내용이다.</p>
+      <p>보도와 번역에 따르면 올트먼은 사임한 젠슨 황 전 엔비디아 CEO가 복귀해야 하느냐는 질문에 &#39;답할 만큼 알지 못한다&#39;고 했다. 이어 &#39;젠슨은 오랫동안 내 영웅이었다. 영웅에게도 결점은 있다&#39;며, 3년 전 자신이 이사회에서 해임된 경험 때문에 개인적으로 공감한다고 말한 것으로 전해졌다. 젠슨 황의 사임 자체는 전날 신문에서 공시로 확인됐다.</p>
+      <p>번역문에는 다른 주제도 있다. 올트먼은 OpenAI도 언젠가 상장하겠지만 지금은 비상장일 때 쉬운 일들이 있다고 했고, 앤트로픽이 먼저 상장해도 투자 수요는 걱정하지 않는다고 말했다고 한다. 여러 칩 회사가 저마다 OpenAI·앤트로픽이 물량 대부분을 살 거라 가정해 수요가 &#39;이중으로 잡힌다&#39;는 설명, 메모리·랙 조립·PCB 적층판까지 병목이 바뀌어 왔다는 이야기도 담겼다. AI 업계가 &#39;사람이 미래를 통제한다&#39;는 원칙을 지켜야 하고 AI에 결정권을 넘겨서는 안 된다는 발언도 번역됐다.</p>
+      <p>올트먼이 &#39;재귀 자기개선(RSI, AI가 스스로를 더 낫게 만드는 과정)에 전력을 다하지 않고 있다&#39;고 말했다는 글도 올라왔지만, 제목뿐이고 본문에는 내용이 없다. 원문 출처를 찾지 못해 확인되지 않았다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 올트먼이 세마포 대담에서 젠슨 황을 두고 &#39;영웅에게도 결점은 있다&#39;고 말했다 — 한국경제 보도와 커뮤니티 번역만 있고 공식 영상·녹취록은 확인하지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 올트먼이 재귀 자기개선(RSI)에 전력을 다하지 않고 있다고 말했다 — 커뮤니티 제목뿐이고 원문 출처를 찾지 못했다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535744" target="_blank" rel="noopener">올트먼 세마포 대담 번역 전문(커뮤니티)</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535736" target="_blank" rel="noopener">한국경제 보도 공유 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535634" target="_blank" rel="noopener">세마포 행사 정리 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536232" target="_blank" rel="noopener">&#39;재귀개선&#39; 제목 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s26">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시 3</span></div>
+    <h3>&#39;지능 폭발&#39; 논쟁 이어져…크리스티아노 &#34;AI 개발 이미 2배 빨라졌을 수도&#34; 요약 돌아, 확인 안 돼</h3>
+    <div class="one">인터뷰 원문 없이 커뮤니티 요약과 제목만 있는 글들이 더해졌다</div>
+    <ul class="pts"><li>크리스티아노 &#39;개발 속도 2배&#39; 발언은 커뮤니티 요약뿐이다</li><li>&#39;정렬은 기도 수준&#39; 발언도 출처가 없다</li><li>딥마인드 연구원 &#39;RSI Incoming&#39; 글은 본문이 비어 있다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-15.html#s16" target="_blank" rel="noopener">&#39;지능 폭발&#39; 논쟁 이어져…파텔 글 번역·딥마인드 디렉터 동의설, 여전히 확인 안 돼</a></p>
+      <p>전날 신문 &#39;&#34;지능 폭발&#34; 논쟁 이어져…파텔 글 번역·딥마인드 디렉터 동의설, 여전히 확인 안 돼&#39;에 이어, 이번에는 AI 안전 연구자 폴 크리스티아노의 인터뷰 요약이 커뮤니티에 올라왔다. 크리스티아노는 RLHF(사람 피드백으로 모델을 고치는 학습법) 개발에 기여했고, 글쓴이 소개에 따르면 지금은 OpenAI 재단 이사회에 있다.</p>
+      <p>요약에 따르면 크리스티아노는 최근 한 달 사이 OpenAI와 앤트로픽의 AI가 수학·컴퓨터과학에서 수백 건의 연구 결과를 냈다고 평가했다. AI가 머신러닝 연구 자체를 자동화하면 기술 발전이 최소 10배 빨라질 수 있고, 이미 개발 속도가 2배쯤 빨라졌을 수 있다고 말했다고 한다. 하지만 글은 일부 클립에 AI 자막을 붙인 요약이고 인터뷰 원문을 확인하지 못했다. &#39;2배&#39;라는 숫자도 확인되지 않았다.</p>
+      <p>같은 인물이 &#39;현재 정렬(AI가 사람 뜻대로 움직이게 하는 일)은 사실상 기도에 가깝다&#39;, &#39;희망은 지능 폭발 시기에 AI들이 초지능 정렬법을 알아내는 것&#39;이라고 말했다는 짧은 글도 올라왔다. 이 역시 출처가 붙어 있지 않다.</p>
+      <p>구글 딥마인드 연구원이 &#39;RSI Incoming&#39;(재귀 자기개선이 다가온다)이라는 글을 올렸다는 게시물도 있었지만 본문이 비어 있어 누가 어디에 쓴 것인지 확인할 수 없다. 전날과 마찬가지로 이번에도 주장은 늘었지만 원문 출처는 나오지 않았다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 폴 크리스티아노가 AI 개발 속도가 이미 2배쯤 빨라졌을 수 있다고 말했다 — 커뮤니티 요약만 있고 인터뷰 원문을 확인하지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 딥마인드 연구원이 &#39;RSI Incoming&#39;이라는 글을 올렸다 — 본문이 없는 게시글이라 출처를 확인할 수 없다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535896" target="_blank" rel="noopener">크리스티아노 인터뷰 요약 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536055" target="_blank" rel="noopener">&#39;정렬은 기도메타&#39; 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536481" target="_blank" rel="noopener">&#39;RSI Incoming&#39; 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s22">
+    <div class="top"><span class="pill">이슈</span><span class="pill none">확인할 사실 주장 없음</span><span class="pill soft">디시 2</span></div>
+    <h3>&#39;전문직은 책임 때문에 AI로 대체 못 한다&#39;는 말 두고 커뮤니티 논쟁</h3>
+    <div class="one">AI 판사 토론 영상 공유와 함께 &#39;책임론&#39;을 반박하는 글이 올라왔다</div>
+    <ul class="pts"><li>AI 판사 도입을 다룬 토론 영상이 공유됐다</li><li>&#39;책임 때문에 대체 불가&#39;론을 반박하는 글이 화제다</li><li>글 속 숫자는 비유로 든 가정이다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI가 판사·전문직을 대신할 수 있느냐를 두고 커뮤니티에서 논쟁이 벌어졌다. 한쪽에서는 전직 판사 출신 변호사와 철학자들이 &#39;AI 판사를 도입해도 될까&#39;를 토론한 유튜브 영상이 공유됐다. 영상에는 철학 교사, 서양철학 교수, 미국·한국 변호사가 출연한다.</p>
+      <p>다른 글은 &#39;책임질 사람이 필요해 전문직은 대체되지 않는다&#39;는 주장을 정면으로 반박했다. 글쓴이는 지금도 전문직이 실수하면 손해배상을 피하려 소송까지 가는 경우가 많아 책임을 제대로 지는지 의문이라고 했다. 또 책임은 개인 전문직이 아니라 AI 업무를 감독하는 관리자나 법인, AI 업체가 질 수도 있고, 결국 감독자만 남으면 그것이 대체라고 주장했다.</p>
+      <p>비용 논리도 들었다. AI가 사람보다 실수가 훨씬 적고 값도 훨씬 싸다면, 책임질 사람 한 명에게 큰돈을 내기보다 AI 서비스 여러 개로 교차 검증하는 쪽을 고를 것이라는 주장이다. 글에 쓰인 &#39;200배&#39; 같은 숫자는 비유로 든 가정이며 근거 있는 수치는 아니다.</p>
+      <p>이 논쟁은 개인 의견 글로, 법적 책임 구조가 실제로 어떻게 바뀌는지는 아직 제도로 정해진 것이 없다. 세무사 시험 AI 부정행위 보도 이후 &#39;전문직의 종말&#39;이라는 말이 자주 나오는 흐름 속에서 나온 글이다.</p>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535076" target="_blank" rel="noopener">&#39;책임론&#39; 반박 글</a> · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535124" target="_blank" rel="noopener">AI 판사 토론 영상 공유 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s20">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브 5</span></div>
+    <h3>세무사 AI 부정행위 파장 이어져…커뮤니티 &#39;컨닝 수법&#39; 글 검증 영상, 확인 안 된 글은 따로 구분</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/7jlm1YT5qtU/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">수법 네 가지는 같은 구조였고, 수능 대책과 자백은 여전히 보도 단계다</div>
+    <ul class="pts"><li>퍼진 수법 네 가지는 &#39;찍기-보내기-AI 풀이-답 받기&#39; 같은 구조</li><li>&#39;수능 만점 수백 명&#39; 등 커뮤니티 글 세 건은 확인되지 않았다</li><li>자백과 수능 전담 요원 1,312곳 대책은 여전히 보도 단계다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p class="follow">이어지는 기사 · <a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-15.html#s2" target="_blank" rel="noopener">세무사 수석 합격자 &#39;AI 부정행위 자백&#39; 보도…안경 아닌 초소형 카메라였다</a></p>
+      <p>전날 신문 &#39;세무사 수석 합격자 &#34;AI 부정행위 자백&#34; 보도…안경 아닌 초소형 카메라였다&#39;에 이어, 사건 뒤 커뮤니티에 퍼진 컨닝 수법 글을 검증한 영상이 나왔다. 제작자는 퍼진 수법 네 가지의 원리만 3D로 재현하고, 보도와 대조해 확인된 것과 아닌 것을 나눴다. 쇼츠 세 편으로도 잘라 올렸다.</p>
+      <p>영상의 결론은 네 수법이 모두 &#39;시험지를 찍고, 밖으로 보내고, AI가 풀고, 답을 받는&#39; 같은 구조라는 것이다. 수법마다 다른 것은 찍는 곳과 답을 받는 곳뿐이다. 스마트안경은 올해 중고교 내신에서 네 건이 적발됐다는 교육부 전수조사 보도가 있다. 반면 수신기를 어금니에 무는 방식은 시연 영상에만 나올 뿐 적발·보도 사례를 찾지 못했다고 제작자가 밝혔다.</p>
+      <p>&#39;11만 원짜리 장비로 수능 만점권이 수백 명&#39;, &#39;24학년도 수능 때 AI 컨닝으로 의대에 갔다&#39;, &#39;전자기기로 공무원 시험에 합격했다&#39; 같은 커뮤니티 글 세 건은 작성자와 증거를 확인하지 못한 글로 따로 분류됐다. 교육부 관계자도 방송에서 실체가 드러난 것은 아직 아닌 것 같다고 말했다고 한다.</p>
+      <p>처벌 사례도 정리됐다. 보도에 따르면 AR 안경을 쓰고 시험을 본 응시자는 징역 1년에 집행유예 3년, 휴대전화로 챗GPT에 답을 물은 응시자는 벌금 300만 원을 받았다. 세무사법은 부정행위자의 응시를 5년간 막는다.</p>
+      <p>핵심 사실은 여전히 확인 단계다. 수석 합격자가 11월 15일 자백하고 자수서를 냈다는 내용은 방송·유튜브 보도뿐이고, 경찰이나 산업인력공단의 공식 자료는 찾지 못했다. 교육부가 수능 시험장 1,312곳에 스마트안경 전담 요원을 둔다는 대책도 언론 보도만 있고 교육부 공식 자료는 확인하지 못했다. 영상은 전파탐지기가 올해 도입되지 않아 감독관이 눈으로 찾아야 한다는 보도도 전했다.</p>
+      <p>조코딩 채널도 같은 사건을 &#39;AI 안경이 불러온 전문직의 종말?&#39;이라는 제목의 영상으로 다뤘지만, 설명란에는 사건 관련 내용이 없다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 세무사 시험 수석 합격자가 11월 15일 AI 부정행위를 자백하고 자수서를 냈다 — 방송·유튜브 보도만 있고 경찰이나 공단의 공식 자료는 찾지 못했다</div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 교육부가 수능 시험장 1,312곳에 스마트안경 전담 요원을 두기로 했다 — 언론 보도만 있고 교육부 공식 자료는 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=7jlm1YT5qtU&amp;t=105s" target="_blank" rel="noopener">AI 컨닝 수법 검증 영상 – 수법 정리 대목</a> · <a href="https://www.youtube.com/watch?v=7jlm1YT5qtU&amp;t=208s" target="_blank" rel="noopener">같은 영상 – 확인 안 된 글 세 건</a> · <a href="https://www.youtube.com/watch?v=iJpbnFZ0z_A" target="_blank" rel="noopener">쇼츠: 구조는 전부 같았다</a> · <a href="https://www.youtube.com/watch?v=8hUji27iBh8" target="_blank" rel="noopener">쇼츠: 수법 4개 3D 재현</a> · <a href="https://www.youtube.com/watch?v=9mvNOcvaX2U" target="_blank" rel="noopener">쇼츠: 적발 사례와 작동 구조</a> · <a href="https://www.youtube.com/watch?v=pST7ArQkHC8" target="_blank" rel="noopener">조코딩: AI안경이 불러온 전문직의 종말?</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s23">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">유튜브</span></div>
+    <h3>조코딩 주간 AI 뉴스…Fable 5.2·Gemini 4 Carbon은 공식 확인, 상장 희망가·병렬 작업은 보도 단계</h3>
+    <img class="thumb" src="https://i.ytimg.com/vi/ZKKP6jbdNbg/hqdefault.jpg" loading="lazy" alt="">
+    <div class="one">한 주 소식 40여 개를 묶은 영상으로, 공식 확인된 것과 아닌 것이 섞여 있다</div>
+    <ul class="pts"><li>Claude Fable 5.2·Mythos 5.2 공개는 공식 확인, Mythos는 심사 통과 기관 한정</li><li>Gemini 4 Carbon 전체 공개도 구글 블로그로 확인됐다</li><li>상장 희망가와 Claude Code 병렬 프로젝트 기능은 확인되지 않았다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>유튜버 조코딩이 한 주 AI 소식을 30분 남짓으로 정리한 주간 뉴스 영상을 올렸다. 목차만 40개가 넘는다. 세무사 시험 AI 부정행위, 앤트로픽 상장, 새 Claude 모델, 구글 Gemini 4 계열, OpenAI 소식, 음성·이미지 모델, 엔비디아 CEO 사임까지 다뤘다.</p>
+      <p>사실 확인 결과 가장 분명한 것은 Claude 새 모델이다. 앤트로픽은 11월 9일 공식 발표에서 Claude Fable 5.2와 Mythos 5.2를 공개했고, Mythos 5.2는 심사를 통과한 기관에만 제공한다고 밝혔다. 누구나 쓸 수 있는 모델은 Fable 5.2이고, Mythos는 제한 공개라는 뜻이다.</p>
+      <p>구글 Gemini 4 Carbon이 전체 공개됐다는 소식도 확인됐다. 구글 공식 블로그(11월 10일)에 개발자·기업·소비자 모두에게 제공한다고 적혀 있다. 영상은 이어 Gemini 4 Hydrogen, Gemini Decisions API, TPU 신제품 등을 소개했지만 이 항목들은 이번 확인 대상에 들지 않았다.</p>
+      <p>확인되지 않은 내용도 있다. 앤트로픽 상장 희망가가 70~78달러이고 11월 19일 나스닥에서 거래된다는 내용은 여러 언론이 보도했지만, 이번 확인에서는 앤트로픽 공식 자료를 찾지 못했다. Claude Code가 여러 병렬 스레드에 걸친 작업을 조정하는 &#39;프로젝트&#39; 기능을 받았다는 내용(영상 09:23)도 보도만 있고 공식 문서는 확인되지 않았다. Claude Code 사용자라면 공식 릴리스 노트가 나올 때까지 기다리는 편이 낫다.</p>
+      <p>영상에는 GPT-6.2 Sol·Astra 유출, 미공개 OpenAI 사이버 모델, OpenAI 로보틱스 팀 해체 같은 제목도 있다. 유출·내부자 정보에 기댄 항목이 많아, 목차에 나왔다는 사실만으로 사실이라고 보기는 어렵다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 Claude Fable 5.2와 Mythos 5.2를 공개했고, Mythos는 심사를 통과한 기관에만 제공된다 — 공식 발표(11월 9일)에서 두 모델 공개와 Mythos 5.2의 검증 기관 한정 제공이 확인된다 · <a href="https://www.anthropic.com/claude-fable-and-mythos-5-2" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · 앤트로픽 IPO 희망가는 70~78달러이고 11월 19일 나스닥 거래가 예상된다 — 여러 언론이 보도했지만 앤트로픽 공식 자료는 확인하지 못했다</div>
+      <div class="box ">✅ 확인됨 · Gemini 4 Carbon이 전체 공개됐다 — 구글 공식 블로그(11월 10일)에 개발자·기업·소비자 대상 제공이 적혀 있다 · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/" target="_blank" rel="noopener">근거</a></div>
+      <div class="box w">⚠️ 확인 안 됨 · 언론 보도만 있음 · Claude Code가 여러 병렬 스레드에 걸친 작업을 조정하는 프로젝트 기능 업데이트를 받았다 — 언론 보도만 있고 앤트로픽 공식 문서는 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://www.youtube.com/watch?v=ZKKP6jbdNbg&amp;t=265s" target="_blank" rel="noopener">조코딩 주간 AI 뉴스 – Fable 5.2 대목</a> · <a href="https://www.youtube.com/watch?v=ZKKP6jbdNbg&amp;t=563s" target="_blank" rel="noopener">조코딩 주간 AI 뉴스 – Claude Code 병렬 작업 대목</a> · <a href="https://www.youtube.com/watch?v=ZKKP6jbdNbg&amp;t=584s" target="_blank" rel="noopener">조코딩 주간 AI 뉴스 – Gemini 4 Carbon 대목</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s28">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">디시</span></div>
+    <h3>미 연준 의장 &#34;초지능은 생애 최대 변화 중 하나&#34;…실업 시나리오도 예시로 거론</h3>
+    <div class="one">케빈 워시 의장의 11월 16일 연설이 연준 홈페이지에 실렸다</div>
+    <ul class="pts"><li>워시 의장이 초지능 시대를 &#39;생애 최대 변화&#39;로 꼽았다</li><li>연설문 원문이 연준 홈페이지에 공개돼 있다</li><li>실업 시나리오는 전망이 아니라 예시로 나왔다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>케빈 워시 미국 연방준비제도(연준) 의장이 11월 16일 연설에서 초지능의 등장을 자기 생애의 가장 큰 변화 중 하나로 평가했다. 연준 홈페이지에 실린 연설문에는 &#39;may be the most transformational period in my adult lifetime&#39;(성인이 된 뒤 가장 큰 변화의 시기일지 모른다)이라는 표현이 있다.</p>
+      <p>커뮤니티에 올라온 요약에 따르면 워시 의장은 몇 년 전만 해도 상상하기 어려웠던 수준의 지능을 이제 누구나 주머니 속에서 쓸 수 있다고 말했다. 전기나 내연기관과 달리 초지능은 새 아이디어를 만드는 과정 자체를 자동화해 기술 발전을 크게 앞당길 수 있다고 설명했다.</p>
+      <p>연설문에는 대규모 자동화로 일자리가 무너지는 시나리오도 나온다. 다만 사실 확인 결과 이는 연준의 전망이 아니라 분석에 쓰는 예시로 제시된 것이다. &#39;연준이 실업률 상승을 예상한다&#39;고 읽으면 안 된다.</p>
+      <p>중앙은행 수장이 공식 연설에서 초지능을 생산성·성장·고용의 변수로 다뤘다는 점이 이번 연설의 의미다.</p>
+      <div class="box ">✅ 확인됨 · 케빈 워시 연준 의장이 11월 16일 연설에서 초지능 시대를 생애 최대의 변화 중 하나로 평가했다 — 연준 연설문에 &#39;may be the most transformational period in my adult lifetime&#39;이라는 표현이 있다 · <a href="https://www.federalreserve.gov/newsevents/speech/warsh20261116a.htm" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 연준이 자동화로 실업률이 오르는 시나리오를 검토하고 있다 — 연설문에 노동 파괴 시나리오가 예시로 나온다(전망이 아니라 예시다) · <a href="https://www.federalreserve.gov/newsevents/speech/warsh20261116a.htm" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535549" target="_blank" rel="noopener">커뮤니티 요약 글(연설문 링크 포함)</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s32">
+    <div class="top"><span class="pill">이슈</span><span class="pill warn">⚠️ 일부 확인 안 됨</span><span class="pill soft">디시</span></div>
+    <h3>&#39;METR 그래프 80% 성공 기준 약 38시간&#39; 주장 글…공식 자료는 확인 안 돼</h3>
+    <div class="one">그래프 궤적을 공유했다는 짧은 커뮤니티 글이다</div>
+    <ul class="pts"><li>&#39;80% 성공 기준 약 38시간&#39;이라는 주장이 돌았다</li><li>METR 공식 자료는 확인되지 않았다</li><li>어떤 모델의 결과인지도 불분명하다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>AI 에이전트가 해낼 수 있는 작업 길이를 재는 METR 그래프의 최신 궤적이라며, 80% 성공 기준으로 약 38시간짜리 작업까지 해낸다는 글이 커뮤니티에 올라왔다. METR은 AI 모델이 사람 기준으로 몇 시간 걸리는 작업을 일정 확률로 끝내는지 측정하는 연구 단체다.</p>
+      <p>글은 &#39;앤트로픽 모델4 기준&#39;이라는 제목과 &#39;80% 기준 약 38시간&#39;이라는 한 줄뿐이다. 이번 확인에서 METR 공식 자료를 찾지 못했다. 어떤 모델을 쟀는지, 그래프가 METR이 직접 낸 것인지도 알 수 없다. 숫자가 퍼질 수 있지만 지금은 확인되지 않은 주장이다.</p>
+      <div class="box w">⚠️ 확인 안 됨 · METR 그래프에서 80% 성공 기준 작업 시간이 약 38시간이다 — 커뮤니티 글만 있고 METR 공식 자료는 확인하지 못했다</div>
+      <div class="links">원문 · <a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535133" target="_blank" rel="noopener">METR 그래프 공유 글</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s35">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>앤트로픽, AI가 사용자 웰빙에 미치는 영향 평가 연구에 500만 달러 지원</h3>
+    <div class="one">독립 연구자가 오픈소스 웰빙 평가를 만들도록 돈·모델·기술을 지원한다</div>
+    <ul class="pts"><li>독립 웰빙 평가 연구에 500만 달러를 지원한다</li><li>결과는 누구나 쓸 수 있는 오픈소스로 공개된다</li><li>공식 발표상 신청 마감은 9월 21일이었다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 AI가 사용자의 웰빙(정신적·신체적 안녕)에 미치는 영향을 연구하는 독립 연구에 500만 달러를 지원하는 프로그램을 시작했다. 공식 발표에 따르면 선정자는 직접 자금, 앤트로픽 모델 접근권, 기술 지원을 받고, 완전히 독립적으로 연구해 결과를 누구나 쓸 수 있는 오픈소스로 공개한다.</p>
+      <p>앤트로픽은 웰빙이 평가하기 특히 어려운 영역이라고 설명했다. 대부분의 모델 행동은 답 하나만 보고 맞는지 판단할 수 있지만, 웰빙은 긴 대화의 맥락이 필요하다. 힘든 사용자가 자해 생각을 바로 털어놓지 않을 수 있고, 체중 감량 질문에 식단과 운동을 알려 주는 답도 섭식 장애 이력이 있는 사용자에게는 해로울 수 있다는 예를 들었다.</p>
+      <p>앤트로픽은 임상의, 심리학자, 방법론 전문가 등의 참여를 바란다고 밝혔고, 엄밀한 웰빙 평가의 조건을 정리한 안내서도 함께 공개했다. 공식 발표에 적힌 신청 마감은 9월 21일, 본 제안서 대상자 통보는 10월 5일이다. 확인 과정에서 발표 페이지 날짜는 8월 25일로 나와, 지금 시점에 신청을 받는지는 따로 확인이 필요하다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 AI가 사용자 웰빙에 미치는 영향을 평가하는 독립 연구에 500만 달러 지원 프로그램을 시작했다 — 공식 발표에 500만 달러 지원 프로그램이 적혀 있다(페이지 날짜는 8월 25일로 나온다) · <a href="https://www.anthropic.com/news/wellbeing-research-grants" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 신청 마감은 9월 21일, 본 제안서 대상자 통보는 10월 5일이다 — 공식 발표에 일정이 적혀 있다 · <a href="https://www.anthropic.com/news/wellbeing-research-grants" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/wellbeing-research-grants" target="_blank" rel="noopener">앤트로픽 발표: 웰빙 평가 연구 지원</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s36">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>앤트로픽 &#39;Claude Frontier Academy&#39;…1억 달러로 2027년까지 엔지니어 1만 명 교육</h3>
+    <div class="one">고객사 엔지니어를 의사 수련 방식으로 길러 배지를 주는 프로그램이다</div>
+    <div class="fig">
+      <div class="cap">FDE 레지던시 진행 단계</div>
+      <div class="flow col">
+        <div class="s"><b>1</b>회사 추천<small>회사가 Claude 프로젝트를 맡을 엔지니어를 추천한다</small></div><span class="ar">→</span>
+        <div class="s"><b>2</b>대면 과정<small>가상 기업 배치를 따라가며 보안 검토·인계까지 익힌다</small></div><span class="ar">→</span>
+        <div class="s"><b>3</b>실기 평가<small>통과하면 Claude Resident Engineer 배지</small></div><span class="ar">→</span>
+        <div class="s"><b>4</b>12주 레지던시<small>자기 회사에서 실제 Claude 사례를 이끈다</small></div><span class="ar">→</span>
+        <div class="s"><b>5</b>최종 평가<small>통과하면 Claude Frontier Deployed Engineer 배지</small></div>
+      </div>
+      <div class="src">출처: Anthropic</div>
+    </div>
+    <ul class="pts"><li>1억 달러로 2027년 말까지 엔지니어 1만 명 교육</li><li>대면 과정·실기 평가 뒤 12주 레지던시, 단계마다 배지</li><li>액센추어·맥킨지·모건스탠리 등이 첫 기수에 참여</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 Claude Frontier Academy를 열었다. 공식 발표(2026년 7월 27일)에 따르면 1억 달러를 들여 2027년 말까지 &#39;프런티어 배치 엔지니어(FDE)&#39; 1만 명을 길러 낸다. FDE는 고객 회사 안에서 AI를 실제 업무 시스템으로 만들어 내는 엔지니어를 뜻한다.</p>
+      <p>첫 기수에는 액센추어, 베인, 캡제미니, 호주 커먼웰스은행, 딜로이트, 맥킨지, 모건스탠리, 노보 노디스크 등의 엔지니어가 참여한다. 앤트로픽은 기업이 AI를 들여오려 할 때 가장 부족한 것이 인재라고 설명했다.</p>
+      <p>첫 프로그램인 FDE 레지던시는 의사 수련 모델을 따른다. 엔지니어는 앤트로픽 엔지니어·강사와 며칠간 대면 과정을 거치며 가상의 기업 배치를 처음부터 끝까지 해 보고, 새 시나리오로 실기 평가를 본다. 통과하면 Claude Resident Engineer 배지를 받고 12주 레지던시로 넘어가 자기 회사에서 실제 Claude 프로젝트를 이끈다. 12주 뒤 다시 평가를 통과하면 Claude Frontier Deployed Engineer 배지를 받는다. 첫 배지는 2027년 초로 예상된다.</p>
+      <p>대상은 기초가 탄탄하고 LLM으로 만든 경험이 있는 실무 엔지니어이며, 에이전트 개발 경험은 필수가 아니다. 참여는 회사 추천제이고, 기수는 샌프란시스코·뉴욕·런던에서 운영된다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 Claude Frontier Academy에 1억 달러를 들여 2027년 말까지 엔지니어 1만 명을 교육한다 — 공식 발표 내용과 같다 · <a href="https://www.anthropic.com/news/claude-frontier-academy" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/claude-frontier-academy" target="_blank" rel="noopener">앤트로픽 발표: Claude Frontier Academy</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s37">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>앤트로픽, 지분 5%를 공익 기금에 출연…회사가 클수록 몫이 늘어나는 구조</h3>
+    <div class="one">기존 약정까지 합치면 지분 약 20%가 공익에 쓰인다고 밝혔다</div>
+    <div class="fig">
+      <div class="cap">앤트로픽 공익 지분 관련 비율</div>
+      <div class="b"><span class="l">이번 출연 지분</span><span class="track"><span class="fill hot" style="width:6.2%"></span></span><span class="n">5%</span></div>
+      <div class="b"><span class="l">가치 50% 상승마다 추가</span><span class="track"><span class="fill" style="width:2.5%"></span></span><span class="n">2%</span></div>
+      <div class="b"><span class="l">공익용 지분 합계(약)</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="n">약 20%</span></div>
+      <div class="b"><span class="l">공동 창업자 기부 약정(보유분 대비)</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="n">80%</span></div>
+      <div class="src">출처: Anthropic</div>
+    </div>
+    <ul class="pts"><li>주주 승인 전제로 지분 5%를 공익 기금에 출연</li><li>회사 가치가 기준보다 50% 오를 때마다 2%씩 추가 가능</li><li>기존 약정 포함 지분 약 20%가 공익용</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 자기 회사 주식 일부를 새로 만든 공익 기금 &#39;Anthropic Public Benefit Fund&#39;에 내놓는다. 공식 발표(2026년 7월 22일)에 따르면 주주 승인을 전제로 지분 5%를 먼저 출연하고, 회사 가치가 정해진 기준보다 50% 오를 때마다 이사회 재량으로 2%씩 더 넣는다.</p>
+      <p>기금은 앤트로픽이 전부 소유한 유한책임회사(LLC) 형태다. 미국 비영리 재단(501(c)(3)) 대신 LLC를 고른 이유는 기부 방식을 바꿔 쓸 여지를 두기 위해서라고 했다. 기존 비영리 단체에 큰 기부를 하거나 특정 집단에 직접 나눠 주는 방식도 검토할 수 있다고 밝혔다. 기금이 가진 지분은 미국 안팎의 로비나 정치 기부에 쓰지 않는다.</p>
+      <p>예로 든 분야는 노동 시장이다. 앤트로픽은 이미 AI가 일자리에 미치는 영향을 연구하고 대응하는 데 2억 달러를 약정했지만, 더 과감한 접근이 필요할 수 있다고 했다. 테크 기업들이 회사가 클수록 경영진 보상을 늘리는 것과 반대로, 늘어나는 몫을 공익에 돌리겠다는 설명이다.</p>
+      <p>공동 창업자들은 창업 때 지분의 80%를 기부하기로 약속했고, 직원 기부에 회사가 맞춰 주는 프로그램에는 직원 절반가량이 참여한다. 이번 출연까지 합치면 앤트로픽 지분 약 20%가 공익에 쓰인다. 기금 지배 구조와 가치 기준점은 앞으로 공개한다고 했다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 지분 일부(주주 승인 전제로 5%)를 Anthropic Public Benefit Fund에 출연한다 — 공식 발표에 5% 출연과 가치 상승에 따른 2% 추가 구조가 적혀 있다 · <a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 기존 약정까지 합치면 앤트로픽 지분 약 20%가 공익에 쓰인다 — 공식 발표에 roughly 20%라고 적혀 있다 · <a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">앤트로픽 발표: Investing in the public benefit</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s38">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>바클레이스, Claude 전사 확대…&#34;2026년 말까지 개발자 절반이 Claude Code&#34;</h3>
+    <div class="one">영국 은행이 레거시 현대화와 운영 효율화에 Claude를 넓힌다고 밝혔다</div>
+    <ul class="pts"><li>2026년 말 개발자 50%, 2027년 과반이 Claude Code를 쓰는 목표</li><li>직원 1만6천 명 이상이 Claude 기반 지식 도우미를 쓴다</li><li>하루 약 12만 통의 이메일을 Claude가 분류·처리한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>영국 은행 바클레이스가 앤트로픽과의 협력을 넓혀 Claude를 은행 전체로 확대한다. 앤트로픽 공식 발표(2026년 6월 12일)에 따르면 바클레이스는 2026년 말까지 개발자의 50%가 Claude Code를 쓰고, 2027년에는 소프트웨어 엔지니어 과반으로 늘릴 계획이다.</p>
+      <p>목적은 소프트웨어 개발 속도를 높이고, 오래된 레거시 시스템을 현대화하고, 운영 효율을 높이는 것이다. 바클레이스 공동 COO 크레이그 브라이트는 AI를 기술을 만들고 시험하고 보호하고 운영하는 방식 안에 들어가는 에이전트형 능력으로 옮겨 가고 있다고 말했다.</p>
+      <p>이미 돌아가는 사례도 공개됐다. 2025년부터 운영 중인 직원용 지식 도우미는 검색 증강 생성(RAG, 문서를 찾아 답에 붙이는 방식)으로 Claude를 쓰며, 직원 1만6천 명 이상이 쓰고 검색 100만 건 이상을 처리했다. 글로벌 마켓 부문에서는 Claude가 하루 약 12만 통의 고객 이메일을 분류하고 처리 경로를 정한다.</p>
+      <p>규제가 엄격한 대형 은행이 Claude Code 도입 비율 목표를 공개했다는 점에서, 기업 개발 조직에 코딩 에이전트가 표준 도구로 자리 잡는 흐름을 보여 준다. 발표 시점은 6월이다.</p>
+      <div class="box ">✅ 확인됨 · 바클레이스는 2026년 말까지 개발자의 50%가 Claude Code를 쓰게 할 계획이다 — 공식 발표에 2026년 말 50%, 2027년 과반이라고 적혀 있다 · <a href="https://www.anthropic.com/news/barclays-scales-claude" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · 직원 1만6천 명이 Claude 기반 지식 도우미를 쓰고, 하루 약 12만 통의 이메일을 처리한다 — 공식 발표 수치와 같다 · <a href="https://www.anthropic.com/news/barclays-scales-claude" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/barclays-scales-claude" target="_blank" rel="noopener">앤트로픽 발표: Barclays scales Claude</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s39">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>앤트로픽, 캐나다 AI 연구기관에 1천만 캐나다달러 지원</h3>
+    <div class="one">Amii·Mila·Vector와 손잡고, 관련 스타트업에는 API 크레딧을 준다</div>
+    <ul class="pts"><li>지원액 1천만은 미국 달러가 아니라 캐나다달러다</li><li>Amii·Mila·Vector 등 연구기관·대학과 협력한다</li><li>관련 스타트업은 각각 최소 5천 달러 API 크레딧을 받는다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 캐나다 연구기관에 1천만 달러를 지원한다고 발표했다(2026년 7월 20일). 다만 공식 발표에 적힌 단위는 캐나다달러(CAD)라, &#39;1천만 미국 달러&#39;로 읽으면 틀린다.</p>
+      <p>돈은 AI의 이롭고 책임 있는 활용 연구에 쓰인다. 캐나다 3대 지역 AI 연구소인 에드먼턴 Amii, 몬트리올 Mila, 토론토 Vector Institute와 함께 CHEO, 중독·정신건강센터(CAMH), 라발대, 토론토대, 서스캐처원대와 협력한다. 앤트로픽은 캐나다가 신경망 연구가 외면받던 시기부터 이 분야를 키운 곳이라고 설명했다.</p>
+      <p>Amii·Mila·Vector는 &#39;Anthropic for Startups&#39; 프로그램에도 들어간다. 이 기관들과 연결된 캐나다 스타트업 수백 곳이 각각 최소 5천 미국 달러의 API 크레딧을 받는다.</p>
+      <p>앤트로픽 경제 지수를 바탕으로 한 첫 캐나다 보고서도 냈다. 캐나다는 Claude.ai 사용량 세계 8위이고, 인구 대비 사용률은 예상치의 4배가 넘는다. 브리티시컬럼비아가 1인당 사용량 1위이고, 정부 고용이 많은 주에서는 영어·프랑스어 이중 언어 정책 때문에 번역 요청이 많았다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 캐나다 AI 연구기관에 1천만 달러를 지원한다 — 공식 발표에 1천만 캐나다달러(CAD)로 적혀 있어 미국 달러가 아니다 · <a href="https://www.anthropic.com/news/canadian-ai-research" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · Amii·Mila·Vector 관련 스타트업이 각각 최소 5천 달러의 API 크레딧을 받는다 — 공식 발표에 최소 5,000 USD라고 적혀 있다 · <a href="https://www.anthropic.com/news/canadian-ai-research" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/canadian-ai-research" target="_blank" rel="noopener">앤트로픽 발표: 캐나다 AI 연구 지원</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s40">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>하버드 물리학자 크리스토퍼 스텁스, 앤트로픽 장기공익신탁 합류</h3>
+    <div class="one">이사회 과반을 임명하는 신탁에 첫 물리학자가 들어갔다</div>
+    <ul class="pts"><li>장기공익신탁은 이사회 과반 임명권을 가진다</li><li>스텁스는 우주 가속 팽창 발견 팀의 일원이다</li><li>신탁의 첫 물리학자로 버냉키 등과 함께한다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>하버드대 실험물리학자이자 전 이과대 학장인 크리스토퍼 스텁스가 앤트로픽 장기공익신탁(Long-Term Benefit Trust)에 합류했다. 공식 발표 날짜는 2026년 7월 9일이다.</p>
+      <p>장기공익신탁은 앤트로픽 이사회 과반을 임명할 권한을 가진 기구다. 신탁 위원들은 경영진·투자자와 독립돼 있으며, 특히 AI의 위험과 사회적 영향에 관한 중요한 결정에서 이사회와 경영진에 조언한다.</p>
+      <p>스텁스는 1998년 우주가 가속 팽창한다는 사실을 발견한 연구팀의 일원이었고, 이 업적으로 팀이 브레이크스루상을 받았다. 지금의 베라 C. 루빈 천문대의 첫 프로젝트 과학자를 지냈고, 미국 정부에 국방·기술을 자문하는 과학자 모임 JASON 회원이다. 최근에는 같은 질문에 모델이 다른 답을 낼 때 AI를 쓴 연구의 재현성을 어떻게 지킬지에 대해 글을 썼다.</p>
+      <p>스텁스는 매일 연구에 AI 도구를 쓴다고 말했다. 그는 신탁의 첫 물리학자로, 위원장 닐 버디 샤, 안보 전문가 리처드 폰테인, 벤 버냉키 전 연준 의장과 함께 일한다.</p>
+      <div class="box ">✅ 확인됨 · 하버드 물리학자 크리스토퍼 스텁스가 앤트로픽 장기공익신탁(Long-Term Benefit Trust)에 합류했다 — 공식 발표 내용과 같다 · <a href="https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust" target="_blank" rel="noopener">앤트로픽 발표: 크리스토퍼 스텁스 합류</a></div>
+    </div></details>
+  </article>
+  <article class="art" id="s41">
+    <div class="top"><span class="pill">이슈</span><span class="pill ok">✅ 확인됨</span><span class="pill soft">공식</span></div>
+    <h3>앤트로픽, 싱가포르 사무소 열고 정부와 AI 안전 양해각서</h3>
+    <div class="one">아태 다섯 번째 사무소이며 GovTech 엔지니어 1,500명 이상이 Claude Code를 쓴다</div>
+    <ul class="pts"><li>싱가포르에 아태 다섯 번째 사무소를 열었다</li><li>정부와 AI 안전·평가·도입 협력 양해각서를 맺었다</li><li>GovTech 엔지니어 1,500명 이상이 Claude Code를 쓴다</li></ul>
+    <details class="more"><summary>자세히 보기</summary>
+    <div class="body">
+      <p>앤트로픽이 싱가포르에 아시아태평양 지역 다섯 번째 사무소를 열고, 싱가포르 디지털개발정보부와 양해각서(MOU)를 맺었다. 공식 발표 날짜는 2026년 1월 27일이다.</p>
+      <p>양해각서는 AI 안전·보안·모델 평가, AI 도입과 그 영향에 대한 연구, 공공·민간의 책임 있는 도입을 협력 분야로 정했다. 앤트로픽은 싱가포르의 AI 안전·보안 기관과 모델 평가, 시험 기준, 사고 대응을 두고 기술 교류를 하겠다고 밝혔다. 서명은 앤트로픽 공동 창업자 벤 만과 디지털개발정보부 차관이 했다.</p>
+      <p>현지 사용 사례도 소개됐다. 싱가포르 정부기술청(GovTech)에서는 엔지니어·기술직 1,500명 이상이 정부 시스템 현대화와 소프트웨어 배포 속도를 높이려고 Claude Code를 쓴다. Grab, DBS 같은 기업도 Claude를 쓴다. 앤트로픽 경제 지수에서 싱가포르는 인구 대비 Claude.ai 사용량이 121개국 가운데 2위다.</p>
+      <div class="box ">✅ 확인됨 · 앤트로픽이 싱가포르에 아시아태평양 다섯 번째 사무소를 열고 디지털개발정보부와 양해각서를 맺었다 — 공식 발표 내용과 같다 · <a href="https://www.anthropic.com/news/singapore-office-opening" target="_blank" rel="noopener">근거</a></div>
+      <div class="box ">✅ 확인됨 · GovTech 싱가포르에서 엔지니어·기술직 1,500명 이상이 Claude Code를 쓴다 — 공식 발표 수치와 같다 · <a href="https://www.anthropic.com/news/singapore-office-opening" target="_blank" rel="noopener">근거</a></div>
+      <div class="links">원문 · <a href="https://www.anthropic.com/news/singapore-office-opening" target="_blank" rel="noopener">앤트로픽 발표: 싱가포르 사무소와 정부 MOU</a></div>
+    </div></details>
+  </article>
+  <div class="react">💬 커뮤니티 반응: 1곳에서 화제 계속 (<a href="https://taehyukryu.github.io/ai-daily-pages/2026-11-16.html#s13" target="_blank" rel="noopener">이번 주 묻힌 AI·테크 소식 7개…GitHub 저장소 8,900여 개 감염이 1위</a>)</div>
+  </details>
+
+  <section id="reading">
+    <h2 class="lv2">오늘 읽은 자료</h2>
+    <div class="subt">19:00 수집 · 최근 48시간</div>
+    <div class="funnel">
+      <div class="big"><em>79개</em> 읽고 → 기사 <em>25개</em>로 <small>(이미 실린 13개는 뺐음)</small></div>
+      <div class="stack"><span class="dc" style="width:55.7%">44</span><span class="youtube" style="width:22.8%">18</span><span class="github" style="width:11.4%">9</span><span class="official" style="width:10.1%">8</span></div>
+      <div class="legend"><span><i class="dc"></i>디시 44</span><span><i class="youtube"></i>유튜브 18</span><span><i class="github"></i>트렌딩 9</span><span><i class="official"></i>공식 8</span></div>
+    </div>
+    <div class="src"><div class="h"><b>디시 특이점갤</b><span class="num"><em>44</em>개 읽음 → 13개 씀</span></div>
+      <div class="rule">개념글 탭 · 최근 48시간 · 목록 최대 5페이지 · 글마다 본문 4,000자<br>본문 없는 글 7개</div></div>
+    <div class="src"><div class="h"><b>유튜버 9명</b><span class="num"><em>18</em>개 읽음 → 11개 씀</span></div>
+      <div class="rule">긴 영상 + 쇼츠 · 최근 48시간 · 제목·설명·자막<br>긴 영상 7 · 쇼츠 11</div></div>
+    <div class="src"><div class="h"><b>깃허브 트렌딩</b><span class="num"><em>9</em>개 중 AI 관련 5개</span></div>
+      <div class="rule">github.com/trending · 오늘 · 모든 언어 · 페이지에 보인 저장소 전부</div></div>
+    <div class="src"><div class="h"><b>공식 발표</b><span class="num"><em>8</em>개 읽음 → 8개 씀</span></div>
+      <div class="rule">Claude Code 릴리스 · Anthropic 뉴스 · 최근 48시간</div></div>
+    <div class="cap">유튜버별 (<i class="v"></i>긴 영상 <i class="s"></i>쇼츠)</div>
+    <div class="yt"><span class="l">조코딩 JoCoding</span><span class="t"><span class="v" style="width:20%"></span><span class="s" style="width:80%"></span></span><span class="n">1 · 4 → <b>2</b></span></div>
+    <div class="yt"><span class="l">코난쌤 conanssam</span><span class="t"><span class="v" style="width:20%"></span><span class="s" style="width:60%"></span></span><span class="n">1 · 3 → <b>4</b></span></div>
+    <div class="yt"><span class="l">Solostack</span><span class="t"><span class="v" style="width:40%"></span><span class="s" style="width:20%"></span></span><span class="n">2 · 1 → <b>2</b></span></div>
+    <div class="yt"><span class="l">Claudical</span><span class="t"><span class="s" style="width:40%"></span></span><span class="n">0 · 2 → <b>1</b></span></div>
+    <div class="yt"><span class="l">바이브마피아 | AI Native 엔지니어</span><span class="t"><span class="v" style="width:20%"></span><span class="s" style="width:20%"></span></span><span class="n">1 · 1 → <b>1</b></span></div>
+    <div class="yt"><span class="l">편집자P</span><span class="t"><span class="v" style="width:20%"></span></span><span class="n">1 · 0 → <b>1</b></span></div>
+    <div class="yt"><span class="l">달비의 작업실 | AI 자동화</span><span class="t"><span class="v" style="width:20%"></span></span><span class="n">1 · 0 → <b>0</b></span></div>
+    <div class="yt none"><span class="l">@codefundkimflip</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="yt none"><span class="l">@codefactory_official</span><span class="t"></span><span class="n">새 영상 없음</span></div>
+    <div class="note">숫자는 "긴 영상 · 쇼츠 → 신문에 쓴 수"</div>
+
+    <details class="appx"><summary>확인 안 된 주장 모음 (12)</summary>
+      <ul><li>⚠️ 확인 안 됨 · 앤트로픽 IPO 희망가는 70~78달러이고 11월 19일 나스닥 거래가 예상된다 — 여러 언론이 보도했지만 앤트로픽 공식 자료는 확인하지 못했다 <a href="#s23">기사로</a></li><li>⚠️ 확인 안 됨 · Claude Code가 여러 병렬 스레드에 걸친 작업을 조정하는 프로젝트 기능 업데이트를 받았다 — 언론 보도만 있고 앤트로픽 공식 문서는 확인하지 못했다 <a href="#s23">기사로</a></li><li>⚠️ 확인 안 됨 · 세무사 시험 수석 합격자가 11월 15일 AI 부정행위를 자백하고 자수서를 냈다 — 방송·유튜브 보도만 있고 경찰이나 공단의 공식 자료는 찾지 못했다 <a href="#s20">기사로</a></li><li>⚠️ 확인 안 됨 · 교육부가 수능 시험장 1,312곳에 스마트안경 전담 요원을 두기로 했다 — 언론 보도만 있고 교육부 공식 자료는 확인하지 못했다 <a href="#s20">기사로</a></li><li>⚠️ 확인 안 됨 · 구글이 Gemini 4 Oxygen을 냈다 — 게시글 본문이 비어 있고 구글 공식 자료도 찾지 못했다 <a href="#s33">기사로</a></li><li>⚠️ 확인 안 됨 · 캐릭터형 에이전트 앱 부이(Vooy)가 초대권 방식으로 출시됐다 — 유튜버 소개 영상만 있고 공식 자료는 찾지 못했다 <a href="#s15">기사로</a></li><li>⚠️ 확인 안 됨 · 올트먼이 세마포 대담에서 젠슨 황을 두고 &#39;영웅에게도 결점은 있다&#39;고 말했다 — 한국경제 보도와 커뮤니티 번역만 있고 공식 영상·녹취록은 확인하지 못했다 <a href="#s25">기사로</a></li><li>⚠️ 확인 안 됨 · 올트먼이 재귀 자기개선(RSI)에 전력을 다하지 않고 있다고 말했다 — 커뮤니티 제목뿐이고 원문 출처를 찾지 못했다 <a href="#s25">기사로</a></li><li>⚠️ 확인 안 됨 · 폴 크리스티아노가 AI 개발 속도가 이미 2배쯤 빨라졌을 수 있다고 말했다 — 커뮤니티 요약만 있고 인터뷰 원문을 확인하지 못했다 <a href="#s26">기사로</a></li><li>⚠️ 확인 안 됨 · 딥마인드 연구원이 &#39;RSI Incoming&#39;이라는 글을 올렸다 — 본문이 없는 게시글이라 출처를 확인할 수 없다 <a href="#s26">기사로</a></li><li>⚠️ 확인 안 됨 · METR 그래프에서 80% 성공 기준 작업 시간이 약 38시간이다 — 커뮤니티 글만 있고 METR 공식 자료는 확인하지 못했다 <a href="#s32">기사로</a></li><li>⚠️ 확인 안 됨 · 무료이고 복사에 로그인이 필요 없다 — 페이지에서 무료 여부와 로그인 필요 여부를 확인하지 못했다 <a href="#s6">기사로</a></li></ul>
+    </details>
+    <details class="appx"><summary>오늘 수집한 원문 전체 (79)</summary>
+      <details><summary>디시 44</summary>
+        <ul><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536481" target="_blank" rel="noopener">구글 딥마인드 연구원 : &#34;RSI Incoming&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536378" target="_blank" rel="noopener">19일 특갤 만화</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1533725" target="_blank" rel="noopener">슬슬 AI안경, 입시구조, 기득권 학벌 지능 중요해져 이런 글 밀게요</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536232" target="_blank" rel="noopener">알트만 : &#34;재귀개선에 전력을 다하지 않고 있다&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536228" target="_blank" rel="noopener">특뷩이 게임 다 만들어써 한번만 해줄래??</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536188" target="_blank" rel="noopener">개신난 특슬람 의사</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536190" target="_blank" rel="noopener">특갤툰) 미소녀 되고싶다 = 암컷타락이 아니라고?!</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536108" target="_blank" rel="noopener">레오폴드 2027 agi는 진짜 레전드다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536074" target="_blank" rel="noopener">특슬람들이 그토록 바라왔던 &#39;그 세계선&#39;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536055" target="_blank" rel="noopener">크리스티아노 : &#34;현재 정렬은 사실상 기도메타&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536033" target="_blank" rel="noopener">이란, 워싱턴에 방사능무기 공격 검토중..??</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535920" target="_blank" rel="noopener">멸망 대비해 국가의 모든것을 데이터화 시작한 에스토니아</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1536028" target="_blank" rel="noopener">티보) 6.1sol을 영원히 쓰자</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535896" target="_blank" rel="noopener">OpenAI 재단 이사 &#34;AI 지능폭발 가능성 매우 높아&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535855" target="_blank" rel="noopener">미 상무부, &#39;초지능&#39; 칩·서버 원격 접근 규제 발표</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535744" target="_blank" rel="noopener">11월 16일 샘 올트먼 Semafor 인터뷰</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535739" target="_blank" rel="noopener">페이블5.2로 코드만으로 만든 미친 퀄리티 3D세계</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535736" target="_blank" rel="noopener">&#39;오픈AI&#39; 올트먼 &#34;젠슨 황, 영웅에게도 결점은 있어&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535714" target="_blank" rel="noopener">버튜버 자동완성 이거 걍 개쩌는데</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535653" target="_blank" rel="noopener">속보) 페이블 5.2가 미로벤치에서 압도적 SOTA ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535634" target="_blank" rel="noopener">실리콘벨리 &amp; 월드 컨퍼런스 (샘 알트만 발언부분)</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535626" target="_blank" rel="noopener">(뉴스) 레이 커즈와일 서브센스 BCI 합류 및 최신 정보 모음</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535599" target="_blank" rel="noopener">AI가 일자리 뺏을라.. 대량 실업 공포애 중국 정부 비상</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535571" target="_blank" rel="noopener">세상이 안 변하는 것처럼 보이지만 한순간에 변함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535549" target="_blank" rel="noopener">미 연준 의장 &#34;초지능 시대가 도래했다&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535528" target="_blank" rel="noopener">오픈AI &#34;의료 AI 에이전트 공개&#34;</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535463" target="_blank" rel="noopener">인간의 적응력이란것에 때때로 깜짝 놀라긴함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535355" target="_blank" rel="noopener">OAI) 외부기관과 협력하여 내부모델 정렬 평가중</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535222" target="_blank" rel="noopener">공겜 후기</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535185" target="_blank" rel="noopener">성태햄이 대단하긴 함</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535180" target="_blank" rel="noopener">강성태가신기한건그저특이점을빠르게받아들였다가 아님</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535149" target="_blank" rel="noopener">실시간 갤주 유튜브 댓글 근황 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535133" target="_blank" rel="noopener">METR 그래프 앤트로픽 모델4 기준 최신 궤적</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535124" target="_blank" rel="noopener">전직 판사가 말하는 ai 판사의 책임</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535102" target="_blank" rel="noopener">내일 새로 출시하게 될 맵.</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535097" target="_blank" rel="noopener">속보) 만들고있는 공포게임 근황입니다</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535076" target="_blank" rel="noopener">그놈의 책임 책임ㅋㅋ누가 한 소리인지는 몰라도 세뇌제대로네</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535041" target="_blank" rel="noopener">아니 올 6월 즈음 예상 그냥 다 틀렸네 ㅅㅂ ㅋㅋㅋㅋ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1535039" target="_blank" rel="noopener">울트라 쓰면 할수있는거</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534988" target="_blank" rel="noopener">구글 제미니 4 옥시젠 ㄷㄷㄷ</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534948" target="_blank" rel="noopener">티보가 지하실에 처박힌 이유</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534875" target="_blank" rel="noopener">이거 ai 짤이라는데 맞음?</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534766" target="_blank" rel="noopener">앤트로픽 페이블급 신모델 등장</a></li><li><a href="https://gall.dcinside.com/mgallery/board/view/?id=thesingularity&amp;no=1534778" target="_blank" rel="noopener">[속보] 페이블 or 아스트라 추정 새 모델 발견</a></li></ul></details>
+      <details><summary>유튜브 18</summary>
+        <ul><li><a href="https://www.youtube.com/watch?v=HLp6DmC3C7Y" target="_blank" rel="noopener">MCP를 도입한 어도비..살아남을까?</a></li><li><a href="https://www.youtube.com/watch?v=MmxwVEgvHxE" target="_blank" rel="noopener">엄청난 비용 절감을 이뤄낸 일론머스크</a></li><li><a href="https://www.youtube.com/watch?v=pST7ArQkHC8" target="_blank" rel="noopener">AI안경이 불러온 전문직의 종말? ㄷㄷ</a></li><li><a href="https://www.youtube.com/watch?v=ZKKP6jbdNbg" target="_blank" rel="noopener">AI뉴스 - AI 부정행위 못 잡는다, 전문직 종말, Fable 5.2, MS365, GPT-6.2 Astra, 젠슨 황 사임, Gemini 4 Carbon &amp; Hydrogen 등</a></li><li><a href="https://www.youtube.com/watch?v=1hg9POiarjE" target="_blank" rel="noopener">NULL 번호판을 쓴 사람의 최후</a></li><li><a href="https://www.youtube.com/watch?v=JLPUO9vUec8" target="_blank" rel="noopener">[시즌 4] 부이(Vooy) 출시! 초대권 100장 나눔 이벤트</a></li><li><a href="https://www.youtube.com/watch?v=9R-N_0NrLt8" target="_blank" rel="noopener">Claude Code 스킬 Replica로 Excalidraw를 똑같이 다시 만들어 봤습니다</a></li><li><a href="https://www.youtube.com/watch?v=R6joL6672FM" target="_blank" rel="noopener">Claude Code에 복사해 붙이는 움직이는 버튼과 메뉴 83개 | DesignBookmark Motion</a></li><li><a href="https://www.youtube.com/watch?v=c0aDHHntlSY" target="_blank" rel="noopener">전문직 딸깍 시대, 우리는 뭘 먹고 살아야할까?</a></li><li><a href="https://www.youtube.com/watch?v=xeYP2Z3wxrY" target="_blank" rel="noopener">시청자 PRD 하나하나 피드백하기</a></li><li><a href="https://www.youtube.com/watch?v=KxEkCLZ7LQ4" target="_blank" rel="noopener">AI 코딩 도구 14개 종목, 이번 달 별이 가장 많이 늘어난 1위만 (11월)</a></li><li><a href="https://www.youtube.com/watch?v=r7lbucwoPmA" target="_blank" rel="noopener">Fable 5.2·젠슨 황 사임에 묻힌 이번 주 AI·테크 뉴스 7가지 (11/9~11/15)</a></li><li><a href="https://www.youtube.com/watch?v=rdz6ly1ZYnA" target="_blank" rel="noopener">WebGPU가 뭔데 요즘 자주 보일까? 브라우저가 그래픽카드를 직접 쓰는 법 | 직접 재 본 속도</a></li><li><a href="https://www.youtube.com/watch?v=8hUji27iBh8" target="_blank" rel="noopener">AI 컨닝 수법 4개, 직접 3D로 재현해봤다 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=9mvNOcvaX2U" target="_blank" rel="noopener">단추 카메라부터 쌀알 이어폰까지｜AI 컨닝 수법 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=iJpbnFZ0z_A" target="_blank" rel="noopener">AI 컨닝 수법 4개, 구조는 전부 같았다 #shorts</a></li><li><a href="https://www.youtube.com/watch?v=7jlm1YT5qtU" target="_blank" rel="noopener">수능 나흘 전 퍼진 AI 컨닝 수법 4가지｜세무냥이가 쏘아올린 거대한 공</a></li><li><a href="https://www.youtube.com/watch?v=BPlksWFCrPc" target="_blank" rel="noopener">3D 모델링 없이 동선만 넘겨서 AI 액션씬 뽑았습니다 (Claude + Topview T1 활용법)</a></li></ul></details>
+      <details><summary>트렌딩 9</summary>
+        <ul><li><a href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">backnotprop/plannotator</a></li><li><a href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">tradermonty/claude-trading-skills</a></li><li><a href="https://github.com/getarcaneapp/arcane" target="_blank" rel="noopener">getarcaneapp/arcane</a></li><li><a href="https://github.com/DeanChensj/jiangshan-map" target="_blank" rel="noopener">DeanChensj/jiangshan-map</a></li><li><a href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener">mvanhorn/last30days-skill</a></li><li><a href="https://github.com/alibaba/open-code-review" target="_blank" rel="noopener">alibaba/open-code-review</a></li><li><a href="https://github.com/google-research/paper-orchestra" target="_blank" rel="noopener">google-research/paper-orchestra</a></li><li><a href="https://github.com/sveltejs/svelte" target="_blank" rel="noopener">sveltejs/svelte</a></li><li><a href="https://github.com/kajisho5/ffmpeg-skill" target="_blank" rel="noopener">kajisho5/ffmpeg-skill</a></li></ul></details>
+      <details><summary>공식 8</summary>
+        <ul><li><a href="https://github.com/anthropics/claude-code/releases/tag/v2.1.326" target="_blank" rel="noopener">Claude Code v2.1.326</a></li><li><a href="https://www.anthropic.com/news/barclays-scales-claude" target="_blank" rel="noopener">Barclays scales Claude to upgrade operations and improve client experience</a></li><li><a href="https://www.anthropic.com/news/canadian-ai-research" target="_blank" rel="noopener">Anthropic commits $10 million to Canadian AI research</a></li><li><a href="https://www.anthropic.com/news/christopher-stubbs-joins-long-term-benefit-trust" target="_blank" rel="noopener">Physicist Christopher Stubbs joins Anthropic&#39;s Long-Term Benefit Trust</a></li><li><a href="https://www.anthropic.com/news/claude-frontier-academy" target="_blank" rel="noopener">Claude Frontier Academy: $100M to train 10,000 engineers</a></li><li><a href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">Investing in the public benefit</a></li><li><a href="https://www.anthropic.com/news/singapore-office-opening" target="_blank" rel="noopener">Singapore office and government MOU | Anthropic</a></li><li><a href="https://www.anthropic.com/news/wellbeing-research-grants" target="_blank" rel="noopener">Funding better evaluations of AI’s impact on wellbeing</a></li></ul></details>
+    </details>
+  </section>
+</div>
+<script>
+  // 닫힌 섹션 안의 기사로 가는 링크(#s3, 다른 날 신문의 ...html#s3)도 보이게: 목표를 감싼 <details>를 모두 연다
+  function openTo(id) {
+    var el = id && document.getElementById(id);
+    for (var p = el && el.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS') p.open = true;
+    return el;
+  }
+  function openHash() { var el = openTo(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+  // 페이지 안 링크는 여기서 연 뒤 브라우저가 원래대로 그 자리로 스크롤한다
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (a) openTo(a.getAttribute('href').slice(1));
+  });
+  window.addEventListener('hashchange', openHash);
+  openHash();
+</script>
+</body>
+</html>
